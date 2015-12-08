@@ -1,3 +1,7 @@
 /akka-java-example/target
 /.idea
+*/.idea
 /target
+/akka-java-example/*.iml
+/akka-java-example/.idea
+/finagle-example/.idea
