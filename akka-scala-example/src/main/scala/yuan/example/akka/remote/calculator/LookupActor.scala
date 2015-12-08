@@ -1,14 +1,9 @@
 package yuan.example.akka.remote.calculator
 
 import scala.concurrent.duration._
-import akka.actor.Actor
-import akka.actor.ActorIdentity
-import akka.actor.ActorRef
-import akka.actor.Identify
-import akka.actor.ReceiveTimeout
-import akka.actor.Terminated
+import akka.actor._
 
-class LookupActor(path: String) extends Actor {
+class LookupActor(path: String) extends Actor with ActorLogging {
 
   sendIdentifyRequest()
 
@@ -24,21 +19,21 @@ class LookupActor(path: String) extends Actor {
     case ActorIdentity(`path`, Some(actor)) =>
       context.watch(actor)
       context.become(active(actor))
-    case ActorIdentity(`path`, None) => println(s"Remote actor not available: $path")
+    case ActorIdentity(`path`, None) => log.error(s"Remote actor not available: $path")
     case ReceiveTimeout              => sendIdentifyRequest()
-    case _                           => println("Not ready yet")
+    case _                           => log.info("Not ready yet")
   }
 
   def active(actor: ActorRef): Actor.Receive = {
     case op: MathOp => actor ! op
     case result: MathResult => result match {
       case AddResult(n1, n2, r) =>
-        printf("Add result: %d + %d = %d\n", n1, n2, r)
+        log.info("Add result: {} + {} = {}", n1, n2, r)
       case SubtractResult(n1, n2, r) =>
-        printf("Sub result: %d - %d = %d\n", n1, n2, r)
+        log.info("Sub result: {} + {} = {}", n1, n2, r)
     }
     case Terminated(`actor`) =>
-      println("Calculator terminated")
+      log.info("Calculator terminated")
       sendIdentifyRequest()
       context.become(identifying)
     case ReceiveTimeout =>

@@ -8,6 +8,8 @@ object LocalApp extends App {
 	//val system = ActorSystem("LocalSystem")
 	val config = ConfigFactory.parseString("akka.remote.netty.tcp.port=13101")
 		.withFallback(ConfigFactory.load("remote/hello/hello.conf"))
+	println("akka.remote.netty.tcp.port="+config.getInt("akka.remote.netty.tcp.port"))
+
 	val system = ActorSystem("LocalSystem",config)
 	val localActor = system.actorOf(Props[LocalActor], name = "LocalActor") // the local actor
 

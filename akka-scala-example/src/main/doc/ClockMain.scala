@@ -82,6 +82,6 @@ object Main extends App {
     val cain = system.actorOf(Props[Entity], name = "Entity")
 
     import system.dispatcher
-    system.scheduler.scheduleOnce(...)
+    //system.scheduler.scheduleOnce(...)
     //do something irrelevant
 }
