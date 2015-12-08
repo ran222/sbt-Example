@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="default"
+		module="finagle-example$sources_javadoc_2.11"
+		revision="1.0"
+		status="integration"
+		publication="20151204154057"
+	/>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="public" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+	</configurations>
+	<publications>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.7" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile);scala-tool->default(compile)" info.apiURL="http://www.scala-lang.org/api/2.11.7/">
+			<artifact name="scala-library" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-library" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.7" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="slf4j-api" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="slf4j-api" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.slf4j" name="slf4j-log4j12" rev="1.7.7" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="slf4j-log4j12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="slf4j-log4j12" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="log4j" name="log4j" rev="1.2.17" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="log4j" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="log4j" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-http_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-http_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-http_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-core_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-core_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-core_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="io.netty" name="netty" rev="3.10.1.Final" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="netty" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="netty" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-app_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-app_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-app_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-core_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-core_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-core_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-function_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-function_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-function_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.scala-lang.modules" name="scala-parser-combinators_2.11" rev="1.0.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile);scala-tool->default(compile)">
+			<artifact name="scala-parser-combinators_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-parser-combinators_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-registry_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-registry_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-registry_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-cache_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-cache_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-cache_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.google.guava" name="guava" rev="16.0.1" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="guava" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="guava" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-codec_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-codec_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-codec_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="commons-codec" name="commons-codec" rev="1.9" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="commons-codec" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="commons-codec" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-collection_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-collection_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-collection_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="javax.inject" name="javax.inject" rev="1" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="javax.inject" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="javax.inject" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="commons-collections" name="commons-collections" rev="3.2.1" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="commons-collections" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="commons-collections" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-hashing_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-hashing_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-hashing_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-jvm_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-jvm_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-jvm_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-lint_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-lint_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-lint_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-logging_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-logging_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-logging_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-stats_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-stats_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-stats_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="jsr166e" rev="1.0.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jsr166e" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jsr166e" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="commons-lang" name="commons-lang" rev="2.6" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="commons-lang" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="commons-lang" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-thrift_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-thrift_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-thrift_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="scrooge-core_2.11" rev="4.2.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="scrooge-core_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scrooge-core_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-exp_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-exp_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-exp_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.google.caliper" name="caliper" rev="0.5-rc1" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="caliper" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="caliper" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.google.code.java-allocation-instrumenter" name="java-allocation-instrumenter" rev="2.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="java-allocation-instrumenter" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="java-allocation-instrumenter" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-kestrel_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-kestrel_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-kestrel_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-memcached_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-memcached_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-memcached_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-cacheresolver_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-cacheresolver_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-cacheresolver_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-serversets_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-serversets_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-serversets_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter.common.zookeeper" name="server-set" rev="1.0.103" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="server-set" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="server-set" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.google.inject" name="guice" rev="3.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="guice" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="guice" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="aopalliance" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.sonatype.sisu.inject" name="cglib" rev="2.2.1-v20090111" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="cglib" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="cglib" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="args" rev="0.2.35" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="args" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="args-apt" rev="0.1.33" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="args-apt" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="args-core" rev="0.1.33" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="args-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="io" rev="0.0.65" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="io" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="commons-io" name="commons-io" rev="2.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="commons-io" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="commons-io" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="io-json" rev="0.0.51" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="io-json" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.google.code.gson" name="gson" rev="2.2.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="gson" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="gson" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="io-thrift" rev="0.0.64" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="io-thrift" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="org.slf4j" name="slf4j-jdk14" rev="1.7.7" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="slf4j-jdk14" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="slf4j-jdk14" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="dynamic-host-set" rev="0.0.53" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="dynamic-host-set" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="service-thrift" rev="1.0.54" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="service-thrift" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-test_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-test_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-test_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-zk-common_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-zk-common_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-zk-common_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="util-zk_2.11" rev="6.29.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/util/docs/">
+			<artifact name="util-zk_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="util-zk_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.apache.zookeeper" name="zookeeper" rev="3.5.0-alpha" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="zookeeper" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="zookeeper" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="commons-cli" name="commons-cli" rev="1.2" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="commons-cli" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="commons-cli" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="net.java.dev.javacc" name="javacc" rev="5.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="javacc" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common.zookeeper" name="client" rev="0.0.79" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="client" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="base" rev="0.0.113" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="base" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="quantity" rev="0.0.97" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="quantity" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="collections" rev="0.0.108" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="collections" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="util-system-mocks" rev="0.0.102" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="util-system-mocks" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="net-util" rev="0.0.100" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="net-util" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common.zookeeper" name="group" rev="0.0.90" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="group" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="util" rev="0.0.119" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="util" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="util-executor-service-shutdown" rev="0.0.65" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="util-executor-service-shutdown" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="jdk-logging" rev="0.0.78" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jdk-logging" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="stats" rev="0.0.113" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="stats" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="stat-registry" rev="0.0.56" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="stat-registry" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="stat" rev="0.0.71" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="stat" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="stats-provider" rev="0.0.91" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="stats-provider" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="application-action" rev="0.0.88" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="application-action" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.twitter.common" name="util-sampler" rev="0.0.76" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="util-sampler" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-core" rev="2.4.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jackson-core" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jackson-core" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.4.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jackson-databind" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jackson-databind" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" rev="2.4.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jackson-module-scala_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jackson-module-scala_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.scala-lang" name="scala-reflect" rev="2.11.2" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="http://www.scala-lang.org/api/2.11.2/">
+			<artifact name="scala-reflect" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-reflect" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.fasterxml.jackson.core" name="jackson-annotations" rev="2.4.4" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="jackson-annotations" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jackson-annotations" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.thoughtworks.paranamer" name="paranamer" rev="2.6" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)">
+			<artifact name="paranamer" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="paranamer" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-mysql_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-mysql_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-mysql_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="com.twitter" name="finagle-redis_2.11" rev="6.30.0" transitive="false" conf="compile->default(compile);runtime->default(compile);test->default(compile);compile-internal->default(compile);runtime-internal->default(compile);test-internal->default(compile)" info.apiURL="https://twitter.github.io/finagle/docs/">
+			<artifact name="finagle-redis_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="finagle-redis_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.7" transitive="false" conf="scala-tool->default(compile)">
+			<artifact name="scala-compiler" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-compiler" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.scala-lang" name="scala-reflect" rev="2.11.7" transitive="false" conf="scala-tool->default(compile)" info.apiURL="http://www.scala-lang.org/api/2.11.7/">
+			<artifact name="scala-reflect" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-reflect" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="org.scala-lang.modules" name="scala-xml_2.11" rev="1.0.4" transitive="false" conf="scala-tool->default(compile)">
+			<artifact name="scala-xml_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="scala-xml_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+		<dependency org="jline" name="jline" rev="2.12.1" transitive="false" conf="scala-tool->default(compile)">
+			<artifact name="jline" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="jline" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+		</dependency>
+	</dependencies>
+</ivy-module>

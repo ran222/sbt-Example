@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="finagle-example$sources_javadoc_2.11"
+		revision="1.0"
+		conf="compile"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20151204154057"/>
+	<dependencies>
+		<module organisation="com.twitter" name="finagle-redis_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016074409" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="79">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="6763" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-redis_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-redis_2.11/6.30.0/finagle-redis_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-redis_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1575883" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-redis_2.11\docs\finagle-redis_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-redis_2.11/6.30.0/finagle-redis_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-redis_2.11" type="jar" ext="jar" status="no" details="" size="1295125" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-redis_2.11\jars\finagle-redis_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-redis_2.11/6.30.0/finagle-redis_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-redis_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="56137" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-redis_2.11\srcs\finagle-redis_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-redis_2.11/6.30.0/finagle-redis_2.11-6.30.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-mysql_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073900" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="78">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="7220" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-mysql_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-mysql_2.11/6.30.0/finagle-mysql_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-mysql_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="709747" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-mysql_2.11\docs\finagle-mysql_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-mysql_2.11/6.30.0/finagle-mysql_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-mysql_2.11" type="jar" ext="jar" status="no" details="" size="377182" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-mysql_2.11\jars\finagle-mysql_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-mysql_2.11/6.30.0/finagle-mysql_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-mysql_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="31882" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-mysql_2.11\srcs\finagle-mysql_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-mysql_2.11/6.30.0/finagle-mysql_2.11-6.30.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-kestrel_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073945" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="31">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="8601" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-kestrel_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-kestrel_2.11/6.30.0/finagle-kestrel_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-kestrel_2.11" type="jar" ext="jar" status="no" details="" size="739205" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-kestrel_2.11\jars\finagle-kestrel_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-kestrel_2.11/6.30.0/finagle-kestrel_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-kestrel_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="967384" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-kestrel_2.11\docs\finagle-kestrel_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-kestrel_2.11/6.30.0/finagle-kestrel_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-kestrel_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="22367" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-kestrel_2.11\srcs\finagle-kestrel_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-kestrel_2.11/6.30.0/finagle-kestrel_2.11-6.30.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-memcached_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073922" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="32">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="10565" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-memcached_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-memcached_2.11/6.30.0/finagle-memcached_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-memcached_2.11" type="jar" ext="jar" status="no" details="" size="838721" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-memcached_2.11\jars\finagle-memcached_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-memcached_2.11/6.30.0/finagle-memcached_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-memcached_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="56134" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-memcached_2.11\srcs\finagle-memcached_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-memcached_2.11/6.30.0/finagle-memcached_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-memcached_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="952878" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-memcached_2.11\docs\finagle-memcached_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-memcached_2.11/6.30.0/finagle-memcached_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-cacheresolver_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073943" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="33">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="9214" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-cacheresolver_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-cacheresolver_2.11/6.30.0/finagle-cacheresolver_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-cacheresolver_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="417084" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-cacheresolver_2.11\docs\finagle-cacheresolver_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-cacheresolver_2.11/6.30.0/finagle-cacheresolver_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-cacheresolver_2.11" type="jar" ext="jar" status="no" details="" size="85220" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-cacheresolver_2.11\jars\finagle-cacheresolver_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-cacheresolver_2.11/6.30.0/finagle-cacheresolver_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-cacheresolver_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="10411" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-cacheresolver_2.11\srcs\finagle-cacheresolver_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-cacheresolver_2.11/6.30.0/finagle-cacheresolver_2.11-6.30.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-serversets_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073905" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="34">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="5323" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-serversets_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-serversets_2.11/6.30.0/finagle-serversets_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-serversets_2.11" type="jar" ext="jar" status="no" details="" size="670638" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-serversets_2.11\jars\finagle-serversets_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-serversets_2.11/6.30.0/finagle-serversets_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-serversets_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="498193" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-serversets_2.11\docs\finagle-serversets_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-serversets_2.11/6.30.0/finagle-serversets_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-serversets_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="43783" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-serversets_2.11\srcs\finagle-serversets_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-serversets_2.11/6.30.0/finagle-serversets_2.11-6.30.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.module" name="jackson-module-scala_2.11">
+			<revision name="2.4.4" status="release" pubdate="20141202124118" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://wiki.fasterxml.com/JacksonModuleScala" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="74">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="4404" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.module\jackson-module-scala_2.11\ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.4.4/jackson-module-scala_2.11-2.4.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jackson-module-scala_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="53480" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.module\jackson-module-scala_2.11\srcs\jackson-module-scala_2.11-2.4.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.4.4/jackson-module-scala_2.11-2.4.4-sources.jar"/>
+					</artifact>
+					<artifact name="jackson-module-scala_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="616309" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.module\jackson-module-scala_2.11\docs\jackson-module-scala_2.11-2.4.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.4.4/jackson-module-scala_2.11-2.4.4-javadoc.jar"/>
+					</artifact>
+					<artifact name="jackson-module-scala_2.11" type="jar" ext="jar" status="no" details="" size="538018" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.module\jackson-module-scala_2.11\jars\jackson-module-scala_2.11-2.4.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/module/jackson-module-scala_2.11/2.4.4/jackson-module-scala_2.11-2.4.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.thoughtworks.paranamer" name="paranamer">
+			<revision name="2.6" status="release" pubdate="20131009115654" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="77">
+				<metadata-artifact status="no" details="" size="4165" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.thoughtworks.paranamer\paranamer\ivy-2.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="paranamer" type="jar" ext="jar" status="no" details="" size="32806" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.thoughtworks.paranamer\paranamer\jars\paranamer-2.6.jar">
+						<origin-location is-local="false" location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/com.thoughtworks.paranamer/paranamer/2.6/jars/paranamer.jar"/>
+					</artifact>
+					<artifact name="paranamer" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="90529" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.thoughtworks.paranamer\paranamer\docs\paranamer-2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="paranamer" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="26517" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.thoughtworks.paranamer\paranamer\srcs\paranamer-2.6-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-annotations">
+			<revision name="2.4.4" status="release" pubdate="20150413124628" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="76">
+				<metadata-artifact status="no" details="" size="6034" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-annotations\ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.4.4/jackson-annotations-2.4.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jackson-annotations" type="jar" ext="jar" status="no" details="" size="38597" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-annotations\jars\jackson-annotations-2.4.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.4.4/jackson-annotations-2.4.4.jar"/>
+					</artifact>
+					<artifact name="jackson-annotations" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="42638" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-annotations\srcs\jackson-annotations-2.4.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.4.4/jackson-annotations-2.4.4-sources.jar"/>
+					</artifact>
+					<artifact name="jackson-annotations" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="268700" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-annotations\docs\jackson-annotations-2.4.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-annotations/2.4.4/jackson-annotations-2.4.4-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-reflect">
+			<revision name="2.11.2" status="release" pubdate="20140723143911" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.2/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="75">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2860" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-reflect\ivy-2.11.2.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-reflect/2.11.2/scala-reflect-2.11.2.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.11.2" rev-constraint-default="2.11.2" rev-constraint-dynamic="2.11.2" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.11.2/"/>
+				<artifacts>
+					<artifact name="scala-reflect" type="jar" ext="jar" status="no" details="" size="4391629" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-reflect\jars\scala-reflect-2.11.2.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-reflect/2.11.2/scala-reflect-2.11.2.jar"/>
+					</artifact>
+					<artifact name="scala-reflect" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="557871" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-reflect\srcs\scala-reflect-2.11.2-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-reflect/2.11.2/scala-reflect-2.11.2-sources.jar"/>
+					</artifact>
+					<artifact name="scala-reflect" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="3622898" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-reflect\docs\scala-reflect-2.11.2-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-reflect/2.11.2/scala-reflect-2.11.2-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-databind">
+			<revision name="2.4.4" status="release" pubdate="20150413124628" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="73">
+				<metadata-artifact status="no" details="" size="8270" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-databind\ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.4.4/jackson-databind-2.4.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jackson-databind" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="772236" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-databind\srcs\jackson-databind-2.4.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.4.4/jackson-databind-2.4.4-sources.jar"/>
+					</artifact>
+					<artifact name="jackson-databind" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="4057097" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-databind\docs\jackson-databind-2.4.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.4.4/jackson-databind-2.4.4-javadoc.jar"/>
+					</artifact>
+					<artifact name="jackson-databind" type="jar" ext="jar" status="no" details="" size="1076926" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-databind\jars\jackson-databind-2.4.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-databind/2.4.4/jackson-databind-2.4.4.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.fasterxml.jackson.core" name="jackson-core">
+			<revision name="2.4.4" status="release" pubdate="20150413124627" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/FasterXML/jackson" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="72">
+				<metadata-artifact status="no" details="" size="6484" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-core\ivy-2.4.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.4.4/jackson-core-2.4.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.4.4" rev-constraint-default="2.4.4" rev-constraint-dynamic="2.4.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jackson-core" type="jar" ext="jar" status="no" details="" size="225302" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-core\jars\jackson-core-2.4.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.4.4/jackson-core-2.4.4.jar"/>
+					</artifact>
+					<artifact name="jackson-core" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="235527" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-core\srcs\jackson-core-2.4.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.4.4/jackson-core-2.4.4-sources.jar"/>
+					</artifact>
+					<artifact name="jackson-core" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="799738" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.fasterxml.jackson.core\jackson-core\docs\jackson-core-2.4.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/fasterxml/jackson/core/jackson-core/2.4.4/jackson-core-2.4.4-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-zk-common_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071627" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="51">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="5217" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk-common_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk-common_2.11/6.29.0/util-zk-common_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-zk-common_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="419744" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk-common_2.11\docs\util-zk-common_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk-common_2.11/6.29.0/util-zk-common_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-zk-common_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="3886" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk-common_2.11\srcs\util-zk-common_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk-common_2.11/6.29.0/util-zk-common_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-zk-common_2.11" type="jar" ext="jar" status="no" details="" size="28566" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk-common_2.11\jars\util-zk-common_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk-common_2.11/6.29.0/util-zk-common_2.11-6.29.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common.zookeeper" name="group">
+			<revision name="0.0.90" status="release" pubdate="20150613061707" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="62">
+				<metadata-artifact status="no" details="" size="3973" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\group\ivy-0.0.90.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/zookeeper/group/0.0.90/group-0.0.90.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.90" rev-constraint-default="0.0.90" rev-constraint-dynamic="0.0.90" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="group" type="jar" ext="jar" status="no" details="" size="26029" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\group\jars\group-0.0.90.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/zookeeper/group/0.0.90/group-0.0.90.jar"/>
+					</artifact>
+					<artifact name="group" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7638" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\group\srcs\group-0.0.90-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/group/0.0.90/group-0.0.90-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="util">
+			<revision name="0.0.119" status="release" pubdate="20150427154508" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="63">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="4003" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util\ivy-0.0.119.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/util/0.0.119/util-0.0.119.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.119" rev-constraint-default="0.0.119" rev-constraint-dynamic="0.0.119" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="util" type="jar" ext="jar" status="no" details="" size="64541" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util\jars\util-0.0.119.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util/0.0.119/util-0.0.119.jar"/>
+					</artifact>
+					<artifact name="util" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="40878" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util\srcs\util-0.0.119-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util/0.0.119/util-0.0.119-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="stats">
+			<revision name="0.0.113" status="release" pubdate="20150427155807" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="66">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3997" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats\ivy-0.0.113.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/stats/0.0.113/stats-0.0.113.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.113" rev-constraint-default="0.0.113" rev-constraint-dynamic="0.0.113" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="stats" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="22366" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats\srcs\stats-0.0.113-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stats/0.0.113/stats-0.0.113-sources.jar"/>
+					</artifact>
+					<artifact name="stats" type="jar" ext="jar" status="no" details="" size="48512" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats\jars\stats-0.0.113.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stats/0.0.113/stats-0.0.113.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="util-sampler">
+			<revision name="0.0.76" status="release" pubdate="20150427150407" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="71">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2830" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-sampler\ivy-0.0.76.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/util-sampler/0.0.76/util-sampler-0.0.76.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.76" rev-constraint-default="0.0.76" rev-constraint-dynamic="0.0.76" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="util-sampler" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1864" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-sampler\srcs\util-sampler-0.0.76-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-sampler/0.0.76/util-sampler-0.0.76-sources.jar"/>
+					</artifact>
+					<artifact name="util-sampler" type="jar" ext="jar" status="no" details="" size="1786" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-sampler\jars\util-sampler-0.0.76.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-sampler/0.0.76/util-sampler-0.0.76.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="application-action">
+			<revision name="0.0.88" status="release" pubdate="20150427153607" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="70">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3111" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\application-action\ivy-0.0.88.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/application-action/0.0.88/application-action-0.0.88.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.88" rev-constraint-default="0.0.88" rev-constraint-dynamic="0.0.88" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="application-action" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="6692" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\application-action\srcs\application-action-0.0.88-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/application-action/0.0.88/application-action-0.0.88-sources.jar"/>
+					</artifact>
+					<artifact name="application-action" type="jar" ext="jar" status="no" details="" size="6576" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\application-action\jars\application-action-0.0.88.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/application-action/0.0.88/application-action-0.0.88.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="stats-provider">
+			<revision name="0.0.91" status="release" pubdate="20150427144707" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="69">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2820" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats-provider\ivy-0.0.91.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/stats-provider/0.0.91/stats-provider-0.0.91.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.91" rev-constraint-default="0.0.91" rev-constraint-dynamic="0.0.91" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="stats-provider" type="jar" ext="jar" status="no" details="" size="1790" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats-provider\jars\stats-provider-0.0.91.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stats-provider/0.0.91/stats-provider-0.0.91.jar"/>
+					</artifact>
+					<artifact name="stats-provider" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2091" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stats-provider\srcs\stats-provider-0.0.91-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stats-provider/0.0.91/stats-provider-0.0.91-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="stat-registry">
+			<revision name="0.0.56" status="release" pubdate="20150427145807" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="67">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2526" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat-registry\ivy-0.0.56.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/stat-registry/0.0.56/stat-registry-0.0.56.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.56" rev-constraint-default="0.0.56" rev-constraint-dynamic="0.0.56" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="stat-registry" type="jar" ext="jar" status="no" details="" size="1594" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat-registry\jars\stat-registry-0.0.56.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stat-registry/0.0.56/stat-registry-0.0.56.jar"/>
+					</artifact>
+					<artifact name="stat-registry" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2461" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat-registry\srcs\stat-registry-0.0.56-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stat-registry/0.0.56/stat-registry-0.0.56-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="stat">
+			<revision name="0.0.71" status="release" pubdate="20150427145507" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="68">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2330" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat\ivy-0.0.71.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/stat/0.0.71/stat-0.0.71.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.71" rev-constraint-default="0.0.71" rev-constraint-dynamic="0.0.71" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="stat" type="jar" ext="jar" status="no" details="" size="1186" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat\jars\stat-0.0.71.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stat/0.0.71/stat-0.0.71.jar"/>
+					</artifact>
+					<artifact name="stat" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1649" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\stat\srcs\stat-0.0.71-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/stat/0.0.71/stat-0.0.71-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="jdk-logging">
+			<revision name="0.0.78" status="release" pubdate="20150427150208" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="65">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2671" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\jdk-logging\ivy-0.0.78.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/jdk-logging/0.0.78/jdk-logging-0.0.78.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.78" rev-constraint-default="0.0.78" rev-constraint-dynamic="0.0.78" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jdk-logging" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="3424" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\jdk-logging\srcs\jdk-logging-0.0.78-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/jdk-logging/0.0.78/jdk-logging-0.0.78-sources.jar"/>
+					</artifact>
+					<artifact name="jdk-logging" type="jar" ext="jar" status="no" details="" size="2749" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\jdk-logging\jars\jdk-logging-0.0.78.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/jdk-logging/0.0.78/jdk-logging-0.0.78.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="util-executor-service-shutdown">
+			<revision name="0.0.65" status="release" pubdate="20150427153407" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="64">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3142" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-executor-service-shutdown\ivy-0.0.65.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/util-executor-service-shutdown/0.0.65/util-executor-service-shutdown-0.0.65.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.65" rev-constraint-default="0.0.65" rev-constraint-dynamic="0.0.65" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="util-executor-service-shutdown" type="jar" ext="jar" status="no" details="" size="2298" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-executor-service-shutdown\jars\util-executor-service-shutdown-0.0.65.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-executor-service-shutdown/0.0.65/util-executor-service-shutdown-0.0.65.jar"/>
+					</artifact>
+					<artifact name="util-executor-service-shutdown" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2464" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-executor-service-shutdown\srcs\util-executor-service-shutdown-0.0.65-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-executor-service-shutdown/0.0.65/util-executor-service-shutdown-0.0.65-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common.zookeeper" name="client">
+			<revision name="0.0.79" status="release" pubdate="20150613061510" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="56">
+				<metadata-artifact status="no" details="" size="3831" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\client\ivy-0.0.79.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/zookeeper/client/0.0.79/client-0.0.79.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.79" rev-constraint-default="0.0.79" rev-constraint-dynamic="0.0.79" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="client" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="9013" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\client\srcs\client-0.0.79-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/client/0.0.79/client-0.0.79-sources.jar"/>
+					</artifact>
+					<artifact name="client" type="jar" ext="jar" status="no" details="" size="16613" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\client\jars\client-0.0.79.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/client/0.0.79/client-0.0.79.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="net-util">
+			<revision name="0.0.100" status="release" pubdate="20150613055719" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="61">
+				<metadata-artifact status="no" details="" size="3131" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\net-util\ivy-0.0.100.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/net-util/0.0.100/net-util-0.0.100.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.100" rev-constraint-default="0.0.100" rev-constraint-dynamic="0.0.100" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="net-util" type="jar" ext="jar" status="no" details="" size="27853" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\net-util\jars\net-util-0.0.100.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/net-util/0.0.100/net-util-0.0.100.jar"/>
+					</artifact>
+					<artifact name="net-util" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="17169" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\net-util\srcs\net-util-0.0.100-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/net-util/0.0.100/net-util-0.0.100-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="base">
+			<revision name="0.0.113" status="release" pubdate="20150427152707" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="57">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3104" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\base\ivy-0.0.113.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/base/0.0.113/base-0.0.113.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.113" rev-constraint-default="0.0.113" rev-constraint-dynamic="0.0.113" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="base" type="jar" ext="jar" status="no" details="" size="31679" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\base\jars\base-0.0.113.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/base/0.0.113/base-0.0.113.jar"/>
+					</artifact>
+					<artifact name="base" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="21383" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\base\srcs\base-0.0.113-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/base/0.0.113/base-0.0.113-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="util-system-mocks">
+			<revision name="0.0.102" status="release" pubdate="20150427150908" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="60">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2684" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-system-mocks\ivy-0.0.102.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/util-system-mocks/0.0.102/util-system-mocks-0.0.102.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.102" rev-constraint-default="0.0.102" rev-constraint-dynamic="0.0.102" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="util-system-mocks" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="3616" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-system-mocks\srcs\util-system-mocks-0.0.102-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-system-mocks/0.0.102/util-system-mocks-0.0.102-sources.jar"/>
+					</artifact>
+					<artifact name="util-system-mocks" type="jar" ext="jar" status="no" details="" size="3933" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\util-system-mocks\jars\util-system-mocks-0.0.102.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/util-system-mocks/0.0.102/util-system-mocks-0.0.102.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="quantity">
+			<revision name="0.0.97" status="release" pubdate="20150427152208" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="58">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2958" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\quantity\ivy-0.0.97.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/quantity/0.0.97/quantity-0.0.97.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.97" rev-constraint-default="0.0.97" rev-constraint-dynamic="0.0.97" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="quantity" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="5783" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\quantity\srcs\quantity-0.0.97-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/quantity/0.0.97/quantity-0.0.97-sources.jar"/>
+					</artifact>
+					<artifact name="quantity" type="jar" ext="jar" status="no" details="" size="10010" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\quantity\jars\quantity-0.0.97.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/quantity/0.0.97/quantity-0.0.97.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="collections">
+			<revision name="0.0.108" status="release" pubdate="20150427150407" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="59">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2814" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\collections\ivy-0.0.108.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/collections/0.0.108/collections-0.0.108.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.108" rev-constraint-default="0.0.108" rev-constraint-dynamic="0.0.108" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="collections" type="jar" ext="jar" status="no" details="" size="14062" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\collections\jars\collections-0.0.108.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/collections/0.0.108/collections-0.0.108.jar"/>
+					</artifact>
+					<artifact name="collections" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="8026" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\collections\srcs\collections-0.0.108-sources.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/collections/0.0.108/collections-0.0.108-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-zk_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071646" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="52">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="4434" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk_2.11/6.29.0/util-zk_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-zk_2.11" type="jar" ext="jar" status="no" details="" size="291885" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk_2.11\jars\util-zk_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk_2.11/6.29.0/util-zk_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-zk_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="615028" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk_2.11\docs\util-zk_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk_2.11/6.29.0/util-zk_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-zk_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="18405" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-zk_2.11\srcs\util-zk_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-zk_2.11/6.29.0/util-zk_2.11-6.29.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.zookeeper" name="zookeeper">
+			<revision name="3.5.0-alpha" status="release" pubdate="20140802065647" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="53">
+				<metadata-artifact status="no" details="" size="4803" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.apache.zookeeper\zookeeper\ivy-3.5.0-alpha.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/org/apache/zookeeper/zookeeper/3.5.0-alpha/zookeeper-3.5.0-alpha.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="3.5.0-alpha" rev-constraint-default="3.5.0-alpha" rev-constraint-dynamic="3.5.0-alpha" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="zookeeper" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="390882" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.apache.zookeeper\zookeeper\docs\zookeeper-3.5.0-alpha-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/apache/zookeeper/zookeeper/3.5.0-alpha/zookeeper-3.5.0-alpha-javadoc.jar"/>
+					</artifact>
+					<artifact name="zookeeper" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="651793" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.apache.zookeeper\zookeeper\srcs\zookeeper-3.5.0-alpha-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/apache/zookeeper/zookeeper/3.5.0-alpha/zookeeper-3.5.0-alpha-sources.jar"/>
+					</artifact>
+					<artifact name="zookeeper" type="jar" ext="jar" status="no" details="" size="952395" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.apache.zookeeper\zookeeper\jars\zookeeper-3.5.0-alpha.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/apache/zookeeper/zookeeper/3.5.0-alpha/zookeeper-3.5.0-alpha.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.java.dev.javacc" name="javacc">
+			<revision name="5.0" status="release" pubdate="20090919040457" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://javacc.dev.java.net/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="55">
+				<license name="Berkeley Software Distribution (BSD) License" url="http://www.opensource.org/licenses/bsd-license.html"/>
+				<metadata-artifact status="no" details="" size="2435" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\net.java.dev.javacc\javacc\ivy-5.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/net/java/dev/javacc/javacc/5.0/javacc-5.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="5.0" rev-constraint-default="5.0" rev-constraint-dynamic="5.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="javacc" type="jar" ext="jar" status="no" details="" size="298569" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\net.java.dev.javacc\javacc\jars\javacc-5.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/net/java/dev/javacc/javacc/5.0/javacc-5.0.jar"/>
+					</artifact>
+					<artifact name="javacc" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="259274" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\net.java.dev.javacc\javacc\srcs\javacc-5.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/net/java/dev/javacc/javacc/5.0/javacc-5.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-cli" name="commons-cli">
+			<revision name="1.2" status="release" pubdate="20090320040832" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/cli/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="54">
+				<metadata-artifact status="no" details="" size="4631" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-cli\commons-cli\ivy-1.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.2" rev-constraint-default="1.2" rev-constraint-dynamic="1.2" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-cli" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="214274" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-cli\commons-cli\docs\commons-cli-1.2-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-cli/commons-cli/1.2/commons-cli-1.2-javadoc.jar"/>
+					</artifact>
+					<artifact name="commons-cli" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="48726" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-cli\commons-cli\srcs\commons-cli-1.2-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-cli/commons-cli/1.2/commons-cli-1.2-sources.jar"/>
+					</artifact>
+					<artifact name="commons-cli" type="jar" ext="jar" status="no" details="" size="41123" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-cli\commons-cli\jars\commons-cli-1.2.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common.zookeeper" name="server-set">
+			<revision name="1.0.103" status="release" pubdate="20150412145507" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="35">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="5848" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\server-set\ivy-1.0.103.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/zookeeper/server-set/1.0.103/server-set-1.0.103.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.0.103" rev-constraint-default="1.0.103" rev-constraint-dynamic="1.0.103" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="server-set" type="jar" ext="jar" status="no" details="" size="45934" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\server-set\jars\server-set-1.0.103.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/server-set/1.0.103/server-set-1.0.103.jar"/>
+					</artifact>
+					<artifact name="server-set" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="69165" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\server-set\docs\server-set-1.0.103-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/server-set/1.0.103/server-set-1.0.103-javadoc.jar"/>
+					</artifact>
+					<artifact name="server-set" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="13760" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common.zookeeper\server-set\srcs\server-set-1.0.103-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/zookeeper/server-set/1.0.103/server-set-1.0.103-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.inject" name="guice">
+			<revision name="3.0" status="release" pubdate="20110326021947" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="36">
+				<metadata-artifact status="no" details="" size="4041" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.inject\guice\ivy-3.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/inject/guice/3.0/guice-3.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="3.0" rev-constraint-default="3.0" rev-constraint-dynamic="3.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="guice" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="884740" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.inject\guice\docs\guice-3.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/inject/guice/3.0/guice-3.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="guice" type="jar" ext="jar" status="no" details="" size="710492" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.inject\guice\jars\guice-3.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/inject/guice/3.0/guice-3.0.jar"/>
+					</artifact>
+					<artifact name="guice" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="339281" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.inject\guice\srcs\guice-3.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/inject/guice/3.0/guice-3.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.sonatype.sisu.inject" name="cglib">
+			<revision name="2.2.1-v20090111" status="release" pubdate="20110104211244" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://sourceforge.net/projects/cglib/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="38">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3841" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.sonatype.sisu.inject\cglib\ivy-2.2.1-v20090111.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/org/sonatype/sisu/inject/cglib/2.2.1-v20090111/cglib-2.2.1-v20090111.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.2.1-v20090111" rev-constraint-default="2.2.1-v20090111" rev-constraint-dynamic="2.2.1-v20090111" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="cglib" type="jar" ext="jar" status="no" details="" size="278864" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.sonatype.sisu.inject\cglib\jars\cglib-2.2.1-v20090111.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/sonatype/sisu/inject/cglib/2.2.1-v20090111/cglib-2.2.1-v20090111.jar"/>
+					</artifact>
+					<artifact name="cglib" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="638288" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.sonatype.sisu.inject\cglib\docs\cglib-2.2.1-v20090111-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/sonatype/sisu/inject/cglib/2.2.1-v20090111/cglib-2.2.1-v20090111-javadoc.jar"/>
+					</artifact>
+					<artifact name="cglib" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="175554" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.sonatype.sisu.inject\cglib\srcs\cglib-2.2.1-v20090111-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/sonatype/sisu/inject/cglib/2.2.1-v20090111/cglib-2.2.1-v20090111-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="aopalliance" name="aopalliance">
+			<revision name="1.0" status="release" pubdate="20070227064340" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://aopalliance.sourceforge.net" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="37">
+				<license name="Public Domain"/>
+				<metadata-artifact status="no" details="" size="2320" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\aopalliance\aopalliance\ivy-1.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/aopalliance/aopalliance/1.0/aopalliance-1.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.0" rev-constraint-default="1.0" rev-constraint-dynamic="1.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="aopalliance" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="21188" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\aopalliance\aopalliance\srcs\aopalliance-1.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
+					</artifact>
+					<artifact name="aopalliance" type="jar" ext="jar" status="no" details="" size="4467" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\aopalliance\aopalliance\jars\aopalliance-1.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="service-thrift">
+			<revision name="1.0.54" status="release" pubdate="20151202104413" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="49">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2953" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\service-thrift\ivy-1.0.54.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/service-thrift/1.0.54/service-thrift-1.0.54.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.0.54" rev-constraint-default="1.0.54" rev-constraint-dynamic="1.0.54" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="service-thrift" type="jar" ext="jar" status="no" details="" size="17790" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\service-thrift\jars\service-thrift-1.0.54.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/service-thrift/1.0.54/service-thrift-1.0.54.jar"/>
+					</artifact>
+					<artifact name="service-thrift" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="8123" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\service-thrift\srcs\service-thrift-1.0.54-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/service-thrift/1.0.54/service-thrift-1.0.54-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="dynamic-host-set">
+			<revision name="0.0.53" status="release" pubdate="20151202104208" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="48">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2967" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\dynamic-host-set\ivy-0.0.53.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/dynamic-host-set/0.0.53/dynamic-host-set-0.0.53.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.53" rev-constraint-default="0.0.53" rev-constraint-dynamic="0.0.53" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="dynamic-host-set" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2315" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\dynamic-host-set\srcs\dynamic-host-set-0.0.53-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/dynamic-host-set/0.0.53/dynamic-host-set-0.0.53-sources.jar"/>
+					</artifact>
+					<artifact name="dynamic-host-set" type="jar" ext="jar" status="no" details="" size="2590" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\dynamic-host-set\jars\dynamic-host-set-0.0.53.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/dynamic-host-set/0.0.53/dynamic-host-set-0.0.53.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="io-thrift">
+			<revision name="0.0.64" status="release" pubdate="20151202104045" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="46">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3658" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-thrift\ivy-0.0.64.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-thrift/0.0.64/io-thrift-0.0.64.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.64" rev-constraint-default="0.0.64" rev-constraint-dynamic="0.0.64" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="io-thrift" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2175" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-thrift\srcs\io-thrift-0.0.64-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-thrift/0.0.64/io-thrift-0.0.64-sources.jar"/>
+					</artifact>
+					<artifact name="io-thrift" type="jar" ext="jar" status="no" details="" size="4826" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-thrift\jars\io-thrift-0.0.64.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-thrift/0.0.64/io-thrift-0.0.64.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-jdk14">
+			<revision name="1.7.7" status="release" pubdate="20140404191316" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="47">
+				<metadata-artifact status="no" details="" size="4694" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-jdk14\ivy-1.7.7.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.7.7" rev-constraint-default="1.7.7" rev-constraint-dynamic="1.7.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="slf4j-jdk14" type="jar" ext="jar" status="no" details="" size="7901" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-jdk14\jars\slf4j-jdk14-1.7.7.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7.jar"/>
+					</artifact>
+					<artifact name="slf4j-jdk14" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="9170" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-jdk14\srcs\slf4j-jdk14-1.7.7-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7-sources.jar"/>
+					</artifact>
+					<artifact name="slf4j-jdk14" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="47603" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-jdk14\docs\slf4j-jdk14-1.7.7-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-jdk14/1.7.7/slf4j-jdk14-1.7.7-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="io-json">
+			<revision name="0.0.51" status="release" pubdate="20151202103907" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="44">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3228" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-json\ivy-0.0.51.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-json/0.0.51/io-json-0.0.51.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.51" rev-constraint-default="0.0.51" rev-constraint-dynamic="0.0.51" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="io-json" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2512" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-json\srcs\io-json-0.0.51-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-json/0.0.51/io-json-0.0.51-sources.jar"/>
+					</artifact>
+					<artifact name="io-json" type="jar" ext="jar" status="no" details="" size="4210" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io-json\jars\io-json-0.0.51.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io-json/0.0.51/io-json-0.0.51.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.code.gson" name="gson">
+			<revision name="2.2.4" status="release" pubdate="20140708110551" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://code.google.com/p/google-gson/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="45">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3290" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.gson\gson\ivy-2.2.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.2.4" rev-constraint-default="2.2.4" rev-constraint-dynamic="2.2.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="gson" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="257430" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.gson\gson\docs\gson-2.2.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/gson/gson/2.2.4/gson-2.2.4-javadoc.jar"/>
+					</artifact>
+					<artifact name="gson" type="jar" ext="jar" status="no" details="" size="190432" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.gson\gson\jars\gson-2.2.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar"/>
+					</artifact>
+					<artifact name="gson" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="127562" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.gson\gson\srcs\gson-2.2.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/gson/gson/2.2.4/gson-2.2.4-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="io">
+			<revision name="0.0.65" status="release" pubdate="20151202103705" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="42">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3077" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io\ivy-0.0.65.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io/0.0.65/io-0.0.65.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.0.65" rev-constraint-default="0.0.65" rev-constraint-dynamic="0.0.65" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="io" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="5494" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io\srcs\io-0.0.65-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io/0.0.65/io-0.0.65-sources.jar"/>
+					</artifact>
+					<artifact name="io" type="jar" ext="jar" status="no" details="" size="6696" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\io\jars\io-0.0.65.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/io/0.0.65/io-0.0.65.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-io" name="commons-io">
+			<revision name="2.4" status="release" pubdate="20140512164723" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/io/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="43">
+				<metadata-artifact status="no" details="" size="8540" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-io\commons-io\ivy-2.4.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/commons-io/commons-io/2.4/commons-io-2.4.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.4" rev-constraint-default="2.4" rev-constraint-dynamic="2.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-io" type="jar" ext="jar" status="no" details="" size="185140" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-io\commons-io\jars\commons-io-2.4.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-io/commons-io/2.4/commons-io-2.4.jar"/>
+					</artifact>
+					<artifact name="commons-io" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="246635" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-io\commons-io\srcs\commons-io-2.4-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-io/commons-io/2.4/commons-io-2.4-sources.jar"/>
+					</artifact>
+					<artifact name="commons-io" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="724124" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-io\commons-io\docs\commons-io-2.4-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-io/commons-io/2.4/commons-io-2.4-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="args">
+			<revision name="0.2.35" status="release" pubdate="20151202103443" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="39">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3676" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args\ivy-0.2.35.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/args/0.2.35/args-0.2.35.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.2.35" rev-constraint-default="0.2.35" rev-constraint-dynamic="0.2.35" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="args" type="jar" ext="jar" status="no" details="" size="96323" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args\jars\args-0.2.35.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/args/0.2.35/args-0.2.35.jar"/>
+					</artifact>
+					<artifact name="args" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="68410" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args\srcs\args-0.2.35-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/args/0.2.35/args-0.2.35-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="args-apt">
+			<revision name="0.1.33" status="release" pubdate="20150411082808" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="40">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2955" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-apt\ivy-0.1.33.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/args-apt/0.1.33/args-apt-0.1.33.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.1.33" rev-constraint-default="0.1.33" rev-constraint-dynamic="0.1.33" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="args-apt" type="jar" ext="jar" status="no" details="" size="37749" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-apt\jars\args-apt-0.1.33.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/args-apt/0.1.33/args-apt-0.1.33.jar"/>
+					</artifact>
+					<artifact name="args-apt" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="11792" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-apt\srcs\args-apt-0.1.33-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/args-apt/0.1.33/args-apt-0.1.33-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter.common" name="args-core">
+			<revision name="0.1.33" status="release" pubdate="20150411083606" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="41">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2667" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-core\ivy-0.1.33.xml" searched="false" origin-is-local="false" origin-location="http://maven.twttr.com/com/twitter/common/args-core/0.1.33/args-core-0.1.33.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.1.33" rev-constraint-default="0.1.33" rev-constraint-dynamic="0.1.33" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="args-core" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="8542" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-core\srcs\args-core-0.1.33-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/common/args-core/0.1.33/args-core-0.1.33-sources.jar"/>
+					</artifact>
+					<artifact name="args-core" type="jar" ext="jar" status="no" details="" size="5856" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter.common\args-core\jars\args-core-0.1.33.jar">
+						<origin-location is-local="false" location="http://maven.twttr.com/com/twitter/common/args-core/0.1.33/args-core-0.1.33.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-exp_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073849" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="28">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="8100" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-exp_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-exp_2.11/6.30.0/finagle-exp_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-exp_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7280" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-exp_2.11\srcs\finagle-exp_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-exp_2.11/6.30.0/finagle-exp_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-exp_2.11" type="jar" ext="jar" status="no" details="" size="36069" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-exp_2.11\jars\finagle-exp_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-exp_2.11/6.30.0/finagle-exp_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-exp_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="379343" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-exp_2.11\docs\finagle-exp_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-exp_2.11/6.30.0/finagle-exp_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.caliper" name="caliper">
+			<revision name="0.5-rc1" status="release" pubdate="20120207003322" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://code.google.com/p/caliper/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="29">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3812" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.caliper\caliper\ivy-0.5-rc1.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/caliper/caliper/0.5-rc1/caliper-0.5-rc1.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="0.5-rc1" rev-constraint-default="0.5-rc1" rev-constraint-dynamic="0.5-rc1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="caliper" type="jar" ext="jar" status="no" details="" size="122139" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.caliper\caliper\jars\caliper-0.5-rc1.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/caliper/caliper/0.5-rc1/caliper-0.5-rc1.jar"/>
+					</artifact>
+					<artifact name="caliper" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="66957" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.caliper\caliper\srcs\caliper-0.5-rc1-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/caliper/caliper/0.5-rc1/caliper-0.5-rc1-sources.jar"/>
+					</artifact>
+					<artifact name="caliper" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="273633" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.caliper\caliper\docs\caliper-0.5-rc1-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/caliper/caliper/0.5-rc1/caliper-0.5-rc1-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.code.java-allocation-instrumenter" name="java-allocation-instrumenter">
+			<revision name="2.0" status="release" pubdate="20111202155436" resolver="nexus127" artresolver="nexus127" homepage="http://code.google.com/p/java-allocation-instrumenter/" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="30">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="successful" details="" size="5207" time="55" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.java-allocation-instrumenter\java-allocation-instrumenter\ivy-2.0.xml" searched="true" original-local-location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.java-allocation-instrumenter\java-allocation-instrumenter\ivy-2.0.xml.original" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/java-allocation-instrumenter/java-allocation-instrumenter/2.0/java-allocation-instrumenter-2.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.0" rev-constraint-default="2.0" rev-constraint-dynamic="2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="java-allocation-instrumenter" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="45404" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.java-allocation-instrumenter\java-allocation-instrumenter\docs\java-allocation-instrumenter-2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/java-allocation-instrumenter/java-allocation-instrumenter/2.0/java-allocation-instrumenter-2.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="java-allocation-instrumenter" type="jar" ext="jar" status="no" details="" size="20567" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.java-allocation-instrumenter\java-allocation-instrumenter\jars\java-allocation-instrumenter-2.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/java-allocation-instrumenter/java-allocation-instrumenter/2.0/java-allocation-instrumenter-2.0.jar"/>
+					</artifact>
+					<artifact name="java-allocation-instrumenter" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="14935" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.code.java-allocation-instrumenter\java-allocation-instrumenter\srcs\java-allocation-instrumenter-2.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/code/java-allocation-instrumenter/java-allocation-instrumenter/2.0/java-allocation-instrumenter-2.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-thrift_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073903" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="26">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="8533" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-thrift_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-thrift_2.11/6.30.0/finagle-thrift_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-thrift_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="628837" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-thrift_2.11\docs\finagle-thrift_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-thrift_2.11/6.30.0/finagle-thrift_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-thrift_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="73480" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-thrift_2.11\srcs\finagle-thrift_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-thrift_2.11/6.30.0/finagle-thrift_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-thrift_2.11" type="jar" ext="jar" status="no" details="" size="387150" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-thrift_2.11\jars\finagle-thrift_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-thrift_2.11/6.30.0/finagle-thrift_2.11-6.30.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="scrooge-core_2.11">
+			<revision name="4.2.0" status="release" pubdate="20151016075441" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/scrooge" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="27">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3420" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\scrooge-core_2.11\ivy-4.2.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/scrooge-core_2.11/4.2.0/scrooge-core_2.11-4.2.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="4.2.0" rev-constraint-default="4.2.0" rev-constraint-dynamic="4.2.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scrooge-core_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="13058" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\scrooge-core_2.11\srcs\scrooge-core_2.11-4.2.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/scrooge-core_2.11/4.2.0/scrooge-core_2.11-4.2.0-sources.jar"/>
+					</artifact>
+					<artifact name="scrooge-core_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="445645" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\scrooge-core_2.11\docs\scrooge-core_2.11-4.2.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/scrooge-core_2.11/4.2.0/scrooge-core_2.11-4.2.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="scrooge-core_2.11" type="jar" ext="jar" status="no" details="" size="61203" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\scrooge-core_2.11\jars\scrooge-core_2.11-4.2.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/scrooge-core_2.11/4.2.0/scrooge-core_2.11-4.2.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-http_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073931" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="4">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="8121" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-http_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/finagle-http_2.11/6.30.0/finagle-http_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-http_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="75779" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-http_2.11\srcs\finagle-http_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/finagle-http_2.11/6.30.0/finagle-http_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-http_2.11" type="jar" ext="jar" status="no" details="" size="728021" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-http_2.11\jars\finagle-http_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-http_2.11/6.30.0/finagle-http_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-http_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1091300" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-http_2.11\docs\finagle-http_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/finagle-http_2.11/6.30.0/finagle-http_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-lang" name="commons-lang">
+			<revision name="2.6" status="release" pubdate="20110117062147" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/lang/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="25">
+				<metadata-artifact status="no" details="" size="6458" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-lang\commons-lang\ivy-2.6.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/commons-lang/commons-lang/2.6/commons-lang-2.6.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.6" rev-constraint-default="2.6" rev-constraint-dynamic="2.6" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-lang" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1624033" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-lang\commons-lang\docs\commons-lang-2.6-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-lang/commons-lang/2.6/commons-lang-2.6-javadoc.jar"/>
+					</artifact>
+					<artifact name="commons-lang" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="372982" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-lang\commons-lang\srcs\commons-lang-2.6-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar"/>
+					</artifact>
+					<artifact name="commons-lang" type="jar" ext="jar" status="no" details="" size="284220" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-lang\commons-lang\jars\commons-lang-2.6.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-core_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073926" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="5">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="11749" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-core_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/finagle-core_2.11/6.30.0/finagle-core_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-core_2.11" type="jar" ext="jar" status="no" details="" size="2917715" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-core_2.11\jars\finagle-core_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-core_2.11/6.30.0/finagle-core_2.11-6.30.0.jar"/>
+					</artifact>
+					<artifact name="finagle-core_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="285397" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-core_2.11\srcs\finagle-core_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/finagle-core_2.11/6.30.0/finagle-core_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-core_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="2698810" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-core_2.11\docs\finagle-core_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/finagle-core_2.11/6.30.0/finagle-core_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="jsr166e">
+			<revision name="1.0.0" status="release" pubdate="20130420060245" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://github.com/twitter/jsr166e" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="24">
+				<license name="CC0 1.0 Universal" url="http://creativecommons.org/publicdomain/zero/1.0/"/>
+				<metadata-artifact status="no" details="" size="2864" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\jsr166e\ivy-1.0.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/jsr166e/1.0.0/jsr166e-1.0.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.0.0" rev-constraint-default="1.0.0" rev-constraint-dynamic="1.0.0" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="jsr166e" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7587" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\jsr166e\srcs\jsr166e-1.0.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/jsr166e/1.0.0/jsr166e-1.0.0-sources.jar"/>
+					</artifact>
+					<artifact name="jsr166e" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="25471" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\jsr166e\docs\jsr166e-1.0.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/jsr166e/1.0.0/jsr166e-1.0.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="jsr166e" type="jar" ext="jar" status="no" details="" size="9988" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\jsr166e\jars\jsr166e-1.0.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/jsr166e/1.0.0/jsr166e-1.0.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-logging_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071645" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="22">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3975" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-logging_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-logging_2.11/6.29.0/util-logging_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-logging_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="633558" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-logging_2.11\docs\util-logging_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-logging_2.11/6.29.0/util-logging_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-logging_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="31179" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-logging_2.11\srcs\util-logging_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-logging_2.11/6.29.0/util-logging_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-logging_2.11" type="jar" ext="jar" status="no" details="" size="242608" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-logging_2.11\jars\util-logging_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-logging_2.11/6.29.0/util-logging_2.11-6.29.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-stats_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071612" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="23">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3823" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-stats_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-stats_2.11/6.29.0/util-stats_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-stats_2.11" type="jar" ext="jar" status="no" details="" size="144902" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-stats_2.11\jars\util-stats_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-stats_2.11/6.29.0/util-stats_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-stats_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="13876" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-stats_2.11\srcs\util-stats_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-stats_2.11/6.29.0/util-stats_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-stats_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="465249" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-stats_2.11\docs\util-stats_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-stats_2.11/6.29.0/util-stats_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-lint_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071532" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="21">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3528" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-lint_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-lint_2.11/6.29.0/util-lint_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-lint_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="385993" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-lint_2.11\docs\util-lint_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-lint_2.11/6.29.0/util-lint_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-lint_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2760" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-lint_2.11\srcs\util-lint_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-lint_2.11/6.29.0/util-lint_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-lint_2.11" type="jar" ext="jar" status="no" details="" size="14362" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-lint_2.11\jars\util-lint_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-lint_2.11/6.29.0/util-lint_2.11-6.29.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-jvm_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071549" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="20">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3939" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-jvm_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-jvm_2.11/6.29.0/util-jvm_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-jvm_2.11" type="jar" ext="jar" status="no" details="" size="170474" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-jvm_2.11\jars\util-jvm_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-jvm_2.11/6.29.0/util-jvm_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-jvm_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="15869" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-jvm_2.11\srcs\util-jvm_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-jvm_2.11/6.29.0/util-jvm_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-jvm_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="450854" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-jvm_2.11\docs\util-jvm_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-jvm_2.11/6.29.0/util-jvm_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-hashing_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071623" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="19">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3908" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-hashing_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-hashing_2.11/6.29.0/util-hashing_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-hashing_2.11" type="jar" ext="jar" status="no" details="" size="53278" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-hashing_2.11\jars\util-hashing_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-hashing_2.11/6.29.0/util-hashing_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-hashing_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="390032" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-hashing_2.11\docs\util-hashing_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-hashing_2.11/6.29.0/util-hashing_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-hashing_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="5660" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-hashing_2.11\srcs\util-hashing_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-hashing_2.11/6.29.0/util-hashing_2.11-6.29.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-collection_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071544" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="16">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="4409" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-collection_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-collection_2.11/6.29.0/util-collection_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-collection_2.11" type="jar" ext="jar" status="no" details="" size="85701" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-collection_2.11\jars\util-collection_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-collection_2.11/6.29.0/util-collection_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-collection_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="506686" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-collection_2.11\docs\util-collection_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-collection_2.11/6.29.0/util-collection_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-collection_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="8002" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-collection_2.11\srcs\util-collection_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-collection_2.11/6.29.0/util-collection_2.11-6.29.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-collections" name="commons-collections">
+			<revision name="3.2.1" status="release" pubdate="20080414210924" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/collections/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="18">
+				<metadata-artifact status="no" details="" size="4582" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-collections\commons-collections\ivy-3.2.1.xml" searched="false" origin-is-local="true" origin-location="D:\dev\sdk\scala\activator-1.3.6\repository\commons-collections\commons-collections\3.2.1\ivys\ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="3.2.1" rev-constraint-default="3.2.1" rev-constraint-dynamic="3.2.1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-collections" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="641582" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-collections\commons-collections\srcs\commons-collections-3.2.1-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-sources.jar"/>
+					</artifact>
+					<artifact name="commons-collections" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="2028934" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-collections\commons-collections\docs\commons-collections-3.2.1-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-javadoc.jar"/>
+					</artifact>
+					<artifact name="commons-collections" type="jar" ext="jar" status="no" details="" size="575389" time="0" location="D:\dev\sdk\scala\activator-1.3.6\repository\commons-collections\commons-collections\3.2.1\jars\commons-collections.jar">
+						<origin-location is-local="true" location="D:\dev\sdk\scala\activator-1.3.6\repository\commons-collections\commons-collections\3.2.1\jars\commons-collections.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.inject" name="javax.inject">
+			<revision name="1" status="release" pubdate="20091013193500" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://code.google.com/p/atinject/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="17">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2371" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\javax.inject\javax.inject\ivy-1.xml" searched="false" origin-is-local="true" origin-location="D:\dev\sdk\scala\activator-1.3.6\repository\javax.inject\javax.inject\1\ivys\ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1" rev-constraint-default="1" rev-constraint-dynamic="1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="javax.inject" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="10928" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\javax.inject\javax.inject\srcs\javax.inject-1-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/javax/inject/javax.inject/1/javax.inject-1-sources.jar"/>
+					</artifact>
+					<artifact name="javax.inject" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="32609" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\javax.inject\javax.inject\docs\javax.inject-1-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/javax/inject/javax.inject/1/javax.inject-1-javadoc.jar"/>
+					</artifact>
+					<artifact name="javax.inject" type="jar" ext="jar" status="no" details="" size="2497" time="0" location="D:\dev\sdk\scala\activator-1.3.6\repository\javax.inject\javax.inject\1\jars\javax.inject.jar">
+						<origin-location is-local="true" location="D:\dev\sdk\scala\activator-1.3.6\repository\javax.inject\javax.inject\1\jars\javax.inject.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-codec_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071539" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="14">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3821" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-codec_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-codec_2.11/6.29.0/util-codec_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-codec_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1381" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-codec_2.11\srcs\util-codec_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-codec_2.11/6.29.0/util-codec_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-codec_2.11" type="jar" ext="jar" status="no" details="" size="7600" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-codec_2.11\jars\util-codec_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-codec_2.11/6.29.0/util-codec_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-codec_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="370691" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-codec_2.11\docs\util-codec_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-codec_2.11/6.29.0/util-codec_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-codec" name="commons-codec">
+			<revision name="1.9" status="release" pubdate="20131220225739" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/proper/commons-codec/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="15">
+				<metadata-artifact status="no" details="" size="9848" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-codec\commons-codec\ivy-1.9.xml" searched="false" origin-is-local="false" origin-location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/commons-codec/commons-codec/1.9/ivys/ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.9" rev-constraint-default="1.9" rev-constraint-dynamic="1.9" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="commons-codec" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="403357" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-codec\commons-codec\docs\commons-codec-1.9-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-codec/commons-codec/1.9/commons-codec-1.9-javadoc.jar"/>
+					</artifact>
+					<artifact name="commons-codec" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="278370" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-codec\commons-codec\srcs\commons-codec-1.9-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/commons-codec/commons-codec/1.9/commons-codec-1.9-sources.jar"/>
+					</artifact>
+					<artifact name="commons-codec" type="jar" ext="jar" status="no" details="" size="263965" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\commons-codec\commons-codec\jars\commons-codec-1.9.jar">
+						<origin-location is-local="false" location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/commons-codec/commons-codec/1.9/jars/commons-codec.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-cache_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071640" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="12">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3969" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-cache_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-cache_2.11/6.29.0/util-cache_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-cache_2.11" type="jar" ext="jar" status="no" details="" size="30518" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-cache_2.11\jars\util-cache_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-cache_2.11/6.29.0/util-cache_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-cache_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="7585" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-cache_2.11\srcs\util-cache_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-cache_2.11/6.29.0/util-cache_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-cache_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="394815" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-cache_2.11\docs\util-cache_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-cache_2.11/6.29.0/util-cache_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.guava" name="guava">
+			<revision name="16.0.1" status="release" pubdate="20140203174528" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="13">
+				<metadata-artifact status="no" details="" size="5925" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.guava\guava\ivy-16.0.1.xml" searched="false" origin-is-local="false" origin-location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/com.google.guava/guava/16.0.1/ivys/ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="16.0.1" rev-constraint-default="16.0.1" rev-constraint-dynamic="16.0.1" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="guava" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="5166582" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.guava\guava\docs\guava-16.0.1-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/guava/guava/16.0.1/guava-16.0.1-javadoc.jar"/>
+					</artifact>
+					<artifact name="guava" type="jar" ext="jar" status="no" details="" size="2228009" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.guava\guava\jars\guava-16.0.1.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/guava/guava/16.0.1/guava-16.0.1.jar"/>
+					</artifact>
+					<artifact name="guava" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1261127" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.google.guava\guava\srcs\guava-16.0.1-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-app_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071607" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="7">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3821" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-app_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-app_2.11/6.29.0/util-app_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-app_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="14019" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-app_2.11\srcs\util-app_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-app_2.11/6.29.0/util-app_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-app_2.11" type="jar" ext="jar" status="no" details="" size="137688" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-app_2.11\jars\util-app_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-app_2.11/6.29.0/util-app_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-app_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="427186" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-app_2.11\docs\util-app_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-app_2.11/6.29.0/util-app_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-registry_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071630" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="11">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3686" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-registry_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-registry_2.11/6.29.0/util-registry_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-registry_2.11" type="jar" ext="jar" status="no" details="" size="35331" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-registry_2.11\jars\util-registry_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-registry_2.11/6.29.0/util-registry_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-registry_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="4349" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-registry_2.11\srcs\util-registry_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-registry_2.11/6.29.0/util-registry_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-registry_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="401442" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-registry_2.11\docs\util-registry_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-registry_2.11/6.29.0/util-registry_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="finagle-test_2.11">
+			<revision name="6.30.0" status="release" pubdate="20151016073829" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/finagle" extra-info.apiURL="https://twitter.github.io/finagle/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="50">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="6748" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-test_2.11\ivy-6.30.0.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-test_2.11/6.30.0/finagle-test_2.11-6.30.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.30.0" rev-constraint-default="6.30.0" rev-constraint-dynamic="6.30.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/finagle/docs/"/>
+				<artifacts>
+					<artifact name="finagle-test_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1885" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-test_2.11\srcs\finagle-test_2.11-6.30.0-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-test_2.11/6.30.0/finagle-test_2.11-6.30.0-sources.jar"/>
+					</artifact>
+					<artifact name="finagle-test_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="376870" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-test_2.11\docs\finagle-test_2.11-6.30.0-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-test_2.11/6.30.0/finagle-test_2.11-6.30.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="finagle-test_2.11" type="jar" ext="jar" status="no" details="" size="17337" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\finagle-test_2.11\jars\finagle-test_2.11-6.30.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/finagle-test_2.11/6.30.0/finagle-test_2.11-6.30.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-core_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071533" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="8">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="4102" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-core_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-core_2.11/6.29.0/util-core_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-core_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1532402" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-core_2.11\docs\util-core_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-core_2.11/6.29.0/util-core_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-core_2.11" type="jar" ext="jar" status="no" details="" size="1427188" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-core_2.11\jars\util-core_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-core_2.11/6.29.0/util-core_2.11-6.29.0.jar"/>
+					</artifact>
+					<artifact name="util-core_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="158739" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-core_2.11\srcs\util-core_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-core_2.11/6.29.0/util-core_2.11-6.29.0-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang.modules" name="scala-parser-combinators_2.11">
+			<revision name="1.0.4" status="release" pubdate="20150714132016" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="10">
+				<license name="BSD 3-clause" url="http://opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2794" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang.modules\scala-parser-combinators_2.11\ivy-1.0.4.xml" searched="false" origin-is-local="false" origin-location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/org.scala-lang.modules/scala-parser-combinators_2.11/1.0.4/ivys/ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.0.4" rev-constraint-default="1.0.4" rev-constraint-dynamic="1.0.4" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="scala-parser-combinators_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="42276" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang.modules\scala-parser-combinators_2.11\srcs\scala-parser-combinators_2.11-1.0.4-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4-sources.jar"/>
+					</artifact>
+					<artifact name="scala-parser-combinators_2.11" type="jar" ext="jar" status="no" details="" size="423753" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang.modules\scala-parser-combinators_2.11\jars\scala-parser-combinators_2.11-1.0.4.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar"/>
+					</artifact>
+					<artifact name="scala-parser-combinators_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="695301" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang.modules\scala-parser-combinators_2.11\docs\scala-parser-combinators_2.11-1.0.4-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.twitter" name="util-function_2.11">
+			<revision name="6.29.0" status="release" pubdate="20151016071525" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/twitter/util" extra-info.apiURL="https://twitter.github.io/util/docs/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="9">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3540" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-function_2.11\ivy-6.29.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/twitter/util-function_2.11/6.29.0/util-function_2.11-6.29.0.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="6.29.0" rev-constraint-default="6.29.0" rev-constraint-dynamic="6.29.0" callerrev="1.0" extra-info.apiURL="https://twitter.github.io/util/docs/"/>
+				<artifacts>
+					<artifact name="util-function_2.11" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="2091" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-function_2.11\srcs\util-function_2.11-6.29.0-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-function_2.11/6.29.0/util-function_2.11-6.29.0-sources.jar"/>
+					</artifact>
+					<artifact name="util-function_2.11" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="38011" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-function_2.11\docs\util-function_2.11-6.29.0-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/twitter/util-function_2.11/6.29.0/util-function_2.11-6.29.0-javadoc.jar"/>
+					</artifact>
+					<artifact name="util-function_2.11" type="jar" ext="jar" status="no" details="" size="2073" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\com.twitter\util-function_2.11\jars\util-function_2.11-6.29.0.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/com/twitter/util-function_2.11/6.29.0/util-function_2.11-6.29.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="io.netty" name="netty">
+			<revision name="3.10.1.Final" status="release" pubdate="20150323145432" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://netty.io/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="6">
+				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="6970" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\io.netty\netty\ivy-3.10.1.Final.xml" searched="false" origin-is-local="true" origin-location="D:\dev\sdk\scala\activator-1.3.6\repository\io.netty\netty\3.10.1.Final\ivys\ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="3.10.1.Final" rev-constraint-default="3.10.1.Final" rev-constraint-dynamic="3.10.1.Final" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="netty" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1131956" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\io.netty\netty\srcs\netty-3.10.1.Final-sources.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty/3.10.1.Final/netty-3.10.1.Final-sources.jar"/>
+					</artifact>
+					<artifact name="netty" type="jar" ext="jar" status="no" details="" size="1308662" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\io.netty\netty\jars\netty-3.10.1.Final.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty/3.10.1.Final/netty-3.10.1.Final.jar"/>
+					</artifact>
+					<artifact name="netty" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="3307059" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\io.netty\netty\docs\netty-3.10.1.Final-javadoc.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/io/netty/netty/3.10.1.Final/netty-3.10.1.Final-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-log4j12">
+			<revision name="1.7.7" status="release" pubdate="20140404191326" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="2">
+				<metadata-artifact status="no" details="" size="4799" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-log4j12\ivy-1.7.7.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.7.7" rev-constraint-default="1.7.7" rev-constraint-dynamic="1.7.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="slf4j-log4j12" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="52705" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-log4j12\docs\slf4j-log4j12-1.7.7-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7-javadoc.jar"/>
+					</artifact>
+					<artifact name="slf4j-log4j12" type="jar" ext="jar" status="no" details="" size="8870" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-log4j12\jars\slf4j-log4j12-1.7.7.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7.jar"/>
+					</artifact>
+					<artifact name="slf4j-log4j12" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="10350" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-log4j12\srcs\slf4j-log4j12-1.7.7-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="log4j" name="log4j">
+			<revision name="1.2.17" status="release" pubdate="20130508155157" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://logging.apache.org/log4j/1.2/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="3">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3581" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\log4j\log4j\ivy-1.2.17.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/log4j/log4j/1.2.17/log4j-1.2.17.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.2.17" rev-constraint-default="1.2.17" rev-constraint-dynamic="1.2.17" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="log4j" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="481200" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\log4j\log4j\srcs\log4j-1.2.17-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar"/>
+					</artifact>
+					<artifact name="log4j" type="jar" ext="jar" status="no" details="" size="489884" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\log4j\log4j\jars\log4j-1.2.17.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+					</artifact>
+					<artifact name="log4j" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="1491397" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\log4j\log4j\docs\log4j-1.2.17-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/log4j/log4j/1.2.17/log4j-1.2.17-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.7.7" status="release" pubdate="20140404191248" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="1">
+				<metadata-artifact status="no" details="" size="4619" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-api\ivy-1.7.7.xml" searched="false" origin-is-local="false" origin-location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.pom"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="1.7.7" rev-constraint-default="1.7.7" rev-constraint-dynamic="1.7.7" callerrev="1.0"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="49406" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-api\srcs\slf4j-api-1.7.7-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-sources.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="29257" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.7.7.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+					</artifact>
+					<artifact name="slf4j-api" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="195678" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.slf4j\slf4j-api\docs\slf4j-api-1.7.7-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7-javadoc.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.11.7" status="release" pubdate="20150714131952" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2642" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-library\ivy-2.11.7.xml" searched="false" origin-is-local="false" origin-location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/org.scala-lang/scala-library/2.11.7/ivys/ivy.xml"/>
+				<caller organisation="default" name="finagle-example$sources_javadoc_2.11" conf="compile" rev="2.11.7" rev-constraint-default="2.11.7" rev-constraint-dynamic="2.11.7" callerrev="1.0" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5745606" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-library\jars\scala-library-2.11.7.jar">
+						<origin-location is-local="false" location="file:////D:/dev/sdk/scala/activator-1.3.6/repository/org.scala-lang/scala-library/2.11.7/jars/scala-library.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="doc" ext="jar" extra-classifier="javadoc" status="no" details="" size="22812957" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-library\docs\scala-library-2.11.7-javadoc.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-javadoc.jar"/>
+					</artifact>
+					<artifact name="scala-library" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="908307" time="0" location="D:\dev\sdk\scala\sbt_ivy\cache\org.scala-lang\scala-library\srcs\scala-library-2.11.7-sources.jar">
+						<origin-location is-local="false" location="http://127.0.0.1:8081/nexus/content/groups/public/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-sources.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
