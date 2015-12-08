@@ -12,9 +12,27 @@ object RemoteApp extends App {
 	//	withFallback(ConfigFactory.parseString("akka.cluster.roles = [backend]")).
 	//	withFallback(ConfigFactory.load("factorial"))
 
-	val config = ConfigFactory.parseString("akka.remote.netty.tcp.port=12101")
+/*	val config = ConfigFactory.parseString("akka.remote.netty.tcp.port=12101")
 		.withFallback(ConfigFactory.parseString("akka.cluster.roles = [backend]"))
-		.withFallback(ConfigFactory.load("remote/hello/hello.conf"))
+		.withFallback(ConfigFactory.load("remote/hello/hello.conf"))*/
+
+	val config = ConfigFactory.parseString("""
+				|akka {
+				|  loglevel = "DEBUG"
+				|  actor {
+				|    provider = "akka.remote.RemoteActorRefProvider"
+				|  }
+				|  remote {
+				|    enabled-transports = ["akka.remote.netty.tcp"]
+				|    netty.tcp {
+				|      hostname = "127.0.0.1"
+				|      port = 12101
+				|    }
+				|  }
+				|  log-sent-messages = on
+				|  log-received-messages = on
+				|}
+			""".stripMargin)
 
 	//可以写成
 /*	val config = ConfigFactory.parseString("""akka {
@@ -43,7 +61,7 @@ object RemoteApp extends App {
 	////system.scheduler.scheduleOnce(50 milliseconds,remoteActor,System.currentTimeMillis)
 }
 
-class RemoteActor extends Actor /*with ActorLogging*/{
+class RemoteActor extends Actor with ActorLogging{
 	//val log = Logging(context.system, this)
 	/*		override def preStart() = {
 				log.debug("Starting")
@@ -55,15 +73,15 @@ class RemoteActor extends Actor /*with ActorLogging*/{
 
 	def receive = {
 		case message: String =>
-			println(s"RemoteActor received message '$message'")
+			//println(s"RemoteActor received message '$message'")
 			//log.debug(s"RemoteActor received message '$msg'")
-			//log.debug("RemoteActor received message:{}",message)
+			log.debug("RemoteActor received message:{}",message)
 			if("SHUTDOWN".eq(message)){
 				context.system.shutdown()
 			}
-			sender ! "Hello from the RemoteActor:$message"
+			sender ! s"Hello from the RemoteActor:$message"
 		case x        =>
-			//log.debug("RemoteActor received message:{}",x)
+			log.debug("RemoteActor received message:{}",x)
 	}
 }
 

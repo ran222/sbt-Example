@@ -6,8 +6,25 @@ import com.typesafe.config.ConfigFactory
 
 object LocalApp extends App {
 	//val system = ActorSystem("LocalSystem")
-	val config = ConfigFactory.parseString("akka.remote.netty.tcp.port=13101")
-		.withFallback(ConfigFactory.load("remote/hello/hello.conf"))
+	/*val config = ConfigFactory.parseString("akka.remote.netty.tcp.port=13101")
+		.withFallback(ConfigFactory.load("remote/hello/hello.conf"))*/
+	val config = ConfigFactory.parseString("""
+			|akka {
+			|  loglevel = "DEBUG"
+			|  actor {
+			|    provider = "akka.remote.RemoteActorRefProvider"
+			|  }
+			|  remote {
+			|    enabled-transports = ["akka.remote.netty.tcp"]
+			|    netty.tcp {
+			|      hostname = "127.0.0.1"
+			|      port = 0
+			|    }
+			|  }
+			|  log-sent-messages = on
+			|  log-received-messages = on
+			|}
+		""".stripMargin)
 	println("akka.remote.netty.tcp.port="+config.getInt("akka.remote.netty.tcp.port"))
 
 	val system = ActorSystem("LocalSystem",config)
@@ -25,7 +42,8 @@ class LocalActor extends Actor with ActorLogging{
 		case "START" =>
 			remote ! "Hello from the LocalActor"
 		case msg: String =>{
-			println(s"LocalActor received message: '$msg'")
+			//println(s"LocalActor received message: '$msg'")
+			log.debug("LocalActor received message:{}",msg)
 
 			if (counter % 2==0) {
 				sender ! "Hello back to you"
@@ -37,7 +55,7 @@ class LocalActor extends Actor with ActorLogging{
 		}
 		case x => {
 			log.debug("RemoteActor received message:{}",x)
-			//sender!x
+			sender!x
 		}
 
 	}
