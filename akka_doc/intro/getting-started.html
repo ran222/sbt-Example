@@ -1,0 +1,262 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>å…¥é—¨ &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Getting Started Tutorial (Scala): First Chapter" href="getting-started-first-scala.html" />
+    <link rel="prev" title="Why Akka?" href="why-akka.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Getting Started</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="getting-started-first-scala.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html">å…¥é—¨æŒ‡å— (Scala): ç¬¬ä¸€ç« </a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="why-akka.html" tppabs="http://www.gtan.com/akka_doc/intro/why-akka.html">ä¸ºä»€ä¹ˆä½¿ç”¨Akka?</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="getting-started">
+<h1>å…¥é—¨</h1>
+<p>å­¦ä¹ Akkaæœ€å¥½çš„èµ·æ­¥æ–¹æ³•æ˜¯é˜…è¯»å…¥é—¨æŒ‡å—ï¼Œæ ¹æ®ä½ å¯¹å¼€å‘ç¯å¢ƒçš„ä¸åŒåå¥½ï¼ŒæŒ‡å—æä¾›äº†ä¸åŒçš„å†…å®¹:</p>
+<ul class="simple">
+<li>é’ˆå¯¹Javaå¼€å‘è€…çš„<a class="reference internal" href="getting-started-first-java.html#getting-started-first-java" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#getting-started-first-java"><em>å…¥é—¨æŒ‡å— (Java): ç¬¬ä¸€ç« </em></a> å¯é€‰æ‹©<ul>
+<li>ä»å‘½ä»¤è¡Œè¿è¡Œçš„ç‹¬ç«‹é¡¹ç›®,</li>
+<li>æˆ–è€…ç”¨Mavenè¿è¡Œçš„Mavené¡¹ç›®</li>
+</ul>
+</li>
+<li>é’ˆå¯¹Scalaå¼€å‘è€…çš„<a class="reference internal" href="getting-started-first-scala.html#getting-started-first-scala" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#getting-started-first-scala"><em>å…¥é—¨æŒ‡å— (Scala): ç¬¬ä¸€ç« </em></a> å¯é€‰æ‹©<ul>
+<li>ä»å‘½ä»¤è¡Œè¿è¡Œçš„ç‹¬ç«‹é¡¹ç›®</li>
+<li>æˆ–è€…åœ¨SBT(Simple Build Tool)ä¸­è¿è¡Œçš„SBTé¡¹ç›®</li>
+</ul>
+</li>
+</ul>
+<p>å…¥é—¨æŒ‡å—åŒ…å«æ‰€æœ‰ä½ éœ€è¦çŸ¥é“çš„äº‹ï¼Œå¦‚æœä½ å­¦ä¹ æœ¬æŒ‡å—ï¼Œå½“å‰é¡µé¢ä¸­åé¢çš„å†…å®¹ä½ ä¸æ˜¯å¿…é¡»é˜…è¯»ã€‚å½“å‰é¡µé¢åŒ…å«ä¸€äº›ä½¿ç”¨ä¸åŒçš„å¼€å‘ç¯å¢ƒçš„åŸºæœ¬å†…å®¹ä»¥ä¾¿åç»­çš„å›é¡¾å‚è€ƒã€‚</p>
+<div class="section" id="prerequisites">
+<h2>å‡†å¤‡å·¥ä½œ</h2>
+<p>Akkaè¦æ±‚ä½ å®‰è£…äº† <a class="reference external" href="javascript:if(confirm('http://www.oracle.com/technetwork/java/javase/downloads/index.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.oracle.com/technetwork/java/javase/downloads/index.html'" tppabs="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 1.6</a>æˆ–æ›´é«˜ç‰ˆæœ¬ã€‚</p>
+</div>
+<div class="section" id="download">
+<h2>ä¸‹è½½</h2>
+<p>ä¸‹è½½Akkaæœ‰å‡ ç§æ–¹æ³•ã€‚ä½ å¯ä»¥ä¸‹è½½åŒ…å«å¾®å†…æ ¸çš„å®Œæ•´å‘å¸ƒåŒ…ï¼ˆåŒ…å«æ‰€æœ‰çš„æ¨¡å—ï¼‰. æˆ–è€…ä¹Ÿå¯ä»¥ä»Mavenæˆ–sbtä»Akka Mavenä»“åº“ä¸‹è½½å¯¹akkaçš„ä¾èµ–ã€‚</p>
+</div>
+<div class="section" id="modules">
+<h2>æ¨¡å—</h2>
+<p>Akkaçš„æ¨¡å—åŒ–åšå¾—éå¸¸å¥½ï¼Œå®ƒä¸ºä¸åŒçš„åŠŸèƒ½æä¾›äº†ä¸åŒçš„JaråŒ…ã€‚</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">akka-actor-2.0.jar</span></tt> &#8211; æ ‡å‡†Actor, æœ‰ç±»å‹Actorï¼Œç­‰ç­‰</li>
+<li><tt class="docutils literal"><span class="pre">akka-remote-2.0.jar</span></tt> &#8211; è¿œç¨‹Actor</li>
+<li><tt class="docutils literal"><span class="pre">akka-slf4j-2.0.jar</span></tt> &#8211; SLF4Jäº‹ä»¶å¤„ç†ç›‘å¬å™¨</li>
+<li><tt class="docutils literal"><span class="pre">akka-testkit-2.0.jar</span></tt> &#8211; ç”¨äºæµ‹è¯•Actorçš„å·¥å…·åŒ…</li>
+<li><tt class="docutils literal"><span class="pre">akka-kernel-2.0.jar</span></tt> &#8211; Akkaå¾®å†…æ ¸ï¼Œå¯è¿è¡Œä¸€ä¸ªåŸºæœ¬çš„æœ€å°åº”ç”¨æœåŠ¡å™¨</li>
+<li><tt class="docutils literal"><span class="pre">akka-&lt;storage-system&gt;-mailbox-2.0.jar</span></tt> &#8211; Akkaå¯å®¹é”™é‚®ç®±</li>
+</ul>
+<p>è¦æŸ¥çœ‹æ¯ä¸ªAkkaæ¨¡å—çš„jaråŒ…ä¾èµ–è§
+<a class="reference internal" href="../dev/building-akka.html#dependencies" tppabs="http://www.gtan.com/akka_doc/dev/building-akka.html#dependencies"><em>ä¾èµ–</em></a> ç« èŠ‚. è™½ç„¶ä¸é‡è¦ä¸è¿‡<tt class="docutils literal"><span class="pre">akka-actor</span></tt> æ²¡æœ‰å¤–éƒ¨ä¾èµ– (é™¤äº† <tt class="docutils literal"><span class="pre">scala-library.jar</span></tt> JARåŒ…).</p>
+</div>
+<div class="section" id="using-a-release-distribution">
+<h2>ä½¿ç”¨å‘å¸ƒç‰ˆ</h2>
+<p>ä»<a class="reference external" href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">http://akka.io/downloads</a>ä¸‹è½½å‘å¸ƒåŒ…å¹¶è§£å‹.</p>
+</div>
+<div class="section" id="using-a-snapshot-version">
+<h2>ä½¿ç”¨å¿«ç…§ç‰ˆ</h2>
+<p>Akkaçš„æ¯æ—¥å¿«ç…§å‘å¸ƒåœ¨ <a class="reference external" href="javascript:if(confirm('http://repo.akka.io/snapshots/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://repo.akka.io/snapshots/'" tppabs="http://repo.akka.io/snapshots/">http://repo.akka.io/snapshots/</a> ç‰ˆæœ¬å·ä¸­åŒ…å« <tt class="docutils literal"><span class="pre">SNAPSHOT</span></tt> å’Œæ—¶é—´æˆ³. ä½ å¯ä»¥é€‰æ‹©ä¸€ä¸ªå¿«ç…§ç‰ˆï¼Œå¯ä»¥å†³å®šä½•æ—¶å‡çº§åˆ°ä¸€ä¸ªæ–°çš„ç‰ˆæœ¬ã€‚Akkaå¿«ç…§ä»“åº“ä¹Ÿå¯ä»¥åœ¨
+<a class="reference external" href="javascript:if(confirm('http://repo.typesafe.com/typesafe/snapshots/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://repo.typesafe.com/typesafe/snapshots/'" tppabs="http://repo.typesafe.com/typesafe/snapshots/">http://repo.typesafe.com/typesafe/snapshots/</a>æ‰¾åˆ°ï¼Œæ­¤å¤„è¿˜åŒ…å«Akkaæ¨¡å—ä¾èµ–çš„å…¶å®ƒä»“åº“ã€‚
+</div>
+<div class="section" id="microkernel">
+<h2>å¾®å†…æ ¸</h2>
+<p>Akkaå‘å¸ƒåŒ…åŒ…å«å¾®å†…æ ¸ã€‚è¦è¿è¡Œå¾®å†…æ ¸ï¼Œå°†ä½ çš„åº”ç”¨çš„jaråŒ…æ”¾åˆ° <tt class="docutils literal"><span class="pre">deploy</span></tt> ç›®å½•ä¸‹å¹¶è¿è¡Œ <tt class="docutils literal"><span class="pre">bin</span></tt>
+ç›®å½•ä¸‹çš„è„šæœ¬.</p>
+<p>å…³äºå¾®å†…æ ¸çš„æ›´å¤šæ–‡æ¡£åœ¨ <a class="reference internal" href="../modules/microkernel.html#microkernel" tppabs="http://www.gtan.com/akka_doc/modules/microkernel.html#microkernel"><em>Microkernel</em></a>.</p>
+</div>
+<div class="section" id="using-a-build-tool">
+<h2>ä½¿ç”¨buildå·¥å…·</h2>
+<p>Akkaå¯ä»¥ä¸æ”¯æŒMavenä»“åº“çš„ç¼–è¯‘å·¥å…·ä¸€èµ·ä½¿ç”¨ã€‚Akka Mavenä»“åº“å¯ä»¥åœ¨ <a class="reference external" href="javascript:if(confirm('http://repo.akka.io/releases/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://repo.akka.io/releases/'" tppabs="http://repo.akka.io/releases/">http://repo.akka.io/releases/</a> æ‰¾åˆ°å¹¶ä¸” Typesafe è¿˜æœ‰
+<a class="reference external" href="javascript:if(confirm('http://repo.typesafe.com/typesafe/releases/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://repo.typesafe.com/typesafe/releases/'" tppabs="http://repo.typesafe.com/typesafe/releases/">http://repo.typesafe.com/typesafe/releases/</a> ä»“åº“æä¾›ä¸€äº›åŒ…ï¼ŒåŒ…æ‹¬akka.ioã€‚</p>
+</div>
+<div class="section" id="using-akka-with-maven">
+<h2>ä¸Mavenä¸€èµ·ä½¿ç”¨Akka</h2>
+<p>å…³äºå¦‚ä½•ä¸Mavenä¸€èµ·ä½¿ç”¨Akkaï¼ŒåŒ…æ‹¬å¦‚ä½•ä»0å¼€å§‹åˆ›å»ºä¸€ä¸ªAkka Mavené¡¹ç›®ï¼Œè§
+<a class="reference internal" href="getting-started-first-java.html#getting-started-first-java" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#getting-started-first-java"><em>å…¥é—¨æŒ‡å— (Java): ç¬¬ä¸€ç« </em></a>.</p>
+<p>ä¸Mavenä¸€èµ·ä½¿ç”¨Akkaçš„è¦ç‚¹ï¼š</p>
+<ol class="arabic simple">
+<li>å°†ä»¥ä¸‹ä»“åº“åŠ å…¥ä½ çš„ <tt class="docutils literal"><span class="pre">pom.xml</span></tt>:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;repository&gt;</span>
+  <span class="nt">&lt;id&gt;</span>typesafe<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;name&gt;</span>Typesafe Repository<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;url&gt;</span>http://repo.typesafe.com/typesafe/releases/<span class="nt">&lt;/url&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>æ·»åŠ Akkaçš„ä¾èµ–åº“ã€‚ä¾‹å¦‚ä»¥ä¸‹æ˜¯Akka Actor 2.0çš„ä¾èµ–:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>com.typesafe.akka<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>akka-actor<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>2.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<p><strong>æ³¨æ„</strong>: å¿«ç…§ç‰ˆæœ¬åŒ…æ‹¬ <tt class="docutils literal"><span class="pre">SNAPSHOT</span></tt>ç‰ˆæœ¬å’Œæ—¶é—´æˆ³ç‰ˆæœ¬ã€‚</p>
+</div>
+<div class="section" id="using-akka-with-sbt">
+<h2>ä¸SBTä¸€èµ·ä½¿ç”¨Akka</h2>
+<p>å…³äºå¦‚ä½•ä¸SBTä¸€èµ·ä½¿ç”¨Akkaï¼ŒåŒ…æ‹¬å¦‚ä½•ä»0å¼€å§‹åˆ›å»ºä¸€ä¸ªAkka SBTé¡¹ç›®ï¼Œè§ <a class="reference internal" href="getting-started-first-scala.html#getting-started-first-scala" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#getting-started-first-scala"><em>å…¥é—¨æŒ‡å— (Scala): ç¬¬ä¸€ç« </em></a>.</p>
+<p>ä¸SBTä¸€èµ·ä½¿ç”¨Akkaçš„è¦ç‚¹:</p>
+<p>SBTå®‰è£…æŒ‡å¯¼ <a class="reference external" href="javascript:if(confirm('https://github.com/harrah/xsbt/wiki/Setup  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/harrah/xsbt/wiki/Setup'" tppabs="https://github.com/harrah/xsbt/wiki/Setup">https://github.com/harrah/xsbt/wiki/Setup</a></p>
+<p><tt class="docutils literal"><span class="pre">build.sbt</span></tt> æ–‡ä»¶:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">name</span> <span class="o">:=</span> <span class="s">&quot;My Project&quot;</span>
+
+<span class="n">version</span> <span class="o">:=</span> <span class="s">&quot;1.0&quot;</span>
+
+<span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">&quot;2.9.1&quot;</span>
+
+<span class="n">resolvers</span> <span class="o">+=</span> <span class="s">&quot;Typesafe Repository&quot;</span> <span class="n">at</span> <span class="s">&quot;http://repo.typesafe.com/typesafe/releases/&quot;</span>
+
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.typesafe.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka-actor&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-akka-with-eclipse">
+<h2>ä¸Eclipseä¸€èµ·ä½¿ç”¨Akka</h2>
+<p>å»ºå¥½ SBT é¡¹ç›®å¹¶ä½¿ç”¨ <a class="reference external" href="javascript:if(confirm('https://github.com/typesafehub/sbteclipse  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/typesafehub/sbteclipse'" tppabs="https://github.com/typesafehub/sbteclipse">sbteclipse</a> æ¥åˆ›å»ºEclipseé¡¹ç›®.</p>
+</div>
+<div class="section" id="using-akka-with-intellij-idea">
+<h2>ä¸IntelliJ IDEAä¸€èµ·ä½¿ç”¨Akka</h2>
+<p>å»ºå¥½SBTé¡¹ç›®å¹¶ä½¿ç”¨ <a class="reference external" href="javascript:if(confirm('https://github.com/mpeltonen/sbt-idea  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/mpeltonen/sbt-idea'" tppabs="https://github.com/mpeltonen/sbt-idea">sbt-idea</a> æ¥åˆ›å»ºIntelliJ IDEA é¡¹ç›®.</p>
+</div>
+<div class="section" id="build-from-sources">
+<h2>ä»æºç ç¼–è¯‘</h2>
+<p>Akkaä½¿ç”¨Gitå¹¶æ‰˜ç®¡åœ¨ <a class="reference external" href="javascript:if(confirm('http://github.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/'" tppabs="http://github.com/">Github</a>.</p>
+<ul class="simple">
+<li>Akka: ä» <a class="reference external" href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">http://github.com/akka/akka</a> å¤åˆ¶Akkaæºç </li>
+</ul>
+<p>åˆ° <a class="reference internal" href="../dev/building-akka.html#building-akka" tppabs="http://www.gtan.com/akka_doc/dev/building-akka.html#building-akka"><em>Building Akka</em></a> ç»§ç»­é˜…è¯»ã€‚</p>
+</div>
+<div class="section" id="need-help">
+<h2>éœ€è¦å¸®åŠ©?</h2>
+<p>å¦‚æœæœ‰é—®é¢˜ï¼Œä½ å¯ä»¥åœ¨ <a class="reference external" href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Akka Mailing List</a> è·å¾—å¸®åŠ©.</p>
+<p>ä¹Ÿå¯ä»¥å¯»æ±‚ <a class="reference external" href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">å•†ä¸šæ”¯æŒ</a>.</p>
+<p>æ„Ÿè°¢æˆä¸ºAkkaç¤¾åŒºçš„ä¸€éƒ¨åˆ†.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">ç›®å½•</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

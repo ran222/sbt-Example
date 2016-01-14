@@ -1,0 +1,610 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Remoting (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Serialization (Scala)" href="serialization.html" />
+    <link rel="prev" title="Routing (Scala)" href="routing.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">远程调用 (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="serialization.html" tppabs="http://www.gtan.com/akka_doc/scala/serialization.html">序列化 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="routing.html" tppabs="http://www.gtan.com/akka_doc/scala/routing.html">路由 (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="remoting-scala">
+<span id="id1"></span><h1>远程调用 (Scala)</h1>
+<p>要了解关于Akka的远程调用能力的简介请参阅 <a class="reference internal" href="../general/remoting.html#remoting" tppabs="http://www.gtan.com/akka_doc/general/remoting.html#remoting"><em>位置透明性</em></a>.</p>
+<div class="section" id="preparing-your-actorsystem-for-remoting">
+<h2>使你的ActorSystem作好远程调用的准备</h2>
+<p>Akka 远程调用功能在一个单独的jar包中. 确认你的项目依赖中包括以下部分t:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="s">&quot;com.typesafe.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka-remote&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+<p>要在Akka项目中使用远程调用，最少要在
+ <tt class="docutils literal"><span class="pre">application.conf</span></tt> 文件中加入以下内容:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">akka</span> <span class="o">{</span>
+  <span class="n">actor</span> <span class="o">{</span>
+    <span class="n">provider</span> <span class="k">=</span> <span class="s">&quot;akka.remote.RemoteActorRefProvider&quot;</span>
+  <span class="o">}</span>
+  <span class="n">remote</span> <span class="o">{</span>
+    <span class="n">transport</span> <span class="k">=</span> <span class="s">&quot;akka.remote.netty.NettyRemoteTransport&quot;</span>
+    <span class="n">netty</span> <span class="o">{</span>
+      <span class="n">hostname</span> <span class="k">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+      <span class="n">port</span> <span class="k">=</span> <span class="mi">2552</span>
+    <span class="o">}</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>可以看到你需要加入4个东西:</p>
+<ul class="simple">
+<li>将 provider 从 <tt class="docutils literal"><span class="pre">akka.actor.LocalActorRefProvider</span></tt> 改为 <tt class="docutils literal"><span class="pre">akka.remote.RemoteActorRefProvider</span></tt></li>
+<li>增加远程主机名 - 你希望运行actor系统的主机; 这个主机名与传给远程系统的内容完全一样，用来标识这个系统，并供后续需要连接回这个系统时使用,
+所以要把它设置成一个可到达的IP地址或一个可以正确解析的域名来保证网络可访问性.</li>
+<li>增加端口号 - actor 系统监听的端口号，0 表示让它自动选择</li>
+</ul>
+<p>上例只是演示了要进行远程调用所需要添加的最小属性. 还有很多其它相关的属性。这里我们列出参考文件以提供更多信息:</p>
+<div class="highlight-none"><div class="highlight"><pre>#####################################
+# Akka 远程调用参考配置文件 #
+#####################################
+
+# 本参考配置文件包含所有的缺省配置.
+# 在你自己的 application.conf 可对其进行编辑/重写.
+
+# 关于akka-actor.jar 中已有的akka.actor设置的注释被去掉了, 不然会发生重复设置.
+
+akka {
+
+  actor {
+
+    serializers {
+      proto = &quot;akka.serialization.ProtobufSerializer&quot;
+    }
+
+
+    serialization-bindings {
+      # 由 com.google.protobuf.Message 没有继承 Serializable 但 GeneratedMessage
+      # 有, 这里必须使用更明确的类来避免歧义
+      &quot;com.google.protobuf.GeneratedMessage&quot; = proto
+    }
+
+    deployment {
+
+      default {
+
+        # 如果设置为一个可用的远程地址, 这个有名称的actor会被部署到那个结点
+        # e.g. &quot;akka://sys@host:port&quot;
+        remote = &quot;&quot;
+
+        target {
+
+          # 一个主机名和端口列表，用来创建一个非直接路由actor的子actor
+          #   格式应为 &quot;akka://sys@host:port&quot;, 其中:
+          #    - sys 是远程actor系统的名称
+          #    - hostname 可以是主机名或远程主机应连接到的IP地址
+          #    - port 应为其它结点上的远程服务的端口
+          # 象本地路由actor一样，新生成的actor实例的数量仍从
+          # nr-of-instances 配置中获取; 新的实例在给定的结点中将以
+          # round-robin 的方式分布
+          nodes = []
+
+        }
+      }
+    }
+  }
+
+  remote {
+
+    # 使用 akka.remote.RemoteTransport 的哪个实现
+    # 缺省是基于TCP，Netty上的远程传输层
+    transport = &quot;akka.remote.netty.NettyRemoteTransport&quot;
+
+    # 打开为服务器管理的actor的完全的安全性打开不信任模式, 允许不受信任的
+    # 客户端建立连接.
+    untrusted-mode = off
+
+    # 集群操作的 ACK 超时, 例如检查 actor 等.
+    remote-daemon-ack-timeout = 30s
+
+    # 如果这个值是 &quot;on&quot;, Akka 会以DEBUG级别记录所有接收到的消息到日志, 如果是 off 则不会被记录
+    log-received-messages = off
+
+    # 如果这个值是 &quot;on&quot;, Akka 会以DEBUG级别记录所有发送的消息到日志，如果是 off 则不会被记录
+    log-sent-messages = off
+
+    # 每一个属性被标记为 (I) 或 (O) 或 (I&amp;O), I 代表 “输入”  O 代表 “输出” 连接.
+    # NettyRemoteTransport 启动的服务器总是允许输入的连接, 当发送到某个尚未连接的目标时总是会启动活跃的客户端连接
+    # ; 如果配置指定，它可以重用输入的连接来发送应答，这被称为被动客户端连接
+    #  (i.e. 从服务器到客户端).
+    netty {
+
+      # (O) 在延迟变长/溢出的情况下要等待多久 (阻塞发送方)
+      # 才取消发送
+      # 0 表示 &quot;不取消&quot;, 任何正数表示最长的阻塞时间.
+      backoff-timeout = 0ms
+
+      # (I&amp;O) 用 &#39;$AKKA_HOME/scripts/generate_config_with_secure_cookie.sh&#39; 创建自己cookie
+      # 或使用 &#39;akka.util.Crypt.generateSecureCookie&#39;
+      secure-cookie = &quot;&quot;
+
+      # (I) 远程服务器是否要求连接对方也共享同样的 secure-cookie
+      # (在 &#39;remote&#39; 部分定义)?
+      require-cookie = off
+
+      # (I) 重用输入连接来发送消息
+      use-passive-connections = on
+
+      # (I) 远程调用所绑定的主机名或ip,
+      # 不设则使用InetAddress.getLocalHost.getHostAddress
+      hostname = &quot;&quot;
+
+      # (I) 客户端应连接到的缺省远程服务器端口.
+      # 缺省值为 2552 (AKKA), 0 表示随机选择一个可用端口
+      port = 2552
+
+      # (O) 创建输出连接时绑定到的本地网络接口地址 (IP 地址)
+      # 设置为 &quot;&quot; 或 &quot;auto&quot; 表示自动选择本地地址.
+      outbound-local-address = &quot;auto&quot;
+
+      # (I&amp;O) 如果你希望发送内容较大的消息则设置这个参数
+      message-frame-size = 1 MiB
+
+      # (O) 超时间隔
+      connection-timeout = 120s
+
+      # (I) 储备连接的大小
+      backlog = 4096
+
+      # (I) 核心线程空闲时保持存活的时间长度，以 akka.time-unit 为单位
+      execution-pool-keepalive = 60s
+
+      # (I) 远程执行单元的核心池的大小
+      execution-pool-size = 4
+
+      # (I) channel 大小的上限, 0 表示关闭
+      max-channel-memory-size = 0b
+
+      # (I) 所有channel总大小的上限, 0 表示关闭
+      max-total-memory-size = 0b
+
+      # (O) 活跃客户端重连的间隔
+      reconnect-delay = 5s
+
+      # (O) 读非活跃时间 (最小单位为秒)
+      # 经过这么长时间后，活跃客户端将被关闭;
+      # 当有新的通信请求时将被重新建立.
+      # 0表示关闭这个功能
+      read-timeout = 0s
+
+      # (O) 写非活跃时间 (最小单位为秒)
+      # 经过这么长时间后将发送心跳.
+      # 0表示关闭这个功能
+      write-timeout = 10s
+
+      # (O) 读和写的非活跃时间 (最小单位为秒)
+      # 经过这么长时间后活跃客户端连接将被关闭;
+      # 当有新的通信请求时将被重新建立
+      # 0表示关闭这个功能
+      all-timeout = 0s
+
+      # (O) 客户端应进行重连的最大时间窗口
+      reconnection-time-window = 600s
+    }
+
+    # 系统 actor &quot;network-event-sender&quot; 所使用的派发器
+    network-event-sender-dispatcher {
+      executor = thread-pool-executor
+      type = PinnedDispatcher
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="types-of-remote-interaction">
+<h2>远程交互的类型</h2>
+<p>Akka 远程调用有两种方式:</p>
+<ul class="simple">
+<li>查找    : 使用 <tt class="docutils literal"><span class="pre">actorFor(path)</span></tt> 在远程主机上查找一个actor</li>
+<li>创建  : 使用 <tt class="docutils literal"><span class="pre">actorOf(Props(...),</span> <span class="pre">actorName)</span></tt>在远程主机上创建一个actor</li>
+</ul>
+<p>下一部分将对这两种方法进行详细介绍.</p>
+</div>
+<div class="section" id="looking-up-remote-actors">
+<h2>查找远程 Actors</h2>
+<p><tt class="docutils literal"><span class="pre">actorFor(path)</span></tt> 会获得远程结点上actor的 <tt class="docutils literal"><span class="pre">ActorRef</span></tt> , e.g.:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">actor</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorFor</span><span class="o">(</span><span class="s">&quot;akka://actorSystemName@10.0.0.1:2552/user/actorName&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>可以看到使用这种模式在远程结点上查找一个 <tt class="docutils literal"><span class="pre">ActorRef</span></tt> :</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">akka</span><span class="o">://&lt;</span><span class="n">actor</span> <span class="n">system</span><span class="o">&gt;@&lt;</span><span class="n">hostname</span><span class="o">&gt;:&lt;</span><span class="n">port</span><span class="o">&gt;/&lt;</span><span class="n">actor</span> <span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>一旦得到了actor的引用，你就可以象与本地actor通讯一样与它进行通迅, e.g.:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">actor</span> <span class="o">!</span> <span class="s">&quot;Pretty awesome feature&quot;</span>
+</pre></div>
+</div>
+<p>要了解更多actor地址和路径的组成和使用, 请参考 <a class="reference internal" href="../general/addressing.html#addressing" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#addressing"><em>Actor 引用，路径和地址</em></a>.</p>
+</div>
+<div class="section" id="creating-actors-remotely">
+<h2>创建远程 Actor</h2>
+<p>在Akka中要使用远程创建actor的功能，需要对
+<tt class="docutils literal"><span class="pre">application.conf</span></tt> 文件进行以下修改 (只显示deployment部分):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">akka</span> <span class="o">{</span>
+  <span class="n">actor</span> <span class="o">{</span>
+    <span class="n">deployment</span> <span class="o">{</span>
+      <span class="o">/</span><span class="n">sampleActor</span> <span class="o">{</span>
+        <span class="n">remote</span> <span class="k">=</span> <span class="s">&quot;akka://sampleActorSystem@127.0.0.1:2553&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>这个配置告知Akka当一个路径为 <tt class="docutils literal"><span class="pre">/sampleActor</span></tt> 的actor被创建时进行响应, i.e.
+调用 <tt class="docutils literal"><span class="pre">system.actorOf(Props(...)`,</span> <span class="pre">sampleActor)</span></tt>时. 指定的actor不会被直接实例化，
+而是远程actor系统的daemon被要求创建这个actor,
+本例中的远程actor系统是 <tt class="docutils literal"><span class="pre">sampleActorSystem&#64;127.0.0.1:2553</span></tt>.</p>
+<p>一旦配置了以上属性你可以在代码中进行如下操作:</p>
+<div class="highlight-scala"><pre>class SampleActor extends Actor { def receive = { case _ =&gt; println("Got something") } }
+
+val actor = context.actorOf(Props[SampleActor], "sampleActor")
+actor ! "Pretty slick"</pre>
+</div>
+<p>在使用<tt class="docutils literal"><span class="pre">SampleActor</span></tt> 时它必须可用, i.e.
+actor系统的classloader中必须有一个包含这个类的JAR包.</p>
+<div class="section" id="programmatic-remote-deployment">
+<h3>用代码进行远程部署</h3>
+<p>要允许动态部署系统，也可以在用来创建actor的
+<tt class="xref py py-class docutils literal"><span class="pre">Props</span></tt> 中包含deployment配置
+: 这一部分信息与配置文件中的deployment部分是等价的, 如果两者都有，则外部配置拥有更高的优先级.</p>
+<p>加入这些import:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">Props</span><span class="o">,</span> <span class="nc">Deploy</span><span class="o">,</span> <span class="nc">Address</span><span class="o">,</span> <span class="nc">AddressFromURIString</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.remote.RemoteScope</span>
+</pre></div>
+</div>
+<p>和一个这样的远程地址:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">one</span> <span class="k">=</span> <span class="nc">AddressFromURIString</span><span class="o">(</span><span class="s">&quot;akka://sys@host:1234&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">two</span> <span class="k">=</span> <span class="nc">Address</span><span class="o">(</span><span class="s">&quot;akka&quot;</span><span class="o">,</span> <span class="s">&quot;sys&quot;</span><span class="o">,</span> <span class="s">&quot;host&quot;</span><span class="o">,</span> <span class="mi">1234</span><span class="o">)</span> <span class="c1">// this gives the same</span>
+</pre></div>
+</div>
+<p>你可以这样要求系统在此远程结点上创建一个子actor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">ref</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Echo</span><span class="o">].</span><span class="n">withDeploy</span><span class="o">(</span><span class="nc">Deploy</span><span class="o">(</span><span class="n">scope</span> <span class="k">=</span> <span class="nc">RemoteScope</span><span class="o">(</span><span class="n">address</span><span class="o">))))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="serialization">
+<h2>序列化</h2>
+<p>对actor使用远程调用时你必须保证这些actor所使用的 <tt class="docutils literal"><span class="pre">props</span></tt> 和 <tt class="docutils literal"><span class="pre">messages</span></tt>
+    是可序列化的. 如果不能保证会导致系统产生意料之外的行为.</p>
+<p>要了解更多信息请参阅 <a class="reference internal" href="serialization.html#serialization-scala" tppabs="http://www.gtan.com/akka_doc/scala/serialization.html#serialization-scala"><em>序列化 (Scala)</em></a></p>
+</div>
+<div class="section" id="routers-with-remote-destinations">
+<h2>有远程目标的路由actor</h2>
+<p>将远程调用与 <a class="reference internal" href="routing.html#routing-scala" tppabs="http://www.gtan.com/akka_doc/scala/routing.html#routing-scala"><em>路由 (Scala)</em></a>进行组合是非常实用的.
+也要用配置文件:</p>
+<div class="highlight-scala"><pre>akka {
+  actor {
+    deployment {
+      /serviceA/aggregation {
+        router = "round-robin"
+        nr-of-instances = 10
+        target {
+          nodes = ["akka://app@10.0.0.2:2552", "akka://app@10.0.0.3:2552"]
+        }
+      }
+    }
+  }
+}</pre>
+</div>
+<p>这个配置文件会将 “aggregation” actor复制10份并将其均匀地部署到给定的两个远程结点上.</p>
+</div>
+<div class="section" id="description-of-the-remoting-sample">
+<h2>路由例子的描述</h2>
+<p>Akka发布包中还包含了一个更全面的远程调用的例子.
+请看看这里了解更多信息: <a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/tree/master/akka-samples/akka-sample-remote  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/tree/master/akka-samples/akka-sample-remote'" tppabs="https://github.com/akka/akka/tree/master/akka-samples/akka-sample-remote">远程调用示例</a>
+这个例子演示了远程部署和对远程actor的查找.
+首先我们来看看这两种场景的通用配置 (这是
+<tt class="docutils literal"><span class="pre">common.conf</span></tt>):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">akka</span> <span class="o">{</span>
+
+  <span class="n">actor</span> <span class="o">{</span>
+    <span class="n">provider</span> <span class="k">=</span> <span class="s">&quot;akka.remote.RemoteActorRefProvider&quot;</span>
+  <span class="o">}</span>
+
+  <span class="n">remote</span> <span class="o">{</span>
+    <span class="n">netty</span> <span class="o">{</span>
+      <span class="n">hostname</span> <span class="k">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>它通过安装 <tt class="xref py py-class docutils literal"><span class="pre">RemoteActorRefProvider</span></tt> 并选择缺省的远程传输方式来
+    启动远程调用. 其它的选项将分情况单独设置.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">如果你要部署到多台机器上，请一定将缺省的IP 127.0.0.1 替换成系统可以访问的真实地址!</p>
+</div>
+<div class="section" id="remote-lookup">
+<span id="remote-lookup-sample-scala"></span><h3>远程查找</h3>
+<p>要查找远程actor, 这个actor必须首先被创建. 为了这个目的，我们配置actor系统监听端口 2552 (这是 <tt class="docutils literal"><span class="pre">application.conf</span></tt>的部分代码):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">calculator</span> <span class="o">{</span>
+  <span class="n">include</span> <span class="s">&quot;common&quot;</span>
+
+  <span class="n">akka</span> <span class="o">{</span>
+    <span class="n">remote</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">port</span> <span class="k">=</span> <span class="mi">2552</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>然后必须创建actor. 以下的所有代码都假设已经引入了这些 import:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorRef</span><span class="o">,</span> <span class="nc">Props</span><span class="o">,</span> <span class="nc">Actor</span><span class="o">,</span> <span class="nc">ActorSystem</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>执行工作的 actor 将是这一个:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">SimpleCalculatorActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Add</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;Calculating %d + %d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">))</span>
+      <span class="n">sender</span> <span class="o">!</span> <span class="nc">AddResult</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span><span class="o">)</span>
+    <span class="k">case</span> <span class="nc">Subtract</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;Calculating %d - %d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">))</span>
+      <span class="n">sender</span> <span class="o">!</span> <span class="nc">SubtractResult</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">n1</span> <span class="o">-</span> <span class="n">n2</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>我们用上面的配置在一个actor系统中启动它</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;CalculatorApplication&quot;</span><span class="o">,</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">load</span><span class="o">.</span><span class="n">getConfig</span><span class="o">(</span><span class="s">&quot;calculator&quot;</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">actor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">SimpleCalculatorActor</span><span class="o">],</span> <span class="s">&quot;simpleCalculator&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>只要服务actor已经启动并正在运行, 我们就能从另一个actor系统中查找它，这个系统使用端口 2553 (这是
+<tt class="docutils literal"><span class="pre">application.conf</span></tt>的部分代码).</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">remotelookup</span> <span class="o">{</span>
+  <span class="n">include</span> <span class="s">&quot;common&quot;</span>
+
+  <span class="n">akka</span> <span class="o">{</span>
+    <span class="n">remote</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">port</span> <span class="k">=</span> <span class="mi">2553</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>查找计算者的 actor 非常简单，仅为演示 </p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">LookupActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="o">(</span><span class="n">actor</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">,</span> <span class="n">op</span><span class="k">:</span> <span class="kt">MathOp</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">actor</span> <span class="o">!</span> <span class="n">op</span>
+    <span class="k">case</span> <span class="n">result</span><span class="k">:</span> <span class="kt">MathResult</span> <span class="k">⇒</span> <span class="kt">result</span> <span class="kt">match</span> <span class="o">{</span>
+      <span class="kt">case</span> <span class="kt">AddResult</span><span class="o">(</span><span class="kt">n1</span><span class="o">,</span> <span class="kt">n2</span><span class="o">,</span> <span class="kt">r</span><span class="o">)</span>      <span class="k">⇒</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Add result: %d + %d = %d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">))</span>
+      <span class="k">case</span> <span class="nc">SubtractResult</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Sub result: %d - %d = %d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">))</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>而它是在之前提到的使用客户端配置的actor系统中创建的.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;LookupApplication&quot;</span><span class="o">,</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">load</span><span class="o">.</span><span class="n">getConfig</span><span class="o">(</span><span class="s">&quot;remotelookup&quot;</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">actor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">LookupActor</span><span class="o">],</span> <span class="s">&quot;lookupActor&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">remoteActor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorFor</span><span class="o">(</span><span class="s">&quot;akka://CalculatorApplication@127.0.0.1:2552/user/simpleCalculator&quot;</span><span class="o">)</span>
+
+<span class="k">def</span> <span class="n">doSomething</span><span class="o">(</span><span class="n">op</span><span class="k">:</span> <span class="kt">MathOp</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">actor</span> <span class="o">!</span> <span class="o">(</span><span class="n">remoteActor</span><span class="o">,</span> <span class="n">op</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Requests which come in via 通过<tt class="docutils literal"><span class="pre">doSomething</span></tt> 传入的请求将随之前查找到的引用被发送到客户端
+. 注意 <tt class="docutils literal"><span class="pre">actorFor</span></tt> 中使用的actor系统名称与远程系统的名称一致,
+    IP和端口号也一致. 顶级 actor 永远是在 <tt class="docutils literal"><span class="pre">&quot;/user&quot;</span></tt>
+根actor下创建的, 也被它所监管.</p>
+</div>
+<div class="section" id="remote-deployment">
+<h3>远程部署</h3>
+<p>与远程查找不同，远程创建actor不能写在代码中，而只能用配置文件. 这一部分用于这个场景
+(这是 <tt class="docutils literal"><span class="pre">application.conf</span></tt>中的部分代码):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">remotecreation</span> <span class="o">{</span>
+  <span class="n">include</span> <span class="s">&quot;common&quot;</span>
+
+  <span class="n">akka</span> <span class="o">{</span>
+    <span class="n">actor</span> <span class="o">{</span>
+      <span class="n">deployment</span> <span class="o">{</span>
+        <span class="o">/</span><span class="n">advancedCalculator</span> <span class="o">{</span>
+          <span class="n">remote</span> <span class="k">=</span> <span class="s">&quot;akka://CalculatorApplication@127.0.0.1:2552&quot;</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">remote</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">port</span> <span class="k">=</span> <span class="mi">2554</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>对所有后续的代码，假设已经引入了这些import :</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorRef</span><span class="o">,</span> <span class="nc">Props</span><span class="o">,</span> <span class="nc">Actor</span><span class="o">,</span> <span class="nc">ActorSystem</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>客户端actor与前例类似</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CreationActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="o">(</span><span class="n">actor</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">,</span> <span class="n">op</span><span class="k">:</span> <span class="kt">MathOp</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">actor</span> <span class="o">!</span> <span class="n">op</span>
+    <span class="k">case</span> <span class="n">result</span><span class="k">:</span> <span class="kt">MathResult</span> <span class="k">⇒</span> <span class="kt">result</span> <span class="kt">match</span> <span class="o">{</span>
+      <span class="kt">case</span> <span class="kt">MultiplicationResult</span><span class="o">(</span><span class="kt">n1</span><span class="o">,</span> <span class="kt">n2</span><span class="o">,</span> <span class="kt">r</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Mul result: %d * %d = %d&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">))</span>
+      <span class="k">case</span> <span class="nc">DivisionResult</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">)</span>       <span class="k">⇒</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Div result: %.0f / %d = %.2f&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="n">r</span><span class="o">))</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>但它的配置只使用 <tt class="docutils literal"><span class="pre">actorOf</span></tt>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;RemoteCreation&quot;</span><span class="o">,</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">load</span><span class="o">.</span><span class="n">getConfig</span><span class="o">(</span><span class="s">&quot;remotecreation&quot;</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">localActor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">CreationActor</span><span class="o">],</span> <span class="s">&quot;creationActor&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">remoteActor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">AdvancedCalculatorActor</span><span class="o">],</span> <span class="s">&quot;advancedCalculator&quot;</span><span class="o">)</span>
+
+<span class="k">def</span> <span class="n">doSomething</span><span class="o">(</span><span class="n">op</span><span class="k">:</span> <span class="kt">MathOp</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">localActor</span> <span class="o">!</span> <span class="o">(</span><span class="n">remoteActor</span><span class="o">,</span> <span class="n">op</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>注意服务actor的名称与配置文件中的部署一致, 这个部署会将actor的创建透明的委托给远程结点.</p>
+</div>
+<div class="section" id="remote-events">
+<h3>远程调用中的事件</h3>
+<p>可以监听Akka远程调用中发生的事件，可以订阅/取消订阅这些事情，你只需要在 <tt class="docutils literal"><span class="pre">ActorSystem.eventStream</span></tt> 中注册下面所列出的事件监听器.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">要订阅任何与发送相关的事件，订阅 <tt class="docutils literal"><span class="pre">RemoteClientLifeCycleEvent</span></tt>
+要订阅任何与接收相关的事件，订阅 <tt class="docutils literal"><span class="pre">RemoteServerLifeCycleEvent</span></tt>
+要订阅任何远程调用事件，订阅 <tt class="docutils literal"><span class="pre">RemoteLifeCycleEvent</span></tt></p>
+</div>
+<p>要在发送连接中断时介入，监听 <tt class="docutils literal"><span class="pre">RemoteClientDisconnected</span></tt>，
+    这个事件持有所使用的传输层 (RemoteTransport) 以及断来连接的发送地址 (Address).</p>
+<p>要在发送连接建立时介入，监听 <tt class="docutils literal"><span class="pre">RemoteClientConnected</span></tt>
+    这个事件持有所使用的传输层 (RemoteTransport) 以及建立连接的发送地址 (Address).</p>
+<p>要在发送客户端启动时介入，监听 <tt class="docutils literal"><span class="pre">RemoteClientStarted</span></tt>
+    这个事件持有所使用的传输层 (RemoteTransport) 以及发送的对方地址 (Address).</p>
+<p>要在发送客户端终止时介入，监听 <tt class="docutils literal"><span class="pre">RemoteClientShutdown</span></tt>
+    这个事件持有所使用的传输层 (RemoteTransport) 以及发送的对方地址 (Address).</p>
+<p>要在发送消息失败时介入, 监听 <tt class="docutils literal"><span class="pre">RemoteClientWriteFailed</span></tt>
+    这个事件持有未发送成功的内容 (AnyRef) ，发送出错的原因 (Throwable),
+所使用的传输层 (RemoteTransport) 以及希望发送到的目标地址 (Address).</p>
+<p>对于一般的发送相关的无法归到以上类别的错误，可以监听 <tt class="docutils literal"><span class="pre">RemoteClientError</span></tt>,
+这个事件持有出错原因 (Throwable), 所使用的传输层 (RemoteTransport) 以及发送地址 (Address).</p>
+<p>要在接收服务器启动（通常只有一次）时介入，监听 <tt class="docutils literal"><span class="pre">RemoteServerStarted</span></tt>
+这个事件持有将使用的传输层 (RemoteTransport).</p>
+<p>要在接收服务器终止时（通常只有一次）介入，监听 <tt class="docutils literal"><span class="pre">RemoteServerShutdown</span></tt>
+这个事件持有所使用的传输层 (RemoteTransport).</p>
+<p>要在输入连接建立时介入，监听 <tt class="docutils literal"><span class="pre">RemoteServerClientConnected</span></tt>
+    这个事件持有所使用传输层 (RemoteTransport) 以及可能有所建立的连接地址 (Option[Address]).</p>
+<p>要在输入连接断开时介入，监听 <tt class="docutils literal"><span class="pre">RemoteServerClientDisconnected</span></tt>
+    这个事件持有所使用的传输层 (RemoteTransport) 以及可能有所断开的连接地址 (Option[Address]).</p>
+<p>要在远程客户端关闭时介入，监听 <tt class="docutils literal"><span class="pre">RemoteServerClientClosed</span></tt>
+    这个事件持有所使用的传输层 (RemoteTransport) 以及可能有所关闭的远程客户端的地址 (Option[Address]).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

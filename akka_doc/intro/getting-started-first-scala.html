@@ -1,0 +1,670 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>入门指南 (Scala): 第一章 &mdash; Akka文档</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Introduction" href="index.html" />
+    <link rel="next" title="Getting Started Tutorial (Java): First Chapter" href="getting-started-first-java.html" />
+    <link rel="prev" title="Getting Started" href="getting-started.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">入门指南 (Scala): 第一章</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="getting-started-first-java.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html">入门指南 (Java): 第一章</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="getting-started.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html">入门</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="getting-started-tutorial-scala-first-chapter">
+<span id="getting-started-first-scala"></span><h1>入门指南 (Scala): 第一章</h1>
+<div class="section" id="introduction">
+<h2>序言</h2>
+<p>欢迎来到第一个使用Akka和Scala的指南。我们假设你已经知道Akka和Scala是什么，现在需要了解开始第一个项目的步骤。</p>
+<p>本指南有两种方式:</p>
+<ul class="simple">
+<li>创建一个独立项目，从命令行运行</li>
+<li>创建SBT项目，在SBT中运行</li>
+</ul>
+<p>因为这两种方式非常相像，我们都会进行讲解。</p>
+<p>我们要创建的示例应用是使用actor来计算PI的值。计算PI是一项CPU密集的操作，我们将使用Akka Actor来编写一个可以垂直扩展到多个处理器核上的并发解决方案。在将来的指南中，这个示例应用将被扩展国使用Akka远程Actor来在水平到集群中的多台机器上。</p>
+<p>我们所使用的算法叫&#8220;embarrassingly parallel&#8221; 意思是每个子任务是独立完成的，与其它子任务无关。这个算法可以高度并行化，所以非常适合使用actor模型。</p>
+<p>以下是我们所使用的算法的公式：</p>
+<img alt="../_images/pi-formula.png" src="../_images/pi-formula.png" tppabs="http://www.gtan.com/akka_doc/_images/pi-formula.png" />
+<p>在这个特定的算法中，有一个主actor将序列分割成段并发送给工作actor来进行计算。当工作actor完成自己的序列段的计算后将结果传给主actor，由主actor进行汇总。</p>
+<div class="section" id="tutorial-source-code">
+<h3>源码</h3>
+<p>如果你不想把源码用键盘敲一遍而且/或不想创建SBT项目，你可以从Akka GitHub仓库中下载整个指南。它的位置在
+<tt class="docutils literal"><span class="pre">akka-tutorials/akka-tutorial-first</span></tt> 模块. 你也可以到
+<a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/tree/master/akka-tutorials/akka-tutorial-first  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/tree/master/akka-tutorials/akka-tutorial-first'" tppabs="https://github.com/akka/akka/tree/master/akka-tutorials/akka-tutorial-first">这里</a>在线浏览。实际的代码在 <a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/blob/master/akka-tutorials/akka-tutorial-first/src/main/scala/akka/tutorial/first/scala/Pi.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/blob/master/akka-tutorials/akka-tutorial-first/src/main/scala/akka/tutorial/first/scala/Pi.scala'" tppabs="https://github.com/akka/akka/blob/master/akka-tutorials/akka-tutorial-first/src/main/scala/akka/tutorial/first/scala/Pi.scala">这里</a>。</p>
+<p>要使用Git下载代码运行下面的命令：</p>
+<p> Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">akka</span><span class="o">/</span><span class="n">akka</span><span class="o">.</span><span class="n">git</span>
+<span class="n">$</span> <span class="n">cd</span> <span class="n">akka</span><span class="o">/</span><span class="n">akka</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">akka</span><span class="o">-</span><span class="n">tutorial</span><span class="o">-</span><span class="n">first</span>
+</pre></div>
+</div>
+<p> Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">&gt;</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="o">://</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">akka</span><span class="o">/</span><span class="n">akka</span><span class="o">.</span><span class="n">git</span>
+<span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="n">tutorials</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="n">tutorial</span><span class="o">-</span><span class="n">first</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>准备工作</h2>
+<p>本指南假设你安装了Java 1.6或更高版本并且 <tt class="docutils literal"><span class="pre">java</span></tt> 命令在你的 <tt class="docutils literal"><span class="pre">PATH</span></tt>上. 你还需要知道如何在shell(ZSH, Bash, DOS 等等.)中运行命令，需要一个文本编辑器或IDE来输入Scala代码。</p>
+<p>你必须保证 <tt class="docutils literal"><span class="pre">$JAVA_HOME</span></tt> 环境变量被正确设置为Java安装位置的根目录，还必须保证
+<tt class="docutils literal"><span class="pre">$JAVA_HOME/bin</span></tt> 在你的 <tt class="docutils literal"><span class="pre">PATH</span></tt>上。</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">export</span> <span class="nc">JAVA_HOME</span><span class="o">=..</span><span class="n">root</span> <span class="n">of</span> <span class="nc">Java</span> <span class="n">distribution</span><span class="o">..</span>
+<span class="n">$</span> <span class="n">export</span> <span class="nc">PATH</span><span class="o">=</span><span class="nc">$PATH</span><span class="k">:</span><span class="kt">$JAVA_HOME/bin</span>
+</pre></div>
+</div>
+<p>检测 <tt class="docutils literal"><span class="pre">java</span></tt> 正确安装:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+<span class="n">java</span> <span class="n">version</span> <span class="s">&quot;1.6.0_24&quot;</span>
+<span class="nc">Java</span><span class="o">(</span><span class="nc">TM</span><span class="o">)</span> <span class="nc">SE</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="n">_24</span><span class="o">-</span><span class="n">b07</span><span class="o">-</span><span class="mi">334</span><span class="o">-</span><span class="mi">10</span><span class="n">M3326</span><span class="o">)</span>
+<span class="nc">Java</span> <span class="nc">HotSpot</span><span class="o">(</span><span class="nc">TM</span><span class="o">)</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nc">VM</span> <span class="o">(</span><span class="n">build</span> <span class="mf">19.1</span><span class="o">-</span><span class="n">b02</span><span class="o">-</span><span class="mi">334</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+</pre></div>
+</div>
+<p> Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">&gt;</span> <span class="n">set</span> <span class="nc">JAVA_HOME</span><span class="o">=..</span><span class="n">root</span> <span class="n">of</span> <span class="nc">Java</span> <span class="n">distribution</span><span class="o">..</span>
+<span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">&gt;</span> <span class="n">set</span> <span class="nc">PATH</span><span class="o">=%</span><span class="nc">PATH</span><span class="o">%;%</span><span class="nc">JAVA_HOME</span><span class="o">%/</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>检测 <tt class="docutils literal"><span class="pre">java</span></tt> 正确安装:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">&gt;</span> <span class="n">java</span> <span class="o">-</span><span class="n">version</span>
+<span class="n">java</span> <span class="n">version</span> <span class="s">&quot;1.6.0_24&quot;</span>
+<span class="nc">Java</span><span class="o">(</span><span class="nc">TM</span><span class="o">)</span> <span class="nc">SE</span> <span class="nc">Runtime</span> <span class="nc">Environment</span> <span class="o">(</span><span class="n">build</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="n">_24</span><span class="o">-</span><span class="n">b07</span><span class="o">-</span><span class="mi">334</span><span class="o">-</span><span class="mi">10</span><span class="n">M3326</span><span class="o">)</span>
+<span class="nc">Java</span> <span class="nc">HotSpot</span><span class="o">(</span><span class="nc">TM</span><span class="o">)</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nc">VM</span> <span class="o">(</span><span class="n">build</span> <span class="mf">19.1</span><span class="o">-</span><span class="n">b02</span><span class="o">-</span><span class="mi">334</span><span class="o">,</span> <span class="n">mixed</span> <span class="n">mode</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="downloading-and-installing-akka">
+<h2>下载安装 Akka</h2>
+<p>要从命令行编译和运行本指南示例，需要下载Akka。如果你希望用SBT来编译和运行它，建议跳过这一部分直接看下一节。</p>
+<p>从 <a class="reference external" href="javascript:if(confirm('http://akka.io/downloads/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads/'" tppabs="http://akka.io/downloads/">http://akka.io/downloads/</a> 下载 <tt class="docutils literal"><span class="pre">akka-2.0.zip</span></tt> 发布包，它包含本指南所需的全部模块。下载完成后，将发布包解压至安装目录。我的安装目录下
+<tt class="docutils literal"><span class="pre">/Users/jboner/tools/</span></tt>。</p>
+<p>要正确安装Akka，需要再做一件事：设置
+<tt class="docutils literal"><span class="pre">AKKA_HOME</span></tt> 环境变量到安装目录的根. 
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">cd</span> <span class="o">/</span><span class="nc">Users</span><span class="o">/</span><span class="n">jboner</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span>
+<span class="n">$</span> <span class="n">export</span> <span class="nc">AKKA_HOME</span><span class="o">=</span><span class="n">`pwd`</span>
+<span class="n">$</span> <span class="n">echo</span> <span class="nc">$AKKA_HOME</span>
+<span class="o">/</span><span class="nc">Users</span><span class="o">/</span><span class="n">jboner</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+<p>Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span>
+<span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">set</span> <span class="nc">AKKA_HOME</span><span class="o">=%</span><span class="n">cd</span><span class="o">%</span>
+<span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">echo</span> <span class="o">%</span><span class="nc">AKKA_HOME</span><span class="o">%</span>
+<span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+<p>安装路径的内容如下：</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">ls</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">bin</span>
+<span class="n">config</span>
+<span class="n">deploy</span>
+<span class="n">doc</span>
+<span class="n">lib</span>
+<span class="n">src</span>
+</pre></div>
+</div>
+<p> Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">dir</span>
+<span class="n">bin</span>
+<span class="n">config</span>
+<span class="n">deploy</span>
+<span class="n">doc</span>
+<span class="n">lib</span>
+<span class="n">src</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li> <tt class="docutils literal"><span class="pre">bin</span></tt> 目录中是用来启动Akka微内核的脚本。</li>
+<li>In the <tt class="docutils literal"><span class="pre">config</span></tt> 目录中是Akka配置文件。</li>
+<li>In the <tt class="docutils literal"><span class="pre">deploy</span></tt> 目录用来放置随微内核一起运行的应用。</li>
+<li>In the <tt class="docutils literal"><span class="pre">doc</span></tt> 目录中是文档、API的jar包。</li>
+<li>In the <tt class="docutils literal"><span class="pre">lib</span></tt> 目录中是Scala和Akka的jar包。</li>
+<li>In the <tt class="docutils literal"><span class="pre">src</span></tt> 目录中是Akka源码jar包。</li>
+</ul>
+<p>本指南所需要的唯一一个jar包 (除了
+<tt class="docutils literal"><span class="pre">scala-library.jar</span></tt> 以外) 是 <tt class="docutils literal"><span class="pre">lib/akka</span></tt> 目录中的 <tt class="docutils literal"><span class="pre">akka-actor-2.0.jar</span></tt>. 这个jar包没有外部依赖，有了它我们就可以编写一个使用actor的系统。</p>
+<p>Akka模块化做得很好，包含有实现不同功能的各个jar包，其模块包括:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">akka-actor</span></tt> &#8211; Actor</li>
+<li><tt class="docutils literal"><span class="pre">akka-remote</span></tt> &#8211; 远程 Actor</li>
+<li><tt class="docutils literal"><span class="pre">akka-slf4j</span></tt> &#8211; SLF4J 事件处理监听器</li>
+<li><tt class="docutils literal"><span class="pre">akka-testkit</span></tt> &#8211; 测试actor的工具包</li>
+<li><tt class="docutils literal"><span class="pre">akka-kernel</span></tt> &#8211; 运行一个基础的最小应用服务器的微内核</li>
+<li><tt class="docutils literal"><span class="pre">akka-durable-mailboxes</span></tt> &#8211; 持久邮箱: 基于文件, MongoDB, Redis, Zookeeper</li>
+<li><tt class="docutils literal"><span class="pre">akka-amqp</span></tt> &#8211; AMQP 集成</li>
+</ul>
+</div>
+<div class="section" id="downloading-and-installing-scala">
+<h2>下载安装 Scala</h2>
+<p>要从命令行编译和运行本指南示例，需要安装Scala发布包。如果你要使用SBT，在SBT中编译和运行，可以跳过这一部分直接进入下一节。</p>
+<p>可以从 <a class="reference external" href="javascript:if(confirm('http://www.scala-lang.org/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.scala-lang.org/downloads'" tppabs="http://www.scala-lang.org/downloads">http://www.scala-lang.org/downloads</a>下载Scala. 在那里下载 Scala 2.9.1 版本. 如果你选择的是 <tt class="docutils literal"><span class="pre">tgz</span></tt> 或 <tt class="docutils literal"><span class="pre">zip</span></tt>
+包则需要进行解压。如果选择的是IzPack安装程序，只需要双击它然后按照指示操作。</p>
+<p>还必须保证 <tt class="docutils literal"><span class="pre">scala-2.9.1/bin</span></tt> (scala-2.9.1是你的Scala安装目录) 在你的 <tt class="docutils literal"><span class="pre">PATH</span></tt>上。</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><pre>$ export PATH=$PATH:scala-2.9.1/bin</pre>
+</div>
+<p>Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">set</span> <span class="nc">PATH</span><span class="o">=%</span><span class="nc">PATH</span><span class="o">%;</span><span class="n">scala</span><span class="o">-</span><span class="mf">2.9</span><span class="o">.</span><span class="mi">1</span><span class="o">\</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>你可以运行scala命令来测试你的安装是否正确。</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">scala</span> <span class="o">-</span><span class="n">version</span>
+<span class="nc">Scala</span> <span class="n">code</span> <span class="n">runner</span> <span class="n">version</span> <span class="mf">2.9</span><span class="o">.</span><span class="mf">1.f</span><span class="n">inal</span> <span class="o">--</span> <span class="nc">Copyright</span> <span class="mi">2002</span><span class="o">-</span><span class="mi">2011</span><span class="o">,</span> <span class="nc">LAMP</span><span class="o">/</span><span class="nc">EPFL</span>
+</pre></div>
+</div>
+<p> Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">scala</span> <span class="o">-</span><span class="n">version</span>
+<span class="nc">Scala</span> <span class="n">code</span> <span class="n">runner</span> <span class="n">version</span> <span class="mf">2.9</span><span class="o">.</span><span class="mf">1.f</span><span class="n">inal</span> <span class="o">--</span> <span class="nc">Copyright</span> <span class="mi">2002</span><span class="o">-</span><span class="mi">2011</span><span class="o">,</span> <span class="nc">LAMP</span><span class="o">/</span><span class="nc">EPFL</span>
+</pre></div>
+</div>
+<p>看来一切顺利. 最后让我们创建一个源码文件 <tt class="docutils literal"><span class="pre">Pi.scala</span></tt> 并将它放在Akka发布版本的根目录下的 <tt class="docutils literal"><span class="pre">tutorial</span></tt>
+目录 (如果这个目录不存在你需要创建它)。</p>
+<p>有一些工具要求你设置 <tt class="docutils literal"><span class="pre">SCALA_HOME</span></tt> 环境变量为Scala发布包的根目录，不过Akka并没有这一要求。</p>
+</div>
+<div class="section" id="downloading-and-installing-sbt">
+<span id="getting-started-first-scala-download-sbt"></span><h2>下载安装SBT</h2>
+<p>SBT， Simple Build Tool的简称， 是用Scala语言编写的优秀的build工具。 它使用Scala语言来编写build脚本，功能非常强大。它拥有一个插件体系，已经有很多插件可供使用，我们很快就会用到它们。SBT是用来build用Scala编写的软件的推荐方法，而且可能是学习本指南的最简单的方法。如果你决定使用SBT，请按下面的指示操作，否则可以跳过这一部分和下一部分内容。</p>
+<p>要安装SBT并创建本指南的项目，最简单的方法见 <a class="reference external" href="javascript:if(confirm('https://github.com/harrah/xsbt/wiki/Setup  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/harrah/xsbt/wiki/Setup'" tppabs="https://github.com/harrah/xsbt/wiki/Setup">https://github.com/harrah/xsbt/wiki/Setup</a>。</p>
+<p>现在我们需要创建我们的第一个Akka项目，你可以手动向build脚本中添加依赖，不过更简单的方法是使用下一部分中介绍的Akka SBT插件。</p>
+</div>
+<div class="section" id="creating-an-akka-sbt-project">
+<h2>创建Akka SBT项目</h2>
+<p>如果你还没做过，那么现在就开始创建本指南所讲的SBT项目，所要做的是在你希望创建项目的目录下添加一个 <tt class="docutils literal"><span class="pre">build.sbt</span></tt> 文件:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">name</span> <span class="o">:=</span> <span class="s">&quot;My Project&quot;</span>
+
+<span class="n">version</span> <span class="o">:=</span> <span class="s">&quot;1.0&quot;</span>
+
+<span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">&quot;2.9.1&quot;</span>
+
+<span class="n">resolvers</span> <span class="o">+=</span> <span class="s">&quot;Typesafe Repository&quot;</span> <span class="n">at</span> <span class="s">&quot;http://repo.typesafe.com/typesafe/releases/&quot;</span>
+
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.typesafe.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka-actor&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+<p>再创建一个名为 <tt class="docutils literal"><span class="pre">src/main/scala</span></tt> 的目录来存放源码.</p>
+<p>虽然本指南并不需要，但是你可能愿意添加除了 <tt class="docutils literal"><span class="pre">akka-actor</span></tt> 外的其它Akka模块, 这些是添加在 <tt class="docutils literal"><span class="pre">build.sbt</span></tt> 的 <tt class="docutils literal"><span class="pre">libraryDependencies</span></tt> 部分。 注意其中的每一项之间必须有一个空行。下面是一个添加 <tt class="docutils literal"><span class="pre">akka-remote</span></tt>的例子：</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.typesafe.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka-actor&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0&quot;</span>
+
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.typesafe.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka-remote&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0&quot;</span>
+</pre></div>
+</div>
+<p>好，现在我们都弄好了。</p>
+<p>SBT 自身有一堆依赖，不过我们的项目只需要其中一个： <tt class="docutils literal"><span class="pre">akka-actor-2.0.jar</span></tt>. SBT 会下载它。</p>
+</div>
+<div class="section" id="start-writing-the-code">
+<h2>开始编写代码</h2>
+<p>终于可以开始写代码了。</p>
+<p>我们先创建 <tt class="docutils literal"><span class="pre">Pi.scala</span></tt> 文件并在文件顶部添加以下这些 import:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor._</span>
+<span class="k">import</span> <span class="nn">akka.routing.RoundRobinRouter</span>
+<span class="k">import</span> <span class="nn">akka.util.Duration</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+</pre></div>
+</div>
+<p>如果你使用SBT，那么将 Pi.scala 放在
+<tt class="docutils literal"><span class="pre">src/main/scala</span></tt> 目录下.</p>
+<p>如果你使用命令行，那么可以将它放在随便哪儿。我是在Akka安装目录下创建了一个名为 <tt class="docutils literal"><span class="pre">tutorial</span></tt> 的目录, 也就是 <tt class="docutils literal"><span class="pre">$AKKA_HOME/tutorial/Pi.scala</span></tt>。</p>
+</div>
+<div class="section" id="creating-the-messages">
+<h2>创建消息</h2>
+<p>我们要做的设计是由一个 <tt class="docutils literal"><span class="pre">主</span></tt> actor来启动整个计算过程，创建一组 <tt class="docutils literal"><span class="pre">工作</span></tt> actor. 整个工作会被分割成具体的小段, 各小段会以round-robin的方式发送到不同的工作 actor. 主actor等待所有的工作actor完全各自的工作并将其回送的结果进行汇总。当计算完成以后，主actor将结果发送给 <tt class="docutils literal"><span class="pre">监听器</span></tt> acotr, 由它来输出结果。</p>
+<p>在这个基础上, 现在让我们创建在这个系统中流动的消息。我们需要4种不同的消息：</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Calculate</span></tt> &#8211; 发送给 <tt class="docutils literal"><span class="pre">主</span></tt> actor 来启动计算。</li>
+<li><tt class="docutils literal"><span class="pre">Work</span></tt> &#8211; 从 <tt class="docutils literal"><span class="pre">主</span></tt> actor 发送给各 <tt class="docutils literal"><span class="pre">工作</span></tt> actor，包含工作分配的内容。</li>
+<li><tt class="docutils literal"><span class="pre">Result</span></tt> &#8211; 从 <tt class="docutils literal"><span class="pre">工作</span></tt> actors 发送给 <tt class="docutils literal"><span class="pre">主</span></tt> actor，包含工作actor的计算结果。</li>
+<li><tt class="docutils literal"><span class="pre">PiApproximation</span></tt> &#8211; 从 <tt class="docutils literal"><span class="pre">主</span></tt> actor发送给
+<tt class="docutils literal"><span class="pre">监听器</span></tt> actor，包含pi的最终计算结果和整个计算耗费的时间。</li>
+</ul>
+<p>发送给actor的消息应该永远是不可变的，以避免共享可变状态。 在scala里我们有 &#8216;case classes&#8217; 来构造完美的消息。现在让我们用case class创建3种消息。我们还为消息们创建一个通用的基础trait(定义为<tt class="docutils literal"><span class="pre">sealed</span></tt>以防止在我们不可控的地方创建消息)：</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">PiMessage</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Calculate</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Work</span><span class="o">(</span><span class="n">start</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Result</span><span class="o">(</span><span class="n">value</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">duration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-worker">
+<h2>创建工作 actor</h2>
+<p>现在我们来创建工作 actor。 方法是混入 <tt class="docutils literal"><span class="pre">Actor</span></tt>
+trait 并定义其中的 <tt class="docutils literal"><span class="pre">receive</span></tt> 方法. <tt class="docutils literal"><span class="pre">receive</span></tt> 方法定义我们的消息处理器。我们让它能够处理 <tt class="docutils literal"><span class="pre">Work</span></tt> 消息，所以添加一个针对这种消息的处理器:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Worker</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+
+  <span class="c1">// calculatePiFor ...</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Work</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">sender</span> <span class="o">!</span> <span class="nc">Result</span><span class="o">(</span><span class="n">calculatePiFor</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">))</span> <span class="c1">// perform the work</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>可以看到我们现在创建了一个 <tt class="docutils literal"><span class="pre">Actor</span></tt> 和一个 <tt class="docutils literal"><span class="pre">receive</span></tt> 方法作为 <tt class="docutils literal"><span class="pre">Work</span></tt> 消息的处理器. 在这个处理器中我们调用
+<tt class="docutils literal"><span class="pre">calculatePiFor(..)</span></tt> 方法, 将结果包在 <tt class="docutils literal"><span class="pre">Result</span></tt> 消息里并使用<tt class="docutils literal"><span class="pre">sender</span></tt>异步发送回消息的原始发送者。
+在Akka里，sender引用是与消息一起隐式发送的，这样接收者可以随时回复或将sender引用保存起来以备将来使用。</p>
+<p>现在在我们的 <tt class="docutils literal"><span class="pre">Worker</span></tt> actor 中唯一缺少的就是实现
+<tt class="docutils literal"><span class="pre">calculatePiFor(..)</span></tt> 方法。 虽然在Scala里我们可以有很多方法来实现这个算法，在这个入门指南中我们选择了一种命令式的风格，使用了for写法和一个累加器：</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">def</span> <span class="n">calculatePiFor</span><span class="o">(</span><span class="n">start</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="k">var</span> <span class="n">acc</span> <span class="k">=</span> <span class="mf">0.0</span>
+  <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="n">start</span> <span class="n">until</span> <span class="o">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">nrOfElements</span><span class="o">))</span>
+    <span class="n">acc</span> <span class="o">+=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="o">(</span><span class="mi">1</span> <span class="o">-</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="n">acc</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-master">
+<h2>创建主actor</h2>
+<p>主actor会稍微复杂一些。 在它的构造方法里我们创建一个round-robin的路由器来简化将工作平均地分配给工作actor们的过程，先做这个:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">workerRouter</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span>
+  <span class="nc">Props</span><span class="o">[</span><span class="kt">Worker</span><span class="o">].</span><span class="n">withRouter</span><span class="o">(</span><span class="nc">RoundRobinRouter</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="o">)),</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;workerRouter&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>现在我们有了一个路由，可以在一个单一的抽象中表达所有的工作actor。现在让我们创建主actor. 传递给它三个整数变量：</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">nrOfWorkers</span></tt> &#8211; 定义我们会启动多少工作actor</li>
+<li><tt class="docutils literal"><span class="pre">nrOfMessages</span></tt> &#8211; 定义会有多少整数段发送给工作actor</li>
+<li><tt class="docutils literal"><span class="pre">nrOfElements</span></tt> &#8211; 定义发送给工作actor的每个整数段的大小</li>
+</ul>
+<p>下面是主actor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Master</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">listener</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">)</span>
+  <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+
+  <span class="k">var</span> <span class="n">pi</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="k">_</span>
+  <span class="k">var</span> <span class="n">nrOfResults</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="k">_</span>
+  <span class="k">val</span> <span class="n">start</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span>
+
+  <span class="k">val</span> <span class="n">workerRouter</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span>
+    <span class="nc">Props</span><span class="o">[</span><span class="kt">Worker</span><span class="o">].</span><span class="n">withRouter</span><span class="o">(</span><span class="nc">RoundRobinRouter</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="o">)),</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;workerRouter&quot;</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="c1">// handle messages ...</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>有一些需要进一步解释的事。</p>
+<p>注意我们向 <tt class="docutils literal"><span class="pre">主</span></tt> actor传进了一个 <tt class="docutils literal"><span class="pre">ActorRef</span></tt> . 这是用来向外界报告最终的计算结果。</p>
+<p>但是还没完。我们还缺少 <tt class="docutils literal"><span class="pre">主</span></tt>
+actor的消息处理器. 这个处理器需要能够对两种消息进行响应：</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Calculate</span></tt> &#8211; 用来启动计算过程</li>
+<li><tt class="docutils literal"><span class="pre">Result</span></tt> &#8211; 用来汇总不同的计算结果</li>
+</ul>
+<p> <tt class="docutils literal"><span class="pre">Calculate</span></tt> 处理器会通过其路由器向所有的 <tt class="docutils literal"><span class="pre">工作</span></tt> actor 发送工作内容.</p>
+<p> <tt class="docutils literal"><span class="pre">Result</span></tt> 处理器从 <tt class="docutils literal"><span class="pre">Result</span></tt> 消息中获取值并汇总到我们的 <tt class="docutils literal"><span class="pre">pi</span></tt> 成员变量中. 我们还会记录已经接收的结果数据的数量，它是否与发送出去的任务数量一致
+。<tt class="docutils literal"><span class="pre">主</span></tt> actor 发现计算完成了，会将最终结果发送给 <tt class="docutils literal"><span class="pre">监听者</span></tt>. 当整个过程都完成了，它会调用 <tt class="docutils literal"><span class="pre">context.stop(self)</span></tt> 方法来终止自己 <em>和</em> 它所监管的所有actor.
+在本例中，主actor监管一个actor，我们的路由器，而路由器监管着所有 <tt class="docutils literal"><span class="pre">nrOfWorkers</span></tt> 个工作actors.
+所有的actor都会在其监管者的<tt class="docutils literal"><span class="pre">stop</span></tt>方法被调用时自动终止，并会传递给所有它监管的子actor。</p>
+<p>让我们在代码中实现这些:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Calculate</span> <span class="k">⇒</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="mi">0</span> <span class="n">until</span> <span class="n">nrOfMessages</span><span class="o">)</span> <span class="n">workerRouter</span> <span class="o">!</span> <span class="nc">Work</span><span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">nrOfElements</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Result</span><span class="o">(</span><span class="n">value</span><span class="o">)</span> <span class="k">⇒</span>
+    <span class="n">pi</span> <span class="o">+=</span> <span class="n">value</span>
+    <span class="n">nrOfResults</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">nrOfResults</span> <span class="o">==</span> <span class="n">nrOfMessages</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Send the result to the listener</span>
+      <span class="n">listener</span> <span class="o">!</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span> <span class="k">=</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span> <span class="o">-</span> <span class="n">start</span><span class="o">).</span><span class="n">millis</span><span class="o">)</span>
+      <span class="c1">// Stops this actor and all its supervised children</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">stop</span><span class="o">(</span><span class="n">self</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-result-listener">
+<h2>创建计算结果监听者</h2>
+<p>监听者很简单，当它接收到从 <tt class="docutils literal"><span class="pre">Master</span></tt>发来的<tt class="docutils literal"><span class="pre">PiApproximation</span></tt> ，就将结果打印出来并关闭整个 <tt class="docutils literal"><span class="pre">Actor系统</span></tt>。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Listener</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">println</span><span class="o">(</span><span class="s">&quot;\n\tPi approximation: \t\t%s\n\tCalculation time: \t%s&quot;</span>
+        <span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span><span class="o">))</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">shutdown</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bootstrap-the-calculation">
+<h2>启动计算</h2>
+<p>现在只剩下实现启动和运行计算的执行者了。我们创建一个调用
+<tt class="docutils literal"><span class="pre">Pi</span></tt>的对象, 这里我们可以继承Scala中的 <tt class="docutils literal"><span class="pre">App</span></tt> trait, 这个trait使我们能够在命令行上直接运行这个应用.</p>
+<p> <tt class="docutils literal"><span class="pre">Pi</span></tt> 对象是我们的actor和消息的很好的容器。所以我们把它们都放在这儿。我们还创建一个 <tt class="docutils literal"><span class="pre">calculate</span></tt> 方法来启动 <tt class="docutils literal"><span class="pre">主</span></tt> actor 并等待它结束:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">object</span> <span class="nc">Pi</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+
+  <span class="n">calculate</span><span class="o">(</span><span class="n">nrOfWorkers</span> <span class="k">=</span> <span class="mi">4</span><span class="o">,</span> <span class="n">nrOfElements</span> <span class="k">=</span> <span class="mi">10000</span><span class="o">,</span> <span class="n">nrOfMessages</span> <span class="k">=</span> <span class="mi">10000</span><span class="o">)</span>
+
+  <span class="c1">// actors and messages ...</span>
+
+  <span class="k">def</span> <span class="n">calculate</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Create an Akka system</span>
+    <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;PiSystem&quot;</span><span class="o">)</span>
+
+    <span class="c1">// create the result listener, which will print the result and shutdown the system</span>
+    <span class="k">val</span> <span class="n">listener</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Listener</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;listener&quot;</span><span class="o">)</span>
+
+    <span class="c1">// create the master</span>
+    <span class="k">val</span> <span class="n">master</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Master</span><span class="o">(</span>
+      <span class="n">nrOfWorkers</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">,</span> <span class="n">listener</span><span class="o">)),</span>
+      <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;master&quot;</span><span class="o">)</span>
+
+    <span class="c1">// start the calculation</span>
+    <span class="n">master</span> <span class="o">!</span> <span class="nc">Calculate</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>以上的 <em>calculate</em> 方法创建一个 <tt class="docutils literal"><span class="pre">Actor系统</span></tt>，这是包括所有创建出的actor的 &#8220;上下文&#8221;。 如何在容器中创建actor的例子在calculate方法的 <em>&#8216;system.actorOf(...)&#8217;</em> 这一行。 这里我们创建两个顶级actor. 如果你是在一个actor上下文（i.e. 在一个创建其它actor的actor中），你应该使用
+<em>context.actorOf(...)</em>. 这在以上的主actor代码中有所体现。</p>
+<p>好了，终于完成了。</p>
+<p>但是在打包和运行之前，让我们看看完整的代码，包括package定义，import:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Copyright (C) 2009-2012 Typesafe Inc. &lt;http://www.typesafe.com&gt;</span>
+<span class="cm"> */</span>
+<span class="k">package</span> <span class="nn">akka.tutorial.first.scala</span>
+
+<span class="k">import</span> <span class="nn">akka.actor._</span>
+<span class="k">import</span> <span class="nn">akka.routing.RoundRobinRouter</span>
+<span class="k">import</span> <span class="nn">akka.util.Duration</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+<span class="k">object</span> <span class="nc">Pi</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+
+  <span class="n">calculate</span><span class="o">(</span><span class="n">nrOfWorkers</span> <span class="k">=</span> <span class="mi">4</span><span class="o">,</span> <span class="n">nrOfElements</span> <span class="k">=</span> <span class="mi">10000</span><span class="o">,</span> <span class="n">nrOfMessages</span> <span class="k">=</span> <span class="mi">10000</span><span class="o">)</span>
+
+  <span class="k">sealed</span> <span class="k">trait</span> <span class="nc">PiMessage</span>
+  <span class="k">case</span> <span class="k">object</span> <span class="nc">Calculate</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+  <span class="k">case</span> <span class="k">class</span> <span class="nc">Work</span><span class="o">(</span><span class="n">start</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+  <span class="k">case</span> <span class="k">class</span> <span class="nc">Result</span><span class="o">(</span><span class="n">value</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">PiMessage</span>
+  <span class="k">case</span> <span class="k">class</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">duration</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">)</span>
+
+  <span class="k">class</span> <span class="nc">Worker</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+
+    <span class="k">def</span> <span class="n">calculatePiFor</span><span class="o">(</span><span class="n">start</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">{</span>
+      <span class="k">var</span> <span class="n">acc</span> <span class="k">=</span> <span class="mf">0.0</span>
+      <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="n">start</span> <span class="n">until</span> <span class="o">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">nrOfElements</span><span class="o">))</span>
+        <span class="n">acc</span> <span class="o">+=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="o">(</span><span class="mi">1</span> <span class="o">-</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+      <span class="n">acc</span>
+    <span class="o">}</span>
+
+    <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Work</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">)</span> <span class="k">⇒</span>
+        <span class="n">sender</span> <span class="o">!</span> <span class="nc">Result</span><span class="o">(</span><span class="n">calculatePiFor</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">))</span> <span class="c1">// perform the work</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="k">class</span> <span class="nc">Master</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">listener</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">)</span>
+    <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+
+    <span class="k">var</span> <span class="n">pi</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="k">_</span>
+    <span class="k">var</span> <span class="n">nrOfResults</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="k">_</span>
+    <span class="k">val</span> <span class="n">start</span><span class="k">:</span> <span class="kt">Long</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span>
+
+    <span class="k">val</span> <span class="n">workerRouter</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span>
+      <span class="nc">Props</span><span class="o">[</span><span class="kt">Worker</span><span class="o">].</span><span class="n">withRouter</span><span class="o">(</span><span class="nc">RoundRobinRouter</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="o">)),</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;workerRouter&quot;</span><span class="o">)</span>
+
+    <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Calculate</span> <span class="k">⇒</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="mi">0</span> <span class="n">until</span> <span class="n">nrOfMessages</span><span class="o">)</span> <span class="n">workerRouter</span> <span class="o">!</span> <span class="nc">Work</span><span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">nrOfElements</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">)</span>
+      <span class="k">case</span> <span class="nc">Result</span><span class="o">(</span><span class="n">value</span><span class="o">)</span> <span class="k">⇒</span>
+        <span class="n">pi</span> <span class="o">+=</span> <span class="n">value</span>
+        <span class="n">nrOfResults</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nrOfResults</span> <span class="o">==</span> <span class="n">nrOfMessages</span><span class="o">)</span> <span class="o">{</span>
+          <span class="c1">// Send the result to the listener</span>
+          <span class="n">listener</span> <span class="o">!</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span> <span class="k">=</span> <span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span> <span class="o">-</span> <span class="n">start</span><span class="o">).</span><span class="n">millis</span><span class="o">)</span>
+          <span class="c1">// Stops this actor and all its supervised children</span>
+          <span class="n">context</span><span class="o">.</span><span class="n">stop</span><span class="o">(</span><span class="n">self</span><span class="o">)</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+
+  <span class="k">class</span> <span class="nc">Listener</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">PiApproximation</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span><span class="o">)</span> <span class="k">⇒</span>
+        <span class="n">println</span><span class="o">(</span><span class="s">&quot;\n\tPi approximation: \t\t%s\n\tCalculation time: \t%s&quot;</span>
+          <span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">pi</span><span class="o">,</span> <span class="n">duration</span><span class="o">))</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">shutdown</span><span class="o">()</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+
+  <span class="k">def</span> <span class="n">calculate</span><span class="o">(</span><span class="n">nrOfWorkers</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Create an Akka system</span>
+    <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;PiSystem&quot;</span><span class="o">)</span>
+
+    <span class="c1">// create the result listener, which will print the result and shutdown the system</span>
+    <span class="k">val</span> <span class="n">listener</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Listener</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;listener&quot;</span><span class="o">)</span>
+
+    <span class="c1">// create the master</span>
+    <span class="k">val</span> <span class="n">master</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Master</span><span class="o">(</span>
+      <span class="n">nrOfWorkers</span><span class="o">,</span> <span class="n">nrOfMessages</span><span class="o">,</span> <span class="n">nrOfElements</span><span class="o">,</span> <span class="n">listener</span><span class="o">)),</span>
+      <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;master&quot;</span><span class="o">)</span>
+
+    <span class="c1">// start the calculation</span>
+    <span class="n">master</span> <span class="o">!</span> <span class="nc">Calculate</span>
+
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-it-as-a-command-line-application">
+<h2>作为命令行程序运行</h2>
+<p>如果你是手动输入（或者拷贝粘贴）指南中的代码到
+<tt class="docutils literal"><span class="pre">$AKKA_HOME/akka-tutorials/akka-tutorial-first/src/main/scala/akka/tutorial/first/scala/Pi.scala</span></tt> 那么现在轮到你了.
+开启一个shell，并进入akka安装 (<tt class="docutils literal"><span class="pre">cd</span> <span class="pre">$AKKA_HOME</span></tt>).</p>
+<p>首先我们需要编译源码文件。使用Scala编译器
+<tt class="docutils literal"><span class="pre">scalac</span></tt>. 我们的应用依赖于 <tt class="docutils literal"><span class="pre">akka-actor-2.0.jar</span></tt> JAR包
+, 所以编译时将它加入到编译器的classpath中.</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">scalac</span> <span class="o">-</span><span class="n">cp</span> <span class="n">lib</span><span class="o">/</span><span class="n">akka</span><span class="o">/</span><span class="n">akka</span><span class="o">-</span><span class="n">actor</span><span class="o">-</span><span class="mf">2.0</span><span class="o">.</span><span class="n">jar</span> <span class="nc">Pi</span><span class="o">.</span><span class="n">scala</span>
+</pre></div>
+</div>
+<p>Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">scalac</span> <span class="o">-</span><span class="n">cp</span> <span class="n">lib</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="n">actor</span><span class="o">-</span><span class="mf">2.0</span><span class="o">.</span><span class="n">jar</span> <span class="nc">Pi</span><span class="o">.</span><span class="n">scala</span>
+</pre></div>
+</div>
+<p>编译完就可以运行了。使用 <tt class="docutils literal"><span class="pre">java</span></tt> 来运行但是同样，我们要先将
+<tt class="docutils literal"><span class="pre">akka-actor-2.0.jar</span></tt> JAR 包加入到 classpath, 而这一次还需要添加Scala运行时库 <tt class="docutils literal"><span class="pre">scala-library.jar</span></tt> 和我们自己的代码编译出的class.</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><pre>$ java \
+    -cp lib/scala-library.jar:lib/akka/akka-actor-2.0.jar:. \
+    akka.tutorial.first.scala.Pi
+
+Pi approximation:   3.1415926435897883
+Calculation time:   359 millis</pre>
+</div>
+<p>Windows 系统:</p>
+<div class="highlight-scala"><pre>C:\Users\jboner\src\akka\akka-2.0&gt; java \
+    -cp lib/scala-library.jar;lib\akka\akka-actor-2.0.jar;. \
+    akka.tutorial.first.scala.Pi
+
+Pi approximation:   3.1415926435897883
+Calculation time:   359 millis</pre>
+</div>
+<p>Ok!它能跑了。</p>
+</div>
+<div class="section" id="run-it-inside-sbt">
+<h2>在SBT中运行</h2>
+<p>如果你使用SBT，那么可以直接在SBT中运行本程序。先进行编译：</p>
+<p>Linux/Unix/Mac 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">sbt</span>
+<span class="o">&gt;</span> <span class="n">compile</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Windows 系统:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">C</span><span class="o">:\</span><span class="nc">Users</span><span class="o">\</span><span class="n">jboner</span><span class="o">\</span><span class="n">src</span><span class="o">\</span><span class="n">akka</span><span class="o">\</span><span class="n">akka</span><span class="o">-</span><span class="mf">2.0</span><span class="o">&gt;</span> <span class="n">sbt</span>
+<span class="o">&gt;</span> <span class="n">compile</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>以上完成后直接在SBT中运行:</p>
+<div class="highlight-scala"><pre>&gt; run
+...
+Pi approximation:   3.1415926435897883
+Calculation time:   359 millis</pre>
+</div>
+<p>Ok!它能跑了。</p>
+</div>
+<div class="section" id="overriding-configuration-externally-optional">
+<h2>从外部修改配置 (可选)</h2>
+<p>示例项目的resources目录下包含一个 <tt class="docutils literal"><span class="pre">application.conf</span></tt>文件:</p>
+<div class="highlight-scala"><pre>akka.actor.deployment {
+  /master/workerRouter {
+    # 取消下面两行的注释来修改计算过程，使用10个工作actor，而不是4个:
+    #router = round-robin
+    #nr-of-instances = 10
+  }
+}
+</pre>
+</div>
+<p>如果你取消那两行的注释，你应该会看到性能上的变化，基本上应该是更好的性能（你可能需要增加代码中的消息数量来延长应用的运行时间）。需要提醒注意的是修改的配置只在给出了路由器类型的时候才有效，所以仅取消
+<tt class="docutils literal"><span class="pre">nr-of-instances</span></tt> 的注释将不起作用; 参阅 <a class="reference internal" href="../scala/routing.html#routing-scala" tppabs="http://www.gtan.com/akka_doc/scala/routing.html#routing-scala"><em>Routing (Scala)</em></a> 了解细节.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">确保 <tt class="docutils literal"><span class="pre">application.conf</span></tt> 在运行应用的classpath上。如果在SBT中运行，那么这条件应该已经满足了，否则你需要把包含该文件的目录加入到jvm的
+<tt class="docutils literal"><span class="pre">-classpath</span></tt> 参数.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>总结</h2>
+<p>我们已经学习了如何创建第一个Akka项目，使用Akka actor来扩展到多核cpu上（也称为垂直扩展），为cpu密集型计算进行加速。我们还学习了在命令行上或在SBT中编译和运行Akka项目的方法。</p>
+<p>如果你有一个多核的电脑，我建议你通过修改 <tt class="docutils literal"><span class="pre">nrOfWorkers</span></tt>来尝试不同数量的工作actor来观察性能上的改进。</p>
+<p>开发快乐 ！</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

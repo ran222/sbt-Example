@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ç¼–è¯‘ Akka &mdash; Akka æ–‡æ¡£</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Information for Developers" href="index.html" />
+    <link rel="next" title="Multi-JVM Testing" href="multi-jvm-testing.html" />
+    <link rel="prev" title="Information for Developers" href="index.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›žå¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">ç¼–è¯‘ Akka</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·þÎñÆ÷±¨¸æ¸ÃÎÄ¼þÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="multi-jvm-testing.html" tppabs="http://www.gtan.com/akka_doc/dev/multi-jvm-testing.html">å¤šJVM æµ‹è¯•</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="index.html" tppabs="http://www.gtan.com/akka_doc/dev/index.html">Information for Developers</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="building-akka">
+<span id="id1"></span><h1>ç¼–è¯‘ Akka</h1>
+<p>æœ¬é¡µä»‹ç»å¦‚ä½•ä»Žæœ€æ–°çš„æºç ç¼–è¯‘å’Œè¿è¡ŒAkka.</p>
+<div class="section" id="get-the-source-code">
+<h2>èŽ·å–æºç </h2>
+<p>Akka ä½¿ç”¨ <a class="reference external" href="javascript:if(confirm('http://git-scm.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://git-scm.com/'" tppabs="http://git-scm.com/">Git</a> å¹¶æ‰˜ç®¡åœ¨ <a class="reference external" href="javascript:if(confirm('http://github.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/'" tppabs="http://github.com/">Github</a>ä¸Š.</p>
+<p>é¦–å…ˆä½ å¿…é¡»åœ¨ä½ çš„æœºå™¨ä¸Šå®‰è£…æœ‰Git. ä»Ž <a class="reference external" href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">http://github.com/akka/akka</a>å…‹éš†æºç .</p>
+<p>ä¾‹å¦‚:</p>
+<div class="highlight-none"><div class="highlight"><pre>git clone git://github.com/akka/akka.git
+</pre></div>
+</div>
+<p>å¦‚æžœä»¥å‰å·²ç»å…‹éš†è¿‡æºç åº“ï¼Œåªéœ€è¦åš <tt class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></tt>:</p>
+<div class="highlight-none"><div class="highlight"><pre>git pull origin master
+</pre></div>
+</div>
+</div>
+<div class="section" id="sbt-simple-build-tool">
+<h2>sbt - Simple Build Tool</h2>
+<p>Akka ä½¿ç”¨ä¼˜ç§€çš„ <a class="reference external" href="javascript:if(confirm('https://github.com/harrah/xsbt  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/harrah/xsbt'" tppabs="https://github.com/harrah/xsbt">sbt</a> å·¥å…·. é¦–å…ˆä¸‹è½½å’Œå®‰è£…sbt. å‚è€ƒ
+<a class="reference external" href="javascript:if(confirm('https://github.com/harrah/xsbt/wiki/Setup  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/harrah/xsbt/wiki/Setup'" tppabs="https://github.com/harrah/xsbt/wiki/Setup">sbt setup</a> æ–‡æ¡£.</p>
+<p>ç”¨æ¥ç¼–è¯‘Akkaçš„sbtæŒ‡ä»¤éƒ½åœ¨ä¸‹é¢. è¦æ›´å¤šåœ°äº†è§£ sbtå¹¶å°†å®ƒç”¨äºŽè‡ªå·±çš„é¡¹ç›®ä¸€å®šè¦é˜…è¯»
+<a class="reference external" href="javascript:if(confirm('https://github.com/harrah/xsbt/wiki  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='https://github.com/harrah/xsbt/wiki'" tppabs="https://github.com/harrah/xsbt/wiki">sbt documentation</a>.</p>
+<p>Akka sbt ç¼–è¯‘æ–‡ä»¶ä½äºŽ <tt class="docutils literal"><span class="pre">project/AkkaBuild.scala</span></tt>.</p>
+</div>
+<div class="section" id="id2">
+<h2>ç¼–è¯‘ Akka</h2>
+<p>é¦–å…ˆç¡®å®šä½ å½“å‰åœ¨akkaä»£ç ç›®å½•ä¸‹:</p>
+<div class="highlight-none"><div class="highlight"><pre>cd akka
+</pre></div>
+</div>
+<div class="section" id="building">
+<h3>ç¼–è¯‘</h3>
+<p>è¦ç¼–è¯‘æ‰€æœ‰Akkaæ ¸å¿ƒæ¨¡å—ä½¿ç”¨ <tt class="docutils literal"><span class="pre">compile</span></tt> æŒ‡ä»¤:</p>
+<div class="highlight-none"><div class="highlight"><pre>sbt compile
+</pre></div>
+</div>
+<p>ç”¨<tt class="docutils literal"><span class="pre">test</span></tt> æŒ‡ä»¤è¿è¡Œæ‰€æœ‰çš„æµ‹è¯•:</p>
+<div class="highlight-none"><div class="highlight"><pre>sbt test
+</pre></div>
+</div>
+<p>å¦‚æžœç¼–è¯‘å’Œæµ‹è¯•éƒ½æˆåŠŸäº†ï¼Œä½ å·²ç»æ‹¥æœ‰äº†å¯ä»¥è¿è¡Œçš„æœ€æ–°Akkaå¼€å‘ç‰ˆæœ¬.</p>
+</div>
+<div class="section" id="parallel-execution">
+<h3>å¹¶è¡Œæ‰§è¡Œ</h3>
+<p>ç¼ºçœçŠ¶å†µä¸‹æµ‹è¯•æ˜¯é¡ºåºæ‰§è¡Œçš„ã€‚ä¹Ÿå¯ä»¥å¹¶è¡Œæ‰§è¡Œä»¥ç¼©çŸ­ç¼–è¯‘æ—¶é—´, å‰ææ˜¯ç¡¬ä»¶èƒ½å¤Ÿæä¾›è¶³å¤Ÿçš„å†…å­˜å’ŒCPUã€‚å°†ä¸‹é¢çš„ç³»ç»Ÿå±žæ€§åŠ å…¥sbtçš„å¯åŠ¨è„šæœ¬æ¥æ¿€æ´»å¹¶è¡Œæ‰§è¡Œ:</p>
+<div class="highlight-none"><div class="highlight"><pre>-Dakka.parallelExecution=true
+</pre></div>
+</div>
+</div>
+<div class="section" id="publish-to-local-ivy-repository">
+<h3>å‘å¸ƒåˆ°æœ¬åœ°Ivyåº“</h3>
+<p>å¦‚æžœä½ å¸Œæœ›å°†ç¼–è¯‘å‡ºæ¥çš„åŒ…éƒ¨ç½²åˆ°æœ¬åœ°Ivyåº“ï¼ˆä¾‹å¦‚ï¼Œä»Žå¦ä¸€ä¸ªsbté¡¹ç›®ä¸­ä½¿ç”¨å®ƒï¼‰ï¼Œä½¿ç”¨ <tt class="docutils literal"><span class="pre">publish-local</span></tt> æŒ‡ä»¤:</p>
+<div class="highlight-none"><div class="highlight"><pre>sbt publish-local
+</pre></div>
+</div>
+</div>
+<div class="section" id="sbt-interactive-mode">
+<h3>sbt äº¤äº’å¼æ¨¡å¼</h3>
+<p>æ³¨æ„åœ¨ä¸Šé¢çš„ä¾‹å­ä¸­æˆ‘ä»¬ä½¿ç”¨ <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">compile</span></tt> å’Œ
+    <tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">test</span></tt>
+è¿™äº›æŒ‡ä»¤, ä½†sbtè¿˜æœ‰ä¸€ç§äº¤äº’å¼æ¨¡å¼ã€‚å¦‚æžœä½ åªè¿è¡Œ <tt class="docutils literal"><span class="pre">sbt</span></tt> å°±å°†è¿›å…¥äº¤äº’å¼sbtæç¤ºï¼Œå¯ä»¥åœ¨é‡Œé¢ç›´æŽ¥è¾“å…¥æŒ‡ä»¤ã€‚
+    è¿™èŠ‚çœäº†æ¯æ¡æŒ‡ä»¤éƒ½å¯åŠ¨æ–°çš„JVMå®žä¾‹çš„æ—¶é—´ï¼Œä¼šæ›´åŠ å¿«é€Ÿå’Œæ–¹ä¾¿ã€‚</p>
+<p>ä¾‹å¦‚ï¼Œä¸Šä¾‹ä¸­ç¼–è¯‘AkkaForçš„è¿‡ç¨‹æ›´å¤šäººæ˜¯è¿™ä¹ˆåšçš„:</p>
+<div class="highlight-none"><div class="highlight"><pre>% sbt
+[info] Set current project to default (in build file:/.../akka/project/plugins/)
+[info] Set current project to akka (in build file:/.../akka/)
+&gt; compile
+...
+&gt; test
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="sbt-batch-mode">
+<h3>sbt æ‰¹å¤„ç†æ¨¡å¼</h3>
+<p>è¿˜å¯ä»¥å°†å¤šæ¡æŒ‡ä»¤ç»„åˆåˆ°ä¸€æ¬¡è¯·æ±‚ä¸­. ä¾‹å¦‚ï¼Œæµ‹è¯•å¹¶å°†Akkaå‘å¸ƒåˆ°æœ¬åœ°Ivyåº“ä¸­ï¼Œå¯ä»¥è¿™ä¹ˆåš:</p>
+<div class="highlight-none"><div class="highlight"><pre>sbt test publish-local
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dependencies">
+<span id="id3"></span><h2>ä¾èµ–</h2>
+<p>ä½ å¯ä»¥çœ‹çœ‹çš„
+<tt class="docutils literal"><span class="pre">sbt</span> <span class="pre">update</span></tt> æ—¶Ivyè§£å†³ä¾èµ–çš„ä¿¡æ¯ï¼Œ
+    å¹¶åœ¨ <tt class="docutils literal"><span class="pre">~/.ivy2/cache</span></tt> æ‰¾åˆ°ç›¸å…³çš„æ–‡ä»¶. ä¾‹å¦‚ï¼Œ
+<tt class="docutils literal"><span class="pre">~/.ivy2/cache/com.typesafe.akka-akka-remote-compile.xml</span></tt> æ–‡ä»¶åŒ…å«äº†
+    åœ¨ç¼–è¯‘akka-remoteæ¨¡å—æ—¶è§£å†³ä¾èµ–çš„ä¿¡æ¯ã€‚å¦‚æžœä½ åœ¨æµè§ˆå™¨ä¸­æ‰“å¼€è¿™ä¸ªæ–‡ä»¶ä½ ä¼šçœ‹åˆ°ä¸€ä¸ªä¾èµ–çš„å¯å¯¼èˆªè§†å›¾.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

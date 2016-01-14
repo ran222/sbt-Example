@@ -1,0 +1,395 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Logging (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Event Bus (Scala)" href="event-bus.html" />
+    <link rel="prev" title="Typed Actors (Scala)" href="typed-actors.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">日志 (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="event-bus.html" tppabs="http://www.gtan.com/akka_doc/scala/event-bus.html">事件总线 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="typed-actors.html" tppabs="http://www.gtan.com/akka_doc/scala/typed-actors.html">有类型 Actor (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="logging-scala">
+<span id="id1"></span><h1>日志 (Scala)</h1>
+<div class="section" id="how-to-log">
+<h2>如何记录日志</h2>
+<p>创建一个 <tt class="docutils literal"><span class="pre">LoggingAdapter</span></tt> 并使用它的 <tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt>, 或 <tt class="docutils literal"><span class="pre">debug</span></tt> 方法,
+如下例:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.event.Logging</span>
+
+<span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">,</span> <span class="k">this</span><span class="o">)</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">preStart</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="o">(</span><span class="s">&quot;Starting&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">preRestart</span><span class="o">(</span><span class="n">reason</span><span class="k">:</span> <span class="kt">Throwable</span><span class="o">,</span> <span class="n">message</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Any</span><span class="o">])</span> <span class="o">{</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="o">(</span><span class="n">reason</span><span class="o">,</span> <span class="s">&quot;Restarting due to [{}] when processing [{}]&quot;</span><span class="o">,</span>
+      <span class="n">reason</span><span class="o">.</span><span class="n">getMessage</span><span class="o">,</span> <span class="n">message</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;test&quot;</span> <span class="k">⇒</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;Received test&quot;</span><span class="o">)</span>
+    <span class="k">case</span> <span class="n">x</span>      <span class="k">⇒</span> <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="o">(</span><span class="s">&quot;Received unknown message: {}&quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>为了方便你可以向actor中混入 <tt class="docutils literal"><span class="pre">log</span></tt> 成员, 而不是象上例一下定义它.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="n">akka</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="nc">ActorLogging</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> <tt class="docutils literal"><span class="pre">Logging</span></tt> 的第二个参数是这个日志通道的源.
+这个源对象以下面的规则转换成字符串:</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果它是Actor或ActorRef，则使用它的路径</li>
+<li>如果是String，就使用它自己</li>
+<li>如果是类，则使用它的simpleName</li>
+<li>其它的类型，而且当前作用域中又没有隐式的
+<tt class="xref py py-class docutils literal"><span class="pre">LogSource[T]</span></tt> 实例则会导致编译错误.</li>
+</ul>
+</div></blockquote>
+<p>日志消息可以包含参数占位符 <tt class="docutils literal"><span class="pre">{}</span></tt>, 如果该日志级别被打开，则占位符会被替换。如果给出的参数数量多过
+    占位符的数量，则在日志语句的结尾将被追加一个警告 (i.e. 在同一级别的同一行）。你可以传入一个Java数组来为多个占位符提供数据:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">args</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span><span class="s">&quot;The&quot;</span><span class="o">,</span> <span class="s">&quot;brown&quot;</span><span class="o">,</span> <span class="s">&quot;fox&quot;</span><span class="o">,</span> <span class="s">&quot;jumps&quot;</span><span class="o">,</span> <span class="mi">42</span><span class="o">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="o">(</span><span class="s">&quot;five parameters: {}, {}, {}, {}, {}&quot;</span><span class="o">,</span> <span class="n">args</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>日志源的 Java <tt class="xref py py-class docutils literal"><span class="pre">Class</span></tt> 也会被包含在生成的
+<tt class="xref py py-class docutils literal"><span class="pre">LogEvent</span></tt>中. 如果是简单的字符串，它会被替换成一个 “标志”
+类 <tt class="xref py py-class docutils literal"><span class="pre">akka.event.DummyClassForStringSources</span></tt> 以便对这种情况作特殊处理，例如
+    在SLF4j事件监听器中会使用字符串而不是类名来查找要用到的日志记录器实例。</p>
+<div class="section" id="auxiliary-logging-options">
+<h3>辅助的日志选项</h3>
+<p>Akka 为非常底层的debug提供了一组配置选项，这些主要是为akka的开发者所用，而非普通用户。</p>
+<p>你一定要将日志级别设为 DEBUG 来使用这些选项:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">loglevel</span> <span class="o">=</span> <span class="no">DEBUG</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>下面这个配置选项在你想知道Akka装载了哪些配置设置时非常有用:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="c1"># 在actor系统启动时以INFO级别记录完整的配置</span>
+  <span class="c1"># 当你不确定使用的是哪个配置时有用</span>
+  <span class="n">log</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">start</span> <span class="o">=</span> <span class="n">on</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望记录所有被使用akka.event.LoggingReceive的Actor处理的用户级消息的细节:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">debug</span> <span class="p">{</span>
+    <span class="c1"># 打开 LoggingReceive 功能, 以DEBUG级别记录所有接收到的消息</span>
+    <span class="n">receive</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望记录Actor所处理的所有自动接收的消息的细节：</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">debug</span> <span class="p">{</span>
+    <span class="c1"># 为所有的 AutoReceiveMessages(Kill, PoisonPill 之类) 打开DEBUG日志 </span>
+    <span class="n">autoreceive</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望记录Actor的所有生命周期变化 (重启，死亡等 ) 的细节:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">debug</span> <span class="p">{</span>
+    <span class="c1"># 打开actor生命周期变化的DEBUG日志 </span>
+    <span class="n">lifecycle</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望记录所有继承了LoggingFSM的FSM actor的事件、状态转换和计时器的细节:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">debug</span> <span class="p">{</span>
+    <span class="c1"># 打开所有 LoggingFSMs 事件、状态转换和计时器的DEBUG日志 </span>
+    <span class="n">fsm</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望监控对 ActorSystem.eventStream 的订阅/取消订阅:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">debug</span> <span class="p">{</span>
+    <span class="c1"># 打开eventStream上订阅关系变化的DEBUG日志</span>
+    <span class="n">event</span><span class="o">-</span><span class="n">stream</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auxiliary-remote-logging-options">
+<h3>辅助的远程日志选项</h3>
+<p>如果你希望以DEBUG级别查看所有远程发送的消息:
+(这些日志是被传输层发送时所记录，而非actor)</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">remote</span> <span class="p">{</span>
+    <span class="c1"># 如果打开这个选项，Akka将以DEBUG级别记录所有发出的消息， 不打开则不记录</span>
+    <span class="n">log</span><span class="o">-</span><span class="n">sent</span><span class="o">-</span><span class="n">messages</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你希望以DEBUG级别查看接收到的所有远程消息:
+(这些日志是被传输层接收时所记录，而非actor)</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">remote</span> <span class="p">{</span>
+    <span class="c1"># 如果打开这个选项，Akka将以DEBUG级别记录所有接收到的消息， 不打开则不记录</span>
+    <span class="n">log</span><span class="o">-</span><span class="n">received</span><span class="o">-</span><span class="n">messages</span> <span class="o">=</span> <span class="n">on</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>同时参阅 TestKit 的日志选项: <a class="reference internal" href="testing.html#actor-logging" tppabs="http://www.gtan.com/akka_doc/scala/testing.html#actor-logging"><em>跟踪Actor调用</em></a>.</p>
+</div>
+<div class="section" id="translating-log-source-to-string-and-class">
+<h3>将日志源转换为字符串和类</h3>
+<p>在运行时将源对象转换成要插入 <tt class="xref py py-class docutils literal"><span class="pre">LogEvent</span></tt> 的源字符串和类的规则是使用隐式参数的方式实现的，
+    因此是可配置的: 只需要创建你自己的 <tt class="xref py py-class docutils literal"><span class="pre">LogSource[T]</span></tt> 实例并将它放在创建logger的作用域中即可。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.event.LogSource</span>
+<span class="k">import</span> <span class="nn">akka.actor.ActorSystem</span>
+
+<span class="k">object</span> <span class="nc">MyType</span> <span class="o">{</span>
+  <span class="k">implicit</span> <span class="k">val</span> <span class="n">logSource</span><span class="k">:</span> <span class="kt">LogSource</span><span class="o">[</span><span class="kt">AnyRef</span><span class="o">]</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LogSource</span><span class="o">[</span><span class="kt">AnyRef</span><span class="o">]</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">genString</span><span class="o">(</span><span class="n">o</span><span class="k">:</span> <span class="kt">AnyRef</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getClass</span><span class="o">.</span><span class="n">getName</span>
+    <span class="k">override</span> <span class="k">def</span> <span class="n">getClazz</span><span class="o">(</span><span class="n">o</span><span class="k">:</span> <span class="kt">AnyRef</span><span class="o">)</span><span class="k">:</span> <span class="kt">Class</span><span class="o">[</span><span class="k">_</span><span class="o">]</span> <span class="k">=</span> <span class="n">o</span><span class="o">.</span><span class="n">getClass</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">MyType</span><span class="o">(</span><span class="n">system</span><span class="k">:</span> <span class="kt">ActorSystem</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">MyType._</span>
+  <span class="k">import</span> <span class="nn">akka.event.Logging</span>
+
+  <span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span class="o">(</span><span class="n">system</span><span class="o">,</span> <span class="k">this</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>这个例子创建了一个日志源来模拟Java logger的传统用法，该日志源使用原对象的类名作为日志类别。
+    在这里加入对 <tt class="xref py py-meth docutils literal"><span class="pre">getClazz</span></tt> 的重写只是为了作说明，因为它精确地包含了缺省行为。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>你也可以先创建字符串然后将它作为日志源传入，但要知道这时 <tt class="xref py py-class docutils literal"><span class="pre">LogEvent</span></tt> 中的 <tt class="xref py py-class docutils literal"><span class="pre">Class[_]</span></tt>
+将是 <tt class="xref py py-class docutils literal"><span class="pre">akka.event.DummyClassForStringSources</span></tt>.</p>
+<p class="last"> SLF4J 事件监听器对这种情况会特殊处理 (使用实际的字符串来查找logger实例而不是类名), 你在实现自己的日志适配器时可能也会这么做。</p>
+</div>
+</div>
+</div>
+<div class="section" id="event-handler">
+<h2>事件处理器</h2>
+<p>日志记录是通过一个事件总线异步地完成的. 你可以配置要为哪些事件处理器订阅日志事件。通过 <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>Configuration</em></a> 中的<tt class="docutils literal"><span class="pre">event-handlers</span></tt> 。
+    你还可以在这里定义日志级别。</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="c1"># 在启动时注册的事件处理器 (Logging$DefaultLogger 记录日志到标准输出)</span>
+  <span class="n">event</span><span class="o">-</span><span class="n">handlers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;akka.event.Logging$DefaultLogger&quot;</span><span class="o">]</span>
+  <span class="c1"># 可选: ERROR, WARNING, INFO, DEBUG</span>
+  <span class="n">loglevel</span> <span class="o">=</span> <span class="s2">&quot;DEBUG&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>缺省会注册一个事件处理器，它将日志记录到标准输出. 在生产系统中不建议使用它。 在 &#8216;akka-slf4j&#8217; 模块中还有一个 <a class="reference internal" href="#slf4j-scala"><em>SLF4J</em></a>
+事件处理器。</p>
+<p>创建监听器的示例:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.event.Logging.InitializeLogger</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging.LoggerInitialized</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging.Error</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging.Warning</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging.Info</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging.Debug</span>
+
+<span class="k">class</span> <span class="nc">MyEventListener</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">InitializeLogger</span><span class="o">(</span><span class="n">_</span><span class="o">)</span>                        <span class="k">⇒</span> <span class="n">sender</span> <span class="o">!</span> <span class="nc">LoggerInitialized</span>
+    <span class="k">case</span> <span class="nc">Error</span><span class="o">(</span><span class="n">cause</span><span class="o">,</span> <span class="n">logSource</span><span class="o">,</span> <span class="n">logClass</span><span class="o">,</span> <span class="n">message</span><span class="o">)</span> <span class="k">⇒</span> <span class="c1">// ...</span>
+    <span class="k">case</span> <span class="nc">Warning</span><span class="o">(</span><span class="n">logSource</span><span class="o">,</span> <span class="n">logClass</span><span class="o">,</span> <span class="n">message</span><span class="o">)</span>      <span class="k">⇒</span> <span class="c1">// ...</span>
+    <span class="k">case</span> <span class="nc">Info</span><span class="o">(</span><span class="n">logSource</span><span class="o">,</span> <span class="n">logClass</span><span class="o">,</span> <span class="n">message</span><span class="o">)</span>         <span class="k">⇒</span> <span class="c1">// ...</span>
+    <span class="k">case</span> <span class="nc">Debug</span><span class="o">(</span><span class="n">logSource</span><span class="o">,</span> <span class="n">logClass</span><span class="o">,</span> <span class="n">message</span><span class="o">)</span>        <span class="k">⇒</span> <span class="c1">// ...</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slf4j">
+<span id="slf4j-scala"></span><h2>SLF4J</h2>
+<p>Akka 为 <a class="reference external" href="javascript:if(confirm('http://www.slf4j.org/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.slf4j.org/'" tppabs="http://www.slf4j.org/">SL4FJ</a>提供了一个事件处理器. 它在 &#8216;akka-slf4j.jar&#8217; 模块中.
+它的唯一依赖是 slf4j-api 包. 在运行时，你还需要一个 SLF4J 后端, 我们推荐 <a class="reference external" href="javascript:if(confirm('http://logback.qos.ch/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://logback.qos.ch/'" tppabs="http://logback.qos.ch/">Logback</a>:</p>
+<blockquote>
+<div><div class="highlight-scala"><div class="highlight"><pre><span class="k">lazy</span> <span class="k">val</span> <span class="n">logback</span> <span class="k">=</span> <span class="s">&quot;ch.qos.logback&quot;</span> <span class="o">%</span> <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;1.0.0&quot;</span> <span class="o">%</span> <span class="s">&quot;runtime&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>你需要打开 <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>Configuration</em></a> 的&#8216;event-handlers&#8217中的 Slf4jEventHandler。
+    你还可以在这里定义事件总线的日志级别。更细粒度的日志级别可以在SLF4j后端的配置（例如：logback.xml）中定义。</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">akka</span> <span class="p">{</span>
+  <span class="n">event</span><span class="o">-</span><span class="n">handlers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;akka.event.slf4j.Slf4jEventHandler&quot;</span><span class="o">]</span>
+  <span class="n">loglevel</span> <span class="o">=</span> <span class="s2">&quot;DEBUG&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>SLF4J 为每个日志事件选择日志记录器是基于创建<tt class="xref py py-class docutils literal"><span class="pre">LoggingAdapter</span></tt>时的日志源的
+<tt class="xref py py-class docutils literal"><span class="pre">Class[_]</span></tt>， 如果日志源是一个字符串，那么就使用这个串 (i.e. <tt class="docutils literal"><span class="pre">LoggerFactory.getLogger(c:</span> <span class="pre">Class[_])</span></tt>
+    用于前者而 <tt class="docutils literal"><span class="pre">LoggerFactory.getLogger(s:</span> <span class="pre">String)</span></tt> 用于后者).</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">如果创建LoggingAdapteractor时向工厂方法提供了一个<tt class="xref py py-class docutils literal"><span class="pre">ActorSystem</span></tt>，那么该Acotr系统的名字
+    将被加在 <tt class="xref py py-class docutils literal"><span class="pre">字符串</span></tt> 日志源的后面。 如果不希望这样，只要象下面这样传一个 <tt class="xref py py-class docutils literal"><span class="pre">LoggingBus</span></tt> :
+</p>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span class="o">(</span><span class="n">system</span><span class="o">.</span><span class="n">eventStream</span><span class="o">,</span> <span class="s">&quot;my.nice.string&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="section" id="logging-thread-and-akka-source-in-mdc">
+<h3>日志线程与MDC中的Akka源</h3>
+<p>日志的记录是异步的，完成日志记录的线程被保存在 Mapped Diagnostic Context (MDC) 的 <tt class="docutils literal"><span class="pre">sourceThread</span></tt> 属性里.
+在 Logback 的模式配置中线程名可以通过 <tt class="docutils literal"><span class="pre">%X{sourceThread}</span></tt> 指定:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">appender</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;STDOUT&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">encoder</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;%</span><span class="n">date</span><span class="o">{</span><span class="nc">ISO8601</span><span class="o">}</span> <span class="o">%-</span><span class="mi">5</span><span class="n">level</span> <span class="o">%</span><span class="n">logger</span><span class="o">{</span><span class="mi">36</span><span class="o">}</span> <span class="o">%</span><span class="n">X</span><span class="o">{</span><span class="n">sourceThread</span><span class="o">}</span> <span class="o">-</span> <span class="o">%</span><span class="n">msg</span><span class="o">%</span><span class="n">n</span><span class="o">&lt;/</span><span class="n">pattern</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">encoder</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">appender</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">在应用程序的非Akka的部分也建议使用MDC的 <tt class="docutils literal"><span class="pre">sourceThread</span></tt> 使得这个值在日志里保持一致。</p>
+</div>
+<p>另一个有用的工具是 Akka 的创建logger实例时会捕捉 actor 的地址, 这意味着可以访问到整个actor实例的身份信息来将日志信息与其它信息进行关联（例如：路由的成员）。 这个信息保存在MDC的 <tt class="docutils literal"><span class="pre">akkaSource</span></tt>属性中:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">appender</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;STDOUT&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">encoder</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">pattern</span><span class="o">&gt;%</span><span class="n">date</span><span class="o">{</span><span class="nc">ISO8601</span><span class="o">}</span> <span class="o">%-</span><span class="mi">5</span><span class="n">level</span> <span class="o">%</span><span class="n">logger</span><span class="o">{</span><span class="mi">36</span><span class="o">}</span> <span class="o">%</span><span class="n">X</span><span class="o">{</span><span class="n">akkaSource</span><span class="o">}</span> <span class="o">-</span> <span class="o">%</span><span class="n">msg</span><span class="o">%</span><span class="n">n</span><span class="o">&lt;/</span><span class="n">pattern</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="n">encoder</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">appender</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>要了解这个属性所包括的内容（也适用于非actor）的细节见
+<a class="reference internal" href="#how-to-log">如何记录日志</a>.</p>
+</div>
+</div>
+</div>
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

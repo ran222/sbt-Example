@@ -1,0 +1,1219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>Actors (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css"/>
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css"/>
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css"/>
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css"/>
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css"/>
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css"/>
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:true
+        };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html"/>
+    <link rel="up" title="Scala API" href="index.html"/>
+    <link rel="next" title="Typed Actors (Scala)" href="typed-actors.html"/>
+    <link rel="prev" title="Scala API" href="index.html"/>
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="navbar-logo">
+                <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png"/></a>
+            </div>
+            <ul class="nav">
+                <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+                <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Download</a></li>
+                <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>
+                <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Code</a></li>
+                <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main">
+<div class="container">
+    <div class="page-title">Actor (Scala)</div>
+    <div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;"/></a></div>
+</div>
+<div class="main-container">
+<div class="container">
+<div class="row">
+    <div class="span12">
+        <ul class="breadcrumb">
+            <li>
+                <span class="divider">|</span> <a href="typed-actors.html" tppabs="http://www.gtan.com/akka_doc/scala/typed-actors.html">有类型Actor (Scala)</a> <span
+                    class="divider">»</span>
+            </li>
+            <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+            </li>
+            <li>
+                <span class="divider">«</span> <a href="index.html" tppabs="http://www.gtan.com/akka_doc/scala/index.html">Scala API</a> <span class="divider">|</span>
+            </li>
+            <li>
+                版本 2.0
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+<div class="span9">
+
+<div class="section" id="actors-scala">
+<span id="id1"></span>
+
+<h1>Actors (Scala)</h1>
+
+<p>
+    <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Actor_model  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://en.wikipedia.org/wiki/Actor_model'" tppabs="http://en.wikipedia.org/wiki/Actor_model">Actor模型</a>为编写并发和分布式系统提供了一种更高的抽象级别。它将开发人员从显式地处理锁和线程管理的工作中解脱出来，使编写并发和并行系统更加容易。Actor模型是在1973年Carl Hewitt的论文中提的，但是被Erlang语言采用后才变得流行起来，一个成功案例是爱立信使用Erlang非常成功地创建了高并发的可靠的电信系统。
+</p>
+
+<p>Akka Actor的API与Scala Actor类似，并且从Erlang中借用了一些语法。</p>
+
+<div class="section" id="creating-actors">
+<h2>创建Actor</h2>
+
+<p>由于Akka采用强制性的父子监管，每一个actor都被监管着，并且（会）监管它的子actor们；我们建议你熟悉一下<a class="reference internal" href="../general/actor-systems.html#actor-systems" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#actor-systems"><em>Actor系统</em></a> 和
+    <a class="reference internal" href="../general/supervision.html#supervision" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#supervision"><em>监管与监控</em></a>，阅读
+    <a class="reference internal" href="../general/addressing.html#actorof-vs-actorfor" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#actorof-vs-actorfor"><em>总结:actorOf vs. actorFor</em></a> 也有帮助。</p>
+
+<div class="section" id="defining-an-actor-class">
+    <h3>定义一个 Actor 类</h3>
+
+    <p>要定义自己的Actor类，需要继承 Actor 并实现<tt class="xref py py-meth docutils literal"><span class="pre">receive</span></tt> 方法.
+        <tt class="xref py py-meth docutils literal"><span class="pre">receive</span></tt> 方法需要定义一系列 case 语句(类型为
+        <tt class="docutils literal"><span class="pre">PartialFunction[Any,</span>
+            <span class="pre">Unit]</span></tt>) 来描述你的Actor能够处理哪些消息（使用标准的Scala模式匹配），以及实现对消息如何进行处理的代码。</p>
+
+    <p>如下例：</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Actor</span>
+<span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging</span>
+
+<span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span
+                    class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span
+                    class="o">(</span><span class="n">context</span><span class="o">.</span><span
+                    class="n">system</span><span class="o">,</span> <span class="k">this</span><span
+                    class="o">)</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;test&quot;</span> <span class="k">⇒</span> <span
+                    class="n">log</span><span class="o">.</span><span class="n">info</span><span
+                    class="o">(</span><span class="s">&quot;received test&quot;</span><span class="o">)</span>
+    <span class="k">case</span> <span class="k">_</span>      <span class="k">⇒</span> <span class="n">log</span><span
+                    class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;received unknown message&quot;</span><span
+                    class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+    <p>请注意 Akk Actor
+        <tt class="docutils literal"><span class="pre">receive</span></tt> 消息循环是“穷尽的(exhaustive)”, 这与Erlang和Scala的Actor行为不同。 这意味着你需要提供一个对它所能够接受的所有消息的模式匹配规则，如果你希望处理未知的消息，你需要象上例一样提供一个缺省的case分支。否则会有一个
+        <tt class="docutils literal"><span class="pre">akka.actor.UnhandledMessage(message,</span>
+            <span class="pre">sender,</span> <span class="pre">recipient)</span></tt> 被发布到
+        <tt class="docutils literal"><span class="pre">Actor系统（ActorSystem）</span></tt>&#8216;的 <tt
+                class="docutils literal"><span class="pre">事件流（EventStream）</span></tt>中。</p>
+</div>
+<div class="section" id="creating-actors-with-default-constructor">
+    <h3>使用缺省构造方法创建 Actor</h3>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">object</span> <span class="nc">Main</span> <span
+                class="k">extends</span> <span
+                class="nc">App</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span
+                    class="nc">ActorSystem</span><span class="o">(</span><span
+                    class="s">&quot;MySystem&quot;</span><span
+                    class="o">)</span>
+  <span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span> <span class="n">system</span><span
+                    class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                    class="nc">Props</span><span class="o">[</span><span class="kt">MyActor</span><span
+                    class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;myactor&quot;</span><span
+                    class="o">)</span>
+</pre>
+        </div>
+    </div>
+    <p>对 <tt class="xref py py-meth docutils literal"><span class="pre">actorOf</span></tt> 的调用返回一个
+        <tt class="docutils literal"><span class="pre">实例</span></tt>。 这是一个
+        <tt class="docutils literal"><span class="pre">Actor</span></tt> 实例的句柄(handle)，你可以用它来与实际的
+        <tt class="docutils literal"><span class="pre">Actor</span></tt>进行交互。 The
+        <tt class="docutils literal"><span class="pre">ActorRef</span></tt> 是不可变量，与它所代表的Actor之间是一对一的关系。 The
+        <tt class="docutils literal"><span class="pre">ActorRef</span></tt> 还是可序列化的（serializable），并且携带网络信息。这意味着你可以将它序列化以后，通过网络进行传送，在远程主机上它仍然代表原结点上的同一个Actor。
+    </p>
+
+    <p>在上面的例子中，actor是从系统创建的。也可以从其它的actor使用actor <tt class="docutils literal"><span
+            class="pre">上下文（context）</span></tt> 来创建. 其中的区别在于监管树是如何组织的。使用上下文时当前的actor将成为所创建的子actor的监管者。而使用系统时创建的actor将成为顶级actor，它由系统（内部监管actor）来监管。
+    </p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">class</span> <span class="nc">FirstActor</span> <span class="k">extends</span> <span
+                class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span> <span class="n">context</span><span
+                    class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                    class="nc">Props</span><span class="o">[</span><span class="kt">MyActor</span><span
+                    class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;myactor&quot;</span><span
+                    class="o">)</span>
+</pre>
+        </div>
+    </div>
+    <p>name 参数是可选的, 但建议你为你的actor起一个合适的名字，因为它将在日志信息中被用于标识各个actor. 名字不可以为空或以 <tt class="docutils literal"><span class="pre">$</span></tt>开头。如果给定的名字已经被赋给了同一个父actor的其它子actor，将会抛出
+        <cite>InvalidActorNameException</cite> 。</p>
+
+    <p>Actor 在创建后将自动异步地启动。当你创建 <tt class="docutils literal"><span class="pre">Actor</span></tt> 时它会自动调用
+        <tt class="docutils literal"><span class="pre">Actor</span></tt> trait 的<tt class="docutils literal"><span class="pre">preStart</span></tt> 回调方法。这是一个非常好的用来添加actor初始化代码的位置。
+    </p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">override</span> <span class="k">def</span> <span
+                class="n">preStart</span><span
+                class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="o">...</span> <span class="c1">// 初始化代码</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="creating-actors-with-non-default-constructor">
+    <h3>使用非缺省构造方法创建 Actor</h3>
+
+    <p>如果你的Actor的构造方法带参数，那么你不能使用 <tt class="docutils literal"><span class="pre">actorOf(Props[TYPE])</span></tt> 来创建它。 这时你可以用
+        <tt class="docutils literal"><span class="pre">actorOf</span></tt> 的带有传名调用的块的变体，这样你可以用任意方式来创建actor。</p>
+
+    <p>如下例:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span
+                class="c1">// 允许传参数给 MyActor 构造方法</span>
+<span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span> <span class="n">system</span><span
+                    class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                    class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span
+                    class="nc">MyActor</span><span
+                    class="o">(</span><span class="s">&quot;...&quot;</span><span class="o">)),</span> <span
+                    class="n">name</span> <span class="k">=</span> <span class="s">&quot;myactor&quot;</span><span
+                    class="o">)</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="props">
+    <h3>Props</h3>
+
+    <p><tt class="docutils literal"><span class="pre">Props</span></tt> 是一个用来在创建actor时指定选项的配置类。 以下是使用如何创建 <tt class="docutils literal"><span
+            class="pre">Props</span></tt> 实例的示例.</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">val</span> <span class="n">props1</span> <span class="k">=</span> <span class="nc">Props</span><span
+                    class="o">()</span>
+<span class="k">val</span> <span class="n">props2</span> <span class="k">=</span> <span class="nc">Props</span><span
+                    class="o">[</span><span class="kt">MyActor</span><span class="o">]</span>
+<span class="k">val</span> <span class="n">props3</span> <span class="k">=</span> <span class="nc">Props</span><span
+                    class="o">(</span><span class="k">new</span> <span class="nc">MyActor</span><span
+                    class="o">)</span>
+<span class="k">val</span> <span class="n">props4</span> <span class="k">=</span> <span class="nc">Props</span><span
+                    class="o">(</span>
+  <span class="n">creator</span> <span class="k">=</span> <span class="o">{</span> <span class="o">()</span> <span
+                    class="k">⇒</span> <span class="k">new</span> <span class="nc">MyActor</span> <span
+                    class="o">},</span>
+  <span class="n">dispatcher</span> <span class="k">=</span> <span class="s">&quot;my-dispatcher&quot;</span><span
+                    class="o">)</span>
+<span class="k">val</span> <span class="n">props5</span> <span class="k">=</span> <span class="n">props1</span><span
+                    class="o">.</span><span class="n">withCreator</span><span class="o">(</span><span
+                    class="k">new</span> <span class="nc">MyActor</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">props6</span> <span class="k">=</span> <span class="n">props5</span><span
+                    class="o">.</span><span class="n">withDispatcher</span><span class="o">(</span><span
+                    class="s">&quot;my-dispatcher&quot;</span><span
+                    class="o">)</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="creating-actors-with-props">
+    <h3>使用Props创建Actor</h3>
+
+    <p>Actor可以通过将 <tt class="docutils literal"><span class="pre">Props</span></tt> 实例传入
+        <tt class="docutils literal"><span class="pre">actorOf</span></tt> 工厂方法来创建。</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span> <span class="n">system</span><span
+                    class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                    class="nc">Props</span><span class="o">[</span><span class="kt">MyActor</span><span
+                    class="o">].</span><span class="n">withDispatcher</span><span class="o">(</span><span class="s">&quot;my-dispatcher&quot;</span><span
+                    class="o">),</span> <span class="n">name</span> <span class="k">=</span> <span
+                    class="s">&quot;myactor2&quot;</span><span
+                    class="o">)</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="creating-actors-using-anonymous-classes">
+    <h3>使用匿名类创建Actor</h3>
+
+    <p>在从某个actor中派生新的actor来完成特定的子任务时，可能使用匿名类来包含将要执行的代码会更方便。</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">def</span> <span class="n">receive</span> <span
+                class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">m</span><span class="k">:</span> <span class="kt">DoIt</span> <span
+                    class="k">⇒</span>
+    <span class="kt">context.actorOf</span><span class="o">(</span><span class="kt">Props</span><span class="o">(</span><span
+                    class="kt">new</span> <span class="kt">Actor</span> <span class="o">{</span>
+      <span class="kt">def</span> <span class="kt">receive</span> <span class="o">=</span> <span class="o">{</span>
+        <span class="kt">case</span> <span class="kt">DoIt</span><span class="o">(</span><span
+                    class="kt">msg</span><span class="o">)</span> <span class="k">⇒</span>
+          <span class="kt">val</span> <span class="kt">replyMsg</span> <span class="o">=</span> <span
+                    class="kt">doSomeDangerousWork</span><span
+                    class="o">(</span><span class="kt">msg</span><span class="o">)</span>
+          <span class="kt">sender</span> <span class="kt">!</span> <span class="kt">replyMsg</span>
+          <span class="kt">context.stop</span><span class="o">(</span><span class="kt">self</span><span
+                    class="o">)</span>
+      <span class="o">}</span>
+      <span class="kt">def</span> <span class="kt">doSomeDangerousWork</span><span class="o">(</span><span class="kt">msg:</span> <span
+                    class="kt">ImmutableMessage</span><span class="o">)</span><span class="kt">:</span> <span
+                    class="kt">String</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;done&quot;</span> <span
+                    class="o">}</span>
+    <span class="o">}))</span> <span class="n">forward</span> <span class="n">m</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+    <div class="admonition warning">
+        <p class="first admonition-title">警告</p>
+
+        <p class="last">采用这种方式时，你需要小心地避免捕捉外层actor的引用，i.e. 不要在匿名的Actor类中调用外层actor的方法。这会破坏actor的封装，可能会引入同步bug和资源竞争，因为其它的actor可能会与外层actor同时进行调度。不幸的是目前还没有一种方法能够在编译阶段发现这种非法访问。参阅:
+            <a class="reference internal" href="../general/jmm.html#jmm-shared-state" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#jmm-shared-state"><em>Actor与共享可变状态</em></a></p>
+    </div>
+</div>
+</div>
+<div class="section" id="actor-api">
+    <h2>Actor API</h2>
+
+    <p><tt class="xref py py-class docutils literal"><span class="pre">Actor</span></tt> trait 只定义了一个抽象方法，就是上面提到的
+        <tt class="xref py py-meth docutils literal"><span class="pre">receive</span></tt>, 用来实现actor的行为。</p>
+
+    <p>如果当前 actor 的行为与收到的消息不匹配，则会调用
+        <tt class="xref py py-meth docutils literal"><span class="pre">unhandled</span></tt>, 它的缺省实现是向actor系统的事件流中发布一条
+        <tt class="docutils literal"><span class="pre">akka.actor.UnhandledMessage(message,</span> <span
+                class="pre">sender,</span>
+            <span class="pre">recipient)</span></tt>。</p>
+
+    <p>另外，它还包括:</p>
+    <ul class="simple">
+        <li><tt class="xref py py-obj docutils literal"><span class="pre">self</span></tt> 代表本actor的 <tt
+                class="xref py py-class docutils literal"><span class="pre">ActorRef</span></tt>
+        </li>
+        <li><tt class="xref py py-obj docutils literal"><span class="pre">sender</span></tt> 代表最近收到的消息的发送actor，通常用于下面将讲到的
+            <a class="reference internal" href="#actor-reply"><em>回应消息</em></a>中
+        </li>
+        <li><tt class="xref py py-obj docutils literal"><span class="pre">supervisorStrategy</span></tt> 用户可重写它来定义对子actor的监管策略
+        </li>
+        <li><tt class="xref py py-obj docutils literal"><span class="pre">context</span></tt> 暴露actor和当前消息的上下文信息，如：
+            <ul>
+                <li>用于创建子actor的工厂方法 (<tt class="xref py py-meth docutils literal"><span
+                        class="pre">actorOf</span></tt>)
+                </li>
+                <li>actor所属的系统</li>
+                <li>父监管者</li>
+                <li>所监管的子actor</li>
+                <li>生命周期监控</li>
+                <li>hotswap行为栈，见 <a class="reference internal" href="#actor-hotswap"><em>Become/Unbecome</em></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>你可以import <tt class="xref py py-obj docutils literal"><span
+            class="pre">context</span></tt> 的成员来避免总是要加上 <tt class="docutils literal"><span
+            class="pre">context.</span></tt>前缀</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">class</span> <span class="nc">FirstActor</span> <span
+                class="k">extends</span> <span
+                class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">context._</span>
+  <span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span> <span class="n">actorOf</span><span
+                    class="o">(</span><span class="nc">Props</span><span class="o">[</span><span
+                    class="kt">MyActor</span><span class="o">],</span> <span class="n">name</span> <span
+                    class="k">=</span> <span class="s">&quot;myactor&quot;</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">x</span> <span class="k">⇒</span> <span class="n">myActor</span> <span
+                    class="o">!</span> <span class="n">x</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+    <p>其余的可见方法是可以被用户重写的生命周期hook，描述如下:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">def</span> <span class="n">preStart</span><span
+                class="o">()</span> <span
+                class="o">{}</span>
+<span class="k">def</span> <span class="n">preRestart</span><span class="o">(</span><span class="n">reason</span><span
+                    class="k">:</span> <span class="kt">Throwable</span><span class="o">,</span> <span
+                    class="n">message</span><span class="k">:</span> <span class="kt">Option</span><span
+                    class="o">[</span><span class="kt">Any</span><span class="o">])</span> <span class="o">{</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">children</span> <span
+                    class="n">foreach</span> <span class="o">(</span><span class="n">context</span><span
+                    class="o">.</span><span class="n">stop</span><span class="o">(</span><span class="n">_</span><span
+                    class="o">))</span>
+  <span class="n">postStop</span><span class="o">()</span>
+<span class="o">}</span>
+<span class="k">def</span> <span class="n">postRestart</span><span class="o">(</span><span class="n">reason</span><span
+                    class="k">:</span> <span class="kt">Throwable</span><span class="o">)</span> <span
+                    class="o">{</span> <span class="n">preStart</span><span class="o">()</span> <span class="o">}</span>
+<span class="k">def</span> <span class="n">postStop</span><span class="o">()</span> <span class="o">{}</span>
+</pre>
+        </div>
+    </div>
+    <p>以上所示的实现是 <tt
+            class="xref py py-class docutils literal"><span class="pre">Actor</span></tt>
+        trait 的缺省实现。</p>
+
+    <div class="section" id="lifecycle-monitoring-aka-deathwatch">
+        <span id="deathwatch-scala"></span>
+
+        <h3>使用DeathWatch进行生命周期监控</h3>
+
+        <p>为了在其它actor结束时 (i.e. 永久终止, 而不是临时的失败和重启)收到通知, actor可以将自己注册为其它actor在终止时所发布的
+            <tt class="xref py py-class docutils literal"><span class="pre">Terminated</span></tt> 消息
+            的接收者 (见 <a class="reference internal" href="#stopping-actors">停止 Actor</a>). 这个服务是由actor系统的
+            <tt class="xref py py-class docutils literal"><span class="pre">DeathWatch</span></tt> 组件提供的。</p>
+
+        <p>注册一个监控器很简单：</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.</span><span
+                    class="o">{</span> <span class="nc">Actor</span><span class="o">,</span> <span
+                    class="nc">Props</span><span class="o">,</span> <span class="nc">Terminated</span> <span
+                    class="o">}</span>
+
+<span class="k">class</span> <span class="nc">WatchActor</span> <span class="k">extends</span> <span
+                        class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">child</span> <span class="k">=</span> <span class="n">context</span><span
+                        class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                        class="nc">Props</span><span class="o">.</span><span class="n">empty</span><span
+                        class="o">,</span> <span class="s">&quot;child&quot;</span><span class="o">)</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">watch</span><span class="o">(</span><span
+                        class="n">child</span><span class="o">)</span> <span
+                        class="c1">// &lt;-- 这是注册所需要的唯一调用</span>
+  <span class="k">var</span> <span class="n">lastSender</span> <span class="k">=</span> <span
+                        class="n">system</span><span class="o">.</span><span class="n">deadLetters</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;kill&quot;</span>              <span class="k">⇒</span> <span
+                        class="n">context</span><span class="o">.</span><span class="n">stop</span><span
+                        class="o">(</span><span class="n">child</span><span class="o">);</span> <span
+                        class="n">lastSender</span> <span
+                        class="k">=</span> <span class="n">sender</span>
+    <span class="k">case</span> <span class="nc">Terminated</span><span class="o">(</span><span class="n">`child`</span><span
+                        class="o">)</span> <span class="k">⇒</span> <span class="n">lastSender</span> <span
+                        class="o">!</span> <span class="s">&quot;finished&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+        <p>要注意 <tt class="xref py py-class docutils literal"><span
+                class="pre">Terminated</span></tt>
+            消息的产生与注册和终止行为所发生的顺序无关。多次注册并不表示会有多个消息产生，也不保证有且只有一个这样的消息被接收到：如果被监控的actor已经生成了消息并且已经进入了队列，
+            在这个消息被处理之前又发生了另一次注册，则会有第二个消息进入队列，因为一个已经终止的actor注册监控器会立刻导致
+            <tt class="xref py py-class docutils literal"><span class="pre">Terminated</span></tt> 消息的发生。</p>
+
+        <p>可以使用 <tt class="docutils literal"><span class="pre">context.unwatch(target)</span></tt>来停止对另一个actor的生存状态的监控, 但很明显这不能保证不会接收到
+            <tt class="xref py py-class docutils literal"><span class="pre">Terminated</span></tt>
+            消息因为该消息可能已经进入了队列。</p>
+    </div>
+    <div class="section" id="start-hook">
+        <h3>启动 Hook</h3>
+
+        <p>actor启动后，它的 <tt class="xref py py-meth docutils literal"><span
+                class="pre">preStart</span></tt> 会被立即执行。</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">override</span> <span class="k">def</span> <span
+                    class="n">preStart</span><span
+                    class="o">()</span> <span class="o">{</span>
+  <span class="c1">// registering with other actors</span>
+  <span class="n">someService</span> <span class="o">!</span> <span class="nc">Register</span><span
+                        class="o">(</span><span class="n">self</span><span class="o">)</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="restart-hooks">
+        <h3>重启 Hook</h3>
+
+        <p>所有的Actor都是被监管的， i.e. 以某种失败处理策略与另一个actor链接在一起。 如果在处理一个消息的时候抛出的异常，Actor将被重启。这个重启过程包括上面提到的Hook:</p>
+        <ol class="arabic simple">
+            <li>要被重启的actor的 <tt class="xref py py-meth docutils literal"><span class="pre">preRestart</span></tt>
+                被调用，携带着导致重启的异常以及触发异常的消息; 如果重启并不是因为消息的处理而发生的，所携带的消息为 <tt class="xref docutils literal"><span class="pre">None</span></tt> ,
+                例如，当一个监管者没有处理某个异常继而被它自己的监管者重启时。 这个方法是用来完成清理、准备移交给新的actor实例的最佳位置。
+                它的缺省实现是终止所有的子actor并调用 <tt class="xref py py-meth docutils literal"><span
+                        class="pre">postStop</span></tt>.
+            </li>
+            <li>最初 <tt class="docutils literal"><span class="pre">actorOf</span></tt> 调用的工厂方法将被用来创建新的实例。
+            </li>
+            <li>新的actor的 <tt class="xref py py-meth docutils literal"><span class="pre">postRestart</span></tt>
+                方法被调用，携带着导致重启的异常信息。 By default the <tt class="xref py py-meth docutils literal"><span class="pre">preStart</span></tt>
+                is called, just as in the normal start-up case.
+            </li>
+        </ol>
+        <p>actor的重启会替换掉原来的actor对象; 重启不影响邮箱的内容, 所以对消息的处理将在 <tt class="xref py py-meth docutils literal">
+            <span class="pre">postRestart</span></tt> hook 返回后继续. 触发异常的消息不会被重新接收。在actor重启过程中所有发送到该actor的消息将象平常一样被放进邮箱队列中。</p>
+    </div>
+    <div class="section" id="stop-hook">
+        <h3>终止 Hook</h3>
+
+        <p>一个Actor终止后，它的
+            <tt class="xref py py-meth docutils literal"><span class="pre">postStop</span></tt> hook将被调用, 这可以用来取消该actor在其它服务中的注册. 这个hook保证在该actor的消息队列被禁止后才运行， i.e. 之后发给该actor的消息将被重定向到
+            <tt class="xref py py-obj docutils literal"><span class="pre">ActorSystem</span></tt>的<tt class="xref py py-obj docutils literal"><span
+                    class="pre">deadLetters</span></tt> 中。</p>
+    </div>
+</div>
+<div class="section" id="identifying-actors">
+    <h2>标识 Actor</h2>
+
+    <p>如
+        <a class="reference internal" href="../general/addressing.html#addressing" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#addressing"><em>Actor 引用，路径与地址</em></a>中所述, 每个actor拥有一个唯一的逻辑路径,
+        此路径是由从actor系统的根开始的父子链构成；它还拥有一个物理路径，如果监管链包含有远程监管者，此路径可能会与逻辑路径不同。这些路径用来在系统中查找actor，例如，当收到一个远程消息时查找收件者，
+        但是它们的更直接的用处在于：actor可以通过指定绝对或相对路径（逻辑的或物理的）来查找其它的actor并随结果获取一个
+        <tt class="xref py py-class docutils literal"><span class="pre">ActorRef</span></tt>
+    </p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="n">context</span><span class="o">.</span><span
+                class="n">actorFor</span><span class="o">(</span><span
+                class="s">&quot;/user/serviceA/aggregator&quot;</span><span class="o">)</span> <span class="c1">// 查找绝对路径</span>
+<span class="n">context</span><span class="o">.</span><span class="n">actorFor</span><span class="o">(</span><span
+                    class="s">&quot;../joe&quot;</span><span class="o">)</span>                    <span class="c1">// 查找同一父监管者下的兄弟</span>
+</pre>
+        </div>
+    </div>
+    <p>其中指定的路径被解释为一个 <tt class="xref py py-class docutils literal"><span
+            class="pre">java.net.URI</span></tt>, 它以 <tt class="docutils literal"><span class="pre">/</span></tt> 分隔成路径段. 如果路径以
+        <tt class="docutils literal"><span class="pre">/</span></tt>开始,
+        表示一个绝对路径，从根监管者 (
+        <tt class="docutils literal"><span class="pre">&quot;/user&quot;</span></tt>的父亲)开始查找; 否则是从当前actor开始。如果某一个路径段为
+        <tt class="docutils literal"><span class="pre">..</span></tt>, 会找到当前所遍历到的actor的上一级, 否则则会向下一级寻找具有该名字的子actor。
+        必须注意的是 actor路径中的<tt class="docutils literal"><span class="pre">..</span></tt> 总是表示逻辑结构，也就是其监管者。</p>
+
+    <p>如果要查找的路径不存在，会返回一个特殊的actor引用，它的行为与actor系统的死信队列类似，但是保留其身份（i.e. 查找路径）。</p>
+
+    <p>如果开启了远程调用，则远程actor地址也可以被查找。:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="n">context</span><span class="o">.</span><span
+                class="n">actorFor</span><span class="o">(</span><span
+                class="s">&quot;akka://app@otherhost:1234/user/serviceB&quot;</span><span
+                class="o">)</span>
+</pre>
+        </div>
+    </div>
+    <p>这些查找动作立即返回一个（可能是远程的）actor引用, 所以你必须向它发送一个消息并等待其响应，来确认 <tt class="docutils literal"><span
+            class="pre">serviceB</span></tt> 是真正可访问和运行的。一个关于actor查找的示例见
+        <a class="reference internal" href="remoting.html#remote-lookup-sample-scala" tppabs="http://www.gtan.com/akka_doc/scala/remoting.html#remote-lookup-sample-scala"><em>
+            远程查找</em></a>.</p>
+</div>
+<div class="section" id="messages-and-immutability">
+    <h2>消息与不可变性</h2>
+
+    <p><strong>IMPORTANT</strong>: 消息可以是任何类型的对象，但必须是不可变的。（目前） Scala还无法强制不可变性，所以这一点必须作为约定。String, Int, Boolean 这些原始类型总是不可变的。
+        除了它们以外，推荐的做法是使用Scala case class，它们是不可变的（如果你不专门暴露数据的话），并与接收方的模式匹配配合得非常好。</p>
+
+    <p>以下是一个例子:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="c1">// 定义 case class</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Register</span><span class="o">(</span><span
+                    class="n">user</span><span class="k">:</span> <span class="kt">User</span><span class="o">)</span>
+
+<span class="c1">// 创建一个 case class 消息</span>
+<span class="k">val</span> <span class="n">message</span> <span class="k">=</span> <span class="nc">Register</span><span
+                    class="o">(</span><span class="n">user</span><span class="o">)</span>
+</pre>
+        </div>
+    </div>
+    <p>其它的适合做消息的类型包括 <tt class="docutils literal"><span class="pre">scala.Tuple2</span></tt>, <tt
+            class="docutils literal"><span class="pre">scala.List</span></tt>, <tt class="docutils literal"><span
+            class="pre">scala.Map</span></tt>
+        它们都是不可变的，可以很好地进行模式匹配。</p>
+</div>
+<div class="section" id="send-messages">
+    <h2>发送消息</h2>
+
+    <p>向actor发送消息是使用下列方法之一。</p>
+    <ul class="simple">
+        <li><tt class="docutils literal"><span class="pre">!</span></tt> 意思是“fire-and-forget”， e.g. 异步发送一个消息并立即返回。也称为
+            <tt class="docutils literal"><span class="pre">tell</span></tt>.
+        </li>
+        <li><tt class="docutils literal"><span class="pre">?</span></tt> 异步发送一条消息并返回一个
+            <tt class="xref py py-class docutils literal"><span class="pre">Future</span></tt>代表一个可能的回应。也称为
+            <tt class="docutils literal"><span class="pre">ask</span></tt>.
+        </li>
+    </ul>
+    <p>每一个消息发送者分别保证自己的消息的次序.</p>
+
+    <div class="section" id="tell-fire-forget">
+        <h3>Tell: Fire-forget</h3>
+
+        <p>这是发送消息的推荐方式。 不会阻塞地等待消息。它拥有最好的并发性和可扩展性。</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="n">actor</span> <span class="o">!</span> <span class="s">&quot;hello&quot;</span>
+</pre>
+            </div>
+        </div>
+        <p>如果是在一个Actor中调用 ，那么发送方的actor引用会被隐式地作为消息的 <tt class="docutils literal"><span class="pre">sender:</span>
+            <span class="pre">ActorRef</span></tt>
+            成员一起发送. 目的actor可以使用它来向原actor发送回应， 使用 <tt class="docutils literal"><span class="pre">sender</span> <span
+                    class="pre">!</span> <span class="pre">replyMsg</span></tt>.</p>
+
+        <p>如果 <strong>不</strong> 是从Actor实例发送的， sender成员缺省为
+            <tt class="xref py py-obj docutils literal"><span class="pre">deadLetters</span></tt> actor 引用。</p>
+    </div>
+    <div class="section" id="ask-send-and-receive-future">
+        <h3>Ask: Send-And-Receive-Future</h3>
+
+        <p>
+            <tt class="docutils literal"><span class="pre">ask</span></tt> 模式既包含actor也包含future, 所以它是作为一种使用模式，而不是<tt class="xref py py-class docutils literal"><span
+                class="pre">ActorRef</span></tt>的方法:
+        </p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.pattern.</span><span
+                    class="o">{</span> <span class="n">ask</span><span class="o">,</span> <span
+                    class="n">pipe</span> <span class="o">}</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Result</span><span class="o">(</span><span
+                        class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span
+                        class="o">,</span> <span class="n">s</span><span class="k">:</span> <span
+                        class="kt">String</span><span class="o">,</span> <span class="n">d</span><span
+                        class="k">:</span> <span class="kt">Double</span><span class="o">)</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Request</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">timeout</span> <span class="k">=</span> <span
+                        class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span
+                        class="n">seconds</span><span
+                        class="o">)</span> <span class="c1">// 下面的 `?` 会用到</span>
+
+<span class="k">val</span> <span class="n">f</span><span class="k">:</span> <span class="kt">Future</span><span
+                        class="o">[</span><span class="kt">Result</span><span class="o">]</span> <span
+                        class="k">=</span>
+  <span class="k">for</span> <span class="o">{</span>
+    <span class="n">x</span> <span class="k">←</span> <span class="n">ask</span><span class="o">(</span><span class="n">actorA</span><span
+                        class="o">,</span> <span class="nc">Request</span><span class="o">).</span><span
+                        class="n">mapTo</span><span class="o">[</span><span class="kt">Int</span><span
+                        class="o">]</span> <span class="c1">// 直接调用 </span>
+    <span class="n">s</span> <span class="k">←</span> <span class="n">actorB</span> <span class="n">ask</span> <span
+                        class="nc">Request</span> <span class="n">mapTo</span> <span class="n">manifest</span><span
+                        class="o">[</span><span class="kt">String</span><span class="o">]</span> <span
+                        class="c1">// 隐式转换调用 </span>
+    <span class="n">d</span> <span class="k">←</span> <span class="n">actorC</span> <span class="o">?</span> <span
+                        class="nc">Request</span> <span class="n">mapTo</span> <span class="n">manifest</span><span
+                        class="o">[</span><span class="kt">Double</span><span class="o">]</span> <span
+                        class="c1">// 通过符号名调用 </span>
+  <span class="o">}</span> <span class="k">yield</span> <span class="nc">Result</span><span class="o">(</span><span
+                        class="n">x</span><span class="o">,</span> <span class="n">s</span><span
+                        class="o">,</span> <span class="n">d</span><span class="o">)</span>
+
+<span class="n">f</span> <span class="n">pipeTo</span> <span class="n">actorD</span> <span class="c1">// .. 或 ..</span>
+<span class="n">pipe</span><span class="o">(</span><span class="n">f</span><span class="o">)</span> <span
+                        class="n">to</span> <span class="n">actorD</span>
+</pre>
+            </div>
+        </div>
+        <p>上面的例子展示了将 <tt class="docutils literal"><span class="pre">ask</span></tt> 与 future上的
+            <tt class="docutils literal"><span class="pre">pipeTo</span></tt> 模式一起使用，因为这是一种非常常用的组合。 请注意上面所有的调用都是完全非阻塞和异步的：
+            <tt class="docutils literal"><span
+                    class="pre">ask</span></tt> 产生
+            <tt class="xref py py-class docutils literal"><span class="pre">Future</span></tt>, 三个Future通过for-语法组合成一个新的Future，然后用
+            <tt class="docutils literal"><span class="pre">pipeTo</span></tt> 在future上安装一个 <tt
+                    class="docutils literal"><span class="pre">onComplete</span></tt>-处理器来完成将收集到的
+            <tt class="xref py py-class docutils literal"><span
+                    class="pre">Result</span></tt> 发送到其它actor的动作。</p>
+
+        <p>使用 <tt class="docutils literal"><span class="pre">ask</span></tt> 将会象 <tt class="docutils literal"><span class="pre">tell</span></tt> 一样发送消息给接收方,
+            接收方必须通过 <tt class="docutils literal"><span class="pre">sender</span> <span
+                    class="pre">!</span> <span class="pre">reply</span></tt> 发送回应来为返回的
+            <tt class="xref py py-class docutils literal"><span class="pre">Future</span></tt> 填充数据.
+            <tt class="docutils literal"><span class="pre">ask</span></tt> 操作包括创建一个内部actor来处理回应，必须为这个内部actor指定一个超时期限，过了超时期限内部actor将被销毁以防止内存泄露。
+        </p>
+
+        <p>如果要以异常来填充future你需要发送一个 Failure 消息给发送方。这个操作<em>不会</em>在actor处理消息发生异常时自动完成。</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">try</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span
+                        class="n">operation</span><span class="o">()</span>
+  <span class="n">sender</span> <span class="o">!</span> <span class="n">result</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span
+                        class="k">⇒</span>
+    <span class="kt">sender</span> <span class="kt">!</span> <span class="kt">akka.actor.Status.Failure</span><span
+                        class="o">(</span><span class="kt">e</span><span class="o">)</span>
+    <span class="kt">throw</span> <span class="kt">e</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+        <p>如果一个actor没有完成future, 它会在超时时限到来时过期， 以
+            <tt class="xref py py-class docutils literal"><span class="pre">AskTimeoutException</span></tt>来结束.
+            超时的时限是按下面的顺序和位置来获取的:</p>
+        <ol class="arabic simple">
+            <li>显式指定超时:</li>
+        </ol>
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.pattern.ask</span>
+<span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="n">myActor</span><span
+                        class="o">.</span><span class="n">ask</span><span class="o">(</span><span class="s">&quot;hello&quot;</span><span
+                        class="o">)(</span><span class="mi">5</span> <span class="n">seconds</span><span
+                        class="o">)</span>
+</pre>
+            </div>
+        </div>
+        <ol class="arabic simple" start="2">
+            <li>提供类型为 <tt class="xref py py-class docutils literal"><span
+                    class="pre">akka.util.Timeout</span></tt>的隐式参数,
+                例如，
+            </li>
+        </ol>
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.util.Timeout</span>
+<span class="k">import</span> <span class="nn">akka.pattern.ask</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">timeout</span> <span class="k">=</span> <span
+                        class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span
+                        class="n">seconds</span><span
+                        class="o">)</span>
+<span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="n">myActor</span> <span
+                        class="o">?</span> <span class="s">&quot;hello&quot;</span>
+</pre>
+            </div>
+        </div>
+        <p>参阅 <a class="reference internal" href="futures.html#futures-scala" tppabs="http://www.gtan.com/akka_doc/scala/futures.html#futures-scala"><em>Futures (Scala)</em></a> 了解更多关于等待和查询future的信息。</p>
+
+        <p><tt class="docutils literal"><span
+                class="pre">Future</span></tt>的<tt class="docutils literal"><span class="pre">onComplete</span></tt>,
+            <tt class="docutils literal"><span
+                    class="pre">onResult</span></tt>, 或 <tt class="docutils literal"><span
+                    class="pre">onTimeout</span></tt> 方法可以用来注册一个回调，以便在Future完成时得到通知。从而提供一种避免阻塞的方法。</p>
+
+        <div class="admonition warning">
+            <p class="first admonition-title">警告</p>
+
+            <p class="last">在使用future回调如 <tt class="docutils literal"><span
+                    class="pre">onComplete</span></tt>,
+                <tt class="docutils literal"><span class="pre">onSuccess</span></tt>, and <tt
+                        class="docutils literal"><span class="pre">onFailure</span></tt>时,
+                在actor内部你要小心避免捕捉该actor的引用, i.e. 不要在回调中调用该actor的方法或访问其可变状态。这会破坏actor的封装，会引用同步bug和race condition,
+                因为回调会与此actor一同被并发调度。 不幸的是目前还没有一种编译时的方法能够探测到这种非法访问。
+                参阅: <a class="reference internal" href="../general/jmm.html#jmm-shared-state" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#jmm-shared-state"><em>Actor与共享可变状态</em></a></p>
+        </div>
+    </div>
+    <div class="section" id="forward-message">
+        <h3>转发消息</h3>
+
+        <p>你可以将消息从一个actor转发给另一个。虽然经过了一个&#8216;中转&#8217;，但最初的发送者地址/引用将保持不变。当实现功能类似路由器、负载均衡器、备份等的actor时会很有用。</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="n">myActor</span><span class="o">.</span><span
+                    class="n">forward</span><span class="o">(</span><span class="n">message</span><span
+                    class="o">)</span>
+</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section" id="receive-messages">
+    <h2>接收消息</h2>
+
+    <p>Actor必须实现 <tt class="docutils literal"><span class="pre">receive</span></tt> 方法来接收消息：</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">protected</span> <span class="k">def</span> <span
+                class="n">receive</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span
+                class="kt">Any</span>, <span class="kt">Unit</span><span class="o">]</span>
+</pre>
+        </div>
+    </div>
+    <p>注意：Akka 为<tt class="docutils literal"><span class="pre">PartialFunction[Any,</span> <span
+            class="pre">Unit]</span></tt> 取了一个别名叫作
+        <tt class="docutils literal"><span class="pre">Receive</span></tt> (<tt class="docutils literal"><span
+                class="pre">akka.actor.Actor.Receive</span></tt>), 为了代码清晰你可以使用这个类型。但大多数情况下你并不需要写它。</p>
+
+    <p>这个方法应返回一个 <tt class="docutils literal"><span class="pre">PartialFunction</span></tt>, 例如 一个
+        ‘match/case’ 子句，消息可以与其中的不同分支进行scala模式匹配。如下例:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Actor</span>
+<span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">import</span> <span class="nn">akka.event.Logging</span>
+
+<span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span
+                    class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span
+                    class="o">(</span><span class="n">context</span><span class="o">.</span><span
+                    class="n">system</span><span class="o">,</span> <span class="k">this</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;test&quot;</span> <span class="k">⇒</span> <span
+                    class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span
+                    class="s">&quot;received test&quot;</span><span class="o">)</span>
+    <span class="k">case</span> <span class="k">_</span>      <span class="k">⇒</span> <span class="n">log</span><span
+                    class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;received unknown message&quot;</span><span
+                    class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="reply-to-messages">
+    <span id="actor-reply"></span>
+
+    <h2>回应消息</h2>
+
+    <p>如果你需要一个用来发送回应消息的目标，可以使用
+        <tt class="docutils literal"><span class="pre">sender</span></tt>, 它是一个Actor引用. 你可以用 <tt class="docutils literal"><span class="pre">sender</span> <span class="pre">!</span> <span
+                class="pre">replyMsg</span></tt> 向这个引用发送回应消息. 你也可以将这个Actor引用保存起来将来再作回应。如果没有sender (不是从actor发送的消息或者没有future上下文) 那么 sender
+        缺省为 &#8216;死信&#8217; actor的引用.</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">case</span> <span class="n">request</span> <span
+                class="k">=&gt;</span>
+  <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="n">process</span><span
+                    class="o">(</span><span class="n">request</span><span class="o">)</span>
+  <span class="n">sender</span> <span class="o">!</span> <span class="n">result</span>       <span class="c1">// 缺省为死信actor</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="initial-receive-timeout">
+    <h2>第一条消息接收超时</h2>
+
+    <p>在接收消息时，如果在一段时间内没有收到第一条消息，可以使用超时机制。 要检测这种超时你必须设置
+        <tt class="docutils literal"><span class="pre">receiveTimeout</span></tt> 属性并声明一个处理 ReceiveTimeout 对象的匹配分支。
+        </p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.ReceiveTimeout</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span
+                    class="nc">Actor</span> <span class="o">{</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">setReceiveTimeout</span><span class="o">(</span><span
+                    class="mi">30</span> <span class="n">milliseconds</span><span class="o">)</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;Hello&quot;</span>        <span class="k">⇒</span> <span
+                    class="c1">//...</span>
+    <span class="k">case</span> <span class="nc">ReceiveTimeout</span> <span class="k">⇒</span> <span
+                    class="k">throw</span> <span class="k">new</span> <span class="nc">RuntimeException</span><span
+                    class="o">(</span><span class="s">&quot;received timeout&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="stopping-actors">
+    <span id="stopping-actors-scala"></span>
+
+    <h2>终止Actor</h2>
+
+    <p>通过调用<tt class="docutils literal"><span
+            class="pre">ActorRefFactory</span></tt> i.e. <tt class="docutils literal"><span class="pre">ActorContext</span></tt> 或 <tt
+            class="docutils literal"><span class="pre">ActorSystem</span></tt> 的 <tt class="xref py py-meth docutils literal"><span
+            class="pre">stop</span></tt> 方法来终止一个actor , 通常 context 用来终止子actor，而 system 用来终止顶级actor. 实际的终止操作是异步执行的， i.e.
+        <tt class="xref py py-meth docutils literal"><span
+                class="pre">stop</span></tt> 可能在actor被终止之前返回。</p>
+
+    <p>如果当前有正在处理的消息，对该消息的处理将在actor被终止之前完成，但是邮箱中的后续消息将不会被处理。缺省情况下这些消息会被送到
+        <tt class="xref py py-obj docutils literal"><span class="pre">ActorSystem</span></tt> 的 <tt class="xref py py-obj docutils literal"><span class="pre">死信</span></tt>,
+        但是这取决于邮箱的实现。</p>
+
+    <p>actor的终止分两步: 第一步actor将停止对邮箱的处理，向所有子actor发送终止命令，然后处理来自子actor的终止消息直到所有的子actor都完成终止，
+        最后终止自己 (调用 <tt class="xref py py-meth docutils literal"><span class="pre">postStop</span></tt>,
+        销毁邮箱,
+        向 <a class="reference internal" href="#deathwatch-scala"><em>DeathWatch</em></a> 发布 <tt class="xref py py-class docutils literal"><span class="pre">Terminated</span></tt> ,
+        通知其监管者). 这个过程保证actor系统中的子树以一种有序的方式终止, 将终止命令传播到叶子结点并收集它们回送的确认消息给被终止的监管者。如果其中某个actor没有响应 (i.e. 由于处理消息用了太长时间以至于没有收到终止命令),
+        整个过程将会被阻塞。</p>
+
+    <p>在 <tt class="xref py py-meth docutils literal"><span class="pre">ActorSystem.shutdown</span></tt>被调用时, 系统根监管actor会被终止，以上的过程将保证整个系统的正确终止。</p>
+
+    <p><tt class="xref py py-meth docutils literal"><span class="pre">postStop</span></tt> hook 是在actor被完全终止以后调用的。这是为了清理资源:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">override</span> <span class="k">def</span> <span
+                class="n">postStop</span><span class="o">()</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="c1">// 关闭文件或数据库连接</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+    <div class="admonition note">
+        <p class="first admonition-title">注意</p>
+
+        <p class="last">由于actor的终止是异步的, 你不能马上使用你刚刚终止的子actor的名字；这会导致
+            <tt class="xref py py-class docutils literal"><span class="pre">InvalidActorNameException</span></tt>.
+            你应该 <tt class="xref py py-meth docutils literal"><span class="pre">监视</span></tt> 正在终止的
+            actor 而在最终到达的 <tt class="xref py py-class docutils literal"><span
+                    class="pre">Terminated</span></tt>消息的处理中创建它的替代者。</p>
+    </div>
+    <div class="section" id="poisonpill">
+        <h3>PoisonPill</h3>
+
+        <p>你也可以向actor发送 <tt class="docutils literal"><span
+                class="pre">akka.actor.PoisonPill</span></tt> 消息, 这个消息处理完成后actor会被终止。 <tt class="docutils literal"><span
+                    class="pre">PoisonPill</span></tt> 与普通消息一样被放进队列，因此会在已经入队列的其它消息之后被执行。</p>
+    </div>
+    <div class="section" id="graceful-stop">
+        <h3>优雅地终止</h3>
+
+        <p>如果你想等待终止过程的结束，或者组合若干actor的终止次序，可以使用<tt class="xref py py-meth docutils literal"><span class="pre">gracefulStop</span></tt>:</p>
+
+        <div class="highlight-scala"><pre>import akka.pattern.gracefulStop
+import akka.dispatch.Await
+import akka.actor.ActorTimeoutException
+
+try {
+  val stopped: Future[Boolean] = gracefulStop(actorRef, 5 seconds)(system)
+  Await.result(stopped, 6 seconds)
+  // actor被成功终止
+} catch {
+  case e: ActorTimeoutException ⇒ // actor没有在5秒内终止
+}
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="become-unbecome">
+    <span id="actor-hotswap"></span>
+
+    <h2>Become/Unbecome</h2>
+
+    <div class="section" id="upgrade">
+        <h3>升级</h3>
+
+        <p>Akka支持在运行时对Actor消息循环 (e.g. 的实现)进行实时替换: 在actor中调用 <tt class="docutils literal"><span class="pre">context.become</span></tt> 方法。</p>
+
+        <p>Become 要求一个 <tt class="docutils literal"><span class="pre">PartialFunction[Any,</span> <span class="pre">Unit]</span></tt>
+            参数作为新的消息处理实现。 被替换的代码被存在一个栈中，可以被push和pop。</p>
+
+        <div class="admonition warning">
+            <p class="first admonition-title">警告</p>
+
+            <p class="last">请注意actor被其监管者重启后将恢复其最初的行为。</p>
+        </div>
+        <p>使用 <tt class="docutils literal"><span class="pre">become</span></tt> 替换Actor的行为:</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">class</span> <span class="nc">HotSwapActor</span> <span
+                    class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">context._</span>
+  <span class="k">def</span> <span class="n">angry</span><span class="k">:</span> <span class="kt">Receive</span> <span
+                        class="o">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;foo&quot;</span> <span class="k">⇒</span> <span
+                        class="n">sender</span> <span class="o">!</span> <span
+                        class="s">&quot;I am already angry?&quot;</span>
+    <span class="k">case</span> <span class="s">&quot;bar&quot;</span> <span class="k">⇒</span> <span
+                        class="n">become</span><span class="o">(</span><span class="n">happy</span><span
+                        class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">happy</span><span class="k">:</span> <span class="kt">Receive</span> <span
+                        class="o">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;bar&quot;</span> <span class="k">⇒</span> <span
+                        class="n">sender</span> <span class="o">!</span> <span class="s">&quot;I am already happy :-)&quot;</span>
+    <span class="k">case</span> <span class="s">&quot;foo&quot;</span> <span class="k">⇒</span> <span
+                        class="n">become</span><span class="o">(</span><span class="n">angry</span><span
+                        class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;foo&quot;</span> <span class="k">⇒</span> <span
+                        class="n">become</span><span class="o">(</span><span class="n">angry</span><span
+                        class="o">)</span>
+    <span class="k">case</span> <span class="s">&quot;bar&quot;</span> <span class="k">⇒</span> <span
+                        class="n">become</span><span class="o">(</span><span class="n">happy</span><span
+                        class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+        <p><tt class="docutils literal"><span class="pre">become</span></tt> 方法还有很多其它的用处，一个特别好的例子是用它来实现一个有限状态机
+            (FSM): <a class="reference external"
+                    href="javascript:if(confirm('http://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala'" tppabs="http://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala">Dining
+                Hakkers</a>.</p>
+
+        <p>以下是另外一个使用 <tt class="docutils literal"><span class="pre">become</span></tt> and
+            <tt class="docutils literal"><span class="pre">unbecome</span></tt> 的非常酷的小例子:</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">case</span> <span class="k">object</span> <span
+                    class="nc">Swap</span>
+<span class="k">class</span> <span class="nc">Swapper</span> <span class="k">extends</span> <span
+                        class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">context._</span>
+  <span class="k">val</span> <span class="n">log</span> <span class="k">=</span> <span class="nc">Logging</span><span
+                        class="o">(</span><span class="n">system</span><span class="o">,</span> <span
+                        class="k">this</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Swap</span> <span class="k">⇒</span>
+      <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span
+                        class="s">&quot;Hi&quot;</span><span class="o">)</span>
+      <span class="n">become</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nc">Swap</span> <span class="k">⇒</span>
+          <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span
+                        class="s">&quot;Ho&quot;</span><span class="o">)</span>
+          <span class="n">unbecome</span><span class="o">()</span> <span
+                        class="c1">// 重置最近的 &#39;become&#39; (完全为了好玩)</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">SwapperApp</span> <span class="k">extends</span> <span
+                        class="nc">App</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span
+                        class="nc">ActorSystem</span><span class="o">(</span><span
+                        class="s">&quot;SwapperSystem&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">swap</span> <span class="k">=</span> <span class="n">system</span><span
+                        class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span
+                        class="nc">Props</span><span class="o">[</span><span class="kt">Swapper</span><span
+                        class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span
+                        class="s">&quot;swapper&quot;</span><span
+                        class="o">)</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Hi</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Ho</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Hi</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Ho</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Hi</span>
+  <span class="n">swap</span> <span class="o">!</span> <span class="nc">Swap</span> <span class="c1">// logs Ho</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="encoding-scala-actors-nested-receives-without-accidentally-leaking-memory">
+        <h3>对 Scala Actors 嵌套接收消息进行编码而不会造成意外的内存泄露</h3>
+
+        <p>参阅 <a class="reference external"
+                href="javascript:if(confirm('https://github.com/akka/akka/blob/master/akka-docs/scala/code/akka/docs/actor/UnnestedReceives.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/blob/master/akka-docs/scala/code/akka/docs/actor/UnnestedReceives.scala'" tppabs="https://github.com/akka/akka/blob/master/akka-docs/scala/code/akka/docs/actor/UnnestedReceives.scala">解嵌套接收消息示例</a>.</p>
+    </div>
+    <div class="section" id="downgrade">
+        <h3>降级</h3>
+
+        <p>由于被热替换掉的代码存在栈中，你也可以对代码进行降级，只需要在actor中调用  <tt class="docutils literal"><span
+                    class="pre">context.unbecome</span></tt> 方法。</p>
+
+        <p>这将会用从栈顶取出的
+            <tt class="docutils literal"><span class="pre">PartialFunction[Any,</span> <span
+                    class="pre">Unit]</span></tt> 作为actor的行为</p>
+
+        <p>使用 <tt class="docutils literal"><span class="pre">unbecome</span></tt> 方法的例子:</p>
+
+        <div class="highlight-scala">
+            <div class="highlight"><pre><span class="k">def</span> <span class="n">receive</span> <span
+                    class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="s">&quot;revert&quot;</span> <span class="k">=&gt;</span> <span class="n">context</span><span
+                        class="o">.</span><span class="n">unbecome</span><span class="o">()</span>
+<span class="o">}</span>
+</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section" id="killing-an-actor">
+    <h2>杀死actor</h2>
+
+    <p>你可以发送 <tt class="docutils literal"><span class="pre">Kill</span></tt> 来杀死actor. 这将会使用正规的监管说语义重启这个actor。</p>
+
+    <p>使用示例：</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="c1">// 杀死名为 &#39;victim&#39; 的actor</span>
+<span class="n">victim</span> <span class="o">!</span> <span class="nc">Kill</span>
+</pre>
+        </div>
+    </div>
+</div>
+<div class="section" id="actors-and-exceptions">
+    <h2>Actor 与 异常</h2>
+
+    <p>在消息被actor处理的过程中可能会抛出异常，例如数据库异常。</p>
+
+    <div class="section" id="what-happens-to-the-message">
+        <h3>消息会怎样</h3>
+
+        <p>如果消息处理过程中（即从邮箱中取出并交给receive后）发生了异常，这个消息将被丢失。必须明白它不会被放回到邮箱中。所以如果你希望重试对消息的处理，你需要自己抓住异常然后在异常处理流程中重试.
+            请确保你限制重试的次数，因为你不会希望系统产生活锁 (从而消耗大量CPU而于事无补)。</p>
+    </div>
+    <div class="section" id="what-happens-to-the-mailbox">
+        <h3>邮箱会怎样</h3>
+
+        <p>如果消息处理过程中发生异常，邮箱没有任何变化。如果actor被重启，邮箱会被保留。邮箱中的所有消息不会丢失。</p>
+    </div>
+    <div class="section" id="what-happens-to-the-actor">
+        <h3>actor会怎样</h3>
+
+        <p>如果抛出了异常，actor实例将被丢弃而生成一个新的实例。这个新的实例会被该actor的引用所引用（所以这个过程对开发人员来说是不可见的）。注意这意味着如果你不在<tt class="docutils literal"><span class="pre">preRestart</span></tt>
+            回调中进行保存，并在<tt class="docutils literal"><span
+                    class="pre">postRestart</span></tt>回调中恢复，那么失败的actor实例的当前状态会被丢失。</p>
+    </div>
+</div>
+<div class="section" id="extending-actors-using-partialfunction-chaining">
+    <h2>使用 PartialFunction 链来扩展actor</h2>
+
+    <p>有一个稍高级但是非常有用的方法是定义基础的消息处理器并通过继承或委托来对它进行扩展，使用
+        <tt class="docutils literal"><span class="pre">PartialFunction.orElse</span></tt> 链.</p>
+
+    <div class="highlight-scala"><pre>
+abstract class GenericActor extends Actor {
+  // to be defined in subclassing actor
+  def specificMessageHandler: Receive
+
+  // generic message handler
+  def genericMessageHandler: Receive = {
+    case event ⇒ printf("generic: %s\n", event)
+  }
+
+  def receive = specificMessageHandler orElse genericMessageHandler
+}
+
+class SpecificActor extends GenericActor {
+  def specificMessageHandler = {
+    case event: MyMsg ⇒ printf("specific: %s\n", event.subject)
+  }
+}
+
+case class MyMsg(subject: String)
+</pre>
+    </div>
+    <p>或:</p>
+
+    <div class="highlight-scala">
+        <div class="highlight"><pre><span class="k">trait</span> <span class="nc">ComposableActor</span> <span
+                class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">receives</span><span
+                    class="k">:</span> <span class="kt">List</span><span class="o">[</span><span
+                    class="kt">Receive</span><span class="o">]</span> <span class="k">=</span> <span
+                    class="nc">List</span><span class="o">()</span>
+  <span class="k">protected</span> <span class="k">def</span> <span class="n">registerReceive</span><span
+                    class="o">(</span><span class="n">receive</span><span class="k">:</span> <span
+                    class="kt">Receive</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">receives</span> <span class="k">=</span> <span class="n">receive</span> <span
+                    class="o">::</span> <span class="n">receives</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span
+                    class="n">receives</span> <span class="n">reduce</span> <span class="o">{</span> <span
+                    class="k">_</span> <span class="n">orElse</span> <span class="k">_</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">MyComposableActor</span> <span class="k">extends</span> <span
+                    class="nc">ComposableActor</span> <span
+                    class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">preStart</span><span
+                    class="o">()</span> <span class="o">{</span>
+    <span class="n">registerReceive</span><span class="o">({</span>
+      <span class="k">case</span> <span class="s">&quot;foo&quot;</span> <span class="k">⇒</span> <span class="cm">/* Do something */</span>
+    <span class="o">})</span>
+
+    <span class="n">registerReceive</span><span class="o">({</span>
+      <span class="k">case</span> <span class="s">&quot;bar&quot;</span> <span class="k">⇒</span> <span class="cm">/* Do something */</span>
+    <span class="o">})</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+<div class="span3"><p class="contents-title">Contents</p>
+
+    <div id="scroller-anchor">
+        <div id="scroller">
+            <div id="toc"></div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    <div class="container">
+        <ul>
+            <li><h5>Akka</h5></li>
+            <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+            <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+            <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+            <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+        </ul>
+        <ul>
+            <li><h5>Contribute</h5></li>
+            <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+            <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>
+            <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>
+        </ul>
+        <ul>
+            <li><h5>Company</h5></li>
+            <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+            <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+            <li><a href="mailto:info@typesafe.com">Contact</a></li>
+        </ul>
+        <ul>
+            <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+        </ul>
+    </div>
+    <div class="container copyright">
+        <p style="float: left;">
+            © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a>
+            <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+        </p>
+
+        <p style="float: right; font-size: 12px;">
+            Last updated: Mar 08, 2012
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#toc').toc();
+</script>
+
+
+</body>
+</html>
+<!-- Localized -->

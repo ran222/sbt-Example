@@ -1,0 +1,381 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Typed Actors (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Logging (Scala)" href="logging.html" />
+    <link rel="prev" title="Actors (Scala)" href="actors.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Typed Actors (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="logging.html" tppabs="http://www.gtan.com/akka_doc/scala/logging.html">æ—¥å¿— (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">å†…å®¹</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="actors.html" tppabs="http://www.gtan.com/akka_doc/scala/actors.html">Actor (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="typed-actors-scala">
+<h1>æœ‰ç±»å‹ Actors (Scala)</h1>
+<p>Akka ä¸­çš„æœ‰ç±»å‹ Actor æ˜¯ <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Active_object  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Active_object'" tppabs="http://en.wikipedia.org/wiki/Active_object">Active Objects</a> æ¨¡å¼çš„ä¸€ç§å®ç°.
+Smalltalkè¯ç”Ÿä¹‹æ—¶ï¼Œå°±å·²ç»ç¼ºçœåœ°å°†æ–¹æ³•è°ƒç”¨ä»åŒæ­¥æ“ä½œå‘ä¸ºå¼‚æ­¥æ´¾å‘ã€‚</p>
+<p>æœ‰ç±»å‹ Actor ç”±ä¸¤ &#8220;éƒ¨åˆ†&#8221; ç»„æˆ, ä¸€ä¸ªå…¬å¼€çš„æ¥å£å’Œä¸€ä¸ªå®ç°, å¦‚æœä½ æœ‰ &#8220;ä¼ä¸šçº§&#8221; Javaçš„å¼€å‘ç»éªŒ, è¿™å¯¹ä½ åº”è¯¥éå¸¸ç†Ÿæ‚‰ã€‚ å¯¹æ™®é€šactoræ¥è¯´ï¼Œä½ æ‹¥æœ‰ä¸€ä¸ªå¤–éƒ¨API (å…¬å¼€æ¥å£çš„å®ä¾‹) æ¥å°†æ–¹æ³•è°ƒç”¨å¼‚æ­¥åœ°å§”æ‰˜ç»™
+å…¶å®ç°çš„ç§æœ‰å®ä¾‹ã€‚</p>
+<p>æœ‰ç±»å‹Actorç›¸å¯¹äºæ™®é€šActorçš„ä¼˜åŠ¿åœ¨äºæœ‰ç±»å‹Actoræ‹¥æœ‰é™æ€çš„å¥‘çº¦, ä½ ä¸éœ€è¦å®šä¹‰ä½ è‡ªå·±çš„æ¶ˆæ¯, å®ƒçš„åŠ£åŠ¿åœ¨äºå¯¹ä½ èƒ½åšä»€ä¹ˆå’Œä¸èƒ½åšä»€ä¹ˆè¿›è¡Œäº†ä¸€äº›é™åˆ¶ï¼Œi.e. ä½ ä¸èƒ½ä½¿ç”¨ become/unbecome.</p>
+<p>æœ‰ç±»å‹Actoræ˜¯ä½¿ç”¨ <a class="reference external" href="javascript:if(confirm('http://docs.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://docs.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html'" tppabs="http://docs.oracle.com/javase/6/docs/api/java/lang/reflect/Proxy.html">JDK Proxies</a> å®ç°çš„ï¼ŒJDK Proxiesæä¾›äº†éå¸¸ç®€å•çš„apiæ¥æ‹¦æˆªæ–¹æ³•è°ƒç”¨ã€‚</p>
+<div class="admonition note">
+<p class="first admonition-title">æ³¨æ„</p>
+<p class="last">å’Œæ™®é€šAkka actorä¸€æ ·ï¼Œæœ‰ç±»å‹actorä¹Ÿä¸€æ¬¡å¤„ç†ä¸€ä¸ªæ¶ˆæ¯ã€‚</p>
+</div>
+<div class="section" id="the-tools-of-the-trade">
+<h2>å·¥å…·ç®±</h2>
+<p>åœ¨åˆ›å»ºç¬¬ä¸€ä¸ªæœ‰ç±»å‹Actorä¹‹å‰ï¼Œæˆ‘ä»¬å…ˆäº†è§£ä¸€ä¸‹æˆ‘ä»¬æ‰‹ä¸Šå¯ä¾›ä½¿ç”¨çš„å·¥å…·ï¼Œå®ƒçš„ä½ç½®åœ¨ <tt class="docutils literal"><span class="pre">akka.actor.TypedActor</span></tt>ä¸­.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.TypedActor</span>
+
+<span class="c1">//è¿”å›æœ‰ç±»å‹actoræ‰©å±•</span>
+<span class="k">val</span> <span class="n">extension</span> <span class="k">=</span> <span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">)</span> <span class="c1">//systemæ˜¯ä¸€ä¸ªActorç³»ç»Ÿå®ä¾‹</span>
+
+<span class="c1">//åˆ¤æ–­ä¸€ä¸ªå¼•ç”¨æ˜¯å¦æ˜¯æœ‰ç±»å‹actorä»£ç†</span>
+<span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">isTypedActor</span><span class="o">(</span><span class="n">someReference</span><span class="o">)</span>
+
+<span class="c1">//è¿”å›ä¸€ä¸ªå¤–éƒ¨æœ‰ç±»å‹actorä»£ç†æ‰€ä»£è¡¨çš„Akka actor</span>
+<span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">getActorRefFor</span><span class="o">(</span><span class="n">someReference</span><span class="o">)</span>
+
+<span class="c1">//è¿”å›å½“å‰çš„ActorContext,</span>
+<span class="c1">// æ­¤æ–¹æ³•ä»…åœ¨ä¸€ä¸ªTypedActor å®ç°çš„æ–¹æ³•ä¸­æœ‰æ•ˆ</span>
+<span class="k">val</span> <span class="n">c</span><span class="k">:</span> <span class="kt">ActorContext</span> <span class="o">=</span> <span class="nc">TypedActor</span><span class="o">.</span><span class="n">context</span>
+
+<span class="c1">//è¿”å›å½“å‰æœ‰ç±»å‹actorçš„å¤–éƒ¨ä»£ç†,</span>
+<span class="c1">// æ­¤æ–¹æ³•ä»…åœ¨ä¸€ä¸ªTypedActor å®ç°çš„æ–¹æ³•ä¸­æœ‰æ•ˆ</span>
+<span class="k">val</span> <span class="n">s</span><span class="k">:</span> <span class="kt">Squarer</span> <span class="o">=</span> <span class="nc">TypedActor</span><span class="o">.</span><span class="n">self</span><span class="o">[</span><span class="kt">Squarer</span><span class="o">]</span>
+
+<span class="c1">//è¿”å›ä¸€ä¸ªæœ‰ç±»å‹Actoræ‰©å±•çš„ä¸Šä¸‹æ–‡å®ä¾‹</span>
+<span class="c1">//è¿™æ„å‘³ç€å¦‚æœä½ ç”¨å®ƒåˆ›å»ºå…¶å®ƒçš„æœ‰ç±»å‹actorï¼Œå®ƒä»¬ä¼šæˆä¸ºå½“å‰æœ‰ç±»å‹actorçš„å­actor</span>
+<span class="nc">TypedActor</span><span class="o">(</span><span class="nc">TypedActor</span><span class="o">.</span><span class="n">context</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">è­¦å‘Š</p>
+<p class="last">å°±è±¡ä¸åº”è¯¥æš´éœ²Akka actorçš„ <tt class="docutils literal"><span class="pre">this</span></tt> ä¸€æ ·, ä¸è¦æš´éœ²æœ‰ç±»å‹Actorçš„ <tt class="docutils literal"><span class="pre">this</span></tt>,
+ä½ åº”è¯¥ä¼ é€’å…¶å¤–éƒ¨ä»£ç†å¼•ç”¨ï¼Œå®ƒå¯ä»¥åœ¨ä½ çš„æœ‰ç±»å‹Actorä¸­ç”¨
+<tt class="docutils literal"><span class="pre">TypedActor.self</span></tt>è·å¾—, è¿™æ˜¯ä½ çš„å¤–éƒ¨æ ‡è¯†, å°±è±¡ <tt class="docutils literal"><span class="pre">ActorRef</span></tt> æ˜¯Akka actorçš„å¤–éƒ¨æ ‡è¯†ä¸€æ ·ã€‚</p>
+</div>
+</div>
+<div class="section" id="creating-typed-actors">
+<h2>åˆ›å»ºæœ‰ç±»å‹Actor</h2>
+<p>è¦åˆ›å»ºæœ‰ç±»å‹Actorï¼Œéœ€è¦ä¸€ä¸ªæˆ–å¤šä¸ªæ¥å£ï¼Œå’Œä¸€ä¸ªå®ç°ã€‚</p>
+<p>æˆ‘ä»¬çš„ç¤ºä¾‹æ¥å£:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span> <span class="nc">Promise</span><span class="o">,</span> <span class="nc">Future</span><span class="o">,</span> <span class="nc">Await</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorContext</span><span class="o">,</span> <span class="nc">TypedActor</span><span class="o">,</span> <span class="nc">TypedProps</span> <span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">Squarer</span> <span class="o">{</span>
+  <span class="c1">// æœ‰ç±»å‹actoræ¥å£æ–¹æ³• ...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä»¥ä¸Šæ¥å£çš„ç¤ºä¾‹å®ç°:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span> <span class="nc">Promise</span><span class="o">,</span> <span class="nc">Future</span><span class="o">,</span> <span class="nc">Await</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorContext</span><span class="o">,</span> <span class="nc">TypedActor</span><span class="o">,</span> <span class="nc">TypedProps</span> <span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">SquarerImpl</span><span class="o">(</span><span class="k">val</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Squarer</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="k">this</span><span class="o">()</span> <span class="k">=</span> <span class="k">this</span><span class="o">(</span><span class="s">&quot;default&quot;</span><span class="o">)</span>
+  <span class="c1">// æœ‰ç±»å‹actorå®ç°æ–¹æ³• ...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>åˆ›å»ºæˆ‘ä»¬çš„Squareræœ‰ç±»å‹actorå®ä¾‹çš„æœ€ç®€å•æ–¹æ³•
+:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">mySquarer</span><span class="k">:</span> <span class="kt">Squarer</span> <span class="o">=</span>
+  <span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">typedActorOf</span><span class="o">(</span><span class="nc">TypedProps</span><span class="o">[</span><span class="kt">SquarerImpl</span><span class="o">]())</span>
+</pre></div>
+</div>
+<p>ç¬¬ä¸€ä¸ªç±»å‹æ˜¯ä»£ç†çš„ç±»å‹ï¼Œç¬¬äºŒä¸ªç±»å‹æ˜¯å®ç°çš„ç±»å‹. å¦‚æœè¦è°ƒç”¨æŸç‰¹å®šçš„æ„é€ æ–¹æ³•è¦è¿™æ ·åšï¼š:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">otherSquarer</span><span class="k">:</span> <span class="kt">Squarer</span> <span class="o">=</span>
+  <span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">typedActorOf</span><span class="o">(</span><span class="nc">TypedProps</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">Squarer</span><span class="o">],</span> <span class="k">new</span> <span class="nc">SquarerImpl</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)),</span> <span class="s">&quot;name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>ç”±äºä½ æä¾›äº†ä¸€ä¸ª Props, ä½ å¯ä»¥æŒ‡å®šä½¿ç”¨å“ªä¸ªæ´¾å‘å™¨, ç¼ºçœçš„è¶…æ—¶æ—¶é—´åŠå…¶å®ƒã€‚
+ç°åœ¨æˆ‘ä»¬çš„ Squarer è¿˜æ²¡æœ‰æ–¹æ³•ï¼Œæˆ‘ä»¬æ¥åŠ å‡ ä¸ªã€‚</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span> <span class="nc">Promise</span><span class="o">,</span> <span class="nc">Future</span><span class="o">,</span> <span class="nc">Await</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorContext</span><span class="o">,</span> <span class="nc">TypedActor</span><span class="o">,</span> <span class="nc">TypedProps</span> <span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">Squarer</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">squareDontCare</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="kt">//fire-forget</span>
+
+  <span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="c1">//éé˜»å¡ send-request-reply</span>
+
+  <span class="k">def</span> <span class="n">squareNowPlease</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="c1">//é˜»å¡ send-request-reply</span>
+
+  <span class="k">def</span> <span class="n">squareNow</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="kt">//é˜»å¡çš„</span> <span class="kt">send-request-reply</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>å¥½ï¼Œç°åœ¨æ·»åŠ å®ç°ã€‚</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span> <span class="nc">Promise</span><span class="o">,</span> <span class="nc">Future</span><span class="o">,</span> <span class="nc">Await</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorContext</span><span class="o">,</span> <span class="nc">TypedActor</span><span class="o">,</span> <span class="nc">TypedProps</span> <span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">SquarerImpl</span><span class="o">(</span><span class="k">val</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Squarer</span> <span class="o">{</span>
+
+  <span class="k">def</span> <span class="k">this</span><span class="o">()</span> <span class="k">=</span> <span class="k">this</span><span class="o">(</span><span class="s">&quot;default&quot;</span><span class="o">)</span>
+  <span class="k">import</span> <span class="nn">TypedActor.dispatcher</span> <span class="c1">//è¿™æ ·æˆ‘ä»¬å¯ä»¥åˆ›å»º Promises</span>
+
+  <span class="k">def</span> <span class="n">squareDontCare</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="c1">//æ²¡äººå…³å¿ƒå…·ä½“çš„ç®—æ³• :(</span>
+
+  <span class="k">def</span> <span class="n">square</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Promise</span> <span class="n">successful</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+
+  <span class="k">def</span> <span class="n">squareNowPlease</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">squareNow</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>å¤ªå¥½äº†ï¼Œæˆ‘ä»¬ç°åœ¨æœ‰äº†æ¥å£ï¼Œä¹Ÿæœ‰äº†å¯¹è¿™ä¸ªæ¥å£çš„å®ç°ï¼Œæˆ‘ä»¬è¿˜çŸ¥é“å¦‚ä½•ä»ä»–ä»¬æ¥åˆ›å»ºä¸€ä¸ªæœ‰ç±»å‹actorï¼Œç°åœ¨æˆ‘ä»¬æ¥çœ‹çœ‹å¦‚ä½•è°ƒç”¨è¿™äº›æ–¹æ³•ã€‚</p>
+</div>
+<div class="section" id="method-dispatch-semantics">
+<h2>æ–¹æ³•æ´¾å‘è¯­ä¹‰</h2>
+<p>æ–¹æ³•è¿”å›:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Unit</span></tt> ä¼šä»¥ <tt class="docutils literal"><span class="pre">fire-and-forget</span></tt> è¯­ä¹‰è¿›è¡Œæ´¾å‘, ä¸ <tt class="docutils literal"><span class="pre">ActorRef.tell</span></tt>å®Œå…¨ä¸€è‡´ã€‚</li>
+<li><tt class="docutils literal"><span class="pre">akka.dispatch.Future[_]</span></tt> ä¼šä»¥ <tt class="docutils literal"><span class="pre">send-request-reply</span></tt> è¯­ä¹‰è¿›è¡Œæ´¾å‘, ä¸ <tt class="docutils literal"><span class="pre">ActorRef.ask</span></tt>å®Œå…¨ä¸€è‡´ã€‚</li>
+<li><tt class="docutils literal"><span class="pre">scala.Option[_]</span></tt> or <tt class="docutils literal"><span class="pre">akka.japi.Option&lt;?&gt;</span></tt> ä¼šä»¥ <tt class="docutils literal"><span class="pre">send-request-reply</span></tt> è¯­ä¹‰æ´¾å‘, ä½†æ˜¯ <em>ä¼š</em> é˜»å¡ç­‰å¾…åº”ç­”,
+å¦‚æœåœ¨è¶…æ—¶æ—¶é™å†…æ²¡æœ‰åº”ç­”åˆ™è¿”å› None , å¦åˆ™è¿”å›åŒ…å«ç»“æœçš„ scala.Some/akka.japi.Some .
+åœ¨è¿™ä¸ªè°ƒç”¨ä¸­å‘ç”Ÿçš„å¼‚å¸¸å°†è¢«é‡æ–°æŠ›å‡ºã€‚</li>
+<li>ä»»ä½•å…¶å®ƒç±»å‹çš„å€¼å°†ä»¥ <tt class="docutils literal"><span class="pre">send-request-reply</span></tt> è¯­ä¹‰è¿›è¡Œæ´¾å‘, ä½† <em>ä¼š</em> é˜»å¡åœ°ç­‰å¾…åº”ç­”,
+å¦‚æœè¶…æ—¶ä¼šæŠ›å‡º <tt class="docutils literal"><span class="pre">java.util.concurrent.TimeoutException</span></tt>ï¼Œå¦‚æœå‘ç”Ÿå¼‚å¸¸åˆ™å°†å¼‚å¸¸é‡æ–°æŠ›å‡ºã€‚</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="messages-and-immutability">
+<h2>æ¶ˆæ¯ä¸ä¸å¯å˜æ€§</h2>
+<p>è™½ç„¶Akkaå¹¶ä¸å¼ºåˆ¶è¦æ±‚ä½ ä¼ ç»™æœ‰ç±»å‹Actoræ–¹æ³•çš„å‚æ•°ç±»å‹æ˜¯ä¸å¯å˜çš„, æˆ‘ä»¬ <em>å¼ºçƒˆ</em> å»ºè®®åªä¼ é€’ä¸å¯å˜å‚æ•°.</p>
+<div class="section" id="one-way-message-send">
+<h3>å•å‘æ¶ˆæ¯å‘é€</h3>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">mySquarer</span><span class="o">.</span><span class="n">squareDontCare</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>å°±æ˜¯è¿™ä¹ˆç®€å•ï¼æ–¹æ³•ä¼šåœ¨å¦ä¸€ä¸ªçº¿ç¨‹ä¸­å¼‚æ­¥åœ°è°ƒç”¨ã€‚</p>
+</div>
+<div class="section" id="request-reply-message-send">
+<h3>è¯·æ±‚-å“åº”æ¶ˆæ¯å‘é€</h3>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">oSquare</span> <span class="k">=</span> <span class="n">mySquarer</span><span class="o">.</span><span class="n">squareNowPlease</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> <span class="c1">//Option[Int]</span>
+</pre></div>
+</div>
+<p>å¦‚æœéœ€è¦ï¼Œè¿™ä¼šé˜»å¡åˆ°æœ‰ç±»å‹actorçš„Propsä¸­è®¾ç½®çš„è¶…æ—¶æ—¶é™ã€‚å¦‚æœè¶…æ—¶ï¼Œä¼šè¿”å› <tt class="xref docutils literal"><span class="pre">None</span></tt>ã€‚</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">iSquare</span> <span class="k">=</span> <span class="n">mySquarer</span><span class="o">.</span><span class="n">squareNow</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> <span class="c1">//Int</span>
+</pre></div>
+</div>
+<p>å¦‚æœéœ€è¦ï¼Œè¿™ä¼šé˜»å¡åˆ°æœ‰ç±»å‹actorçš„Propsä¸­è®¾ç½®çš„è¶…æ—¶æ—¶é™ã€‚å¦‚æœè¶…æ—¶ï¼Œä¼šæŠ›å‡º <tt class="docutils literal"><span class="pre">java.util.concurrent.TimeoutException</span></tt> ã€‚</p>
+</div>
+<div class="section" id="request-reply-with-future-message-send">
+<h3>è¯·æ±‚-ä»¥futureä½œä¸ºå“åº”çš„æ¶ˆæ¯å‘é€</h3>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">fSquare</span> <span class="k">=</span> <span class="n">mySquarer</span><span class="o">.</span><span class="n">square</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span> <span class="c1">//A Future[Int]</span>
+</pre></div>
+</div>
+<p>è¿™ä¸ªè°ƒç”¨æ˜¯å¼‚æ­¥çš„ï¼Œè¿”å›çš„Futureå¯ä»¥ç”¨ä½œå¼‚æ­¥ç»„åˆã€‚</p>
+</div>
+</div>
+<div class="section" id="stopping-typed-actors">
+<h2>ç»ˆæ­¢æœ‰ç±»å‹Actor</h2>
+<p>ç”±äºæœ‰ç±»å‹actoråº•å±‚è¿˜æ˜¯Akka actorï¼Œæ‰€ä»¥åœ¨ä¸éœ€è¦çš„æ—¶å€™è¦ç»ˆæ­¢å®ƒã€‚</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">stop</span><span class="o">(</span><span class="n">mySquarer</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>è¿™å°†ä¼šå°½å¿«åœ°å¼‚æ­¥ç»ˆæ­¢ä¸æŒ‡å®šçš„ä»£ç†å…³è”çš„æœ‰ç±»å‹Actorã€‚</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">poisonPill</span><span class="o">(</span><span class="n">otherSquarer</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>è¿™å°†ä¼šåœ¨æœ‰ç±»å‹actorå®Œæˆæ‰€æœ‰åœ¨å½“å‰è°ƒç”¨ä¹‹å‰å¯¹å®ƒçš„è°ƒç”¨åå¼‚æ­¥åœ°ç»ˆæ­¢å®ƒã€‚</p>
+</div>
+<div class="section" id="typed-actor-hierarchies">
+<h2>æœ‰ç±»å‹Actorç›‘ç®¡æ ‘</h2>
+<p>ä½ å¯ä»¥é€šè¿‡ä¼ å…¥ <tt class="docutils literal"><span class="pre">ActorContext</span></tt>æ¥è·å¾—æœ‰ç±»å‹Actorä¸Šä¸‹æ–‡ï¼Œæ‰€ä»¥ä½ å¯ä»¥å¯¹å®ƒè°ƒç”¨<tt class="docutils literal"><span class="pre">typedActorOf(..)</span></tt>
+æ¥åˆ›å»ºå­çš„æœ‰ç±»å‹actorã€‚</p>
+<p>è¿™ä¹Ÿå¯ä»¥ç”¨äºä¸ºæ™®é€šçš„Akka actoråˆ›å»ºå­çš„æœ‰ç±»å‹actorã€‚</p>
+</div>
+<div class="section" id="supervisor-strategy">
+<h2>ç›‘ç®¡ç­–ç•¥</h2>
+<p>é€šè¿‡è®©ä½ çš„æœ‰ç±»å‹Actorå®ç°ç±»å®ç° <tt class="docutils literal"><span class="pre">TypedActor.Supervisor</span></tt>æ–¹æ³•
+ä½ å¯ä»¥å®šä¹‰ç”¨æ¥ç›‘ç®¡å­actorçš„ç­–ç•¥ï¼Œå‚é˜…
+<a class="reference internal" href="../general/supervision.html#supervision" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#supervision"><em>ç›‘ç®¡å’Œç›‘æ§</em></a> and <a class="reference internal" href="fault-tolerance.html#fault-tolerance-scala" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance.html#fault-tolerance-scala"><em>å®¹é”™ (Scala)</em></a>.</p>
+</div>
+<div class="section" id="lifecycle-callbacks">
+<h2>ç”Ÿå‘½å‘¨æœŸå›è°ƒ</h2>
+<p>é€šè¿‡ä½¿ä½ çš„æœ‰ç±»å‹actorå®ç°ç±»å®ç°ä»¥ä¸‹æ–¹æ³•:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">TypedActor.PreStart</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">TypedActor.PostStop</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">TypedActor.PreRestart</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">TypedActor.PostRestart</span></tt></li>
+</ul>
+</div></blockquote>
+<p>ä½ å¯ä»¥hookè¿›ä½ çš„æœ‰ç±»å‹actorçš„æ•´ä¸ªç”Ÿå‘½å‘¨æœŸã€‚</p>
+</div></blockquote>
+</div>
+<div class="section" id="receive-arbitrary-messages">
+<h2>æ¥æ”¶ä»»æ„æ¶ˆæ¯</h2>
+<p>å¦‚æœä½ çš„æœ‰ç±»å‹actorçš„å®ç°ç±»æ‰©å±•äº† <tt class="docutils literal"><span class="pre">akka.actor.TypedActor.Receiver</span></tt>,
+æ‰€æœ‰é <tt class="docutils literal"><span class="pre">æ–¹æ³•è°ƒç”¨</span>çš„æ¶ˆæ¯ <span class="pre">ä¼š</span> <span class="pre">è¢«</span> <span class="pre">ä¼ é€’</span> <span class="pre">åˆ°</span>  <span class="pre">``onReceive</span></tt>-æ–¹æ³•.</p>
+<p>è¿™ä½¿ä½ èƒ½å¤Ÿå¯¹ DeathWatch çš„<tt class="docutils literal"><span class="pre">Terminated</span></tt>-æ¶ˆæ¯æˆ–å…¶å®ƒç±»å‹çš„æ¶ˆæ¯è¿›è¡Œå¤„ç†,
+ä¾‹å¦‚ï¼Œä¸æ— ç±»å‹actorè¿›è¡Œäº¤äº’çš„åœºåˆã€‚</p>
+</div>
+<div class="section" id="proxying">
+<h2>ä»£ç†</h2>
+<p>ä½ å¯ä»¥ä½¿ç”¨å¸¦TypedPropså’ŒActorå¼•ç”¨å‚æ•°çš„ <tt class="docutils literal"><span class="pre">typedActorOf</span></tt> æ¥å°†æŒ‡å®šçš„Actorå¼•ç”¨ä»£ç†æˆä¸€ä¸ªæœ‰ç±»å‹Actor.
+è¿™åœ¨ä½ éœ€è¦ä¸è¿œç¨‹ä¸»æœºä¸Šçš„æœ‰ç±»å‹Actoré€šä¿¡æ—¶ä¼šæœ‰ç”¨, åªéœ€è¦ç”¨ <tt class="docutils literal"><span class="pre">actorFor</span></tt> æŸ¥æ‰¾åˆ°è¿œç¨‹actor å¹¶å°† <tt class="docutils literal"><span class="pre">ActorRef</span></tt> ä¼ é€’ç»™ <tt class="docutils literal"><span class="pre">typedActorOf</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">æ³¨æ„</p>
+<p class="last">ç›®æ ‡ Actorå¼•ç”¨ éœ€è¦èƒ½å¤„ç† <tt class="docutils literal"><span class="pre">MethodCall</span></tt> æ¶ˆæ¯.</p>
+</div>
+</div>
+<div class="section" id="supercharging">
+<h2>åŠŸèƒ½æ‰©å……</h2>
+<p>ä»¥ä¸‹æ˜¯ä½¿ç”¨traitsæ¥ä¸ºä½ çš„æœ‰ç±»å‹actoræ··å…¥è¡Œä¸ºçš„ç¤ºä¾‹ï¼š</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">trait</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">doFoo</span><span class="o">(</span><span class="n">times</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;doFoo(&quot;</span> <span class="o">+</span> <span class="n">times</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="k">trait</span> <span class="nc">Bar</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">TypedActor.dispatcher</span> <span class="c1">//è¿™æ ·æˆ‘ä»¬æ‰æœ‰ä¸€ä¸ªéšå¼çš„Promiseæ´¾å‘å™¨</span>
+  <span class="k">def</span> <span class="n">doBar</span><span class="o">(</span><span class="n">str</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Promise</span> <span class="n">successful</span> <span class="n">str</span><span class="o">.</span><span class="n">toUpperCase</span>
+<span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">FooBar</span> <span class="k">extends</span> <span class="nc">Foo</span> <span class="k">with</span> <span class="nc">Bar</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">awesomeFooBar</span><span class="k">:</span> <span class="kt">Foo</span> <span class="kt">with</span> <span class="kt">Bar</span> <span class="o">=</span> <span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">typedActorOf</span><span class="o">(</span><span class="nc">TypedProps</span><span class="o">[</span><span class="kt">FooBar</span><span class="o">]())</span>
+
+<span class="n">awesomeFooBar</span><span class="o">.</span><span class="n">doFoo</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="n">awesomeFooBar</span><span class="o">.</span><span class="n">doBar</span><span class="o">(</span><span class="s">&quot;yes&quot;</span><span class="o">)</span>
+
+<span class="nc">TypedActor</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">poisonPill</span><span class="o">(</span><span class="n">awesomeFooBar</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

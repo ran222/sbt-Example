@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>æ¦‚è¿° &mdash; Akkaæ–‡æ¡£</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="next" title="Actor Systems" href="actor-systems.html" />
+    <link rel="prev" title="Examples of use-cases for Akka" href="../intro/use-cases.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">æ¦‚è¿°</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="actor-systems.html" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html">Actorç³»ç»Ÿ</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="../intro/use-cases.html" tppabs="http://www.gtan.com/akka_doc/intro/use-cases.html">ä½¿ç”¨Akkaçš„å®ä¾‹</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="general">
+<h1>æ¦‚è¿°</h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="actor-systems.html" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html">Actorç³»ç»Ÿ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actor-systems.html#hierarchical-structure" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#hierarchical-structure">æ ‘å½¢ç»“æ„</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actor-systems.html#configuration-container" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#configuration-container">é…ç½®å®¹å™¨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actor-systems.html#actor-best-practices" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#actor-best-practices">Actoræœ€ä½³å®è·µ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actor-systems.html#what-you-should-not-concern-yourself-with" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#what-you-should-not-concern-yourself-with">ä½ ä¸å…³å¿ƒçš„äº‹</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actors.html" tppabs="http://www.gtan.com/akka_doc/general/actors.html">Actoræ˜¯ä»€ä¹ˆ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#actor-reference" tppabs="http://www.gtan.com/akka_doc/general/actors.html#actor-reference">Actorå¼•ç”¨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#state" tppabs="http://www.gtan.com/akka_doc/general/actors.html#state">çŠ¶æ€</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#behavior" tppabs="http://www.gtan.com/akka_doc/general/actors.html#behavior">è¡Œä¸º</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#mailbox" tppabs="http://www.gtan.com/akka_doc/general/actors.html#mailbox">é‚®ç®±</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#children" tppabs="http://www.gtan.com/akka_doc/general/actors.html#children">å­Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#supervisor-strategy" tppabs="http://www.gtan.com/akka_doc/general/actors.html#supervisor-strategy">ç›‘ç®¡ç­–ç•¥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#when-an-actor-terminates" tppabs="http://www.gtan.com/akka_doc/general/actors.html#when-an-actor-terminates">å½“Actorç»ˆæ­¢æ—¶</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supervision.html" tppabs="http://www.gtan.com/akka_doc/general/supervision.html">ç›‘ç®¡ä¸ç›‘æ§</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html#what-supervision-means" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#what-supervision-means">ç›‘ç®¡çš„æ„æ€</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html#what-restarting-means" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#what-restarting-means">é‡å¯çš„æ„æ€</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html#what-lifecycle-monitoring-means" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#what-lifecycle-monitoring-means">ç”Ÿå‘½å‘¨æœŸç›‘æ§çš„æ„æ€</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervision.html#one-for-one-strategy-vs-all-for-one-strategy" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#one-for-one-strategy-vs-all-for-one-strategy">One-For-One Strategy vs. All-For-One Strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="addressing.html" tppabs="http://www.gtan.com/akka_doc/general/addressing.html">Actorå¼•ç”¨ï¼Œè·¯å¾„å’Œåœ°å€</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#what-is-an-actor-reference" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#what-is-an-actor-reference">Actorå¼•ç”¨æ˜¯ä»€ä¹ˆ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#what-is-an-actor-path" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#what-is-an-actor-path">Actorè·¯å¾„æ˜¯ä»€ä¹ˆ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#how-are-actor-references-obtained" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#how-are-actor-references-obtained">å¦‚ä½•è·å¾—Actorå¼•ç”¨?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#the-interplay-with-remote-deployment" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#the-interplay-with-remote-deployment">ä¸è¿œç¨‹éƒ¨ç½²çš„äº’æ“ä½œ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#the-interplay-with-clustering-future-extension" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#the-interplay-with-clustering-future-extension">ä¸é›†ç¾¤çš„äº’æ“ä½œ <strong>(æœªæ¥æ‰©å±•)</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#what-is-the-address-part-used-for" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#what-is-the-address-part-used-for">è·¯å¾„ä¸­çš„åœ°å€éƒ¨åˆ†ç”¨æ¥åšä»€ä¹ˆ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addressing.html#special-paths-used-by-akka" tppabs="http://www.gtan.com/akka_doc/general/addressing.html#special-paths-used-by-akka">Akkaä½¿ç”¨çš„ç‰¹æ®Šè·¯å¾„</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="remoting.html" tppabs="http://www.gtan.com/akka_doc/general/remoting.html">ä½ç½®é€æ˜æ€§</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remoting.html#distributed-by-default" tppabs="http://www.gtan.com/akka_doc/general/remoting.html#distributed-by-default">å¤©ç”Ÿçš„åˆ†å¸ƒå¼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remoting.html#ways-in-which-transparency-is-broken" tppabs="http://www.gtan.com/akka_doc/general/remoting.html#ways-in-which-transparency-is-broken">é€æ˜æ€§ä¼šè¢«ç ´åçš„æ–¹å¼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remoting.html#how-is-remoting-used" tppabs="http://www.gtan.com/akka_doc/general/remoting.html#how-is-remoting-used">è¿œç¨‹è°ƒç”¨å¦‚ä½•ä½¿ç”¨?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remoting.html#marking-points-for-scaling-up-with-routers" tppabs="http://www.gtan.com/akka_doc/general/remoting.html#marking-points-for-scaling-up-with-routers">Mä½¿ç”¨è·¯ç”±æ¥è¿›è¡Œå‚ç›´æ‰©å±•çš„æ ‡è®°ç‚¹</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jmm.html" tppabs="http://www.gtan.com/akka_doc/general/jmm.html">Akkaä¸Javaå†…å­˜æ¨¡å‹</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jmm.html#the-java-memory-model" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#the-java-memory-model">Javaå†…å­˜æ¨¡å‹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jmm.html#actors-and-the-java-memory-model" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#actors-and-the-java-memory-model">Actorä¸Javaå†…å­˜æ¨¡å‹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jmm.html#futures-and-the-java-memory-model" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#futures-and-the-java-memory-model">Futures and the Java Memory Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jmm.html#stm-and-the-java-memory-model" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#stm-and-the-java-memory-model">è½¯ä»¶äº‹åŠ¡å†…å­˜ä¸Javaå†…å­˜æ¨¡å‹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jmm.html#actors-and-shared-mutable-state" tppabs="http://www.gtan.com/akka_doc/general/jmm.html#actors-and-shared-mutable-state">Actorsä¸å…±äº«çš„å¯å˜çŠ¶æ€</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="message-send-semantics.html" tppabs="http://www.gtan.com/akka_doc/general/message-send-semantics.html">Message send semantics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="message-send-semantics.html#guaranteed-delivery" tppabs="http://www.gtan.com/akka_doc/general/message-send-semantics.html#guaranteed-delivery">Guaranteed Delivery?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="message-send-semantics.html#delivery-semantics" tppabs="http://www.gtan.com/akka_doc/general/message-send-semantics.html#delivery-semantics">Delivery semantics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html" tppabs="http://www.gtan.com/akka_doc/general/configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#where-configuration-is-read-from" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#where-configuration-is-read-from">Where configuration is read from</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#how-to-structure-your-configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#how-to-structure-your-configuration">How to structure your configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#listing-of-the-reference-configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#listing-of-the-reference-configuration">Listing of the Reference Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#custom-application-conf" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#custom-application-conf">Custom application.conf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#including-files" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#including-files">Including files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#logging-of-configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#logging-of-configuration">Logging of Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#a-word-about-classloaders" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#a-word-about-classloaders">A Word About ClassLoaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#application-specific-settings" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#application-specific-settings">Application specific settings</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

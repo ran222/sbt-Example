@@ -1,0 +1,479 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Futures (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Dataflow Concurrency (Scala)" href="dataflow.html" />
+    <link rel="prev" title="Scheduler (Scala)" href="scheduler.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Futures (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="dataflow.html" tppabs="http://www.gtan.com/akka_doc/scala/dataflow.html">数据流并发 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="scheduler.html" tppabs="http://www.gtan.com/akka_doc/scala/scheduler.html">定时器 (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="futures-scala">
+<span id="id1"></span><h1>Futures (Scala)</h1>
+<div class="section" id="introduction">
+<h2>简介</h2>
+<p>在 Akka 中, 一个 <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Futures_and_promises  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://en.wikipedia.org/wiki/Futures_and_promises'" tppabs="http://en.wikipedia.org/wiki/Futures_and_promises">Future</a> 是用来获取某个并发操作的结果的数据结构。
+    这个操作通常是由 <tt class="docutils literal"><span class="pre">Actor</span></tt> 执行或由
+ <tt class="docutils literal"><span class="pre">Dispatcher</span></tt> 直接执行的. 这个结果可以以同步（阻塞）或异步（非阻塞）的方式访问。</p>
+</div>
+<div class="section" id="execution-contexts">
+<h2>执行上下文</h2>
+<p>为了运行回调和操作, Futures 需要有一个 <tt class="docutils literal"><span class="pre">ExecutionContext</span></tt>,
+它与 <tt class="docutils literal"><span class="pre">java.util.concurrent.Executor</span></tt> 很相像. 如果你在作用域内有一个 <tt class="docutils literal"><span class="pre">ActorSystem</span></tt> ,
+它会它自己派发器用作 <tt class="docutils literal"><span class="pre">ExecutionContext</span></tt>, 你也可以用 <tt class="docutils literal"><span class="pre">ExecutionContext</span></tt> 伴生对象提供的工厂方法
+    来将 <tt class="docutils literal"><span class="pre">Executors</span></tt> 和 <tt class="docutils literal"><span class="pre">ExecutorServices</span></tt> 进行包裹, 或者甚至创建自己的实例.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span> <span class="nc">ExecutionContext</span><span class="o">,</span> <span class="nc">Promise</span> <span class="o">}</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ExecutionContext</span><span class="o">.</span><span class="n">fromExecutorService</span><span class="o">(</span><span class="n">yourExecutorServiceGoesHere</span><span class="o">)</span>
+
+<span class="c1">// 用你崭新的 ExecutionContext 干点啥</span>
+<span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span>
+
+<span class="c1">// 然后在程序/应用的正确的位置关闭 ExecutionContext</span>
+<span class="n">ec</span><span class="o">.</span><span class="n">shutdown</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-with-actors">
+<h2>用于 Actor</h2>
+<p>通常有两种方法来从一个 <tt class="docutils literal"><span class="pre">Actor</span></tt> 获取回应: 第一种是发送一个消息 (<tt class="docutils literal"><span class="pre">actor</span> <span class="pre">!</span> <span class="pre">msg</span></tt>),
+这种方法只在发送者是一个 <tt class="docutils literal"><span class="pre">Actor</span></tt>) 时有效，第二种是通过一个 <tt class="docutils literal"><span class="pre">Future</span></tt>.</p>
+<p>使用 <tt class="docutils literal"><span class="pre">Actor</span></tt> 的 <tt class="docutils literal"><span class="pre">?</span></tt> 方法来发送消息会返回一个 Future.
+    要等待并获取结果的最简单方法是:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.Await</span>
+<span class="k">import</span> <span class="nn">akka.pattern.ask</span>
+<span class="k">import</span> <span class="nn">akka.util.Timeout</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">timeout</span> <span class="k">=</span> <span class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="n">actor</span> <span class="o">?</span> <span class="n">msg</span> <span class="c1">// 因为对 “ask” 进行了import</span>
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">future</span><span class="o">,</span> <span class="n">timeout</span><span class="o">.</span><span class="n">duration</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>这会导致当前线程被阻塞，并等待 <tt class="docutils literal"><span class="pre">Actor</span></tt> 通过它的应答来 &#8216;完成&#8217;  <tt class="docutils literal"><span class="pre">Future</span></tt> 。
+但是阻塞会导致性能问题，所以是不推荐的.
+导致阻塞的操作位于 <tt class="docutils literal"><span class="pre">Await.result</span></tt> 和 <tt class="docutils literal"><span class="pre">Await.ready</span></tt> 中，这样就方便定位阻塞的位置.
+对阻塞方式的替代方法会在本文档中进一步讨论。 还要注意 <tt class="docutils literal"><span class="pre">Actor</span></tt> 返回的 <tt class="docutils literal"><span class="pre">Future</span></tt> 的类型
+    是 <tt class="docutils literal"><span class="pre">Future[Any]</span></tt> ，这是因为 <tt class="docutils literal"><span class="pre">Actor</span></tt> 是动态的.
+    这也是为什么上例中使用了 <tt class="docutils literal"><span class="pre">asInstanceOf</span></tt> 。
+在使用非阻塞方式时，最好使用 <tt class="docutils literal"><span class="pre">mapTo</span></tt> 方法来将 <tt class="docutils literal"><span class="pre">Future</span></tt> 转换到期望的类型:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.Future</span>
+<span class="k">import</span> <span class="nn">akka.pattern.ask</span>
+
+<span class="k">val</span> <span class="n">future</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor</span><span class="o">,</span> <span class="n">msg</span><span class="o">).</span><span class="n">mapTo</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+</pre></div>
+</div>
+<p> 如果转换成功， <tt class="docutils literal"><span class="pre">mapTo</span></tt> 方法会返回一个包含结果的新的 <tt class="docutils literal"><span class="pre">Future</span></tt>,
+如果不成功，则返回 <tt class="docutils literal"><span class="pre">ClassCastException</span></tt> . 对 <tt class="docutils literal"><span class="pre">异常</span></tt> 的处理将在本文档进一步讨论。</p>
+</div>
+<div class="section" id="use-directly">
+<h2>直接使用</h2>
+<p>Akka中的一个常见用例是在不需要使用 <tt class="docutils literal"><span class="pre">Actor</span></tt>的情况下并发地执行计算.
+如果你发现你只是为了并行地执行一个计算而创建了一堆  <tt class="docutils literal"><span class="pre">Actor</span></tt>,
+下面是一种更好（也更快）的方法:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.Await</span>
+<span class="k">import</span> <span class="nn">akka.dispatch.Future</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+<span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="nc">Future</span> <span class="o">{</span>
+  <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="s">&quot;World&quot;</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">future</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>在上面的代码中，被传递给 <tt class="docutils literal"><span class="pre">Future</span></tt> 的代码块会被缺省的 <tt class="docutils literal"><span class="pre">Dispatcher</span></tt> 所执行,
+代码块的返回结果会被用来完成 <tt class="docutils literal"><span class="pre">Future</span></tt> (在这种情况下，结果是一个字符串: &#8220;HelloWorld&#8221;).
+与从<tt class="docutils literal"><span class="pre">Actor</span></tt>返回的 <tt class="docutils literal"><span class="pre">Future</span></tt> 不同，这个 <tt class="docutils literal"><span class="pre">Future</span></tt> 拥有正确的类型,
+我们还避免了管理  <tt class="docutils literal"><span class="pre">Actor</span></tt> 的开销。</p>
+<p>你还可以用 <tt class="docutils literal"><span class="pre">Promise</span></tt> 伴生对象创建一个已经完成的 Future, 它可以是成功:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="s">&quot;Yay!&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>或失败:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">otherFuture</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">.</span><span class="n">failed</span><span class="o">[</span><span class="kt">String</span><span class="o">](</span><span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;Bang!&quot;</span><span class="o">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functional-futures">
+<h2>函数式 Future</h2>
+<p>Akka 的 <tt class="docutils literal"><span class="pre">Future</span></tt> 有一些与Scala集合所使用的非常相似的 monadic 方法.
+这使你可以构造出结果可以传递的 &#8216;管道&#8217; 或 &#8216;数据流&#8217; .</p>
+<div class="section" id="future-is-a-monad">
+<h3>Future 是 Monad</h3>
+<p>让<tt class="docutils literal"><span class="pre">Future</span></tt>以函数式风格工作的第一个方法是 <tt class="docutils literal"><span class="pre">map</span></tt>. 它需要一个 <tt class="docutils literal"><span class="pre">函数</span></tt>
+来对 <tt class="docutils literal"><span class="pre">Future</span></tt>的结果进行处理, 返回一个新的结果。
+<tt class="docutils literal"><span class="pre">map</span></tt> 方法的返回值是包含新结果的另一个 <tt class="docutils literal"><span class="pre">Future</span></tt>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f1</span> <span class="k">=</span> <span class="nc">Future</span> <span class="o">{</span>
+  <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="s">&quot;World&quot;</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">f2</span> <span class="k">=</span> <span class="n">f1</span> <span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">⇒</span>
+  <span class="n">x</span><span class="o">.</span><span class="n">length</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f2</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span>
+<span class="n">result</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+<span class="n">f1</span><span class="o">.</span><span class="n">value</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="nc">Right</span><span class="o">(</span><span class="s">&quot;HelloWorld&quot;</span><span class="o">)))</span>
+</pre></div>
+</div>
+<p>这个例子中我们在 <tt class="docutils literal"><span class="pre">Future</span></tt> 内部连接两个字符串。我们没有等待这个Future结束，而是使用
+ <tt class="docutils literal"><span class="pre">map</span></tt> 方法来将计算字符串长度的函数作用于它.
+现在我们有了新的 <tt class="docutils literal"><span class="pre">Future</span></tt> ，它的最终结果是一个 <tt class="docutils literal"><span class="pre">Int</span></tt>.
+当先前的 <tt class="docutils literal"><span class="pre">Future</span></tt> 完成时, 它会应用我们的函数并用其结果来完成第二个 <tt class="docutils literal"><span class="pre">Future</span></tt> 。
+最终我们得到的结果是 10. 先前的 <tt class="docutils literal"><span class="pre">Future</span></tt> 仍然持有
+字符串 &#8220;HelloWorld&#8221; 不受 <tt class="docutils literal"><span class="pre">map</span></tt>的影响.</p>
+<p>如果我们只是修改一个 <tt class="docutils literal"><span class="pre">Future</span></tt>，<tt class="docutils literal"><span class="pre">map</span></tt> 方法就够用了。
+但如果有2个以上 <tt class="docutils literal"><span class="pre">Future</span></tt>时 <tt class="docutils literal"><span class="pre">map</span></tt> 无法将他们组合到一起:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f1</span> <span class="k">=</span> <span class="nc">Future</span> <span class="o">{</span>
+  <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="s">&quot;World&quot;</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">f2</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">f3</span> <span class="k">=</span> <span class="n">f1</span> <span class="n">map</span> <span class="o">{</span> <span class="n">x</span> <span class="k">⇒</span>
+  <span class="n">f2</span> <span class="n">map</span> <span class="o">{</span> <span class="n">y</span> <span class="k">⇒</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">*</span> <span class="n">y</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">f3</span></tt> 的类型是 <tt class="docutils literal"><span class="pre">Future[Future[Int]]</span></tt> 而不是我们所期望的 <tt class="docutils literal"><span class="pre">Future[Int]</span></tt>. 这时我们需要使用 <tt class="docutils literal"><span class="pre">flatMap</span></tt> 方法:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f1</span> <span class="k">=</span> <span class="nc">Future</span> <span class="o">{</span>
+  <span class="s">&quot;Hello&quot;</span> <span class="o">+</span> <span class="s">&quot;World&quot;</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">f2</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">f3</span> <span class="k">=</span> <span class="n">f1</span> <span class="n">flatMap</span> <span class="o">{</span> <span class="n">x</span> <span class="k">⇒</span>
+  <span class="n">f2</span> <span class="n">map</span> <span class="o">{</span> <span class="n">y</span> <span class="k">⇒</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">length</span> <span class="o">*</span> <span class="n">y</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f3</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span>
+<span class="n">result</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">30</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>使用嵌套的map或flatmap来组合Future有时会变得非常复杂和难以阅读，这时使用 Scala 的
+&#8216;for comprehensions&#8217; 一般会生成可读性更好的代码。 见下一部分的示例。</p>
+<p>如果你需要进行条件筛选，可以使用 <tt class="docutils literal"><span class="pre">filter</span></tt>:</p>
+<div class="highlight-scala"><pre>val future1 = Promise.successful(4)
+val future2 = future1.filter(_ % 2 == 0)
+val result = Await.result(future2, 1 second)
+result must be(4)
+
+val failedFilter = future1.filter(_ % 2 == 1).recover {
+  case m: MatchError ⇒ 0 // 如果 filter 失败了，它会导致一个 MatchError
+}
+val result2 = Await.result(failedFilter, 1 second)
+result2 must be(0) // 当出现 MatchError 时只能是 0
+</pre>
+</div>
+</div>
+<div class="section" id="for-comprehensions">
+<h3>For Comprehensions</h3>
+<p>由于 <tt class="docutils literal"><span class="pre">Future</span></tt> 拥有 <tt class="docutils literal"><span class="pre">map</span></tt>, <tt class="docutils literal"><span class="pre">filter</span></tt> 和 <tt class="docutils literal"><span class="pre">flatMap</span></tt> 方法，它可以方便地用于 &#8216;for comprehension&#8217;:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f</span> <span class="k">=</span> <span class="k">for</span> <span class="o">{</span>
+  <span class="n">a</span> <span class="k">←</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// 10 / 2 = 5</span>
+  <span class="n">b</span> <span class="k">←</span> <span class="nc">Future</span><span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">//  5 + 1 = 6</span>
+  <span class="n">c</span> <span class="k">←</span> <span class="nc">Future</span><span class="o">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">//  5 - 1 = 4</span>
+  <span class="k">if</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="c1">// Future.filter</span>
+<span class="o">}</span> <span class="k">yield</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span> <span class="c1">//  6 * 4 = 24</span>
+
+<span class="c1">// 注意future a, b, c</span>
+<span class="c1">// 不是并发执行的</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span>
+<span class="n">result</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">24</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>做这些事情的时候需要记住的是：虽然看上去上例的部分代码可以并发地运行，for comprehension的每一步是顺序执行的。每一步是在单独的线程中运行的，但是相较于将所有的计算在一个单独的
+ <tt class="docutils literal"><span class="pre">Future</span></tt>中运行并没有太大好处.
+只有在先（译者注：异步地）创建 <tt class="docutils literal"><span class="pre">Future</span></tt>，然后对其进行组合的情况下才能得到真正的好处。</p>
+</div>
+<div class="section" id="composing-futures">
+<h3>组合 Futures</h3>
+<p>上例中的 comprehension 是对 <tt class="docutils literal"><span class="pre">Future</span></tt>进行组合的例子.
+这种方法的常见用例是将多个 <tt class="docutils literal"><span class="pre">Actor</span></tt>的回应组合成一个单独的计算而不用调用
+ <tt class="docutils literal"><span class="pre">Await.result</span></tt> 或 <tt class="docutils literal"><span class="pre">Await.ready</span></tt> 来阻塞地获得每一个结果.
+先看看使用 <tt class="docutils literal"><span class="pre">Await.result</span></tt> 的例子:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f1</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor1</span><span class="o">,</span> <span class="n">msg1</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">f2</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor2</span><span class="o">,</span> <span class="n">msg2</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f1</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+<span class="k">val</span> <span class="n">b</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f2</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+
+<span class="k">val</span> <span class="n">f3</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor3</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f3</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>这里我们等待前2个 <tt class="docutils literal"><span class="pre">Actor</span></tt> 的结果然后将其发送给第三个 <tt class="docutils literal"><span class="pre">Actor</span></tt>.
+我们调用了3次 <tt class="docutils literal"><span class="pre">Await.result</span></tt> , 导致我们的程序在获得最终结果前阻塞了3次。
+现在跟下例比较:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">f1</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor1</span><span class="o">,</span> <span class="n">msg1</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">f2</span> <span class="k">=</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor2</span><span class="o">,</span> <span class="n">msg2</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="n">f3</span> <span class="k">=</span> <span class="k">for</span> <span class="o">{</span>
+  <span class="n">a</span> <span class="k">←</span> <span class="n">f1</span><span class="o">.</span><span class="n">mapTo</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+  <span class="n">b</span> <span class="k">←</span> <span class="n">f2</span><span class="o">.</span><span class="n">mapTo</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+  <span class="n">c</span> <span class="k">←</span> <span class="n">ask</span><span class="o">(</span><span class="n">actor3</span><span class="o">,</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">)).</span><span class="n">mapTo</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+<span class="o">}</span> <span class="k">yield</span> <span class="n">c</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">f3</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>这里我们有两个 2 actor各自处理自己的消息。 一旦这2个结果可用了
+(注意我们并没有阻塞地等待这些结果！), 它们会被加起来发送给第三个 <tt class="docutils literal"><span class="pre">Actor</span></tt>,
+这第三个actor回应一个字符串，我们把它赋值给 &#8216;result&#8217;.</p>
+<p>当我们知道Actor数量的时候上面的方法就足够了，但是当Actor数量较大时就显得比较笨重。
+ <tt class="docutils literal"><span class="pre">sequence</span></tt> 和 <tt class="docutils literal"><span class="pre">traverse</span></tt> 两个辅助方法可以帮助处理更复杂的情况。
+这两个方法都是用来将 <tt class="docutils literal"><span class="pre">T[Future[A]]</span></tt> 转换为 <tt class="docutils literal"><span class="pre">Future[T[A]]</span></tt>（<tt class="docutils literal"><span class="pre">T</span></tt> 是 <tt class="docutils literal"><span class="pre">Traversable</span></tt>子类）.
+例如:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">// oddActor 以类型 List[Future[Int]] 返回从1开始的奇数序列</span>
+<span class="k">val</span> <span class="n">listOfFutures</span> <span class="k">=</span> <span class="nc">List</span><span class="o">.</span><span class="n">fill</span><span class="o">(</span><span class="mi">100</span><span class="o">)(</span><span class="n">akka</span><span class="o">.</span><span class="n">pattern</span><span class="o">.</span><span class="n">ask</span><span class="o">(</span><span class="n">oddActor</span><span class="o">,</span> <span class="nc">GetNext</span><span class="o">).</span><span class="n">mapTo</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+
+<span class="c1">// 现在我们有了 Future[List[Int]]</span>
+<span class="k">val</span> <span class="n">futureList</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">.</span><span class="n">sequence</span><span class="o">(</span><span class="n">listOfFutures</span><span class="o">)</span>
+
+<span class="c1">// 计算奇数的和</span>
+<span class="k">val</span> <span class="n">oddSum</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">futureList</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">sum</span><span class="o">),</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+<span class="n">oddSum</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>现在来解释一下, <tt class="docutils literal"><span class="pre">Future.sequence</span></tt> 将输入的 <tt class="docutils literal"><span class="pre">List[Future[Int]]</span></tt>
+转换为 <tt class="docutils literal"><span class="pre">Future[List[Int]]</span></tt>. 这样我们就可以将 <tt class="docutils literal"><span class="pre">map</span></tt> 直接作用于 <tt class="docutils literal"><span class="pre">List[Int]</span></tt>,
+从而得到 <tt class="docutils literal"><span class="pre">List</span></tt> 的总和.</p>
+<p> <tt class="docutils literal"><span class="pre">traverse</span></tt> 方法与 <tt class="docutils literal"><span class="pre">sequence</span></tt> 类似, 但它以 <tt class="docutils literal"><span class="pre">T[A]</span></tt> 和 <tt class="docutils literal"><span class="pre">A</span> <span class="pre">=&gt;</span> <span class="pre">Future[B]</span></tt> 函数为参数返回一个 <tt class="docutils literal"><span class="pre">Future[T[B]]</span></tt>,
+这里的 <tt class="docutils literal"><span class="pre">T</span></tt> 同样也是 Traversable 的子类. 例如, 用 <tt class="docutils literal"><span class="pre">traverse</span></tt> 来计算前100个奇数的和:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">futureList</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">.</span><span class="n">traverse</span><span class="o">((</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">toList</span><span class="o">)(</span><span class="n">x</span> <span class="k">⇒</span> <span class="nc">Future</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">))</span>
+<span class="k">val</span> <span class="n">oddSum</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">futureList</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">sum</span><span class="o">),</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+<span class="n">oddSum</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>结果与这个例子是一样的:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">futureList</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">.</span><span class="n">sequence</span><span class="o">((</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="o">).</span><span class="n">toList</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">x</span> <span class="k">⇒</span> <span class="nc">Future</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)))</span>
+<span class="k">val</span> <span class="n">oddSum</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">futureList</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">sum</span><span class="o">),</span> <span class="mi">1</span> <span class="n">second</span><span class="o">).</span><span class="n">asInstanceOf</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+<span class="n">oddSum</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">10000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>但是用 <tt class="docutils literal"><span class="pre">traverse</span></tt> 会快一些，因为它不用创建一个 <tt class="docutils literal"><span class="pre">List[Future[Int]]</span></tt> 临时量.</p>
+<p>最后我们有一个方法 <tt class="docutils literal"><span class="pre">fold</span></tt>，它的参数包括一个初始值 , 一个 <tt class="docutils literal"><span class="pre">Future</span></tt>序列和一个
+作用于初始值和Future类型返回与初始值相同类型的函数, 它将这个函数异步地应用于future序列的所有元素，它的执行将在最后一个Future完成之后开始。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">futures</span> <span class="k">=</span> <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">1000</span><span class="o">)</span> <span class="k">yield</span> <span class="nc">Future</span><span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// Create a sequence of Futures</span>
+<span class="k">val</span> <span class="n">futureSum</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">.</span><span class="n">fold</span><span class="o">(</span><span class="n">futures</span><span class="o">)(</span><span class="mi">0</span><span class="o">)(</span><span class="k">_</span> <span class="o">+</span> <span class="n">_</span><span class="o">)</span>
+<span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">futureSum</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">1001000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>就是这么简单！</p>
+<p>如果传给 <tt class="docutils literal"><span class="pre">fold</span></tt> 的序列是空的, 它将返回初始值, 在上例中，这个值是0.
+有时你并不需要一个初始值，而使用序列中第一个已完成的Future的值作为初始值，你可以使用 <tt class="docutils literal"><span class="pre">reduce</span></tt>, 它的用法是这样的:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">futures</span> <span class="k">=</span> <span class="k">for</span> <span class="o">(</span><span class="n">i</span> <span class="k">←</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">1000</span><span class="o">)</span> <span class="k">yield</span> <span class="nc">Future</span><span class="o">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// 创建一个 Future 序列</span>
+<span class="k">val</span> <span class="n">futureSum</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">.</span><span class="n">reduce</span><span class="o">(</span><span class="n">futures</span><span class="o">)(</span><span class="k">_</span> <span class="o">+</span> <span class="n">_</span><span class="o">)</span>
+<span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">futureSum</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="mi">1001000</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>与 <tt class="docutils literal"><span class="pre">fold</span></tt> 一样, 它的执行是在最后一个 Future 完成后异步执行的,
+你也可以对这个过程进行并行化：将future分成子序列分别进行reduce，然后对reduce的结果再次reduce。</p>
+</div>
+</div>
+<div class="section" id="callbacks">
+<h2>回调</h2>
+<p>有时你只需要监听 <tt class="docutils literal"><span class="pre">Future</span></tt> 的完成事件, 对其进行响应，不是创建新的Future，而仅仅是产生副作用.
+Akka 为这种情况准备了 <tt class="docutils literal"><span class="pre">onComplete</span></tt>, <tt class="docutils literal"><span class="pre">onSuccess</span></tt> 和 <tt class="docutils literal"><span class="pre">onFailure</span></tt>, 而后两者仅仅是第一项的特例。</p>
+<div class="highlight-scala"><pre>future onSuccess {
+  case "bar"     ⇒ println("Got my bar alright!")
+  case x: String ⇒ println("Got some random string: " + x)
+}
+</pre>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">future</span> <span class="n">onFailure</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">ise</span><span class="k">:</span> <span class="kt">IllegalStateException</span> <span class="kt">if</span> <span class="kt">ise.getMessage</span> <span class="o">=</span><span class="k">=</span> <span class="s">&quot;OHNOES&quot;</span> <span class="k">⇒</span>
+  <span class="c1">//OHNOES! We are in deep trouble, do something!</span>
+  <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="k">⇒</span>
+  <span class="kt">//Do</span> <span class="kt">something</span> <span class="kt">else</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">future</span> <span class="n">onComplete</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Right</span><span class="o">(</span><span class="n">result</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">doSomethingOnSuccess</span><span class="o">(</span><span class="n">result</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="n">failure</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">doSomethingOnFailure</span><span class="o">(</span><span class="n">failure</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-ordering">
+<h2>定义次序</h2>
+<p>由于回调的执行是无序的，而且可能是并发执行的,
+当你需要一组有序操作的时候需要一些技巧。但有一个解决办法是使用 <tt class="docutils literal"><span class="pre">andThen</span></tt>.
+    它会为指定的回调创建一个新的 <tt class="docutils literal"><span class="pre">Future</span></tt> ,
+    这个 <tt class="docutils literal"><span class="pre">Future</span></tt> 与原先的 <tt class="docutils literal"><span class="pre">Future</span></tt> 拥有相同的结果,
+这样就可以象下例一样定义次序:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Future</span> <span class="o">{</span> <span class="n">loadPage</span><span class="o">(</span><span class="n">url</span><span class="o">)</span> <span class="o">}</span> <span class="n">andThen</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Left</span><span class="o">(</span><span class="n">exception</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">log</span><span class="o">(</span><span class="n">exception</span><span class="o">)</span>
+<span class="o">}</span> <span class="n">andThen</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">⇒</span> <span class="n">watchSomeTV</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auxiliary-methods">
+<h2>辅助方法</h2>
+<p><tt class="docutils literal"><span class="pre">Future</span></tt> <tt class="docutils literal"><span class="pre">fallbackTo</span></tt>
+    将两个 Futures 合并成一个新的 <tt class="docutils literal"><span class="pre">Future</span></tt>,
+    如果第一个<tt class="docutils literal"><span class="pre">Future</span></tt>失败了，它将持有第二个 <tt class="docutils literal"><span class="pre">Future</span></tt>
+    的成功值。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">future4</span> <span class="k">=</span> <span class="n">future1</span> <span class="n">fallbackTo</span> <span class="n">future2</span> <span class="n">fallbackTo</span> <span class="n">future3</span>
+</pre></div>
+</div>
+<p>你也可以使用<tt class="docutils literal"><span class="pre">zip</span></tt>操作将两个 Futures 组合成一个新的持有二者成功结果的tuple的 <tt class="docutils literal"><span class="pre">Future</span></tt></p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">future3</span> <span class="k">=</span> <span class="n">future1</span> <span class="n">zip</span> <span class="n">future2</span> <span class="n">map</span> <span class="o">{</span> <span class="k">case</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">a</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">b</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exceptions">
+<h2>异常</h2>
+<p>由于 <tt class="docutils literal"><span class="pre">Future</span></tt> 的结果是与程序的其它部分并发生成的，因此异常需要作特殊的处理。
+不管是 <tt class="docutils literal"><span class="pre">Actor</span></tt> 或是派发器正在完成此 <tt class="docutils literal"><span class="pre">Future</span></tt>,
+如果抛出了 <tt class="docutils literal"><span class="pre">Exception</span></tt> ，<tt class="docutils literal"><span class="pre">Future</span></tt> 将持有这个异常而不是一个有效的值.
+如果 <tt class="docutils literal"><span class="pre">Future</span></tt> 持有 <tt class="docutils literal"><span class="pre">Exception</span></tt>, 调用 <tt class="docutils literal"><span class="pre">Await.result</span></tt> 将导致此异常被再次抛出从而得到正确的处理.</p>
+<p>通过返回一个其它的结果来处理 <tt class="docutils literal"><span class="pre">Exception</span></tt> 也是可能的.
+使用 <tt class="docutils literal"><span class="pre">recover</span></tt> 方法. 例如:</p>
+<div class="highlight-scala"><pre>val future = akka.pattern.ask(actor, msg1) recover {
+  case e: ArithmeticException ⇒ 0
+}
+</pre>
+</div>
+<p>在这个例子中，如果actor回应了包含 <tt class="docutils literal"><span class="pre">ArithmeticException</span></tt>的<tt class="docutils literal"><span class="pre">akka.actor.Status.Failure</span></tt> ,
+我们的 <tt class="docutils literal"><span class="pre">Future</span></tt> 将持有 0 作为结果. The <tt class="docutils literal"><span class="pre">recover</span></tt> 方法与标准的 try/catch 块非常相似,
+可以用这种方式处理多种 <tt class="docutils literal"><span class="pre">Exception</span></tt>， 如果其中有没有提到的 <tt class="docutils literal"><span class="pre">Exception</span></tt>，这种异常将
+以没有定义 <tt class="docutils literal"><span class="pre">recover</span></tt> 方法的方式来处理.</p>
+<p>你也可以使用 <tt class="docutils literal"><span class="pre">recoverWith</span></tt> 方法, 它和 <tt class="docutils literal"><span class="pre">recover</span></tt> 的关系就象 <tt class="docutils literal"><span class="pre">flatMap</span></tt> 与 <tt class="docutils literal"><span class="pre">map</span></tt>的关系,
+用法如下:</p>
+<div class="highlight-scala"><pre>val future = akka.pattern.ask(actor, msg1) recoverWith {
+  case e: ArithmeticException        ⇒ Promise.successful(0)
+  case foo: IllegalArgumentException ⇒ Promise.failed[Int](new IllegalStateException("All br0ken!"))
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

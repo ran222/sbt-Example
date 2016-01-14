@@ -1,0 +1,266 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Akka Extensions (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="ZeroMQ (Scala)" href="zeromq.html" />
+    <link rel="prev" title="TestKit Example (Scala)" href="testkit-example.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Akka æ‰©å±• (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="zeromq.html" tppabs="http://www.gtan.com/akka_doc/scala/zeromq.html">ZeroMQ (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="testkit-example.html" tppabs="http://www.gtan.com/akka_doc/scala/testkit-example.html">TestKitç¤ºä¾‹ (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="akka-extensions-scala">
+<span id="extending-akka-scala"></span><h1>Akka æ‰©å±• (Scala)</h1>
+<p>å¦‚æœæƒ³è¦ä¸ºAkkaæ·»åŠ åŠŸèƒ½ï¼Œæœ‰ä¸€ä¸ªéå¸¸ä¼˜ç¾è€Œä¸”å¼ºå¤§çš„å·¥å…·ï¼Œç§°ä¸º Akka æ‰©å±•ã€‚å®ƒç”±ä¸¤éƒ¨åˆ†ç»„æˆ
+    <tt class="docutils literal"><span class="pre">Extension</span></tt> å’Œ <tt class="docutils literal"><span class="pre">ExtensionId</span></tt>.</p>
+<p>Extensions åœ¨æ¯ä¸ª <tt class="docutils literal"><span class="pre">ActorSystem</span></tt> ä¸­åªä¼šåŠ è½½ä¸€æ¬¡, å¹¶è¢«Akkaæ‰€ç®¡ç†ã€‚
+ä½ å¯ä»¥é€‰æ‹©åœ¨éœ€è¦çš„æ—¶å€™åŠ è½½ä½ çš„Extensionæˆ–æ˜¯åœ¨ <tt class="docutils literal"><span class="pre">ActorSystem</span></tt> åˆ›å»ºæ—¶é€šè¿‡Akkaé…ç½®æ¥åŠ è½½ã€‚
+å…³äºè¿™äº›çš„ç»†èŠ‚ï¼Œè§ä¸‹æ–‡ &#8220;ä»é…ç½®ä¸­åŠ è½½&#8221; çš„éƒ¨åˆ†.</p>
+<div class="admonition warning">
+<p class="first admonition-title">è­¦å‘Š</p>
+<p class="last">ç”±äºæ‰©å±•æ˜¯hookåˆ°Akkaè‡ªèº«çš„ï¼Œæ‰€ä»¥æ‰©å±•çš„å®ç°è€…éœ€è¦ä¿è¯è‡ªå·±çš„æ‰©å±•çš„çº¿ç¨‹å®‰å…¨æ€§ã€‚</p>
+</div>
+<div class="section" id="building-an-extension">
+<h2>åˆ›å»ºä¸€ä¸ªæ‰©å±•</h2>
+<p>ç°åœ¨æˆ‘ä»¬æ¥åˆ›å»ºä¸€ä¸ªæ‰©å±•ç¤ºä¾‹ï¼Œå®ƒçš„åŠŸèƒ½æ˜¯å¯¹æŸä»¶äº‹å‘ç”Ÿçš„æ¬¡æ•°è¿›è¡Œç»Ÿè®¡ã€‚</p>
+<p>å…ˆå®šä¹‰ <tt class="docutils literal"><span class="pre">Extension</span></tt> çš„åŠŸèƒ½:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Extension</span>
+
+<span class="k">class</span> <span class="nc">CountExtensionImpl</span> <span class="k">extends</span> <span class="nc">Extension</span> <span class="o">{</span>
+  <span class="c1">// ç”±äºæ‰©å±•æ˜¯åœ¨æ•´ä¸ªActorSystemä¸­å…±äº«çš„å®ä¾‹ï¼Œæˆ‘ä»¬è¦ä¿è¯å®ƒæ˜¯çº¿ç¨‹å®‰å…¨çš„ã€‚</span>
+  <span class="k">private</span> <span class="k">val</span> <span class="n">counter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">AtomicLong</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+  <span class="c1">//æ‰©å±•æ‰€æä¾›çš„åŠŸèƒ½</span>
+  <span class="k">def</span> <span class="n">increment</span><span class="o">()</span> <span class="k">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">incrementAndGet</span><span class="o">()</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ç„¶åéœ€è¦ä¸ºæ‰©å±•æŒ‡å®šä¸€ä¸ª <tt class="docutils literal"><span class="pre">ExtensionId</span></tt> è¿™æ ·æˆ‘ä»¬å¯ä»¥è·å–å®ƒçš„å®ä¾‹.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.ExtensionId</span>
+<span class="k">import</span> <span class="nn">akka.actor.ExtensionIdProvider</span>
+<span class="k">import</span> <span class="nn">akka.actor.ExtendedActorSystem</span>
+
+<span class="k">object</span> <span class="nc">CountExtension</span>
+  <span class="k">extends</span> <span class="nc">ExtensionId</span><span class="o">[</span><span class="kt">CountExtensionImpl</span><span class="o">]</span>
+  <span class="k">with</span> <span class="nc">ExtensionIdProvider</span> <span class="o">{</span>
+  <span class="c1">// ExtensionIdProvideréœ€è¦æœ‰lookupæ–¹æ³•,</span>
+  <span class="c1">// æ‰€ä»¥æˆ‘ä»¬è¿”å›è‡ªå·±, è¿™æ ·å°±å¯ä»¥åœ¨ActorSystemå¯åŠ¨æ—¶</span>
+  <span class="c1">// åŠ è½½æ‰©å±•</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">lookup</span> <span class="k">=</span> <span class="nc">CountExtension</span>
+
+  <span class="c1">//Akkaå°†ä¼šè°ƒç”¨æ­¤æ–¹æ³•æ¥åˆ›å»ºæ‰©å±•å®ä¾‹</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">createExtension</span><span class="o">(</span><span class="n">system</span><span class="k">:</span> <span class="kt">ExtendedActorSystem</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">CountExtensionImpl</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ç„¶åå°±æ˜¯ä½¿ç”¨å®ƒ:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">CountExtension</span><span class="o">(</span><span class="n">system</span><span class="o">).</span><span class="n">increment</span>
+</pre></div>
+</div>
+<p>æˆ–è€…åœ¨Akka Actorä¸­ä½¿ç”¨:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">someMessage</span> <span class="k">â‡’</span>
+      <span class="nc">CountExtension</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">).</span><span class="n">increment</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä½ ä¹Ÿå¯ä»¥å°†æ‰©å±•è—åœ¨ trait é‡Œ:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">trait</span> <span class="nc">Counting</span> <span class="o">{</span> <span class="n">self</span><span class="k">:</span> <span class="kt">Actor</span> <span class="k">â‡’</span>
+  <span class="kt">def</span> <span class="kt">increment</span><span class="o">()</span> <span class="o">=</span> <span class="nc">CountExtension</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">).</span><span class="n">increment</span><span class="o">()</span>
+<span class="o">}</span>
+<span class="k">class</span> <span class="nc">MyCounterActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">Counting</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">someMessage</span> <span class="k">â‡’</span> <span class="n">increment</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>è¿™æ ·å°±æå®šäº†!</p>
+</div>
+<div class="section" id="loading-from-configuration">
+<h2>ä»é…ç½®ä¸­åŠ è½½</h2>
+<p>ä¸ºäº†èƒ½å¤Ÿä»Akkaé…ç½®ä¸­åŠ è½½æ‰©å±•ï¼Œä½ éœ€è¦åœ¨ä¸º<tt class="docutils literal"><span class="pre">ActorSystem</span></tt>æä¾›çš„é…ç½®æ–‡ä»¶çš„ <tt class="docutils literal"><span class="pre">akka.extensions</span></tt>
+    éƒ¨åˆ†åŠ ä¸Š
+    <span class="pre">ExtensionId</span></tt> æˆ– <tt class="docutils literal"><span class="pre">ExtensionIdProvider</span></tt>å®ç°ç±»çš„å®Œæ•´è·¯å¾„ã€‚</p>
+<div class="highlight-scala"><pre>akka {
+  extensions = ["akka.docs.extension.CountExtension$"]
+}
+</pre>
+</div>
+<p>æ³¨æ„åœ¨è¿™é‡Œ <tt class="docutils literal"><span class="pre">CountExtension</span></tt> æ˜¯ä¸€ä¸ª object æ‰€ä»¥ç±»åä»¥ <tt class="docutils literal"><span class="pre">$</span></tt>ç»“å°¾.</p>
+</div>
+<div class="section" id="applicability">
+<h2>å®ç”¨æ€§</h2>
+<p>å……åˆ†å‘æŒ¥ä½ çš„æƒ³è±¡åŠ›!
+é¡ºä¾¿æä¸€ä¸‹ï¼Œä½ çŸ¥é“ Akka&#8217;s <tt class="docutils literal"><span class="pre">æœ‰ç±»å‹</span> <span class="pre">Actor</span></tt>, <tt class="docutils literal"><span class="pre">åºåˆ—åŒ–</span></tt> å’Œå…¶å®ƒä¸€äº›ç‰¹æ€§éƒ½æ˜¯ä»¥Akkaæ‰©å±•çš„å½¢å¼å®ç°çš„å—ï¼Ÿ</p>
+<div class="section" id="application-specific-settings">
+<span id="extending-akka-scala-settings"></span><h3>åº”ç”¨ç‰¹æœ‰çš„è®¾ç½®</h3>
+<p>å¯ä»¥ç”¨ <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>Configuration</em></a> æ¥æŒ‡å®šåº”ç”¨ç‰¹æœ‰çš„è®¾ç½®ã€‚å°†è¿™äº›è®¾ç½®æ”¾åœ¨æ‰©å±•é‡Œæ˜¯ä¸€ä¸ªå¥½ä¹ æƒ¯ã€‚</p>
+<p>é…ç½®ç¤ºä¾‹:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">myapp</span> <span class="o">{</span>
+  <span class="n">db</span> <span class="o">{</span>
+    <span class="n">uri</span> <span class="k">=</span> <span class="s">&quot;mongodb://example1.com:27017,example2.com:27017&quot;</span>
+  <span class="o">}</span>
+  <span class="n">circuit</span><span class="o">-</span><span class="n">breaker</span> <span class="o">{</span>
+    <span class="n">timeout</span> <span class="k">=</span> <span class="mi">30</span> <span class="n">seconds</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> <tt class="docutils literal"><span class="pre">æ‰©å±•</span></tt>çš„å®ç°:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Extension</span>
+<span class="k">import</span> <span class="nn">akka.actor.ExtensionId</span>
+<span class="k">import</span> <span class="nn">akka.actor.ExtensionIdProvider</span>
+<span class="k">import</span> <span class="nn">akka.actor.ExtendedActorSystem</span>
+<span class="k">import</span> <span class="nn">akka.util.Duration</span>
+<span class="k">import</span> <span class="nn">com.typesafe.config.Config</span>
+<span class="k">import</span> <span class="nn">java.util.concurrent.TimeUnit</span>
+
+<span class="k">class</span> <span class="nc">SettingsImpl</span><span class="o">(</span><span class="n">config</span><span class="k">:</span> <span class="kt">Config</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Extension</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="nc">DbUri</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getString</span><span class="o">(</span><span class="s">&quot;myapp.db.uri&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="nc">CircuitBreakerTimeout</span><span class="k">:</span> <span class="kt">Duration</span> <span class="o">=</span> <span class="nc">Duration</span><span class="o">(</span><span class="n">config</span><span class="o">.</span><span class="n">getMilliseconds</span><span class="o">(</span><span class="s">&quot;myapp.circuit-breaker.timeout&quot;</span><span class="o">),</span> <span class="nc">TimeUnit</span><span class="o">.</span><span class="nc">MILLISECONDS</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">object</span> <span class="nc">Settings</span> <span class="k">extends</span> <span class="nc">ExtensionId</span><span class="o">[</span><span class="kt">SettingsImpl</span><span class="o">]</span> <span class="k">with</span> <span class="nc">ExtensionIdProvider</span> <span class="o">{</span>
+
+  <span class="k">override</span> <span class="k">def</span> <span class="n">lookup</span> <span class="k">=</span> <span class="nc">Settings</span>
+
+  <span class="k">override</span> <span class="k">def</span> <span class="n">createExtension</span><span class="o">(</span><span class="n">system</span><span class="k">:</span> <span class="kt">ExtendedActorSystem</span><span class="o">)</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SettingsImpl</span><span class="o">(</span><span class="n">system</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">config</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä½¿ç”¨:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">settings</span> <span class="k">=</span> <span class="nc">Settings</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">connection</span> <span class="k">=</span> <span class="n">connect</span><span class="o">(</span><span class="n">settings</span><span class="o">.</span><span class="nc">DbUri</span><span class="o">,</span> <span class="n">settings</span><span class="o">.</span><span class="nc">CircuitBreakerTimeout</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

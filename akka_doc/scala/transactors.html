@@ -1,0 +1,317 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transactors (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="IO (Scala)" href="io.html" />
+    <link rel="prev" title="Agents (Scala)" href="agents.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Transactors (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="io.html" tppabs="http://www.gtan.com/akka_doc/scala/io.html">IO (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="agents.html" tppabs="http://www.gtan.com/akka_doc/scala/agents.html">Agents (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="transactors-scala">
+<span id="id1"></span><h1>Transactor (Scala)</h1>
+<div class="section" id="why-transactors">
+<h2>ä¸ºä»€ä¹ˆä½¿ç”¨ Transactor?</h2>
+<p>Actoræ“…é•¿äºè§£å†³è¿™ç±»é—®é¢˜ï¼šä½ æœ‰å¾ˆå¤šç‹¬ç«‹çš„å¤„ç†è¿‡ç¨‹ï¼Œå®ƒä»¬å¯ä»¥å•ç‹¬å·¥ä½œï¼Œåªé€šè¿‡å‘é€æ¶ˆæ¯æ¥ä¸å…¶å®ƒçš„actorè¿›è¡Œäº¤äº’.
+    è¿™ä¸ªæ¨¡å‹é€‚ç”¨äºå¾ˆå¤šé—®é¢˜. ä½†æ˜¯å½“çœŸæ­£éœ€è¦å…±äº«çŠ¶æ€æ—¶ï¼Œå¾ˆä¸å¹¸actorå°±æˆä¸ºäº†éå¸¸ä¸é€‚åˆçš„æ¨¡å‹ã€‚ E.g. å½“ä½ éœ€è¦å¾ˆå¤šç»„ä»¶
+    å¯¹çŠ¶æ€èƒ½å¤Ÿæœ‰ä¸€è‡´å’Œç¨³å®šçš„äº†è§£æ—¶ã€‚å…¶ä¸­ä¸€ä¸ªç»å…¸çš„ä¾‹å­æ˜¯é“¶è¡Œå¸æˆ·ï¼Œå®¢æˆ·å¯ä»¥å¯¹å®ƒè¿›è¡Œå­˜æ¬¾å’Œå–æ¬¾, è€Œæ¯ç§æ“ä½œéƒ½å¿…é¡»æ˜¯åŸå­æ“ä½œ.
+    å…³äºè¿™ä¸ªé—®é¢˜çš„è¯¦ç»†è®¨è®ºè§ <a class="reference external" href="javascript:if(confirm('http://www.slideshare.net/jboner/state-youre-doing-it-wrong-javaone-2009  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.slideshare.net/jboner/state-youre-doing-it-wrong-javaone-2009'" tppabs="http://www.slideshare.net/jboner/state-youre-doing-it-wrong-javaone-2009">è¿™ä¸ª JavaOne è®²åº§</a>.</p>
+<p>ç›¸åï¼ŒSTM éå¸¸é€‚åˆéœ€è¦å¯¹å…±äº«çŠ¶æ€æœ‰ä¸€è‡´è€Œç¨³å®šçš„äº†è§£çš„é—®é¢˜ï¼Œå› ä¸ºå®ƒæä¾›äº†ç»„åˆå¼äº‹åŠ¡æ€§å…±äº«çŠ¶æ€. STMçš„ä¸€äº›éå¸¸å¥½çš„traitå°±æ˜¯è¿™ç§
+    äº‹åŠ¡ç»„åˆï¼Œå®ƒæå‡äº†æŠ½è±¡å±‚æ¬¡ï¼Œå±è”½äº†åº•å±‚åŸºäºé”çš„å¹¶å‘æœºåˆ¶ã€‚.</p>
+<p>Akka Transactor ç»„åˆäº† Actor å’Œ STM ï¼ŒåŒæ—¶æ‹¥æœ‰Actoræ¨¡å‹çš„ä¼˜åŠ¿
+(å¹¶å‘çš„åŸºäºäº‹ä»¶çš„å¼‚æ­¥ç¼–ç¨‹) å’Œ STMçš„ä¼˜åŠ¿ (ç»„åˆå¼äº‹åŠ¡å…±äº«çŠ¶æ€) ï¼Œæä¾›äº‹åŠ¡æ€§çš„ï¼Œç»„åˆå¼çš„ï¼Œå¼‚æ­¥çš„ï¼ŒåŸºäºäº‹ä»¶çš„æ¶ˆæ¯æµ.</p>
+<p>ä¸€èˆ¬æ¥è¯´ï¼ŒSTMåœ¨Akaaä¸­ä¸æ˜¯ç‰¹åˆ«å¸¸ç”¨. æˆ‘ä»¬èƒ½æƒ³åˆ°çš„ä¸€äº›ä½¿ç”¨åœºæ™¯åŒ…æ‹¬:</p>
+<ul class="simple">
+<li>å½“ä½ ç¡®å®éœ€è¦åœ¨å¤šä¸ªactorä¹‹é—´ç»„åˆæ¶ˆæ¯æµåˆå¸Œæœ›åœ¨ä¸€ä¸ªå¤§çš„äº‹åŠ¡ä¸­å¯¹å¤šä¸ªactorçš„<strong>å†…éƒ¨</strong>çŠ¶æ€è¿›è¡Œä¿®æ”¹æ—¶ã€‚è¿™ç§æƒ…å†µå¾ˆå°‘è§ï¼Œä½†è¿™æ—¶å¦‚æœæ²¡æœ‰STMä½ å°±å®Œè›‹äº†ã€‚</li>
+<li>å½“ä½ éœ€è¦åœ¨actorä¹‹é—´å…±äº«ä¸€ä¸ªæ•°æ®ç»“æ„æ—¶.</li>
+</ul>
+</div>
+<div class="section" id="actors-and-stm">
+<h2>Actors ä¸ STM</h2>
+<p>å¯ä»¥æœ‰å‡ ç§æ–¹å¼ç»„åˆ Actor å’Œ STM . Actorå¯ä»¥åœ¨å†…éƒ¨ä½¿ç”¨ STM æ¥ä¿è¯æŸä¸€ä¸ªç‰¹åˆ«çš„ä¿®æ”¹æ˜¯åŸå­æ“ä½œ.
+    Actorä¹‹é—´ä¹Ÿå¯ä»¥å…±äº«äº‹åŠ¡æ€§çš„æ•°æ®ç»“æ„ï¼Œå› ä¸ºSTMæä¾›å’Œè·¨çº¿ç¨‹çš„å®‰å…¨çš„çŠ¶æ€å…±äº«.</p>
+<p>è¿˜å¯ä»¥åœ¨actoræˆ–çº¿ç¨‹ä¹‹é—´åè°ƒäº‹åŠ¡ï¼Œä½¿å¾—ä¸€ç»„äº‹åŠ¡è¦ä¹ˆå…¨éƒ¨æäº¤æˆåŠŸï¼Œè¦ä¹ˆå…¨éƒ¨å¤±è´¥ã€‚è¿™æ­£æ˜¯è¿™ä¸€éƒ¨åˆ†è®²çš„Transactorä»¥åŠå¯¹å…±åŒäº‹åŠ¡çš„æ˜ç¡®æ”¯æŒçš„å…³æ³¨ç‚¹.</p>
+</div>
+<div class="section" id="coordinated-transactions">
+<h2>å…±åŒäº‹åŠ¡</h2>
+<p>Akkaæä¾›ä¸€ç§ç‰¹åˆ«çš„æœºåˆ¶ç”¨æ¥åœ¨å¤šä¸ªActorä¹‹é—´å®ç°å…±åŒäº‹åŠ¡. åœ¨åº•å±‚å®ƒä½¿ç”¨ <tt class="docutils literal"><span class="pre">CommitBarrier</span></tt>, ç±»ä¼¼äº CountDownLatch.</p>
+<p>ä¸‹é¢çš„ç¤ºä¾‹ä¸­æˆ‘ä»¬ç®¡ç†ä¸¤ä¸ªç®€å•çš„è®¡æ•°å™¨actorä½¿å®ƒä»¬åœ¨å…±åŒäº‹åŠ¡ä¸­åŒæ—¶å¢åŠ è®¡æ•°ã€‚ä»»ä½•ä¸€ä¸ªå¦‚æœè®¡æ•°å¤±è´¥ï¼Œåˆ™å¦ä¸€ä¸ªä¹Ÿä¼šå¤±è´¥.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor._</span>
+<span class="k">import</span> <span class="nn">akka.transactor._</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.stm._</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Increment</span><span class="o">(</span><span class="n">friend</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span><span class="o">)</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">GetCount</span>
+
+<span class="k">class</span> <span class="nc">Counter</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">count</span> <span class="k">=</span> <span class="nc">Ref</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">coordinated</span> <span class="k">@</span> <span class="nc">Coordinated</span><span class="o">(</span><span class="nc">Increment</span><span class="o">(</span><span class="n">friend</span><span class="o">))</span> <span class="k">â‡’</span> <span class="o">{</span>
+      <span class="n">friend</span> <span class="n">foreach</span> <span class="o">(</span><span class="k">_</span> <span class="o">!</span> <span class="n">coordinated</span><span class="o">(</span><span class="nc">Increment</span><span class="o">()))</span>
+      <span class="n">coordinated</span> <span class="n">atomic</span> <span class="o">{</span> <span class="k">implicit</span> <span class="n">t</span> <span class="k">â‡’</span>
+        <span class="n">count</span> <span class="n">transform</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">case</span> <span class="nc">GetCount</span> <span class="k">â‡’</span> <span class="n">sender</span> <span class="o">!</span> <span class="n">count</span><span class="o">.</span><span class="n">single</span><span class="o">.</span><span class="n">get</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.Await</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.util.Timeout</span>
+<span class="k">import</span> <span class="nn">akka.pattern.ask</span>
+
+<span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;app&quot;</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="n">counter1</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Counter</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;counter1&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">counter2</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Counter</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;counter2&quot;</span><span class="o">)</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">timeout</span> <span class="k">=</span> <span class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span>
+
+<span class="n">counter1</span> <span class="o">!</span> <span class="nc">Coordinated</span><span class="o">(</span><span class="nc">Increment</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="n">counter2</span><span class="o">)))</span>
+
+<span class="k">val</span> <span class="n">count</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">counter1</span> <span class="o">?</span> <span class="nc">GetCount</span><span class="o">,</span> <span class="n">timeout</span><span class="o">.</span><span class="n">duration</span><span class="o">)</span>
+
+<span class="c1">// count == 1</span>
+</pre></div>
+</div>
+<p>æ³¨æ„åˆ›å»º <tt class="docutils literal"><span class="pre">Coordinated</span></tt> å¯¹è±¡æ—¶éœ€è¦å¯¹å…±åŒäº‹åŠ¡æŒ‡å®š <tt class="docutils literal"><span class="pre">Timeout</span></tt> .
+    å¯ä»¥é€šè¿‡åœ¨ä½œç”¨åŸŸå†…çš„ <tt class="docutils literal"><span class="pre">Timeout</span></tt> éšå¼æä¾›æˆ–ä½œä¸ºå‚æ•°ä¼ è¿›æ¥. è¦ä¸‹æ˜¯éšå¼æŒ‡å®š
+è¶…æ—¶çš„ç¤ºä¾‹:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.util.duration._</span>
+<span class="k">import</span> <span class="nn">akka.util.Timeout</span>
+
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">timeout</span> <span class="k">=</span> <span class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>è¦åˆ›å»ºä¸€ä¸ªä½ å‡†å¤‡åŠ å…¥çš„å…±åŒäº‹åŠ¡, åˆ›å»ºä¸€ä¸ª <tt class="docutils literal"><span class="pre">Coordinated</span></tt> å¯¹è±¡ (è¿™é‡Œå‡è®¾éšå¼çš„è¶…æ—¶):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">coordinated</span> <span class="k">=</span> <span class="nc">Coordinated</span><span class="o">()</span>
+</pre></div>
+</div>
+<p>è¦åˆ›å»ºä¸€ä¸ªä½ è‡ªå·±ä¸å‡†å¤‡åŠ å…¥çš„å…±åŒäº‹åŠ¡ï¼Œåˆ›å»ºä¸€ä¸ªå¸¦æ¶ˆæ¯çš„
+ <tt class="docutils literal"><span class="pre">Coordinated</span></tt> å¯¹è±¡å¹¶å°†å®ƒç›´æ¥å‘é€ç»™æŸä¸ªactor.
+    æ­¤æ¶ˆæ¯çš„æ¥æ”¶è€…å°†æˆä¸ºå…±åŒäº‹åŠ¡çš„ç¬¬ä¸€ä¸ªæˆå‘˜:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">actor</span> <span class="o">!</span> <span class="nc">Coordinated</span><span class="o">(</span><span class="nc">Message</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>è¦æ¥æ”¶ä¸€ä¸ªå…±åŒäº‹åŠ¡æ¶ˆæ¯ï¼Œactoråªéœ€è¦åœ¨matchå­å¥ä¸­åŒ¹é…å®ƒ:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">coordinated</span> <span class="k">@</span> <span class="nc">Coordinated</span><span class="o">(</span><span class="nc">Message</span><span class="o">)</span> <span class="k">â‡’</span> <span class="o">{</span>
+    <span class="c1">// å…±åŒåŸå­æ“ä½œ ...</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>è¦åœ¨ä½ è‡ªå·±åˆ›å»ºæˆ–æ¥æ”¶åˆ°çš„å…±åŒäº‹åŠ¡ä¸­åŠ å…¥å¦ä¸€ä¸ªactor, è°ƒç”¨å®ƒçš„applyæ–¹æ³•. è¿™å°†ä¼šä½¿å‚ä¸è€…è®¡æ•°åŠ 1å¹¶åˆ›å»ºä¸€ä¸ªå¯ä»¥å‘é€çš„æ–°çš„
+ <tt class="docutils literal"><span class="pre">Coordinated</span></tt> å¯¹è±¡.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">actor</span> <span class="o">!</span> <span class="n">coordinated</span><span class="o">(</span><span class="nc">Message</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>è¦è¿›å…¥å…±åŒäº‹åŠ¡ï¼Œè°ƒç”¨å…±åŒäº‹åŠ¡å¯¹è±¡çš„atomicæ–¹æ³•:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">coordinated</span> <span class="n">atomic</span> <span class="o">{</span> <span class="k">implicit</span> <span class="n">t</span> <span class="k">â‡’</span>
+  <span class="c1">// å…±åŒäº‹åŠ¡çš„å†…å®¹ ...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>å…±åŒäº‹åŠ¡å°†ç­‰å¾…å…¶ä¸­çš„äº‹åŠ¡å„è‡ªå®Œæˆæäº¤. å¦‚æœå…¶ä¸­ä»»åŠ¡ä¸€ä¸ªäº‹åŠ¡å¤±è´¥äº†ï¼Œæ‰€æœ‰çš„äº‹åŠ¡éƒ½å°†å¤±è´¥.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">åŒä¸€ä¸ª actor ä¸åº”å¤šæ¬¡åŠ å…¥åˆ°ä¸€ä¸ªå…±åŒäº‹åŠ¡ä¸­. è¿™ä¼šå¯¼è‡´äº‹åŠ¡æ— æ³•å®Œæˆï¼Œå› ä¸ºä¸€ä¸ªactorä¸€æ¬¡åªå¤„ç†ä¸€ä¸ªæ¶ˆæ¯.
+    åœ¨å¤„ç†ç¬¬ä¸€ä¸ªæ¶ˆæ¯æ—¶ï¼Œå…±åŒäº‹åŠ¡å°†ç­‰å¾…æäº¤å±éšœ, è€Œæäº¤å±éšœåˆéœ€è¦æ¥æ”¶åˆ°ç¬¬äºŒä¸ªæ¶ˆæ¯æ‰èƒ½ç»§ç»­.</p>
+</div>
+</div>
+<div class="section" id="transactor">
+<h2>Transactor</h2>
+<p>Transactoræ˜¯æä¾›å…±åŒäº‹åŠ¡çš„ä¸€èˆ¬æ¨¡å¼çš„Actor, ä½¿ç”¨ä»¥ä¸Šæ‰€è¿°çš„æ˜ç¡®çš„åè°ƒæœºåˆ¶.</p>
+<p>ä¸‹ä¾‹æ¼”ç¤ºä¸€ä¸ªå°†è¦åŠ å…¥ä¸€ä¸ªå…±åŒäº‹åŠ¡çš„ç®€å•çš„transactor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.transactor._</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.stm._</span>
+
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Increment</span>
+
+<span class="k">class</span> <span class="nc">Counter</span> <span class="k">extends</span> <span class="nc">Transactor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">count</span> <span class="k">=</span> <span class="nc">Ref</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">atomically</span> <span class="k">=</span> <span class="k">implicit</span> <span class="n">txn</span> <span class="k">â‡’</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Increment</span> <span class="k">â‡’</span> <span class="n">count</span> <span class="n">transform</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä½ å¯ä»¥å‘è¿™ä¸ªCounter transactorå‘é€ä¸€ä¸ª <tt class="docutils literal"><span class="pre">Coordinated(Increment)</span></tt> æ¶ˆæ¯.
+    å¦‚æœä½ åªæ˜¯ç»™å®ƒå‘é€ <tt class="docutils literal"><span class="pre">Increment</span></tt> æ¶ˆæ¯å®ƒä¼šåˆ›å»ºè‡ªå·±çš„
+<tt class="docutils literal"><span class="pre">Coordinated</span></tt> (ä½†åœ¨è¿™ä¸ªç‰¹ä¾‹é‡Œå®ƒä¸æ˜¯ä¸å…¶å®ƒtransactoråä½œçš„å…±åŒäº‹åŠ¡).</p>
+<p>è¦ä¸å…¶å®ƒçš„transactoåä½œï¼Œé‡å†™ <tt class="docutils literal"><span class="pre">coordinate</span></tt> æ–¹æ³•. The
+<tt class="docutils literal"><span class="pre">coordinate</span></tt> æ–¹æ³•å°†æ¶ˆæ¯æ˜ å°„åˆ°ä¸€ç»„ of <tt class="docutils literal"><span class="pre">SendTo</span></tt> å¯¹è±¡, è¿™æ˜¯
+<tt class="docutils literal"><span class="pre">ActorRef</span></tt>å’Œmessageçš„Pair. å¯ä»¥å¾ˆæ–¹ä¾¿åœ°ä½¿ç”¨ <tt class="docutils literal"><span class="pre">include</span></tt> å’Œ <tt class="docutils literal"><span class="pre">sendTo</span></tt> æ–¹æ³•
+æ¥ä¸å…¶å®ƒçš„transactoråä½œã€‚<tt class="docutils literal"><span class="pre">include</span></tt> æ–¹æ³•ä¼šå°†æ”¶åˆ°çš„æ¶ˆæ¯ä¸åŠ æ”¹å˜åœ°å‘é€ç»™å…¶å®ƒçš„. The <tt class="docutils literal"><span class="pre">sendTo</span></tt> æ–¹æ³•
+å…è®¸ä½ æŒ‡å®šè¦å‘é€åˆ°çš„actorï¼Œä»¥åŠè¦å‘é€çš„æ¶ˆæ¯.</p>
+<p>å¯¹è®¡æ•°å™¨å¢åŠ è®¡æ•°çš„åä½œä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor._</span>
+<span class="k">import</span> <span class="nn">akka.transactor._</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.stm._</span>
+
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Increment</span>
+
+<span class="k">class</span> <span class="nc">FriendlyCounter</span><span class="o">(</span><span class="n">friend</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Transactor</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">count</span> <span class="k">=</span> <span class="nc">Ref</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+  <span class="k">override</span> <span class="k">def</span> <span class="n">coordinate</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Increment</span> <span class="k">â‡’</span> <span class="n">include</span><span class="o">(</span><span class="n">friend</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">atomically</span> <span class="k">=</span> <span class="k">implicit</span> <span class="n">txn</span> <span class="k">â‡’</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Increment</span> <span class="k">â‡’</span> <span class="n">count</span> <span class="n">transform</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä½¿ç”¨ <tt class="docutils literal"><span class="pre">include</span></tt> æ¥åŒ…å«å¤šä¸ª transactor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">override</span> <span class="k">def</span> <span class="n">coordinate</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Message</span> <span class="k">â‡’</span> <span class="n">include</span><span class="o">(</span><span class="n">actor1</span><span class="o">,</span> <span class="n">actor2</span><span class="o">,</span> <span class="n">actor3</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä½¿ç”¨ <tt class="docutils literal"><span class="pre">sendTo</span></tt> å¯¹äº‹åŠ¡è¿›è¡Œåè°ƒï¼Œä½†å‘é€çš„æ¶ˆæ¯ä¸æ˜¯æ¥æ”¶åˆ°çš„é‚£ä¸€ä¸ª:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">override</span> <span class="k">def</span> <span class="n">coordinate</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">SomeMessage</span>  <span class="k">â‡’</span> <span class="n">sendTo</span><span class="o">(</span><span class="n">someActor</span> <span class="o">-&gt;</span> <span class="nc">SomeOtherMessage</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">OtherMessage</span> <span class="k">â‡’</span> <span class="n">sendTo</span><span class="o">(</span><span class="n">actor1</span> <span class="o">-&gt;</span> <span class="nc">Message1</span><span class="o">,</span> <span class="n">actor2</span> <span class="o">-&gt;</span> <span class="nc">Message2</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>è¦åœ¨å…±åŒäº‹åŠ¡å¼€å§‹å‰æˆ–ç»“æŸåæ‰§è¡Œä¸€äº›ä»£ç ï¼Œé‡å†™
+<tt class="docutils literal"><span class="pre">before</span></tt> å’Œ <tt class="docutils literal"><span class="pre">after</span></tt> æ–¹æ³•. è¿™äº›æ–¹æ³•ä¹Ÿè±¡receiveä¸€æ ·æ¥æ”¶åå‡½æ•°.
+    å®ƒä»¬ä¸åŒ…å«åœ¨äº‹åŠ¡ä¸­.</p>
+<p>è¦å®Œå…¨ç»•è¿‡å…±åŒäº‹åŠ¡ï¼Œé‡å†™ <tt class="docutils literal"><span class="pre">normally</span></tt>æ–¹æ³•.
+    è¢« <tt class="docutils literal"><span class="pre">normally</span></tt> åŒ¹é…çš„æ¶ˆæ¯ä¸ä¼šè¢«å…¶å®ƒæ–¹æ³•æ‰€åŒ¹é…ï¼Œä¹Ÿä¸ä¼šå‚ä¸å…±åŒäº‹åŠ¡ã€‚
+    åœ¨è¿™ä¸ªæ–¹æ³•ä¸­ä½ å¯ä»¥å®ç°æ™®é€šçš„actorè¡Œä¸ºï¼Œæˆ–è€…ä½¿ç”¨æ™®é€šçš„STMåŸå­æ“ä½œæ¥å®Œæˆæœ¬åœ°äº‹åŠ¡.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

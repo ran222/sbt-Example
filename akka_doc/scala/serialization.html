@@ -1,0 +1,335 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Serialization (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="FSM" href="fsm.html" />
+    <link rel="prev" title="Remoting (Scala)" href="remoting.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">åºåˆ—åŒ– (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="fsm.html" tppabs="http://www.gtan.com/akka_doc/scala/fsm.html">æœ‰é™çŠ¶æ€æœº</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="remoting.html" tppabs="http://www.gtan.com/akka_doc/scala/remoting.html">è¿œç¨‹è°ƒç”¨ (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="serialization-scala">
+<span id="id1"></span><h1>åºåˆ—åŒ– (Scala)</h1>
+<p>Akka æä¾›å†…ç½®çš„åºåˆ—åŒ–æ”¯æŒæ‰©å±•, ä½ å¯ä»¥é€‰æ‹©ä½¿ç”¨å†…ç½®çš„åºåˆ—åŒ–åŠŸèƒ½ï¼Œä¹Ÿå¯ä»¥è‡ªå·±å†™ä¸€ä¸ª.</p>
+<p>å†…ç½®çš„åºåˆ—åŒ–åŠŸèƒ½è¢«Akkaå†…éƒ¨ç”¨æ¥åºåˆ—åŒ–æ¶ˆæ¯ï¼Œä½ ä¹Ÿå¯ä»¥ç”¨å®ƒåšå…¶å®ƒçš„åºåˆ—åŒ–å·¥ä½œã€‚.</p>
+<div class="section" id="usage">
+<h2>ç”¨æ³•</h2>
+<div class="section" id="configuration">
+<h3>é…ç½®</h3>
+<p>ä¸ºäº†è®© Akka çŸ¥é“å¯¹ä»€ä¹ˆä»»åŠ¡ä½¿ç”¨å“ªä¸ª <tt class="docutils literal"><span class="pre">Serializer</span></tt> , ä½ éœ€è¦ç¼–è¾‘ä½ çš„ <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>é…ç½®æ–‡ä»¶</em></a>,
+åœ¨ &#8220;akka.actor.serializers&#8221; éƒ¨åˆ†å°†åç§°ä¸ <tt class="docutils literal"><span class="pre">akka.serialization.Serializer</span></tt>çš„å®ç°åšç»‘å®šï¼Œè±¡è¿™æ ·:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">  akka {</span>
+<span class="s">    actor {</span>
+<span class="s">      serializers {</span>
+<span class="s">        java = &quot;akka.serialization.JavaSerializer&quot;</span>
+<span class="s">        proto = &quot;akka.serialization.ProtobufSerializer&quot;</span>
+<span class="s">        myown = &quot;akka.docs.serialization.MyOwnSerializer&quot;</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>åç§°ä¸ <tt class="docutils literal"><span class="pre">Serializer</span></tt> çš„ä¸åŒå®ç°ç»‘å®šåä½ éœ€è¦æŒ‡å®šå“ªäº›ç±»çš„åºåˆ—åŒ–éœ€è¦ä½¿ç”¨
+å“ªç§ <tt class="docutils literal"><span class="pre">Serializer</span></tt>, è¿™éƒ¨åˆ†é…ç½®å†™åœ¨ &#8220;akka.actor.serialization-bindings&#8221; éƒ¨åˆ†:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">  akka {</span>
+<span class="s">    actor {</span>
+<span class="s">      serializers {</span>
+<span class="s">        java = &quot;akka.serialization.JavaSerializer&quot;</span>
+<span class="s">        proto = &quot;akka.serialization.ProtobufSerializer&quot;</span>
+<span class="s">        myown = &quot;akka.docs.serialization.MyOwnSerializer&quot;</span>
+<span class="s">      }</span>
+
+<span class="s">      serialization-bindings {</span>
+<span class="s">        &quot;java.lang.String&quot; = java</span>
+<span class="s">        &quot;akka.docs.serialization.Customer&quot; = java</span>
+<span class="s">        &quot;com.google.protobuf.Message&quot; = proto</span>
+<span class="s">        &quot;akka.docs.serialization.MyOwnSerializable&quot; = myown</span>
+<span class="s">        &quot;java.lang.Boolean&quot; = myown</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>ä½ åªéœ€è¦æŒ‡å®šæ¶ˆæ¯çš„æ¥å£æˆ–æŠ½è±¡åŸºç±». å½“æ¶ˆæ¯å®ç°äº†é…ç½®ä¸­å¤šä¸ªç±»æ—¶ï¼Œä¸ºé¿å…æ­§ä¹‰, å°†ä½¿ç”¨æœ€å…·ä½“ç±», i.e. æ˜¯å…¶å®ƒæ‰€æœ‰ç±»çš„å­ç±»çš„é‚£ä¸€ä¸ª.
+    å¦‚æœè¿™ä¸ªæ¡ä»¶ä¸æ»¡è¶³,  e.g. <tt class="docutils literal"><span class="pre">java.io.Serializable</span></tt> and <tt class="docutils literal"><span class="pre">MyOwnSerializable</span></tt>
+éƒ½æœ‰é…ç½®ï¼Œè€Œå½¼æ­¤éƒ½ä¸æ˜¯å¯¹æ–¹çš„å­ç±»å‹ï¼Œå°†ç”Ÿæˆè­¦å‘Šã€‚</p>
+<p>Akka ç¼ºçœæä¾›ä½¿ç”¨ <tt class="xref py py-class docutils literal"><span class="pre">java.io.Serializable</span></tt> and <a class="reference external" href="javascript:if(confirm('http://code.google.com/p/protobuf/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://code.google.com/p/protobuf/'" tppabs="http://code.google.com/p/protobuf/">protobuf</a>
+<tt class="xref py py-class docutils literal"><span class="pre">com.google.protobuf.GeneratedMessage</span></tt> çš„åºåˆ—åŒ–å·¥å…· (åè€…ä»…å½“å®šä¹‰äº†å¯¹
+akka-remote æ¨¡å—çš„ä¾èµ–æ—¶æ‰æœ‰), æ‰€ä»¥é€šå¸¸ä½ ä¸éœ€è¦æ·»åŠ è¿™ä¸¤ç§é…ç½®; ç”±äº <tt class="xref py py-class docutils literal"><span class="pre">com.google.protobuf.GeneratedMessage</span></tt>
+å®ç°äº† <tt class="xref py py-class docutils literal"><span class="pre">java.io.Serializable</span></tt>, åœ¨ä¸ç‰¹åˆ«æŒ‡å®šçš„æƒ…å†µä¸‹ï¼Œprotobuf æ¶ˆæ¯å°†æ€»æ˜¯ç”¨
+protobuf åè®®æ¥åšåºåˆ—åŒ–. è¦ç¦æ­¢ç¼ºçœçš„åºåˆ—åŒ–å·¥å…·ï¼Œå°†å…¶å¯¹åº”çš„ç±»å‹è®¾ä¸º â€œnoneâ€:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">akka</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">serialization</span><span class="o">-</span><span class="n">bindings</span> <span class="o">{</span>
+  <span class="s">&quot;java.io.Serializable&quot;</span> <span class="k">=</span> <span class="n">none</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verification">
+<h3>ç¡®è®¤</h3>
+<p>å¦‚æœä½ å¸Œæœ›ç¡®è®¤ä½ çš„æ¶ˆæ¯æ˜¯å¯ä»¥è¢«åºåˆ—åŒ–çš„ä½ å¯ä»¥æ‰“å¼€è¿™ä¸ªé…ç½®é¡¹:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">  akka {</span>
+<span class="s">    actor {</span>
+<span class="s">      serialize-messages = on</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">è­¦å‘Š</p>
+<p class="last">æˆ‘ä»¬åªæ¨èåœ¨è¿è¡Œæµ‹è¯•ä»£ç çš„æ—¶å€™æ‰æ‰“å¼€è¿™ä¸ªé€‰é¡¹.åœ¨å…¶å®ƒçš„åœºæ™¯æ‰“å¼€å®ƒå®Œå…¨æ²¡æœ‰é“ç†.</p>
+</div>
+<p>å¦‚æœä½ å¸Œæœ›ç¡®è®¤ä½ çš„ <tt class="docutils literal"><span class="pre">Props</span></tt> å¯ä»¥è¢«åºåˆ—åŒ–ä½ å¯ä»¥æ‰“å¼€è¿™ä¸ªé…ç½®é¡¹:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">  akka {</span>
+<span class="s">    actor {</span>
+<span class="s">      serialize-creators = on</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">è­¦å‘Š</p>
+<p class="last">æˆ‘ä»¬ä»…æ¨èåœ¨è¿è¡Œæµ‹è¯•ä»£ç çš„æ—¶å€™æ‰æ‰“å¼€è¿™ä¸ªé€‰é¡¹.åœ¨å…¶å®ƒçš„åœºæ™¯æ‰“å¼€å®ƒå®Œå…¨æ²¡æœ‰é“ç†.</p>
+</div>
+</div>
+<div class="section" id="programmatic">
+<h3>é€šè¿‡ä»£ç </h3>
+<p>å¦‚æœä½ å¸Œæœ›é€šè¿‡ä»£ç ä½¿ç”¨ Akka åºåˆ—åŒ–æ¥è¿›è¡Œåºåˆ—åŒ–/ååºåˆ—åŒ–,
+ä»¥ä¸‹æ˜¯ä¸€äº›ä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.serialization._</span>
+<span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+
+    <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;example&quot;</span><span class="o">)</span>
+
+    <span class="c1">// è·å–åºåˆ—åŒ–æ‰©å±•å·¥å…·</span>
+    <span class="k">val</span> <span class="n">serialization</span> <span class="k">=</span> <span class="nc">SerializationExtension</span><span class="o">(</span><span class="n">system</span><span class="o">)</span>
+
+    <span class="c1">// å®šä¹‰ä¸€äº›è¦åºåˆ—åŒ–çš„ä¸œè¥¿</span>
+    <span class="k">val</span> <span class="n">original</span> <span class="k">=</span> <span class="s">&quot;woohoo&quot;</span>
+
+    <span class="c1">// ä¸ºå®ƒæ‰¾åˆ°ä¸€ä¸ª Serializer </span>
+    <span class="k">val</span> <span class="n">serializer</span> <span class="k">=</span> <span class="n">serialization</span><span class="o">.</span><span class="n">findSerializerFor</span><span class="o">(</span><span class="n">original</span><span class="o">)</span>
+
+    <span class="c1">// è½¬åŒ–ä¸ºå­—èŠ‚</span>
+    <span class="k">val</span> <span class="n">bytes</span> <span class="k">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">toBinary</span><span class="o">(</span><span class="n">original</span><span class="o">)</span>
+
+    <span class="c1">// è½¬åŒ–å›å¯¹è±¡</span>
+    <span class="k">val</span> <span class="n">back</span> <span class="k">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">fromBinary</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">manifest</span> <span class="k">=</span> <span class="nc">None</span><span class="o">)</span>
+
+    <span class="c1">// å°±ç»ª!</span>
+    <span class="n">back</span> <span class="n">must</span> <span class="n">equal</span><span class="o">(</span><span class="n">original</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>æ›´å¤šä¿¡æ¯è¯·è§  <tt class="docutils literal"><span class="pre">akka.serialization._</span></tt> çš„ <tt class="docutils literal"><span class="pre">ScalaDoc</span></tt></p>
+</div>
+</div>
+<div class="section" id="customization">
+<h2>è‡ªå®šä¹‰</h2>
+<p>ä½ å¸Œæœ›åˆ›å»ºè‡ªå·±çš„ <tt class="docutils literal"><span class="pre">Serializer</span></tt>,
+åº”è¯¥å·²ç»çœ‹åˆ°ä¸Šä¾‹ä¸­çš„ <tt class="docutils literal"><span class="pre">akka.docs.serialization.MyOwnSerializer</span></tt> äº†å§?</p>
+<div class="section" id="creating-new-serializers">
+<h3>åˆ›å»ºæ–°çš„ Serializer</h3>
+<p>é¦–å…ˆä½ éœ€è¦ä¸ºä½ çš„ <tt class="docutils literal"><span class="pre">Serializer</span></tt> å†™ä¸€ä¸ªç±»å®šä¹‰ï¼Œè±¡è¿™æ ·:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.serialization._</span>
+<span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+
+<span class="k">class</span> <span class="nc">MyOwnSerializer</span> <span class="k">extends</span> <span class="nc">Serializer</span> <span class="o">{</span>
+
+  <span class="c1">// æŒ‡å®š &quot;fromBinary&quot; æ˜¯å¦éœ€è¦ä¸€ä¸ª &quot;clazz&quot; </span>
+  <span class="k">def</span> <span class="n">includeManifest</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="kc">false</span>
+
+  <span class="c1">// ä¸ºä½ çš„ Serializer é€‰æ‹©ä¸€ä¸ªå”¯ä¸€æ ‡è¯†,</span>
+  <span class="c1">// åŸºæœ¬ä¸Šæ‰€æœ‰çš„æ•´æ•°éƒ½å¯ä»¥ç”¨,</span>
+  <span class="c1">// ä½† 0 - 16 æ˜¯Akkaè‡ªå·±ä¿ç•™çš„</span>
+  <span class="k">def</span> <span class="n">identifier</span> <span class="k">=</span> <span class="mi">1234567</span>
+
+  <span class="c1">// &quot;toBinary&quot; å°†å¯¹è±¡åºåˆ—åŒ–ä¸ºå­—èŠ‚æ•°ç»„ Array of Bytes</span>
+  <span class="k">def</span> <span class="n">toBinary</span><span class="o">(</span><span class="n">obj</span><span class="k">:</span> <span class="kt">AnyRef</span><span class="o">)</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Byte</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="c1">// å°†åºåˆ—åŒ–çš„ä»£ç å†™åœ¨è¿™å„¿</span>
+    <span class="c1">// ... ...</span>
+  <span class="o">}</span>
+
+  <span class="c1">// &quot;fromBinary&quot; å¯¹å­—èŠ‚æ•°ç»„è¿›è¡Œååºåˆ—åŒ–,</span>
+  <span class="c1">// ä½¿ç”¨ç±»å‹æç¤º (å¦‚æœæœ‰çš„è¯, è§ä¸Šæ–‡çš„ &quot;includeManifest&quot; )</span>
+  <span class="c1">// ä½¿ç”¨å¯èƒ½æä¾›çš„ classLoader.</span>
+  <span class="k">def</span> <span class="n">fromBinary</span><span class="o">(</span><span class="n">bytes</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Byte</span><span class="o">],</span>
+                 <span class="n">clazz</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Class</span><span class="o">[</span><span class="k">_</span><span class="o">]])</span><span class="k">:</span> <span class="kt">AnyRef</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="c1">// å°†ååºåˆ—åŒ–çš„ä»£ç å†™åœ¨è¿™å„¿</span>
+    <span class="c1">// ... ...</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ç„¶åä½ åªéœ€è¦å¡«ç©ºï¼Œåœ¨ <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>é…ç½®æ–‡ä»¶</em></a> ä¸­å°†å®ƒç»‘å®šåˆ°ä¸€ä¸ªåç§°ï¼Œ
+    ç„¶ååˆ—å‡ºéœ€è¦ç”¨å®ƒæ¥åšåºåˆ—åŒ–çš„ç±»å³å¯.</p>
+</div>
+<div class="section" id="serializing-actorrefs">
+<h3>Actorå¼•ç”¨çš„åºåˆ—åŒ–</h3>
+<p>æ‰€æœ‰çš„ ActorRef éƒ½æ˜¯ç”¨ JavaSerializer, ä½†å¦‚æœä½ å†™äº†è‡ªå·±çš„serializerï¼Œ
+ä½ å¯èƒ½æƒ³çŸ¥é“å¦‚æœæ­£ç¡®å¯¹å®ƒä»¬è¿›è¡Œåºåˆ—åŒ–å’Œååºåˆ—åŒ–, ä¸‹é¢å°±æ¥è§£ç§˜:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.serialization._</span>
+<span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+
+    <span class="c1">// åºåˆ—åŒ–</span>
+    <span class="c1">// (toBinaryä¹‹ä¸‹)</span>
+
+    <span class="c1">// å¦‚æœæ²¡æœ‰transportAddress,</span>
+    <span class="c1">// æ„å‘³ç€è¿™ä¸ªSerializer åœ¨è®¾ç½®å®ƒçš„ä»£ç ä¸­æ ¹æœ¬ä¸è¢«è°ƒç”¨</span>
+    <span class="c1">// æ‰€ä»¥ä½ éœ€è¦æä¾›è‡ªå·±çš„Serializer,</span>
+    <span class="c1">// æˆ–è€…ç›´æ¥ç”¨æœ¬åœ°è·¯å¾„</span>
+    <span class="k">val</span> <span class="n">identifier</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="nc">Serialization</span><span class="o">.</span><span class="n">currentTransportAddress</span><span class="o">.</span><span class="n">value</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="kc">null</span>    <span class="k">â‡’</span> <span class="n">theActorRef</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">toString</span>
+      <span class="k">case</span> <span class="n">address</span> <span class="k">â‡’</span> <span class="n">theActorRef</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">toStringWithAddress</span><span class="o">(</span><span class="n">address</span><span class="o">)</span>
+    <span class="o">}</span>
+    <span class="c1">// ç„¶ååªéœ€è¦å†™ä½ æƒ³å¦‚ä½•å¯¹identifierè¿›è¡Œåºåˆ—åŒ–å³å¯</span>
+
+    <span class="c1">// ååºåˆ—åŒ–</span>
+    <span class="c1">// (fromBinaryä¹‹ä¸‹)</span>
+    <span class="k">val</span> <span class="n">deserializedActorRef</span> <span class="k">=</span> <span class="n">theActorSystem</span> <span class="n">actorFor</span> <span class="n">identifier</span>
+    <span class="c1">// ç„¶åç›´æ¥ä½¿ç”¨ ActorRef</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-word-about-java-serialization">
+<h2>å…³äº Java åºåˆ—åŒ–</h2>
+<p>å¦‚æœåœ¨åšJavaåºåˆ—åŒ–æ—¶ä¸ä½¿ç”¨ <tt class="xref py py-class docutils literal"><span class="pre">JavaSerializer</span></tt>
+, ä½ å¿…é¡»ä¿è¯åœ¨åŠ¨æ€å˜é‡<tt class="docutils literal"><span class="pre">JavaSerializer.currentSystem</span></tt>ä¸­æä¾›ä¸€ä¸ªæœ‰æ•ˆçš„ <tt class="xref py py-class docutils literal"><span class="pre">ExtendedActorSystem</span></tt> .
+    å®ƒæ˜¯åœ¨è¯»å–<tt class="xref py py-class docutils literal"><span class="pre">ActorRef</span></tt>æ—¶å°†å­—ç¬¦ä¸²è¡¨ç¤ºè½¬æ¢æˆå®é™…çš„
+    å¼•ç”¨. <tt class="xref py py-class docutils literal"><span class="pre">åŠ¨æ€å˜é‡DynamicVariable</span></tt> æ˜¯ä¸€ä¸ª
+thread-localå˜é‡ï¼Œæ‰€ä»¥åœ¨ååºåˆ—åŒ–ä»»ä½•å¯èƒ½åŒ…å«actorå¼•ç”¨çš„æ•°æ®æ—¶è¦ä¿è¯è¿™ä¸ªå˜é‡æœ‰å€¼.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

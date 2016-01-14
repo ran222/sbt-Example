@@ -1,0 +1,290 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scheduler (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Futures (Scala)" href="futures.html" />
+    <link rel="prev" title="Event Bus (Scala)" href="event-bus.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">å®šæ—¶å™¨ (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="futures.html" tppabs="http://www.gtan.com/akka_doc/scala/futures.html">Future (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="event-bus.html" tppabs="http://www.gtan.com/akka_doc/scala/event-bus.html">äº‹ä»¶æ€»çº¿ (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                Version 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="scheduler-scala">
+<span id="id1"></span><h1>å®šæ—¶å™¨ (Scala)</h1>
+<p>æœ‰æ—¶éœ€è¦è®¾å®šå°†æ¥å‘ç”Ÿçš„äº‹æƒ…ï¼Œè¿™æ—¶è¯¥æ€ä¹ˆåŠ?
+ <tt class="docutils literal"><span class="pre">ActorSystem</span></tt> æå®šä¸€åˆ‡! åœ¨é‚£å„¿ä½ èƒ½æ‰¾åˆ° <tt class="xref py py-meth docutils literal"><span class="pre">scheduler</span></tt>
+    æ–¹æ³•ï¼Œå®ƒè¿”å›ä¸€ä¸ª akka.actor.Scheduler å®ä¾‹, è¿™ä¸ªå®ä¾‹åœ¨æ¯ä¸ªActorç³»ç»Ÿé‡Œæ˜¯å”¯ä¸€çš„ï¼Œç”¨æ¥æŒ‡å®šä¸€æ®µæ—¶é—´åå‘ç”Ÿçš„è¡Œä¸ºã€‚è¯·æ³¨æ„å®šæ—¶ä»»åŠ¡æ˜¯ä½¿ç”¨ <tt class="docutils literal"><span class="pre">ActorSystem</span></tt>
+    çš„ <tt class="docutils literal"><span class="pre">MessageDispatcher</span></tt> æ‰§è¡Œçš„.</p>
+<p>ä½ å¯ä»¥è®¡åˆ’å‘actorå‘é€æ¶ˆæ¯æˆ–æ‰§è¡Œä»»åŠ¡çš„ä»£ç  (å‡½æ•°æˆ–Runnable).
+ä½ ä¼šå¾—åˆ°ä¸€ä¸ª <tt class="docutils literal"><span class="pre">Cancellable</span></tt> ç±»å‹çš„è¿”å›å€¼ï¼Œä½ å¯ä»¥è°ƒç”¨ <tt class="xref py py-meth docutils literal"><span class="pre">cancel</span></tt>
+    æ¥å–æ¶ˆå®šæ—¶ä»»åŠ¡çš„æ‰§è¡Œã€‚</p>
+<div class="section" id="some-examples">
+<h2>ç¤ºä¾‹</h2>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Actor</span>
+<span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+    <span class="c1">//è®¡åˆ’åœ¨50msåå°† &quot;foo&quot;-æ¶ˆæ¯å‘é€ç»™ testActor</span>
+    <span class="n">system</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">scheduleOnce</span><span class="o">(</span><span class="mi">50</span> <span class="n">milliseconds</span><span class="o">,</span> <span class="n">testActor</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">
+    //è®¡åˆ’50msåæ‰§è¡Œå‡½æ•° (å‘é€å½“å‰æ—¶é—´ç»™ testActorï¼‰ after 50ms</span>
+<span class="n">system</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">scheduleOnce</span><span class="o">(</span><span class="mi">50</span> <span class="n">milliseconds</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">testActor</span> <span class="o">!</span> <span class="nc">System</span><span class="o">.</span><span class="n">currentTimeMillis</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="nc">Tick</span> <span class="k">=</span> <span class="s">&quot;tick&quot;</span>
+<span class="k">val</span> <span class="n">tickActor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Tick</span> <span class="k">â‡’</span> <span class="c1">//Do something</span>
+  <span class="o">}</span>
+<span class="o">}))</span>
+<span class="c1">//è¿™å°†ä¼šè®¡åˆ’0msåæ¯50mså‘tickActorå‘é€ Tick-æ¶ˆæ¯</span>
+<span class="k">val</span> <span class="n">cancellable</span> <span class="k">=</span>
+  <span class="n">system</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">schedule</span><span class="o">(</span><span class="mi">0</span> <span class="n">milliseconds</span><span class="o">,</span>
+    <span class="mi">50</span> <span class="n">milliseconds</span><span class="o">,</span>
+    <span class="n">tickActor</span><span class="o">,</span>
+    <span class="nc">Tick</span><span class="o">)</span>
+
+<span class="c1">//è¿™ä¼šå–æ¶ˆæœªæ¥çš„Tickå‘é€</span>
+<span class="n">cancellable</span><span class="o">.</span><span class="n">cancel</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="from-akka-actor-actorsystem">
+<h2>æ¥è‡ª <tt class="docutils literal"><span class="pre">akka.actor.ActorSystem</span></tt></h2>
+<div class="highlight-scala"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * è½»é‡çš„å®šæ—¶å™¨ï¼Œç”¨æ¥åœ¨æœªæ¥æŸä¸€æ—¶é—´ç‚¹è¿è¡Œå¼‚æ­¥ä»»åŠ¡</span>
+<span class="cm"> * ä¸æ˜¯éå¸¸ç²¾ç¡®ä½†å ç”¨å¾ˆå°‘çš„èµ„æºã€‚</span>
+<span class="cm"> */</span>
+<span class="k">def</span> <span class="n">scheduler</span><span class="k">:</span> <span class="kt">Scheduler</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-scheduler-interface">
+<h2>Scheduler æ¥å£</h2>
+<div class="highlight-scala"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * ä¸€ä¸ª Akka å®šæ—¶å™¨æœåŠ¡. å®ƒéœ€è¦ä¸€ä¸ªç‰¹æ®Šçš„åŠŸèƒ½ : if</span>
+<span class="cm"> * å¦‚æœæ˜¯ Closeable ç±»å‹ï¼Œå®ƒå¿…é¡»åœ¨closeè¢«è°ƒç”¨æ—¶è¿è¡Œå®Œæ‰€æœ‰çš„ä»»åŠ¡ä»¥ä¿è¯æ­£ç¡®åœ°å…³é—­æ‰€æœ‰çš„æ´¾å‘å™¨ã€‚</span>
+<span class="cm"> *</span>
+<span class="cm"> * è€Œä¸”ï¼Œå¦‚æœä¸èƒ½è®¡åˆ’ä¸€ä¸ªä»»åŠ¡ï¼Œè¿™ä¸ªå®šæ—¶å™¨æœåŠ¡å¿…é¡»æŠ›å‡º IllegalStateExceptionã€‚ä¸€æ—¦è¢«è®¡åˆ’äº†ï¼Œè¿™ä¸ªä»»åŠ¡å¿…é¡»è¢«æ‰§è¡Œã€‚</span>
+<span class="cm"> * å¦‚æœåœ¨closeè°ƒç”¨ä¸­æ‰§è¡Œ, è¿™ä¸ªä»»åŠ¡å¯èƒ½åœ¨è¶…æ—¶ä¹‹å‰æ‰§è¡Œã€‚</span>
+<span class="cm"> */</span>
+<span class="k">trait</span> <span class="nc">Scheduler</span> <span class="o">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’åœ¨ä¸€æ®µåˆå§‹çš„æ—¶é—´ååŠä¹‹åçš„æŸå›ºå®šæ—¶é—´æ®µé‡å¤å‘é€æ¶ˆæ¯ã€‚ä¾‹å¦‚ï¼Œ</span>
+<span class="cm">   * å¦‚æœä½ å¸Œæœ›æ¶ˆæ¯é©¬ä¸Šè¢«å‘é€ï¼Œå¹¶æ¯éš”500msåå„å‘é€ä¸€æ¬¡ï¼Œä½ åº”è¯¥è®¾ç½®</span>
+<span class="cm">   *  delay=Duration.Zero å’Œ frequency=Duration(500, TimeUnit.MILLISECONDS)</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java &amp; Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">schedule</span><span class="o">(</span>
+    <span class="n">initialDelay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span>
+    <span class="n">frequency</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span>
+    <span class="n">receiver</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">,</span>
+    <span class="n">message</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’ä¸€ä¸ªå‡½æ•°åœ¨ä¸€æ®µåˆå§‹çš„æ—¶é—´ååŠä¹‹åçš„æŸå›ºå®šæ—¶é—´æ®µé‡å¤æ‰§è¡Œã€‚</span>
+<span class="cm">   * ä¾‹å¦‚ï¼Œå¦‚æœä½ å¸Œæœ›å‡½æ•°2ç§’åæ‰§è¡Œï¼Œä¹‹åæ¯100msæ‰§è¡Œä¸€æ¬¡ï¼Œä½ åº”è¯¥è®¾ç½®</span>
+<span class="cm">   * delay = Duration(2, TimeUnit.SECONDS)</span>
+<span class="cm">   * frequency = Duration(100, TimeUnit.MILLISECONDS)</span>
+<span class="cm">   *</span>
+<span class="cm">   * Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">schedule</span><span class="o">(</span>
+    <span class="n">initialDelay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">frequency</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">)(</span><span class="n">f</span><span class="k">:</span> <span class="k">â‡’</span> <span class="kt">Unit</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’ä¸€ä¸ªRunnableåœ¨ä¸€æ®µåˆå§‹çš„æ—¶é—´ååŠä¹‹åçš„æŸå›ºå®šæ—¶é—´æ®µé‡å¤æ‰§è¡Œã€‚</span>
+<span class="cm">   * ä¾‹å¦‚ï¼Œå¦‚æœä½ å¸Œæœ›å‡½æ•°2ç§’åæ‰§è¡Œï¼Œä¹‹åæ¯100msæ‰§è¡Œä¸€æ¬¡ï¼Œä½ åº”è¯¥è®¾ç½®</span>
+<span class="cm">   * delay = Duration(2, TimeUnit.SECONDS)</span>
+<span class="cm">   * frequency = Duration(100, TimeUnit.MILLISECONDS)</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">schedule</span><span class="o">(</span>
+    <span class="n">initialDelay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">frequency</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">runnable</span><span class="k">:</span> <span class="kt">Runnable</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’ä¸€ä¸ªRunnableåœ¨ä¸€æ®µæ—¶é—´åè¿è¡Œä¸€æ¬¡, i.e. åœ¨å®ƒæ‰§è¡Œä¹‹å‰å¿…é¡»ç»è¿‡ä¸€æ®µæ—¶é—´ã€‚</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java &amp; Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">scheduleOnce</span><span class="o">(</span><span class="n">delay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">runnable</span><span class="k">:</span> <span class="kt">Runnable</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’ä¸€ä¸ªæ¶ˆæ¯åœ¨ä¸€æ®µæ—¶é—´åè¿è¡Œä¸€æ¬¡ã€‚</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java &amp; Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">scheduleOnce</span><span class="o">(</span><span class="n">delay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">,</span> <span class="n">receiver</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">,</span> <span class="n">message</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è®¡åˆ’ä¸€ä¸ªå‡½æ•°åœ¨ä¸€æ®µæ—¶é—´åè¿è¡Œä¸€æ¬¡ã€‚</span>
+<span class="cm">   *</span>
+<span class="cm">   * Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">scheduleOnce</span><span class="o">(</span><span class="n">delay</span><span class="k">:</span> <span class="kt">Duration</span><span class="o">)(</span><span class="n">f</span><span class="k">:</span> <span class="k">â‡’</span> <span class="kt">Unit</span><span class="o">)</span><span class="k">:</span> <span class="kt">Cancellable</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-cancellable-interface">
+<h2> Cancellable æ¥å£</h2>
+<p>å®ƒä½¿ä½ å¯ä»¥ <tt class="docutils literal"><span class="pre">å–æ¶ˆ</span></tt> è®¡åˆ’æ‰§è¡Œçš„ä»»åŠ¡ã€‚</p>
+<div class="admonition warning">
+<p class="first admonition-title">è­¦å‘Š</p>
+<p class="last">å®ƒä¸ä¼šä¸­æ­¢å·²ç»å¯åŠ¨çš„ä»»åŠ¡çš„æ‰§è¡Œã€‚</p>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * æ ‡æ˜æŸå¯¹è±¡æ˜¯å¦å¯ä»¥è¢«å–æ¶ˆ </span>
+<span class="cm"> * ä¸ä¸¥æ ¼è¦æ±‚å®ç°æ˜¯çº¿ç¨‹å®‰å…¨çš„ï¼Œ</span>
+<span class="cm"> * ä½†ä¿è¯çº¿ç¨‹å®‰å…¨æ˜¯å¥½ä¹ æƒ¯.</span>
+<span class="cm"> */</span>
+<span class="k">trait</span> <span class="nc">Cancellable</span> <span class="o">{</span>
+  <span class="cm">/**</span>
+<span class="cm">   * å–æ¶ˆå½“å‰ Cancellable</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java &amp; Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">cancel</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * è¿”å›å½“å‰ Cancellable æ˜¯å¦å·²ç»å–æ¶ˆäº†</span>
+<span class="cm">   *</span>
+<span class="cm">   * Java &amp; Scala API</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">isCancelled</span><span class="k">:</span> <span class="kt">Boolean</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

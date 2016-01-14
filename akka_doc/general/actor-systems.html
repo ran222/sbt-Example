@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Actor系统 &mdash; Akka文档</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="General" href="index.html" />
+    <link rel="next" title="What is an Actor?" href="actors.html" />
+    <link rel="prev" title="General" href="index.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">Actor系统</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="actors.html" tppabs="http://www.gtan.com/akka_doc/general/actors.html">Actor是什么?</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="index.html" tppabs="http://www.gtan.com/akka_doc/general/index.html">概述</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="actor-systems">
+<span id="id1"></span><h1>Actor系统</h1>
+<p>Actor是封装状态和行为的对象，他们的唯一通讯方式是交换消息，交换的消息存放在接收方的邮箱里。从某种意义上来说，actor是面向对象的最严格的形式，但是最后把它们看成一些人：在使用actor来对解决方案建模时，把actor想象成一群人，把子任务分配给他们，将他们的功能整理成一个有组织的结构，考虑如何将失败逐级上传（好在我们并不需要真正跟人打交道，这样我们就不需要关心他们的情绪状态和道德问题）。这样的结果就可以在脑中形成进行软件实现的框架。</p>
+<div class="section" id="hierarchical-structure">
+<h2>树形结构</h2>
+<p>象一个经济学组织一样，actor自然会形成树形结构。程序中负责某一个功能的actor可能需要把它的任务分拆成更小的、更易管理的部分。为此它启动子Actor并监管它们。虽然监督机制的细节将在<a class="reference internal" href="supervision.html#supervision" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#supervision"><em>这里</em></a>解释，我们在这一节里将集中讲述其中的基础概念，唯一的前提是要知道每个actor有且仅有一个监管者，就是创建它的那个actor.
+</p>
+<p>Actor 系统的精髓在于任务被分拆开来并进行委托，直到任务小到可以被完整地进行处理。这样做不仅使任务本身被清晰地划分出结构，而且最终的actor也能按照它们“应该处理的消息类型”，“如何完成正常流程的处理”以及“失败流程应如何处理”来进行解析。如果一个actor对某种状况无法进行处理，它会发送相应的失败消息给它的监管者请求帮助。这样的递归结构使得失败能够在正确的层次进行处理。</p>
+<p>可以将这与分层的设计方法进行比较。分层的设计方法最终很容易形成防护性编程，以防止任何失败被泄露出来。把问题交由正确的人处理会是比将所有的事情“藏在深处”更好的解决方案。</p>
+<p>现在，设计这种系统的难度在于如何决定谁应该监管什么。这当然没有一个唯一的最佳方案，但是有一些可能会有帮助的原则：</p>
+<blockquote>
+<div><ul class="simple">
+<li>如果一个actort管理另一个actor所做的工作，如分配一个子任务，那么父actor应该监督子actor，原因是父actor知道可能会出现哪些失败情况，知道如何处理它们。</li>
+<li>如果一个actor携带着重要数据（i.e. 它的状态要尽可能地不被丢失），这个actor应该将任何可能的危险子任务分配给它所监管的子actor，并酌情处理子任务的失败。视请求的性质，可能最好是为每一个请求创建一个子actor，这样能简化收集回应时的状态管理。这在Erlang中被称为“Error Kernel Pattern”。</li>
+<li>如果actor A需要依赖actor B才能完成它的任务，A应该观测B的存活状态并对收到B的终止提醒消息进行响应。这与监管机制不同，因为观测方对监管机制没有影响，需要指出的是，仅仅是功能上的依赖并不足以用来决定是否在树形监管体系中添加子actor.</li>
+</ul>
+</div></blockquote>
+<p>当然以上的规则都会有例外，但是无论你遵循这些规则或者打破它们，都需要有足够的理由。</p>
+</div>
+<div class="section" id="configuration-container">
+<h2>配置容器</h2>
+<p>多个actor协作的actor系统是管理如日程计划服务、配置文件、日志等共享设施的自然单元。使用不同的配置的多个actor系统可以在同一个jvm中共存。Akka自身没有全局共享的状态。将这与actor系统之间的透明通讯（在同一节点上或者跨网络连接的多个节点）结合，可以看到actor系统本身可以被作为功能层次中的积木构件。</p>
+</div>
+<div class="section" id="actor-best-practices">
+<h2>Actor最佳实践</h2>
+<ol class="arabic simple">
+<li>Actor们应该被视为非常友好的同事：高效地完成他们的工作而不会无必要地打扰其它人，也不会争抢资源。转换到编程里这意味着以事件驱动的方式来处理事件并生成响应（或更多的请求）。Actor不应该因为某一个外部实体而阻塞（i.e.占据一个线程又被动等待），这个外部实体可能是一个锁、一个网络socket等等。阻塞操作应该在某些特殊的线程里完成，这个线程发送消息给可处理这些消息的actor们。</li>
+<li>不要在actor之间传递可变对象。为了保证这一点，尽量使用不变量消息。如果actor将他们的可变状态暴露给外界，打破了封装，你又回到了普通的Java并发领域并遭遇所有其缺点。</li>
+<li>Actor是行为和状态的容器，接受这一点意味着不要在消息中传递行为（例如在消息中使用scala闭包）。有一个风险是意外地在actor之间共享了可变状态，而与actor模型的这种冲突将破坏使actor编程成为良好体验的所有属性。</li>
+</ol>
+</div>
+<div class="section" id="what-you-should-not-concern-yourself-with">
+<h2>你不应该担心的事</h2>
+<p>一个actor系统管理它所配置使用的资源，运行它所包含的actor. 在一个系统中可能有上百万个actor，不用担心，内存一定是够用的，因为每个actor实例仅占差不多300个字节。自然地，一个大系统中消息的处理顺序是不受应用的开发者控制的，但这并不是有意为之。放松些，让Akka去做幕后的繁重事务吧。</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">目录</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

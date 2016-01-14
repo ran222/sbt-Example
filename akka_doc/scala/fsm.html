@@ -1,0 +1,575 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FSM &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Software Transactional Memory (Scala)" href="stm.html" />
+    <link rel="prev" title="Serialization (Scala)" href="serialization.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">FSM(有限状态机)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="stm.html" tppabs="http://www.gtan.com/akka_doc/scala/stm.html">软件事务内存 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="serialization.html" tppabs="http://www.gtan.com/akka_doc/scala/serialization.html">序列化 (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="fsm">
+<span id="fsm-scala"></span><h1>有限状态机</h1>
+<div class="section" id="overview">
+<h2>概述</h2>
+<p> FSM (有限状态机) 可以mixin到akka Actor中
+它的概念在 <a class="reference external" href="javascript:if(confirm('http://www.erlang.org/documentation/doc-4.8.2/doc/design_principles/fsm.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.erlang.org/documentation/doc-4.8.2/doc/design_principles/fsm.html'" tppabs="http://www.erlang.org/documentation/doc-4.8.2/doc/design_principles/fsm.html">Erlang 设计原则</a>中有最好的描述</p>
+<p>一个 FSM 可以描述成一组具有如下形式的关系 :</p>
+<blockquote>
+<div><strong>State(S) x Event(E) -&gt; Actions (A), State(S&#8217;)</strong></div></blockquote>
+<p>这些关系的意思可以这样理解 :</p>
+<blockquote>
+<div><em>如果我们当前处于状态S，发生了E事件, 我们应执行操作A，然后将状态转换为S&#8217;.</em></div></blockquote>
+</div>
+<div class="section" id="a-simple-example">
+<h2>一个简单的例子</h2>
+<p>为了演示 <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait 的大部分功能, 考虑一个actor，它接收到一组突然爆发的
+    消息而将其送入邮箱队列，然后在消息爆发期过后或收到flush请求时对消息进行发送.</p>
+<p>首先，假设以下所有代码都使用这些import语句:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">Actor</span><span class="o">,</span> <span class="nc">ActorRef</span><span class="o">,</span> <span class="nc">FSM</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+</pre></div>
+</div>
+<p>我们的 “Buncher” actor会接收和发送以下消息:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">// 接收的消息</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">SetTarget</span><span class="o">(</span><span class="n">ref</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">)</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Queue</span><span class="o">(</span><span class="n">obj</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Flush</span>
+
+<span class="c1">// 发送的消息</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Batch</span><span class="o">(</span><span class="n">obj</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Any</span><span class="o">])</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">SetTarget</span></tt> 用来启动，为<tt class="docutils literal"><span class="pre">Batches</span></tt> 设置发送目标;
+    <tt class="docutils literal"><span class="pre">Queue</span></tt> 添加数据到内部队列而
+<tt class="docutils literal"><span class="pre">Flush</span></tt> 标志着消息爆发的结束.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">// 状态</span>
+<span class="k">sealed</span> <span class="k">trait</span> <span class="nc">State</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Idle</span> <span class="k">extends</span> <span class="nc">State</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Active</span> <span class="k">extends</span> <span class="nc">State</span>
+
+<span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Data</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Uninitialized</span> <span class="k">extends</span> <span class="nc">Data</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Todo</span><span class="o">(</span><span class="n">target</span><span class="k">:</span> <span class="kt">ActorRef</span><span class="o">,</span> <span class="n">queue</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Any</span><span class="o">])</span> <span class="k">extends</span> <span class="nc">Data</span>
+</pre></div>
+</div>
+<p>这个actor可以处于两种状态: 队列中没有消息 (即 <tt class="docutils literal"><span class="pre">Idle</span></tt>) 或有消息
+    (即 <tt class="docutils literal"><span class="pre">Active</span></tt>). 只要一直有消息进来并且没有flush请求，它就停留在active状态.
+    这个actor的内部状态数据是由批消息的发送目标actor引用和实际的消息队列组成.</p>
+<p>现在让我们看看我们的FSM actor的框架:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Buncher</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">FSM</span><span class="o">[</span><span class="kt">State</span>, <span class="kt">Data</span><span class="o">]</span> <span class="o">{</span>
+
+  <span class="n">startWith</span><span class="o">(</span><span class="nc">Idle</span><span class="o">,</span> <span class="nc">Uninitialized</span><span class="o">)</span>
+
+  <span class="n">when</span><span class="o">(</span><span class="nc">Idle</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">SetTarget</span><span class="o">(</span><span class="n">ref</span><span class="o">),</span> <span class="nc">Uninitialized</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">stay</span> <span class="n">using</span> <span class="nc">Todo</span><span class="o">(</span><span class="n">ref</span><span class="o">,</span> <span class="nc">Vector</span><span class="o">.</span><span class="n">empty</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 此处省略转换过程 ...</span>
+
+  <span class="n">when</span><span class="o">(</span><span class="nc">Active</span><span class="o">,</span> <span class="n">stateTimeout</span> <span class="k">=</span> <span class="mi">1</span> <span class="n">second</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">Flush</span> <span class="o">|</span> <span class="nc">FSM</span><span class="o">.</span><span class="nc">StateTimeout</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="kt">Todo</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">goto</span><span class="o">(</span><span class="nc">Idle</span><span class="o">)</span> <span class="n">using</span> <span class="n">t</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">queue</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">.</span><span class="n">empty</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 此处省略未处理消息 ...</span>
+
+  <span class="n">initialize</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>基本方法就是声明actor类, 混入 <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait
+将可能的状态和数据作为类型参数. 在actor的内部使用一个DSL来声明状态机:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="xref py py-meth docutils literal"><span class="pre">startsWith</span></tt> 定义初始状态和初始数据</li>
+<li>然后对每一个状态有一个 <tt class="xref py py-meth docutils literal"><span class="pre">when(&lt;state&gt;)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></tt> 声明
+待处理的事件(可以是多个，
+<tt class="xref py py-class docutils literal"><span class="pre">PartialFunction</span></tt> 将用 <tt class="xref py py-meth docutils literal"><span class="pre">orElse</span></tt>进行连接)</li>
+<li>最后使用 <tt class="xref py py-meth docutils literal"><span class="pre">initialize</span></tt>来启动它, 这会执行到初始状态的转换并启动定时器（如果需要的话）.</li>
+</ul>
+</div></blockquote>
+<p>在这个例子中，我们从 <tt class="docutils literal"><span class="pre">Idle</span></tt> 和 <tt class="docutils literal"><span class="pre">Uninitialized</span></tt> 状态开始, 这两种状态下
+只处理 <tt class="docutils literal"><span class="pre">SetTarget()</span></tt> 消息; <tt class="docutils literal"><span class="pre">stay</span></tt> 准备结束这个事件的处理而不离开当前状态,
+    而 <tt class="docutils literal"><span class="pre">using</span></tt>使得FSM将其内部状态(这时为<tt class="docutils literal"><span class="pre">Uninitialized</span></tt>
+) 替换为一个新的包含目标actor引用的 <tt class="docutils literal"><span class="pre">Todo()</span></tt> 对象. <tt class="docutils literal"><span class="pre">Active</span></tt> 状态声明了一个状态超时,
+    意思是如果1秒内没有收到消息, 将生成一个 <tt class="docutils literal"><span class="pre">FSM.StateTimeout</span></tt> 消息. 在本例中这与收到 <tt class="docutils literal"><span class="pre">Flush</span></tt> 指令消息有相同的效果,
+    即转回 <tt class="docutils literal"><span class="pre">Idle</span></tt> 状态并将内部队列重置为空vector. 但消息是如何进入队列的？? 由于在两种状态下都要做这件事，
+    我们利用了任何未 <tt class="docutils literal"><span class="pre">when()</span></tt> 块未处理的消息被发送到
+<tt class="docutils literal"><span class="pre">whenUnhandled()</span></tt> 块这个事实 :</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">whenUnhandled</span> <span class="o">{</span>
+  <span class="c1">// 两种状态的通用代码 </span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">Queue</span><span class="o">(</span><span class="n">obj</span><span class="o">),</span> <span class="n">t</span> <span class="k">@</span> <span class="nc">Todo</span><span class="o">(</span><span class="n">_</span><span class="o">,</span> <span class="n">v</span><span class="o">))</span> <span class="k">⇒</span>
+    <span class="n">goto</span><span class="o">(</span><span class="nc">Active</span><span class="o">)</span> <span class="n">using</span> <span class="n">t</span><span class="o">.</span><span class="n">copy</span><span class="o">(</span><span class="n">queue</span> <span class="k">=</span> <span class="n">v</span> <span class="o">:+</span> <span class="n">obj</span><span class="o">)</span>
+
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">s</span><span class="o">)</span> <span class="k">⇒</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="o">(</span><span class="s">&quot;received unhandled request {} in state {}/{}&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">,</span> <span class="n">stateName</span><span class="o">,</span> <span class="n">s</span><span class="o">)</span>
+    <span class="n">stay</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>这里第一个case是将 <tt class="docutils literal"><span class="pre">Queue()</span></tt> 请求加入内部队列中并进入 <tt class="docutils literal"><span class="pre">Active</span></tt> 状态 (当然如果已经在
+ <tt class="docutils literal"><span class="pre">Active</span></tt> 状态则停留), 前提是收到 <tt class="docutils literal"><span class="pre">Queue()</span></tt>时FSM数据不是
+<tt class="docutils literal"><span class="pre">Uninitialized</span></tt> . 否则—在另一个case中—记录一个警告到日志并保持内部状态.</p>
+<p>最后剩下的只有 <tt class="docutils literal"><span class="pre">Batches</span></tt> 是如何发送到目标的,
+    这里我们使用 <tt class="docutils literal"><span class="pre">onTransition</span></tt> 机制: 你可以声明多个这样的块，在状态切换发生时（i.e. 只有当状态真正改变时）
+    所有的块都将被尝试来作匹配.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">onTransition</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Active</span> <span class="o">-&gt;</span> <span class="nc">Idle</span> <span class="k">⇒</span>
+    <span class="n">stateData</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Todo</span><span class="o">(</span><span class="n">ref</span><span class="o">,</span> <span class="n">queue</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">ref</span> <span class="o">!</span> <span class="nc">Batch</span><span class="o">(</span><span class="n">queue</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>状态转换回调是一个以一对状态作为输入的函数 —— 当前状态和新状态. FSM trait为此提供了一个方便的箭头形式的extractor, 非常贴心地提醒你所匹配到的状态转换的方向.
+    在状态转换过程中, 可以看到旧状态数据可以通过 <tt class="docutils literal"><span class="pre">stateData</span></tt>获得,
+    新状态数据可以通过 <tt class="docutils literal"><span class="pre">nextStateData</span></tt>获得.</p>
+<p>要确认这个调制器真实可用, 可以利用 <a class="reference internal" href="testing.html#akka-testkit" tppabs="http://www.gtan.com/akka_doc/scala/testing.html#akka-testkit"><em>测试 Actor 系统 (Scala)</em></a>中的工具写一个测试,
+    它将ScalaTest trait融入<tt class="docutils literal"><span class="pre">AkkaSpec</span></tt>中:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.testkit.AkkaSpec</span>
+<span class="k">import</span> <span class="nn">akka.actor.Props</span>
+
+<span class="k">class</span> <span class="nc">FSMDocSpec</span> <span class="k">extends</span> <span class="nc">AkkaSpec</span> <span class="o">{</span>
+
+  <span class="s">&quot;simple finite state machine&quot;</span> <span class="n">must</span> <span class="o">{</span>
+    <span class="c1">// 此处省略fsm代码 ...</span>
+
+    <span class="s">&quot;batch correctly&quot;</span> <span class="n">in</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">buncher</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Buncher</span><span class="o">))</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">SetTarget</span><span class="o">(</span><span class="n">testActor</span><span class="o">)</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Queue</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Queue</span><span class="o">(</span><span class="mi">43</span><span class="o">)</span>
+      <span class="n">expectMsg</span><span class="o">(</span><span class="nc">Batch</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">42</span><span class="o">,</span> <span class="mi">43</span><span class="o">)))</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Queue</span><span class="o">(</span><span class="mi">44</span><span class="o">)</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Flush</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Queue</span><span class="o">(</span><span class="mi">45</span><span class="o">)</span>
+      <span class="n">expectMsg</span><span class="o">(</span><span class="nc">Batch</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">44</span><span class="o">)))</span>
+      <span class="n">expectMsg</span><span class="o">(</span><span class="nc">Batch</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="mi">45</span><span class="o">)))</span>
+    <span class="o">}</span>
+
+    <span class="s">&quot;batch not if uninitialized&quot;</span> <span class="n">in</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">buncher</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Buncher</span><span class="o">))</span>
+      <span class="n">buncher</span> <span class="o">!</span> <span class="nc">Queue</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+      <span class="n">expectNoMsg</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>参考</h2>
+<div class="section" id="the-fsm-trait-and-object">
+<h3>FSM Trait 及 FSM Object</h3>
+<p> <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait 只能被混入到 <tt class="xref py py-class docutils literal"><span class="pre">Actor</span></tt>子类中.
+    这里选择了 使用self 类型的写法而不是继承 <tt class="xref py py-class docutils literal"><span class="pre">Actor</span></tt>, 这样标明事实上是创建了一个actor.
+    如果你希望直接访问象<tt class="xref py py-obj docutils literal"><span class="pre">StateTimeout</span></tt>这样的符号，建议导入
+<tt class="xref py py-obj docutils literal"><span class="pre">FSM</span></tt> object 的所有成员. 通常这个导入写在状态机的定义中:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyFSM</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">FSM</span><span class="o">[</span><span class="kt">State</span>, <span class="kt">Data</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">FSM._</span>
+
+  <span class="o">...</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait 有两个类型参数 :</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>所有状态名称的父类型，通常是一个sealed trait，状态名称作为case object来继承它</li>
+<li>状态数据的类型，由 <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> 模块自己跟踪.</li>
+</ol>
+</div></blockquote>
+<div class="admonition note" id="fsm-philosophy">
+<p class="first admonition-title">注意</p>
+<p class="last">状态数据与状态名称一起描述了状态机的内部状态; 如果你坚持这种方案，不向FSM类中加入可变量成员，你就可以充分享受在
+    一些周知的位置改变所有内部状态的好处.</p>
+</div>
+</div>
+<div class="section" id="defining-states">
+<h3>定义状态</h3>
+<p>状态的定义是通过一次或多次调用 </p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">when(&lt;name&gt;[,</span> <span class="pre">stateTimeout</span> <span class="pre">=</span> <span class="pre">&lt;timeout&gt;])(stateFunction)</span></tt>方法.</div></blockquote>
+<p>给定的名称对象必须与为<tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait指定的第一个参数类型相匹配. 这个对象将被用作一个hash表的键,
+所以你必须确保它正确地实现了 <tt class="xref py py-meth docutils literal"><span class="pre">equals</span></tt>
+<tt class="xref py py-meth docutils literal"><span class="pre">hashCode</span></tt>方法; 特别是它不能是可变量. 满足这些条件的最简单的就是 case objects.</p>
+<p>如果给定了 <tt class="xref py py-meth docutils literal"><span class="pre">stateTimeout</span></tt> 参数, 那么所有到这个状态的转换，包括停留, 缺省都会收到这个超时.
+    初始化转换时显式指定一个超时可以用来覆盖这个缺省行为, 更多信息见
+<a class="reference internal" href="#initiating-transitions">发起状态转换</a>. 在操作执行的过程中可以通过
+ <tt class="xref py py-func docutils literal"><span class="pre">setStateTimeout(state,</span>
+<span class="pre">duration)</span></tt>来修改任何状态的超时时间.
+    这使得运行时配置（e.g. 通过外部消息）成为可能.</p>
+<p>参数 <tt class="xref py py-meth docutils literal"><span class="pre">stateFunction</span></tt> 是一个 <tt class="xref py py-class docutils literal"><span class="pre">PartialFunction[Event,</span> <span class="pre">State]</span></tt>,
+用偏函数的语法来指定，见下例:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">when</span><span class="o">(</span><span class="nc">Idle</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">Start</span><span class="o">(</span><span class="n">msg</span><span class="o">),</span> <span class="n">_</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="n">goto</span><span class="o">(</span><span class="nc">Timer</span><span class="o">)</span> <span class="n">using</span> <span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">sender</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="n">when</span><span class="o">(</span><span class="nc">Timer</span><span class="o">,</span> <span class="n">stateTimeout</span> <span class="k">=</span> <span class="mi">12</span> <span class="n">seconds</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">StateTimeout</span><span class="o">,</span> <span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">sender</span><span class="o">))</span> <span class="k">=&gt;</span>
+    <span class="n">sender</span> <span class="o">!</span> <span class="n">msg</span>
+    <span class="n">goto</span><span class="o">(</span><span class="nc">Idle</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> <tt class="xref py py-class docutils literal"><span class="pre">Event(msg:</span> <span class="pre">Any,</span> <span class="pre">data:</span> <span class="pre">D)</span></tt> case class
+    以FSM所持有的数据类型为参数，以便进行模式匹配.</p>
+</div>
+<div class="section" id="defining-the-initial-state">
+<h3>定义初始状态</h3>
+<p>每个FSM都需要一个起点, 用</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">startWith(state,</span> <span class="pre">data[,</span> <span class="pre">timeout])</span></tt></div></blockquote>来声明。
+<p>可选的超时参数将覆盖所有为期望的初始状态指定的值. 想要取消缺省的超时, 使用
+<tt class="xref py py-obj docutils literal"><span class="pre">Duration.Inf</span></tt>.</p>
+</div>
+<div class="section" id="unhandled-events">
+<h3>未处理事件</h3>
+<p>如果一个状态未能处理一个收到的事件，日志中将记录一条警告. 这种情况下如果你想做点其它的事，你可以指定
+<tt class="xref py py-func docutils literal"><span class="pre">whenUnhandled(stateFunction)</span></tt>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">whenUnhandled</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="n">x</span> <span class="k">:</span> <span class="kt">X</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;Received unhandled event: &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+    <span class="n">stay</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">_</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">warn</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;Received unknown event: &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+    <span class="n">goto</span><span class="o">(</span><span class="nc">Error</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>重要</strong>: 这个处理器不会叠加，每一次启动
+<tt class="xref py py-func docutils literal"><span class="pre">whenUnhandled</span></tt> 都会覆盖先前指定的处理器.</p>
+</div>
+<div class="section" id="initiating-transitions">
+<h3>发起状态转换</h3>
+<p>The result of any 任何<tt class="xref py py-obj docutils literal"><span class="pre">stateFunction</span></tt> 的结果都必须是新状态的定义，除非
+FSM正在被终止, 这种情况在 <a class="reference internal" href="#termination-from-inside">从内部终止</a>中介绍.
+状态定义可以是当前状态, 由
+<tt class="xref py py-func docutils literal"><span class="pre">stay</span></tt> 指令描述, 或由
+<tt class="xref py py-func docutils literal"><span class="pre">goto(state)</span></tt>指定的另一个状态. 结果对象可以通过下面列出的修饰器作进一步限制:</p>
+<dl class="docutils">
+<dt><tt class="xref py py-meth docutils literal"><span class="pre">forMax(duration)</span></tt></dt>
+<dd><p class="first">这个修饰器为新状态指定状态超时. 这意味着将启动一个定时器，它过期时将向FSM发送一个
+<tt class="xref py py-obj docutils literal"><span class="pre">StateTimeout</span></tt> 消息.
+其间接收到任何其它消息时定时器将被取消; 你可以确定的事实是 <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeout</span></tt> 消息不会在任何一个中间消息之后被处理.</p>
+<p class="last">这个修饰器也可以用于覆盖任何对目标状态指定的缺省超时. 如果要取消缺省超时，用 <tt class="xref py py-obj docutils literal"><span class="pre">Duration.Inf</span></tt>.</p>
+</dd>
+<dt><tt class="xref py py-meth docutils literal"><span class="pre">using(data)</span></tt></dt>
+<dd>这个修饰器用给定的新数据取代旧的状态数据. 如果你遵循
+ <a class="reference internal" href="#fsm-philosophy"><em>上面的</em></a>建议, 这是内部状态数据被修改的唯一位置。</dd>
+<dt><tt class="xref py py-meth docutils literal"><span class="pre">replying(msg)</span></tt></dt>
+<dd>这个修饰器为当前处理的消息发送一个应答，不同的是它不会改变状态转换.</dd>
+</dl>
+<p>所有的修饰器都可以链式调用来获得优美简洁的表达方式:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">when</span><span class="o">(</span><span class="nc">State</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">_</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="n">goto</span><span class="o">(</span><span class="nc">Processing</span><span class="o">)</span> <span class="n">using</span> <span class="o">(</span><span class="n">msg</span><span class="o">)</span> <span class="n">forMax</span> <span class="o">(</span><span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span> <span class="n">replying</span> <span class="o">(</span><span class="nc">WillDo</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>事实上这里所有的括号都不是必须的, 但它们在视觉上将修饰器和它们的参数区分开，因而使代码对于他人有更好的可读性.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">请注意 <tt class="docutils literal"><span class="pre">return</span></tt> 语句不可以用于 <tt class="xref py py-meth docutils literal"><span class="pre">when</span></tt>或类似的代码块中;
+    这是Scala的限制。 要么重构你的代码，使用 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">()</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></tt> 或将它改写到一个方法定义中.</p>
+</div>
+</div>
+<div class="section" id="monitoring-transitions">
+<h3>监控状态转换</h3>
+<p>在概念上，转换发生在 &#8220;两个状态之间&#8221; , 也就是在你放在事件处理代码块执行的任何操作之后; 这是显然的，因为只有在事件处理逻辑返回了值以后才能确定新的状态.
+    你不需要担心相对于设置内部状态变量的顺序的细节，因为FSM actor中的所有代码都是在一个线程中运行的.</p>
+<div class="section" id="internal-monitoring">
+<h4>内部监控</h4>
+<p>到目前为止，FSM DSL都围绕着状态和事件. 另外一种视角是将其描述成一系列的状态转换. 方法</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">onTransition(handler)</span></tt></div></blockquote>
+<p>将操作与状态转换而不是状态或事件联系起来. 这个处理器是一个偏函数，它以一对状态作为输入; 不需要结果状态因为不可能改变正在进行的状态转换.</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">onTransition</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Idle</span> <span class="o">-&gt;</span> <span class="nc">Active</span> <span class="k">=&gt;</span> <span class="n">setTimer</span><span class="o">(</span><span class="s">&quot;timeout&quot;</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Active</span> <span class="o">-&gt;</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">cancelTimer</span><span class="o">(</span><span class="s">&quot;timeout&quot;</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="nc">Idle</span> <span class="k">=&gt;</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;entering Idle from &quot;</span><span class="o">+</span><span class="n">x</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> extractor <tt class="xref py py-obj docutils literal"><span class="pre">-&gt;</span></tt> 用来以清晰的形式解开状态对并表达了状态转换的方向.
+    与通常的模式匹配一样, 可以用 _ 来表示不关心的内容; 或者你可以将不关心的状态绑定到一个变量, e.g. 象上一个例子那样供记日志使用.</p>
+<p>也可以向
+<tt class="xref py py-func docutils literal"><span class="pre">onTransition</span></tt>给定一个以两个状态为参数的函数, 例如你的状态转换处理逻辑是定义成方法的:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">onTransition</span><span class="o">(</span><span class="n">handler</span> <span class="n">_</span><span class="o">)</span>
+
+<span class="k">private</span> <span class="k">def</span> <span class="n">handler</span><span class="o">(</span><span class="n">from</span><span class="k">:</span> <span class="kt">State</span><span class="o">,</span> <span class="n">to</span><span class="k">:</span> <span class="kt">State</span><span class="o">)</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>用这个方法注册的处理器是迭加的, 这样你可以将
+<tt class="xref py py-func docutils literal"><span class="pre">onTransition</span></tt> 块和 <tt class="xref py py-func docutils literal"><span class="pre">when</span></tt> 块分散定义以适应设计的需要.
+    但必须注意的是， <em>所有的处理器对每一次状态转换都会被调用</em>, 而不是最先匹配的那个. 这是一个故意的设计，使得你可以将某一部分状态转换处理放在某一个地方而不用担心先前的定义会屏蔽后面的；当然这些操作还是按定义的顺序执行的.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">这种内部监控可以用于通过状态转换来构建你的FSM，这样在添加新的目标状态时不会忘记例如在离开某个状态时取消定时器这种操作.</p>
+</div>
+</div>
+<div class="section" id="external-monitoring">
+<h4>外部监控</h4>
+<p>可以用<tt class="xref py py-class docutils literal"><span class="pre">SubscribeTransitionCallBack(actorRef)</span></tt>注册一个外部actor来接收状态转换的通知消息.
+    这个具名actor将立即收到 <tt class="xref py py-class docutils literal"><span class="pre">CurrentState(self,</span> <span class="pre">stateName)</span></tt> 消息
+并在之后每次进入新状态时收到 <tt class="xref py py-class docutils literal"><span class="pre">Transition(actorRef,</span> <span class="pre">oldState,</span> <span class="pre">newState)</span></tt> 消息.
+    向FSM actor发送<tt class="xref py py-class docutils literal"><span class="pre">UnsubscribeTransitionCallBack(actorRef)</span></tt> 来注销外部监控actor.</p>
+<p>注册一个未运行的监听actor将生成一个警告，并优雅地失败。停止一个未注销的监听actor将在下一次状态转换时从注册列表中将该监听actor删除。</p>
+</div>
+</div>
+<div class="section" id="timers">
+<h3>定时器</h3>
+<p>除了状态超时，FSM还管理以 <tt class="xref py py-class docutils literal"><span class="pre">String</span></tt> 名称为标识的定时器.
+你可以用</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">setTimer(name,</span> <span class="pre">msg,</span> <span class="pre">interval,</span> <span class="pre">repeat)</span></tt></div></blockquote>
+    设置定时器
+<p>其中<tt class="xref py py-obj docutils literal"><span class="pre">msg</span></tt> 是经过<tt class="xref py py-obj docutils literal"><span class="pre">interval</span></tt>时间以后发送的消息.
+    如果 <tt class="xref py py-obj docutils literal"><span class="pre">repeat</span></tt> 设成 <tt class="xref py py-obj docutils literal"><span class="pre">true</span></tt>,
+    定时器将以<tt class="xref py py-obj docutils literal"><span class="pre">interval</span></tt>指定的时间段重复规划. 用</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">cancelTimer(name)</span></tt></div></blockquote>来取消定时器
+<p>取消操作确保立即执行，这意味着在这个调用之后定时器已经规划的消息将不会执行. 任何定时器的状态可以用</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">timerActive_?(name)</span></tt></div></blockquote>进行查询。
+<p>这些具名定时器是对状态超时的补充，因为它们不受中间收到的其它消息的影响.</p>
+</div>
+<div class="section" id="termination-from-inside">
+<h3>从内部终止</h3>
+<p>将结果状态设置为</p>
+<blockquote>
+<div><tt class="xref py py-func docutils literal"><span class="pre">stop([reason[,</span> <span class="pre">data]])</span></tt></div></blockquote>将终止FSM
+<p>其中的 reason 必须是 <tt class="xref py py-obj docutils literal"><span class="pre">Normal</span></tt> (which is the default), <tt class="xref py py-obj docutils literal"><span class="pre">Shutdown</span></tt>
+或 <tt class="xref py py-obj docutils literal"><span class="pre">Failure(reason)</span></tt> 之一, 可以提供第二个参数来改变状态数据，在终止处理器中可以使用该数据。.</p>
+<div class="admonition note">
+<p class="first admonition-title">注意</p>
+<p class="last">必须注意 <tt class="xref py py-func docutils literal"><span class="pre">stop</span></tt> 并不会停止当前的操作，立即停止FSM。
+    stop 操作必须象状态转换一样从事件处理器中返回 (但要注意 <tt class="docutils literal"><span class="pre">return</span></tt> 语句不能用在
+ <tt class="xref py py-meth docutils literal"><span class="pre">when</span></tt> 块中).</p>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">when</span><span class="o">(</span><span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Event</span><span class="o">(</span><span class="nc">Stop</span><span class="o">,</span> <span class="n">_</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="n">doCleanup</span><span class="o">()</span>
+    <span class="n">stop</span><span class="o">()</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>你可以用 <tt class="xref py py-func docutils literal"><span class="pre">onTermination(handler)</span></tt> 来指定当FSM停止时要运行的代码. 其中的 handler
+    是一个以
+a <tt class="xref py py-class docutils literal"><span class="pre">StopEvent(reason,</span> <span class="pre">stateName,</span> <span class="pre">stateData)</span></tt> 为参数的偏函数:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">onTermination</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">StopEvent</span><span class="o">(</span><span class="nc">Normal</span><span class="o">,</span> <span class="n">s</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span>         <span class="k">=&gt;</span> <span class="o">...</span>
+  <span class="k">case</span> <span class="nc">StopEvent</span><span class="o">(</span><span class="nc">Shutdown</span><span class="o">,</span> <span class="n">_</span><span class="o">,</span> <span class="n">_</span><span class="o">)</span>       <span class="k">=&gt;</span> <span class="o">...</span>
+  <span class="k">case</span> <span class="nc">StopEvent</span><span class="o">(</span><span class="nc">Failure</span><span class="o">(</span><span class="n">cause</span><span class="o">),</span> <span class="n">s</span><span class="o">,</span> <span class="n">d</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>对于使用 <tt class="xref py py-func docutils literal"><span class="pre">whenUnhandled</span></tt> 的场合, 这个处理器不会迭加, 所以每次调用
+ <tt class="xref py py-func docutils literal"><span class="pre">onTermination</span></tt> 都会替换先前安装的处理器.</p>
+</div>
+<div class="section" id="termination-from-outside">
+<h3>从外部终止</h3>
+<p>当FSM关联的 <tt class="xref py py-class docutils literal"><span class="pre">ActorRef</span></tt> 被
+<tt class="xref py py-meth docutils literal"><span class="pre">stop</span></tt> 方法停止后,
+    它的 <tt class="xref py py-meth docutils literal"><span class="pre">postStop</span></tt> hook 将被执行. 在
+    <tt class="xref py py-class docutils literal"><span class="pre">FSM</span></tt> trait中的缺省实现是执行
+<tt class="xref py py-meth docutils literal"><span class="pre">onTermination</span></tt> 处理器（如果有的话）来处理
+<tt class="xref py py-obj docutils literal"><span class="pre">StopEvent(Shutdown,</span> <span class="pre">...)</span></tt>事件.</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">如果你重写的 <tt class="xref py py-meth docutils literal"><span class="pre">postStop</span></tt> 而希望你的
+<tt class="xref py py-meth docutils literal"><span class="pre">onTermination</span></tt> 处理器被调用, 别忘了调用
+<tt class="docutils literal"><span class="pre">super.postStop</span></tt>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="testing-and-debugging-finite-state-machines">
+<h2>测试和调试有限状态机</h2>
+<p>在开发和调试过程中，FSM和其它actor一样需要照顾. <a class="reference internal" href="testing.html#testfsmref" tppabs="http://www.gtan.com/akka_doc/scala/testing.html#testfsmref"><em>测试有限状态机</em></a>以及下文中描述了一些专门的工具.</p>
+<div class="section" id="event-tracing">
+<h3>事件跟踪</h3>
+<p>配置文件中的 <tt class="docutils literal"><span class="pre">akka.actor.debug.fsm</span></tt> 打开用 <tt class="xref py py-class docutils literal"><span class="pre">LoggingFSM</span></tt> 实例完成的事件跟踪日志:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyFSM</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">LoggingFSM</span><span class="o">[</span><span class="kt">X</span>, <span class="kt">Z</span><span class="o">]</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p> 这个FSM 将以DEBUG 级别记录日志:</p>
+<blockquote>
+<div><ul class="simple">
+<li>所有处理完的事件, 包括 <tt class="xref py py-obj docutils literal"><span class="pre">StateTimeout</span></tt> 和计划的定时器消息</li>
+<li>所有具名定时器的设置和取消</li>
+<li>所有的状态转换</li>
+</ul>
+</div></blockquote>
+<p>生命周期变化及特殊消息可以如<a class="reference internal" href="testing.html#actor-logging" tppabs="http://www.gtan.com/akka_doc/scala/testing.html#actor-logging"><em>Actor</em></a>中所述进行日志记录.</p>
+</div>
+<div class="section" id="rolling-event-log">
+<h3>滚动的事件日志</h3>
+<p><tt class="xref py py-class docutils literal"><span class="pre">LoggingFSM</span></tt> trait 为FSM 添加了一个新的功能: 一个滚动的事件日志，它可以用于 debugging (跟踪为什么 FSM 会进入某个失败的状态）)
+    或其它的什么新用法:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyFSM</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">LoggingFSM</span><span class="o">[</span><span class="kt">X</span>, <span class="kt">Z</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">logDepth</span> <span class="k">=</span> <span class="mi">12</span>
+  <span class="n">onTermination</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">StopEvent</span><span class="o">(</span><span class="nc">Failure</span><span class="o">(</span><span class="n">_</span><span class="o">),</span> <span class="n">state</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;Failure in state &quot;</span><span class="o">+</span><span class="n">state</span><span class="o">+</span><span class="s">&quot; with data &quot;</span><span class="o">+</span><span class="n">data</span><span class="o">+</span><span class="s">&quot;\n&quot;</span><span class="o">+</span>
+        <span class="s">&quot;Events leading up to this point:\n\t&quot;</span><span class="o">+</span><span class="n">getLog</span><span class="o">.</span><span class="n">mkString</span><span class="o">(</span><span class="s">&quot;\n\t&quot;</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><tt class="xref py py-meth docutils literal"><span class="pre">logDepth</span></tt> 缺省值为0, 意思是关闭事件日志.</p>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">日志缓冲区是在actor创建时分配的，这也是为什么logDepth的配置使用了虚方法调用。如果你想用
+ <tt class="docutils literal"><span class="pre">val</span></tt>对其进行覆盖, 必须保证它的初始化在
+ <tt class="xref py py-class docutils literal"><span class="pre">LoggingFSM</span></tt> 的初始化之前完成, 而且在缓冲区分配完成后不要修改
+ <tt class="docutils literal"><span class="pre">logDepth</span></tt> 返回的值.</p>
+</div>
+<p>事件日志的内容可以用 <tt class="xref py py-meth docutils literal"><span class="pre">getLog</span></tt> 方法获取, 它返回一个 <tt class="xref py py-class docutils literal"><span class="pre">IndexedSeq[LogEntry]</span></tt>
+    其中最新的条目在位置0.</p>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>示例</h2>
+<p>在下面的链接可以找到一个与Actor&#8217; <tt class="xref py py-meth docutils literal"><span class="pre">become</span></tt>/<tt class="xref py py-meth docutils literal"><span class="pre">unbecome</span></tt>
+    方式进行了对比的大一些的FSM示例:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnFsm.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnFsm.scala#L1'" tppabs="https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnFsm.scala#L1">使用 FSM 的 黑客午餐问题 </a></li>
+<li><a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala#L1'" tppabs="https://github.com/akka/akka/blob/master/akka-samples/akka-sample-fsm/src/main/scala/DiningHakkersOnBecome.scala#L1">使用 become 的黑客午餐问题 </a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

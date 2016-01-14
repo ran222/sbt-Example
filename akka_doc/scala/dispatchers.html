@@ -1,0 +1,417 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dispatchers (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Routing (Scala)" href="routing.html" />
+    <link rel="prev" title="Diagrams of the Fault Tolerance Sample (Scala)" href="fault-tolerance-sample.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">æ¶ˆæ¯æ´¾å‘å™¨ (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="routing.html" tppabs="http://www.gtan.com/akka_doc/scala/routing.html">è·¯ç”± (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="fault-tolerance-sample.html" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance-sample.html">å®¹é”™ä¾‹å­çš„å›¾ç¤º (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="dispatchers-scala">
+<span id="id1"></span><h1>æ¶ˆæ¯æ´¾å‘å™¨ (Scala)</h1>
+<p>Akka <tt class="docutils literal"><span class="pre">MessageDispatcher</span></tt> æ˜¯ç»´æŒ Akka Actor &#8220;è¿ä½œ&#8221;çš„éƒ¨åˆ†, å¯ä»¥è¯´å®ƒæ˜¯æ•´ä¸ªæœºå™¨çš„å¼•æ“.
+æ‰€æœ‰çš„ <tt class="docutils literal"><span class="pre">MessageDispatcher</span></tt> å®ç°ä¹ŸåŒæ—¶æ˜¯ä¸€ä¸ª <tt class="docutils literal"><span class="pre">ExecutionContext</span></tt>, è¿™æ„å‘³ç€å®ƒä»¬å¯ä»¥ç”¨æ¥æ‰§è¡Œä»»ä½•ä»£ç ï¼Œ
+ä¾‹å¦‚ <a class="reference internal" href="futures.html#futures-scala" tppabs="http://www.gtan.com/akka_doc/scala/futures.html#futures-scala"><em>Future (Scala)</em></a>.</p>
+<div class="section" id="default-dispatcher">
+<h2>ç¼ºçœæ´¾å‘å™¨</h2>
+<p>åœ¨æ²¡æœ‰ä¸º <tt class="docutils literal"><span class="pre">Actor</span></tt>ä½œé…ç½®çš„æƒ…å†µä¸‹ï¼Œä¸€ä¸ª <tt class="docutils literal"><span class="pre">ActorSystem</span></tt> å°†æœ‰ä¸€ä¸ªç¼ºçœçš„æ´¾å‘å™¨ã€‚
+ç¼ºçœæ´¾å‘å™¨æ˜¯å¯é…ç½®çš„ï¼Œç¼ºçœæƒ…å†µä¸‹æ˜¯ä¸€ä¸ªä½¿ç”¨&#8220;fork-join-executor&#8221;çš„ <tt class="docutils literal"><span class="pre">Dispatcher</span></tt> ï¼Œ åœ¨å¤§å¤šæ•°æƒ…å†µä¸‹æ‹¥æœ‰éå¸¸å¥½çš„æ€§èƒ½ã€‚</p>
+</div>
+<div class="section" id="setting-the-dispatcher-for-an-actor">
+<h2>ä¸º Actor æŒ‡å®šæ´¾å‘å™¨</h2>
+<p>å¦‚æœä½ å¸Œæœ›ä¸ºä½ çš„ <tt class="docutils literal"><span class="pre">Actor</span></tt> è®¾ç½®ä¸éç¼ºçœçš„æ´¾å‘å™¨ï¼Œä½ éœ€è¦åšä¸¤ä»¶äº‹ï¼Œä¸€:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Props</span>
+<span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">MyActor</span><span class="o">].</span><span class="n">withDispatcher</span><span class="o">(</span><span class="s">&quot;my-dispatcher&quot;</span><span class="o">),</span> <span class="s">&quot;myactor1&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">æ³¨æ„</p>
+<p class="last">ä½ åœ¨withDispatcherä¸­æŒ‡å®šçš„ &#8220;dispatcherId&#8221; å…¶å®æ˜¯é…ç½®ä¸­çš„ä¸€ä¸ªè·¯å¾„.
+æ‰€ä»¥åœ¨è¿™ç§æƒ…å†µä¸‹å®ƒä½äºé…ç½®çš„é¡¶å±‚ï¼Œä½†ä½ å¯ä»¥æŠŠå®ƒæ”¾åœ¨ä¸‹é¢çš„å±‚æ¬¡ï¼Œç”¨.æ¥ä»£è¡¨å­å±‚æ¬¡ï¼Œè±¡è¿™æ ·: <tt class="docutils literal"><span class="pre">&quot;foo.bar.my-dispatcher&quot;</span></tt></p>
+</div>
+<p>ç„¶åä½ åªéœ€è¦åœ¨é…ç½®æ–‡ä»¶ä¸­æŒ‡å®šè¿™ä¸ªæ´¾å‘å™¨:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">dispatcher</span> <span class="o">{</span>
+  <span class="k">#</span> <span class="nc">Dispatcher æ˜¯åŸºäºäº‹ä»¶çš„æ´¾å‘å™¨çš„åç§°</span>
+  <span class="k">type</span> <span class="o">=</span> <span class="nc">Dispatcher</span>
+  <span class="k">#</span> <span class="nc">ä½¿ç”¨ä½•ç§ExecutionService</span>
+  <span class="n">executor</span> <span class="k">=</span> <span class="s">&quot;fork-join-executor&quot;</span>
+  <span class="k">#</span> <span class="nc">é…ç½® fork join æ± 
+  <span class="n">fork</span><span class="o">-</span><span class="n">join</span><span class="o">-</span><span class="n">executor</span> <span class="o">{</span>
+    <span class="k"># å®¹çº³åŸºäºå€æ•°çš„å¹¶è¡Œæ•°é‡çš„çº¿ç¨‹æ•°ä¸‹é™
+    <span class="n">parallelism</span><span class="o">-</span><span class="n">min</span> <span class="k">=</span> <span class="mi">2</span>
+    <span class="k">#å¹¶è¡Œæ•°ï¼ˆçº¿ç¨‹ï¼‰ ... ceil(å¯ç”¨CPUæ•°ï¼Šå€æ•°ï¼‰</span>
+    <span class="n">parallelism</span><span class="o">-</span><span class="n">factor</span> <span class="k">=</span> <span class="mf">2.0</span>
+    <span class="k">#å®¹çº³åŸºäºå€æ•°çš„å¹¶è¡Œæ•°é‡çš„çº¿ç¨‹æ•°ä¸Šé™</span>
+    <span class="n">parallelism</span><span class="o">-</span><span class="n">max</span> <span class="k">=</span> <span class="mi">10</span>
+  <span class="o">}</span>
+  <span class="k"># Throughput å®šä¹‰äº†çº¿ç¨‹åˆ‡æ¢åˆ°å¦ä¸€ä¸ªactorä¹‹å‰å¤„ç†çš„æ¶ˆæ¯æ•°ä¸Šé™</span>
+  <span class="k"># è®¾ç½®æˆ1è¡¨ç¤ºå°½å¯èƒ½å…¬å¹³.</span>
+  <span class="n">throughput</span> <span class="k">=</span> <span class="mi">100</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä»¥ä¸‹æ˜¯å¦ä¸€ä¸ªä½¿ç”¨ &#8220;thread-pool-executor&#8221; çš„ä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">thread</span><span class="o">-</span><span class="n">pool</span><span class="o">-</span><span class="n">dispatcher</span> <span class="o">{</span>
+  <span class="k"># Dispatcheræ˜¯åŸºäºäº‹ä»¶çš„æ´¾å‘å™¨çš„åç§°</span>
+  <span class="k">type</span> <span class="o">=</span> <span class="nc">Dispatcher</span>
+  <span class="k"># ä½¿ç”¨ä½•ç§ ExecutionService </span>
+  <span class="n">executor</span> <span class="k">=</span> <span class="s">&quot;thread-pool-executor&quot;</span>
+  <span class="k">#é…ç½®çº¿ç¨‹æ± </span>
+  <span class="n">thread</span><span class="o">-</span><span class="n">pool</span><span class="o">-</span><span class="n">executor</span> <span class="o">{</span>
+    <span class="k">#å®¹çº³åŸºäºå€æ•°çš„å¹¶è¡Œæ•°é‡çš„çº¿ç¨‹æ•°ä¸‹é™</span>
+    <span class="n">core</span><span class="o">-</span><span class="n">pool</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">min</span> <span class="k">=</span> <span class="mi">2</span>
+    <span class="k"># æ ¸å¿ƒçº¿ç¨‹æ•° .. ceil(å¯ç”¨CPUæ•°ï¼Šå€æ•°ï¼‰</span>
+    <span class="n">core</span><span class="o">-</span><span class="n">pool</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">factor</span> <span class="k">=</span> <span class="mf">2.0</span>
+    <span class="k">#å®¹çº³åŸºäºå€æ•°çš„å¹¶è¡Œæ•°é‡çš„çº¿ç¨‹æ•°ä¸Šé™</span>
+    <span class="n">core</span><span class="o">-</span><span class="n">pool</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">max</span> <span class="k">=</span> <span class="mi">10</span>
+  <span class="o">}</span>
+  <span class="k">#Throughput å®šä¹‰äº†çº¿ç¨‹åˆ‡æ¢åˆ°å¦ä¸€ä¸ªactorä¹‹å‰å¤„ç†çš„æ¶ˆæ¯æ•°ä¸Šé™</span>
+  <span class="k">#</span> <span class="n">processed</span> <span class="n">per</span> <span class="n">actor</span> <span class="n">before</span> <span class="n">the</span> <span class="n">thread</span> <span class="n">jumps</span> <span class="n">to</span> <span class="n">the</span> <span class="n">next</span> <span class="n">actor</span><span class="o">.</span>
+  <span class="k"># è®¾ç½®æˆ1è¡¨ç¤ºå°½å¯èƒ½å…¬å¹³.</span>
+  <span class="n">throughput</span> <span class="k">=</span> <span class="mi">100</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>æ›´å¤šé€‰é¡¹è§ <a class="reference internal" href="../general/configuration.html#configuration" tppabs="http://www.gtan.com/akka_doc/general/configuration.html#configuration"><em>Configuration</em></a>ä¸­å…³äºç¼ºçœæ´¾å‘å™¨çš„éƒ¨åˆ†.</p>
+</div>
+<div class="section" id="types-of-dispatchers">
+<h2>æ´¾å‘å™¨çš„ç±»å‹</h2>
+<p>ä¸€å…±æœ‰4ç§ç±»å‹çš„æ¶ˆæ¯æ´¾å‘å™¨:</p>
+<ul>
+<li><p class="first">Dispatcher</p>
+<ul>
+<li><p class="first">å¯å…±äº«æ€§: æ— é™åˆ¶</p>
+</li>
+<li><p class="first">é‚®ç®±: ä»»ä½•ï¼Œä¸ºæ¯ä¸€ä¸ªActoråˆ›å»ºä¸€ä¸ª</p>
+</li>
+<li><p class="first">ä½¿ç”¨åœºæ™¯: ç¼ºçœæ´¾å‘å™¨ï¼ŒBulkheading</p>
+</li>
+<li><dl class="first docutils">
+<dt>åº•å±‚ä½¿ç”¨: <tt class="docutils literal"><span class="pre">java.util.concurrent.ExecutorService</span></tt></dt>
+<dd><p class="first last">specify using &#8220;executor&#8221; using &#8220;fork-join-executor&#8221;,
+&#8220;thread-pool-executor&#8221; or the FQCN of
+an <tt class="docutils literal"><span class="pre">akka.dispatcher.ExecutorServiceConfigurator</span></tt></p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">PinnedDispatcher</p>
+<ul>
+<li><p class="first">å¯å…±äº«æ€§: æ— </p>
+</li>
+<li><p class="first">é‚®ç®±: ä»»ä½•ï¼Œä¸ºæ¯ä¸ªActoråˆ›å»ºä¸€ä¸ª</p>
+</li>
+<li><p class="first">ä½¿ç”¨åœºæ™¯: Bulkheading</p>
+</li>
+<li><dl class="first docutils">
+<dt>åº•å±‚ä½¿ç”¨: ä»»ä½• <tt class="docutils literal"><span class="pre">akka.dispatch.ThreadPoolExecutorConfigurator</span></tt></dt>
+<dd><p class="first last">ç¼ºçœä¸ºä¸€ä¸ª &#8220;thread-pool-executor&#8221;</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">BalancingDispatcher</p>
+<ul>
+<li><p class="first">å¯å…±äº«æ€§: ä»…å¯¹åŒä¸€ç±»å‹çš„Actorå…±äº«</p>
+</li>
+<li><p class="first">é‚®ç®±: ä»»ä½•ï¼Œä¸ºæ‰€æœ‰çš„Actoråˆ›å»ºä¸€ä¸ª</p>
+</li>
+<li><p class="first">ä½¿ç”¨åœºæ™¯: Work-sharing</p>
+</li>
+<li><dl class="first docutils">
+<dt>åº•å±‚ä½¿ç”¨: <tt class="docutils literal"><span class="pre">java.util.concurrent.ExecutorService</span></tt></dt>
+<dd><p class="first last">æŒ‡å®šä½¿ç”¨ &#8220;executor&#8221; ä½¿ç”¨ &#8220;fork-join-executor&#8221;,
+&#8220;thread-pool-executor&#8221; æˆ– <tt class="docutils literal"><span class="pre">akka.dispatcher.ExecutorServiceConfigurator</span></tt>çš„å…¨ç§°</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">CallingThreadDispatcher</p>
+<ul class="simple">
+<li>å¯å…±äº«æ€§: æ— é™åˆ¶</li>
+<li>é‚®ç®±: ä»»ä½•ï¼Œæ¯Actoræ¯çº¿ç¨‹åˆ›å»ºä¸€ä¸ªï¼ˆéœ€è¦æ—¶ï¼‰</li>
+<li>ä½¿ç”¨åœºæ™¯: æµ‹è¯•</li>
+<li>åº•å±‚ä½¿ç”¨: è°ƒç”¨çš„çº¿ç¨‹ (duh)</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="more-dispatcher-configuration-examples">
+<h3>æ›´å¤š dispatcher é…ç½®çš„ä¾‹å­</h3>
+<p>é…ç½® <tt class="docutils literal"><span class="pre">PinnedDispatcher</span></tt>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">my</span><span class="o">-</span><span class="n">pinned</span><span class="o">-</span><span class="n">dispatcher</span> <span class="o">{</span>
+  <span class="n">executor</span> <span class="k">=</span> <span class="s">&quot;thread-pool-executor&quot;</span>
+  <span class="k">type</span> <span class="o">=</span> <span class="nc">PinnedDispatcher</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ç„¶åä½¿ç”¨å®ƒ:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">myActor</span> <span class="k">=</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">MyActor</span><span class="o">].</span><span class="n">withDispatcher</span><span class="o">(</span><span class="s">&quot;my-pinned-dispatcher&quot;</span><span class="o">),</span> <span class="s">&quot;myactor2&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mailboxes">
+<h2>é‚®ç®±</h2>
+<p>Akka <tt class="docutils literal"><span class="pre">Mailbox</span></tt> ä¿å­˜å‘å¾€æŸ <tt class="docutils literal"><span class="pre">Actor</span></tt>çš„æ¶ˆæ¯.
+é€šå¸¸æ¯ä¸ª <tt class="docutils literal"><span class="pre">Actor</span></tt> æ‹¥æœ‰è‡ªå·±çš„é‚®ç®±, ä½†æ˜¯å¦‚æœæ˜¯ä½¿ç”¨ <tt class="docutils literal"><span class="pre">BalancingDispatcher</span></tt> ä½¿ç”¨åŒä¸€ä¸ª <tt class="docutils literal"><span class="pre">BalancingDispatcher</span></tt> çš„æ‰€æœ‰Actorå…±äº«åŒä¸€ä¸ªé‚®ç®±å®ä¾‹.</p>
+<div class="section" id="builtin-implementations">
+<h3>å†…ç½®å®ç°</h3>
+<p>Akka è‡ªå¸¦æœ‰ä¸€äº›ç¼ºçœçš„é‚®ç®±å®ç°:</p>
+<ul class="simple">
+<li>UnboundedMailbox<ul>
+<li>åº•å±‚æ˜¯ä¸€ä¸ª <tt class="docutils literal"><span class="pre">java.util.concurrent.ConcurrentLinkedQueue</span></tt></li>
+<li>é˜»å¡: å¦</li>
+<li>ç»‘å®š: å¦</li>
+</ul>
+</li>
+<li>BoundedMailbox<ul>
+<li>åº•å±‚æ˜¯ä¸€ä¸ª <tt class="docutils literal"><span class="pre">java.util.concurrent.LinkedBlockingQueue</span></tt></li>
+<li>é˜»å¡: æ˜¯</li>
+<li>ç»‘å®š: æ˜¯</li>
+</ul>
+</li>
+<li>UnboundedPriorityMailbox<ul>
+<li>åº•å±‚æ˜¯ä¸€ä¸ª <tt class="docutils literal"><span class="pre">java.util.concurrent.PriorityBlockingQueue</span></tt></li>
+<li>é˜»å¡: æ˜¯</li>
+<li>ç»‘å®š: å¦</li>
+</ul>
+</li>
+<li>BoundedPriorityMailbox<ul>
+<li>åº•å±‚æ˜¯ä¸€ä¸ª <tt class="docutils literal"><span class="pre">java.util.PriorityBlockingQueue</span></tt> wrapped in an <tt class="docutils literal"><span class="pre">akka.util.BoundedBlockingQueue</span></tt></li>
+<li>é˜»å¡: æ˜¯</li>
+<li>ç»‘å®š: æ˜¯</li>
+</ul>
+</li>
+<li>æŒä¹…é‚®ç®±, è§ <a class="reference internal" href="../modules/durable-mailbox.html#durable-mailboxes" tppabs="http://www.gtan.com/akka_doc/modules/durable-mailbox.html#durable-mailboxes"><em>æŒä¹…é‚®ç®±</em></a>.</li>
+</ul>
+</div>
+<div class="section" id="mailbox-configuration-examples">
+<h3>é‚®ç®±é…ç½®ç¤ºä¾‹</h3>
+<p>å¦‚ä½•åˆ›å»ºä¸€ä¸ª PriorityMailbox:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch.PriorityGenerator</span>
+<span class="k">import</span> <span class="nn">akka.dispatch.UnboundedPriorityMailbox</span>
+<span class="k">import</span> <span class="nn">com.typesafe.config.Config</span>
+
+<span class="c1">// è¿™é‡Œæˆ‘ä»¬ç»§æ‰¿ UnboundedPriorityMailbox å¹¶ç»™å®ƒä¸€ä¸ªä¼˜å…ˆçº§ç”Ÿæˆå™¨</span>
+<span class="k">class</span> <span class="nc">MyPrioMailbox</span><span class="o">(</span><span class="n">settings</span><span class="k">:</span> <span class="kt">ActorSystem.Settings</span><span class="o">,</span> <span class="n">config</span><span class="k">:</span> <span class="kt">Config</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UnboundedPriorityMailbox</span><span class="o">(</span>
+  <span class="c1">// åˆ›å»ºæ–°çš„ PriorityGenerator, ä½ä¼˜å…ˆçº§è¡¨ç¤ºæ›´é‡è¦</span>
+  <span class="nc">PriorityGenerator</span> <span class="o">{</span>
+    <span class="c1">// é«˜ä¼˜å…ˆçº§æ¶ˆæ¯åº”å°½å¯èƒ½å…ˆå¤„ç†</span>
+    <span class="k">case</span> <span class="-Symbol">&#39;highpriority</span> <span class="k">â‡’</span> <span class="mi">0</span>
+
+    <span class="c1">// ä½ä¼˜å…ˆçº§æ¶ˆæ¯åº”å°½å¯èƒ½åå¤„ç†</span>
+    <span class="k">case</span> <span class="-Symbol">&#39;lowpriority</span>  <span class="k">â‡’</span> <span class="mi">2</span>
+
+    <span class="c1">// å…¨éƒ¨å¤„ç†å®Œåä½¿ç”¨PoisonPill</span>
+    <span class="k">case</span> <span class="nc">PoisonPill</span>    <span class="k">â‡’</span> <span class="mi">3</span>
+
+    <span class="c1">// ç¼ºçœå€¼ä¸º1ï¼Œä¸€ä¸ªé«˜ä¸ä½ä¹‹é—´</span>
+    <span class="k">case</span> <span class="n">otherwise</span>     <span class="k">â‡’</span> <span class="mi">1</span>
+  <span class="o">})</span>
+</pre></div>
+</div>
+<p>å¹¶æ·»åŠ åˆ°é…ç½®æ–‡ä»¶:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">prio</span><span class="o">-</span><span class="n">dispatcher</span> <span class="o">{</span>
+  <span class="n">mailbox</span><span class="o">-</span><span class="k">type</span> <span class="o">=</span> <span class="s">&quot;akka.docs.dispatcher.DispatcherDocSpec$MyPrioMailbox&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>ä»¥ä¸‹ç¤ºä¾‹æ¼”ç¤ºå¦‚ä½•ä½¿ç”¨å®ƒ:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">// åˆ›å»ºä¸€ä¸ªåªæ‰“å°å‡ºæ‰€æœ‰æ”¶åˆ°çš„æ¶ˆæ¯çš„actor</span>
+<span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span>
+  <span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Actor</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">log</span><span class="k">:</span> <span class="kt">LoggingAdapter</span> <span class="o">=</span> <span class="nc">Logging</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">,</span> <span class="k">this</span><span class="o">)</span>
+
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;lowpriority</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;lowpriority</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;highpriority</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;pigdog</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;pigdog2</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;pigdog3</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="-Symbol">&#39;highpriority</span>
+    <span class="n">self</span> <span class="o">!</span> <span class="nc">PoisonPill</span>
+
+    <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="n">x</span> <span class="k">â‡’</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}).</span><span class="n">withDispatcher</span><span class="o">(</span><span class="s">&quot;prio-dispatcher&quot;</span><span class="o">))</span>
+
+<span class="cm">/*</span>
+<span class="cm">Logs:</span>
+<span class="cm">  &#39;highpriority</span>
+<span class="cm">  &#39;highpriority</span>
+<span class="cm">  &#39;pigdog</span>
+<span class="cm">  &#39;pigdog2</span>
+<span class="cm">  &#39;pigdog3</span>
+<span class="cm">  &#39;lowpriority</span>
+<span class="cm">  &#39;lowpriority</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-your-own-mailbox-type">
+<h3>åˆ›å»ºè‡ªå·±çš„é‚®ç®±ç±»å‹</h3>
+<p>ä¾‹å­æ¯”æ–‡å­—æ›´æœ‰è¯´æœåŠ›:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">case</span> <span class="k">class</span> <span class="nc">MyUnboundedMailbox</span><span class="o">()</span> <span class="k">extends</span> <span class="n">akka</span><span class="o">.</span><span class="n">dispatch</span><span class="o">.</span><span class="nc">MailboxType</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">akka.actor.ActorContext</span>
+  <span class="k">import</span> <span class="nn">com.typesafe.config.Config</span>
+  <span class="k">import</span> <span class="nn">java.util.concurrent.ConcurrentLinkedQueue</span>
+  <span class="k">import</span> <span class="nn">akka.dispatch.</span><span class="o">{</span>
+    <span class="nc">Envelope</span><span class="o">,</span>
+    <span class="nc">MessageQueue</span><span class="o">,</span>
+    <span class="nc">QueueBasedMessageQueue</span><span class="o">,</span>
+    <span class="nc">UnboundedMessageQueueSemantics</span>
+  <span class="o">}</span>
+
+  <span class="c1">// å¿…é¡»æœ‰è¿™æ ·çš„æ„é€ æ–¹æ³•ï¼Œå°†è¢«Akkaè°ƒç”¨</span>
+  <span class="k">def</span> <span class="k">this</span><span class="o">(</span><span class="n">settings</span><span class="k">:</span> <span class="kt">ActorSystem.Settings</span><span class="o">,</span> <span class="n">config</span><span class="k">:</span> <span class="kt">Config</span><span class="o">)</span> <span class="k">=</span> <span class="k">this</span><span class="o">()</span>
+
+  <span class="c1">// è°ƒç”¨createæ–¹æ³•æ¥åˆ›å»ºMessageQueue</span>
+  <span class="k">final</span> <span class="k">override</span> <span class="k">def</span> <span class="n">create</span><span class="o">(</span><span class="n">owner</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorContext</span><span class="o">])</span><span class="k">:</span> <span class="kt">MessageQueue</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="nc">QueueBasedMessageQueue</span> <span class="k">with</span> <span class="nc">UnboundedMessageQueueSemantics</span> <span class="o">{</span>
+      <span class="k">final</span> <span class="k">val</span> <span class="n">queue</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ConcurrentLinkedQueue</span><span class="o">[</span><span class="kt">Envelope</span><span class="o">]()</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+<p>ç„¶ååœ¨æ´¾å‘å™¨é…ç½®ä¸­ä»¥ä½ å®šä¹‰çš„é‚®ç®±ç±»å‹çš„å…¨ç§°ä½œä¸ºâ€œmailbox-typeâ€çš„å€¼.</p>
+<div class="admonition note">
+<p class="first admonition-title">æ³¨æ„</p>
+<p class="last">ä¸€å®šè¦å®šä¹‰ä¸€ä¸ªä»¥
+<tt class="docutils literal"><span class="pre">akka.actor.ActorSystem.Settings</span></tt> å’Œ <tt class="docutils literal"><span class="pre">com.typesafe.config.Config</span></tt>
+ä¸ºå‚æ•°çš„æ„é€ æ–¹æ³•, è¿™ä¸ªæ–¹æ³•ç”¨æ¥ä»¥åå°„çš„æ–¹å¼åˆ›å»ºä½ çš„é‚®ç®±ç±»å‹.ç¬¬äºŒä¸ªå‚æ•°ä¼ å…¥çš„æ˜¯é…ç½®æ–‡ä»¶ä¸­æè¿°çš„ä½¿ç”¨è¿™ä¸ªé‚®ç®±ç±»å‹çš„æ´¾å‘å™¨; è¯¥é‚®ç®±ç±»å‹ä¼šä¸ºæ¯ä¸€ä¸ªä½¿ç”¨å®ƒçš„æ´¾å‘å™¨åˆ›å»ºä¸€ä¸ªå®ä¾‹ã€‚</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

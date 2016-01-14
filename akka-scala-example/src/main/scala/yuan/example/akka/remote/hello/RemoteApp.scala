@@ -2,6 +2,7 @@ package yuan.example.akka.remote.hello
 
 import akka.actor.{ActorLogging, Actor, ActorSystem, Props}
 import com.typesafe.config.ConfigFactory
+import yuan.example.akka.remote.calculator.{SubtractResult, AddResult}
 
 //import scala.concurrent.ExecutionContext.Implicits.global
 //import scala.concurrent.duration._
@@ -29,8 +30,8 @@ object RemoteApp extends App {
 				|      port = 12101
 				|    }
 				|  }
-				|  log-sent-messages = on
-				|  log-received-messages = on
+				|#  log-sent-messages = on
+				|#  log-received-messages = on
 				|}
 			""".stripMargin)
 
@@ -72,16 +73,34 @@ class RemoteActor extends Actor with ActorLogging{
 			}*/
 
 	def receive = {
-		case message: String =>
+		case message: String => {
 			//println(s"RemoteActor received message '$message'")
 			//log.debug(s"RemoteActor received message '$msg'")
-			log.debug("RemoteActor received message:{}",message)
-			if("SHUTDOWN".eq(message)){
+			log.debug("RemoteActor received message:{}", message)
+			if ("SHUTDOWN".eq(message)) {
 				context.system.shutdown()
 			}
 			sender ! s"Hello from the RemoteActor:$message"
+		}
+		case Echo(m:Any)=>{
+			Thread.sleep(3000L)
+			//sender!m
+
+			log.debug("Echo:{}",m)
+		}
+		case IntMathRequest(o:Operate.Value,m:Int,n:Int) => {
+			log.info("receive: {} {} {}",m,o,n)
+			var result:Double=0
+			o match {
+				case Operate.ADD=>result= m + n
+				case Operate.SUBTRACT=>result= m-n
+				case Operate.MULTIPLY=>result= m * n
+				case Operate.DIVIDE=>result= m / n
+			}
+			sender!IntMathResponse(o,m,n,result)
+		}
 		case x        =>
-			log.debug("RemoteActor received message:{}",x)
+			log.debug("OTHER:{}",x)
 	}
 }
 

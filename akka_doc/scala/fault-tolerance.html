@@ -1,0 +1,556 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>容错 (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Diagrams of the Fault Tolerance Sample (Scala)" href="fault-tolerance-sample.html" />
+    <link rel="prev" title="Dataflow Concurrency (Scala)" href="dataflow.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">容错 (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="fault-tolerance-sample.html" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance-sample.html">容错例子的图示 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="dataflow.html" tppabs="http://www.gtan.com/akka_doc/scala/dataflow.html">数据流并发 (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="fault-tolerance-scala">
+<span id="id1"></span><h1>容错 (Scala)</h1>
+<p>如 <a class="reference internal" href="../general/actor-systems.html#actor-systems" tppabs="http://www.gtan.com/akka_doc/general/actor-systems.html#actor-systems"><em>Actor 系统</em></a> 中所述，每一个 actor 是其子actor的监管者
+, 而且每一个actor会定义一个处理错误的监管策略。这个策略制定以后不能修改，因为它集成为actor系统结构的一部分。</p>
+<div class="section" id="fault-handling-in-practice">
+<h2>实际中的错误处理</h2>
+<p>首先我们来看一个例子，演示处理数据库错误的一种方法，数据库错误是真实应用中的典型错误类型。当然在实际的应用中这要依赖于当数据库发生错误时能做些什么，
+    在这个例子中，我们使用尽量重新连接的方法。</p>
+<p>阅读以下源码。其中的注释解释了错误处理的各个片段以及为什么要加上它们。我们还强烈建议运行这个例子，因为根据日志输出来理解运行时都发生了什么会比较容易。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fault-tolerance-sample.html" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance-sample.html">容错例子的图示 (Scala)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fault-tolerance-sample.html#full-source-code-of-the-fault-tolerance-sample-scala" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance-sample.html#full-source-code-of-the-fault-tolerance-sample-scala">容错示例的完整源码 (Scala)</a></li>
+</ul>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="c1">// imports ...</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 运行这个例子</span>
+<span class="cm"> */</span>
+<span class="k">object</span> <span class="nc">FaultHandlingDocSample</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Worker._</span>
+
+  <span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    akka.loglevel = DEBUG</span>
+<span class="s">    akka.actor.debug {</span>
+<span class="s">      receive = on</span>
+<span class="s">      lifecycle = on</span>
+<span class="s">    }</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="o">)</span>
+
+  <span class="k">val</span> <span class="n">system</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&quot;FaultToleranceSample&quot;</span><span class="o">,</span> <span class="n">config</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">worker</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Worker</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;worker&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">listener</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Listener</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;listener&quot;</span><span class="o">)</span>
+  <span class="c1">// 开始工作并监听进展</span>
+  <span class="c1">// 注意监听者被用作tell的sender,</span>
+  <span class="c1">// i.e. 它会接收从worker发来的应答</span>
+  <span class="n">worker</span><span class="o">.</span><span class="n">tell</span><span class="o">(</span><span class="nc">Start</span><span class="o">,</span> <span class="n">sender</span> <span class="k">=</span> <span class="n">listener</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 监听worker的进展，当完成到足够的程度时关闭整个系统</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Listener</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">ActorLogging</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Worker._</span>
+  <span class="c1">// 如果15秒没有任何进展说明服务不可用</span>
+  <span class="n">context</span><span class="o">.</span><span class="n">setReceiveTimeout</span><span class="o">(</span><span class="mi">15</span> <span class="n">seconds</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Progress</span><span class="o">(</span><span class="n">percent</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;Current progress: {} %&quot;</span><span class="o">,</span> <span class="n">percent</span><span class="o">)</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">percent</span> <span class="o">&gt;=</span> <span class="mf">100.0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;That&#39;s all, shutting down&quot;</span><span class="o">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">shutdown</span><span class="o">()</span>
+      <span class="o">}</span>
+
+    <span class="k">case</span> <span class="nc">ReceiveTimeout</span> <span class="k">⇒</span>
+      <span class="c1">// 15秒没有进展，服务不可用</span>
+      <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="o">(</span><span class="s">&quot;Shutting down due to unavailable service&quot;</span><span class="o">)</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">shutdown</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 消息 ...</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Worker接收到 `Start` 消息时开始处理工作.</span>
+<span class="cm"> * 它持续地将当前``进展``通知 `Start` 消息的发送方</span>
+<span class="cm"> * `Worker` 监管 `CounterService`.</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Worker</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="k">with</span> <span class="nc">ActorLogging</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Worker._</span>
+  <span class="k">import</span> <span class="nn">CounterService._</span>
+  <span class="k">implicit</span> <span class="k">val</span> <span class="n">askTimeout</span> <span class="k">=</span> <span class="nc">Timeout</span><span class="o">(</span><span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span>
+
+  <span class="c1">// 如果 CounterService 子actor抛出 ServiceUnavailable异常则终止它</span>
+  <span class="k">override</span> <span class="k">val</span> <span class="n">supervisorStrategy</span> <span class="k">=</span> <span class="nc">OneForOneStrategy</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">CounterService</span><span class="o">.</span><span class="nc">ServiceUnavailable</span> <span class="k">⇒</span> <span class="nc">Stop</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 最初 Start 消息的发送方将持续地收到进展通知</span>
+  <span class="k">var</span> <span class="n">progressListener</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+  <span class="k">val</span> <span class="n">counterService</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">CounterService</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;counter&quot;</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">totalCount</span> <span class="k">=</span> <span class="mi">51</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="nc">LoggingReceive</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Start</span> <span class="k">if</span> <span class="n">progressListener</span><span class="o">.</span><span class="n">isEmpty</span> <span class="k">⇒</span>
+      <span class="n">progressListener</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="n">sender</span><span class="o">)</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">schedule</span><span class="o">(</span><span class="nc">Duration</span><span class="o">.</span><span class="nc">Zero</span><span class="o">,</span> <span class="mi">1</span> <span class="n">second</span><span class="o">,</span> <span class="n">self</span><span class="o">,</span> <span class="nc">Do</span><span class="o">)</span>
+
+    <span class="k">case</span> <span class="nc">Do</span> <span class="k">⇒</span>
+      <span class="n">counterService</span> <span class="o">!</span> <span class="nc">Increment</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+      <span class="n">counterService</span> <span class="o">!</span> <span class="nc">Increment</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+      <span class="n">counterService</span> <span class="o">!</span> <span class="nc">Increment</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+
+      <span class="c1">// 将当前进展发送给最初的发送方</span>
+      <span class="n">counterService</span> <span class="o">?</span> <span class="nc">GetCurrentCount</span> <span class="n">map</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nc">CurrentCount</span><span class="o">(</span><span class="n">_</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span> <span class="k">⇒</span> <span class="nc">Progress</span><span class="o">(</span><span class="mf">100.0</span> <span class="o">*</span> <span class="n">count</span> <span class="o">/</span> <span class="n">totalCount</span><span class="o">)</span>
+      <span class="o">}</span> <span class="n">pipeTo</span> <span class="n">progressListener</span><span class="o">.</span><span class="n">get</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 消息 ...</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 将从 `Increment` 消息中获取的值加到持久的计数器上 </span>
+<span class="cm"> * 在被请求 `CurrentCount` 时将 `CurrentCount` 作为应答.</span>
+<span class="cm"> * `CounterService` 监管 `Storage` 和 `Counter`.</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">CounterService</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">CounterService._</span>
+  <span class="k">import</span> <span class="nn">Counter._</span>
+  <span class="k">import</span> <span class="nn">Storage._</span>
+
+  <span class="c1">// 在抛出 StorageException 时重启 Storage 子actor.</span>
+  <span class="c1">// 如果5秒内有3次重启，它将被终止.</span>
+  <span class="k">override</span> <span class="k">val</span> <span class="n">supervisorStrategy</span> <span class="k">=</span> <span class="nc">OneForOneStrategy</span><span class="o">(</span><span class="n">maxNrOfRetries</span> <span class="k">=</span> <span class="mi">3</span><span class="o">,</span> <span class="n">withinTimeRange</span> <span class="k">=</span> <span class="mi">5</span> <span class="n">seconds</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">Storage</span><span class="o">.</span><span class="nc">StorageException</span> <span class="k">⇒</span> <span class="nc">Restart</span>
+  <span class="o">}</span>
+
+  <span class="k">val</span> <span class="n">key</span> <span class="k">=</span> <span class="n">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">name</span>
+  <span class="k">var</span> <span class="n">storage</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+  <span class="k">var</span> <span class="n">counter</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+  <span class="k">var</span> <span class="n">backlog</span> <span class="k">=</span> <span class="nc">IndexedSeq</span><span class="o">.</span><span class="n">empty</span><span class="o">[(</span><span class="kt">ActorRef</span>, <span class="kt">Any</span><span class="o">)]</span>
+  <span class="k">val</span> <span class="nc">MaxBacklog</span> <span class="k">=</span> <span class="mi">10000</span>
+
+  <span class="k">override</span> <span class="k">def</span> <span class="n">preStart</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">initStorage</span><span class="o">()</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * storage 子actor在失败时将被重启，但是3次重启后如果仍失败，它将被终止。</span>
+<span class="cm">   * 这样比一直不断的失败要好</span>
+<span class="cm">   * 它被终止后我们将在一段延时后安排重新连接.</span>
+<span class="cm">   * 监视子actor，这样在它终止后我们能收到 Terminated 消息.</span>
+<span class="cm">   */</span>
+  <span class="k">def</span> <span class="n">initStorage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">storage</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">watch</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Storage</span><span class="o">],</span> <span class="n">name</span> <span class="k">=</span> <span class="s">&quot;storage&quot;</span><span class="o">)))</span>
+    <span class="c1">// 告诉计数器（如果有的话），使用新的storage</span>
+    <span class="n">counter</span> <span class="n">foreach</span> <span class="o">{</span> <span class="k">_</span> <span class="o">!</span> <span class="nc">UseStorage</span><span class="o">(</span><span class="n">storage</span><span class="o">)</span> <span class="o">}</span>
+    <span class="c1">// 我们需要初始值来开始操作</span>
+    <span class="n">storage</span><span class="o">.</span><span class="n">get</span> <span class="o">!</span> <span class="nc">Get</span><span class="o">(</span><span class="n">key</span><span class="o">)</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="nc">LoggingReceive</span> <span class="o">{</span>
+
+    <span class="k">case</span> <span class="nc">Entry</span><span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">key</span> <span class="o">&amp;&amp;</span> <span class="n">counter</span> <span class="o">==</span> <span class="nc">None</span> <span class="k">⇒</span>
+      <span class="c1">// 从Storage应答得到初始值, 现在我们可以创建计数器了</span>
+      <span class="k">val</span> <span class="n">c</span> <span class="k">=</span> <span class="n">context</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Counter</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">v</span><span class="o">)))</span>
+      <span class="n">counter</span> <span class="k">=</span> <span class="nc">Some</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+      <span class="c1">// 告诉计数器使用当前 storage</span>
+      <span class="n">c</span> <span class="o">!</span> <span class="nc">UseStorage</span><span class="o">(</span><span class="n">storage</span><span class="o">)</span>
+      <span class="c1">// 并将缓存的积压消息发给计数器</span>
+      <span class="k">for</span> <span class="o">((</span><span class="n">replyTo</span><span class="o">,</span> <span class="n">msg</span><span class="o">)</span> <span class="k">←</span> <span class="n">backlog</span><span class="o">)</span> <span class="n">c</span><span class="o">.</span><span class="n">tell</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">sender</span> <span class="k">=</span> <span class="n">replyTo</span><span class="o">)</span>
+      <span class="n">backlog</span> <span class="k">=</span> <span class="nc">IndexedSeq</span><span class="o">.</span><span class="n">empty</span>
+
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">@</span> <span class="nc">Increment</span><span class="o">(</span><span class="n">n</span><span class="o">)</span>    <span class="k">⇒</span> <span class="n">forwardOrPlaceInBacklog</span><span class="o">(</span><span class="n">msg</span><span class="o">)</span>
+
+    <span class="k">case</span> <span class="n">msg</span> <span class="k">@</span> <span class="nc">GetCurrentCount</span> <span class="k">⇒</span> <span class="n">forwardOrPlaceInBacklog</span><span class="o">(</span><span class="n">msg</span><span class="o">)</span>
+
+    <span class="k">case</span> <span class="nc">Terminated</span><span class="o">(</span><span class="n">actorRef</span><span class="o">)</span> <span class="k">if</span> <span class="nc">Some</span><span class="o">(</span><span class="n">actorRef</span><span class="o">)</span> <span class="o">==</span> <span class="n">storage</span> <span class="k">⇒</span>
+      <span class="c1">// 3次重启后 storage 子actor被终止了.</span>
+      <span class="c1">// 我们收到 Terminated 是因为我们监视了这个子actor, 见 initStorage.</span>
+      <span class="n">storage</span> <span class="k">=</span> <span class="nc">None</span>
+      <span class="c1">// 告诉计数器现在没有 storage 可用了</span>
+      <span class="n">counter</span> <span class="n">foreach</span> <span class="o">{</span> <span class="k">_</span> <span class="o">!</span> <span class="nc">UseStorage</span><span class="o">(</span><span class="nc">None</span><span class="o">)</span> <span class="o">}</span>
+      <span class="c1">// 过一会尝试重新建立 storage </span>
+      <span class="n">context</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">scheduleOnce</span><span class="o">(</span><span class="mi">10</span> <span class="n">seconds</span><span class="o">,</span> <span class="n">self</span><span class="o">,</span> <span class="nc">Reconnect</span><span class="o">)</span>
+
+    <span class="k">case</span> <span class="nc">Reconnect</span> <span class="k">⇒</span>
+      <span class="c1">// 在计划的延时后重新创建 storage </span>
+      <span class="n">initStorage</span><span class="o">()</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">forwardOrPlaceInBacklog</span><span class="o">(</span><span class="n">msg</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 在开始委托给计数器之前我们需要从storage中获取初始值 .</span>
+    <span class="c1">// 在那之前我们将消息放入积压缓存中，在计数器初始化完成后将这些消息发给它。</span>
+    <span class="n">counter</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="k">⇒</span> <span class="n">c</span> <span class="n">forward</span> <span class="n">msg</span>
+      <span class="k">case</span> <span class="nc">None</span> <span class="k">⇒</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">backlog</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="nc">MaxBacklog</span><span class="o">)</span>
+          <span class="k">throw</span> <span class="k">new</span> <span class="nc">ServiceUnavailable</span><span class="o">(</span><span class="s">&quot;CounterService not available, lack of initial value&quot;</span><span class="o">)</span>
+        <span class="n">backlog</span> <span class="k">=</span> <span class="n">backlog</span> <span class="o">:+</span> <span class="o">(</span><span class="n">sender</span><span class="o">,</span> <span class="n">msg</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+
+<span class="c1">// 消息 ...</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 如果当前有可用的 storage的话， 计数器变量将当前的值发送给`Storage`, if there is any storage</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Counter</span><span class="o">(</span><span class="n">key</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">initialValue</span><span class="k">:</span> <span class="kt">Long</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Counter._</span>
+  <span class="k">import</span> <span class="nn">CounterService._</span>
+  <span class="k">import</span> <span class="nn">Storage._</span>
+
+  <span class="k">var</span> <span class="n">count</span> <span class="k">=</span> <span class="n">initialValue</span>
+  <span class="k">var</span> <span class="n">storage</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="nc">LoggingReceive</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">UseStorage</span><span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">storage</span> <span class="k">=</span> <span class="n">s</span>
+      <span class="n">storeCount</span><span class="o">()</span>
+
+    <span class="k">case</span> <span class="nc">Increment</span><span class="o">(</span><span class="n">n</span><span class="o">)</span> <span class="k">⇒</span>
+      <span class="n">count</span> <span class="o">+=</span> <span class="n">n</span>
+      <span class="n">storeCount</span><span class="o">()</span>
+
+    <span class="k">case</span> <span class="nc">GetCurrentCount</span> <span class="k">⇒</span>
+      <span class="n">sender</span> <span class="o">!</span> <span class="nc">CurrentCount</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span>
+
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">storeCount</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// 委托危险的工作，来保护我们宝贵的状态.</span>
+    <span class="c1">// 没有 storage 我们也能继续工作.</span>
+    <span class="n">storage</span> <span class="n">foreach</span> <span class="o">{</span> <span class="k">_</span> <span class="o">!</span> <span class="nc">Store</span><span class="o">(</span><span class="nc">Entry</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">count</span><span class="o">))</span> <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+
+<span class="c1">// 消息 ...</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 收到 `Store` 消息时将键/值对保存到持久storage中.</span>
+<span class="cm"> * 收到 `Get` 消息时以当前值作为应答 .</span>
+<span class="cm"> * 如果背后的数据存储出问题了，会抛出 StorageException.</span>
+<span class="cm"> */</span>
+<span class="k">class</span> <span class="nc">Storage</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">Storage._</span>
+
+  <span class="k">val</span> <span class="n">db</span> <span class="k">=</span> <span class="nc">DummyDB</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="nc">LoggingReceive</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Store</span><span class="o">(</span><span class="nc">Entry</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">count</span><span class="o">))</span> <span class="k">⇒</span> <span class="n">db</span><span class="o">.</span><span class="n">save</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span>
+    <span class="k">case</span> <span class="nc">Get</span><span class="o">(</span><span class="n">key</span><span class="o">)</span>                 <span class="k">⇒</span> <span class="n">sender</span> <span class="o">!</span> <span class="nc">Entry</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">db</span><span class="o">.</span><span class="n">load</span><span class="o">(</span><span class="n">key</span><span class="o">).</span><span class="n">getOrElse</span><span class="o">(</span><span class="mi">0L</span><span class="o">))</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// dummydb ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-supervisor-strategy">
+<h2>创建一个监管策略</h2>
+<p>以下更加深入地讲解错误处理的机制和可选的方法。</p>
+<p>为了演示我们假设有这样的策略:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.OneForOneStrategy</span>
+<span class="k">import</span> <span class="nn">akka.actor.SupervisorStrategy._</span>
+<span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+<span class="k">override</span> <span class="k">val</span> <span class="n">supervisorStrategy</span> <span class="k">=</span> <span class="nc">OneForOneStrategy</span><span class="o">(</span><span class="n">maxNrOfRetries</span> <span class="k">=</span> <span class="mi">10</span><span class="o">,</span> <span class="n">withinTimeRange</span> <span class="k">=</span> <span class="mi">1</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">_:</span> <span class="nc">ArithmeticException</span>      <span class="k">⇒</span> <span class="nc">Resume</span>
+  <span class="k">case</span> <span class="n">_:</span> <span class="nc">NullPointerException</span>     <span class="k">⇒</span> <span class="nc">Restart</span>
+  <span class="k">case</span> <span class="n">_:</span> <span class="nc">IllegalArgumentException</span> <span class="k">⇒</span> <span class="nc">Stop</span>
+  <span class="k">case</span> <span class="n">_:</span> <span class="nc">Exception</span>                <span class="k">⇒</span> <span class="nc">Escalate</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>我选择了一种非常著名的异常类型来演示<a class="reference internal" href="../general/supervision.html#supervision" tppabs="http://www.gtan.com/akka_doc/general/supervision.html#supervision"><em>监管和监控</em></a>
+    中描述的错误处理方式的使用. 首先，它是一个一对一的策略，意思是每一个子actor会被单独处理（多对一的策略与之相似，唯一的差别在于任何决策都应用于监管者的所有
+    子actor，而不仅仅是出错的那一个). 这里我们对重启的频率作了限制，最多每分钟能进行 10 次重启; 所有这样的设置都可以被忽略，也就是说，相应的限制并不被采用,
+    留下了设置重启频率的绝对上限值或让重启无限进行的可能性。</p>
+<p>构成主体的 match 语句的类型是 <tt class="docutils literal"><span class="pre">Decider</span></tt>,
+它是 <tt class="docutils literal"><span class="pre">PartialFunction[Throwable,</span> <span class="pre">Directive]</span></tt>. 这一部分将
+    子actor的失败类型映射到相应的指令 .</p>
+</div>
+<div class="section" id="default-supervisor-strategy">
+<h2>缺省的监管机制</h2>
+<p>如果定义的监管机制没有覆盖抛出的异常，将使用<tt class="docutils literal"><span class="pre">上溯</span></tt> 机制.</p>
+<p>如果某个actor没有定义监管机制，下列异常将被缺省地处理:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">ActorInitializationException</span></tt> 将终止出错的子 actor</li>
+<li><tt class="docutils literal"><span class="pre">ActorKilledException</span></tt> 将终止出错的子 actor</li>
+<li><tt class="docutils literal"><span class="pre">Exception</span></tt> 将重启出错的子 actor</li>
+<li>其它的 <tt class="docutils literal"><span class="pre">Throwable</span></tt> 将被上溯传给父actor</li>
+</ul>
+<p>如果异常一直被上溯到根监管者，在那儿也会用上述缺省方式进行处理。</p>
+</div>
+<div class="section" id="test-application">
+<h2>测试应用</h2>
+<p>以下部分展示了实际中不同的指令的效果，为此我们需要创建一个测试环境。首先我们需要一个合适的监管者:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Actor</span>
+
+<span class="k">class</span> <span class="nc">Supervisor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">akka.actor.OneForOneStrategy</span>
+  <span class="k">import</span> <span class="nn">akka.actor.SupervisorStrategy._</span>
+  <span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+  <span class="k">override</span> <span class="k">val</span> <span class="n">supervisorStrategy</span> <span class="k">=</span> <span class="nc">OneForOneStrategy</span><span class="o">(</span><span class="n">maxNrOfRetries</span> <span class="k">=</span> <span class="mi">10</span><span class="o">,</span> <span class="n">withinTimeRange</span> <span class="k">=</span> <span class="mi">1</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">ArithmeticException</span>      <span class="k">⇒</span> <span class="nc">Resume</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">NullPointerException</span>     <span class="k">⇒</span> <span class="nc">Restart</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">IllegalArgumentException</span> <span class="k">⇒</span> <span class="nc">Stop</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">Exception</span>                <span class="k">⇒</span> <span class="nc">Escalate</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Props</span> <span class="k">⇒</span> <span class="kt">sender</span> <span class="kt">!</span> <span class="kt">context.actorOf</span><span class="o">(</span><span class="kt">p</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>该监管者将用来创建一个我们用来做试验的子actor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.Actor</span>
+
+<span class="k">class</span> <span class="nc">Child</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">var</span> <span class="n">state</span> <span class="k">=</span> <span class="mi">0</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">ex</span><span class="k">:</span> <span class="kt">Exception</span> <span class="k">⇒</span> <span class="kt">throw</span> <span class="kt">ex</span>
+    <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Int</span>        <span class="k">⇒</span> <span class="kt">state</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">case</span> <span class="s">&quot;get&quot;</span>         <span class="k">⇒</span> <span class="n">sender</span> <span class="o">!</span> <span class="n">state</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>这个测试可以用 <a class="reference internal" href="testing.html#akka-testkit" tppabs="http://www.gtan.com/akka_doc/scala/testing.html#akka-testkit"><em>测试 Actor 系统 (Scala)</em></a> 中的工具来进行简化,
+比如 <tt class="docutils literal"><span class="pre">AkkaSpec</span></tt> 是 <tt class="docutils literal"><span class="pre">TestKit</span> <span class="pre">with</span> <span class="pre">WordSpec</span> <span class="pre">with</span>
+<span class="pre">MustMatchers</span></tt> 的混合 </p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.testkit.</span><span class="o">{</span> <span class="nc">AkkaSpec</span><span class="o">,</span> <span class="nc">ImplicitSender</span><span class="o">,</span> <span class="nc">EventFilter</span> <span class="o">}</span>
+<span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">ActorRef</span><span class="o">,</span> <span class="nc">Props</span><span class="o">,</span> <span class="nc">Terminated</span> <span class="o">}</span>
+
+<span class="k">class</span> <span class="nc">FaultHandlingDocSpec</span> <span class="k">extends</span> <span class="nc">AkkaSpec</span> <span class="k">with</span> <span class="nc">ImplicitSender</span> <span class="o">{</span>
+
+  <span class="s">&quot;A supervisor&quot;</span> <span class="n">must</span> <span class="o">{</span>
+
+    <span class="s">&quot;apply the chosen strategy for its child&quot;</span> <span class="n">in</span> <span class="o">{</span>
+      <span class="c1">// 在此添加代码 </span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>现在我们来创建 actor:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">supervisor</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Supervisor</span><span class="o">],</span> <span class="s">&quot;supervisor&quot;</span><span class="o">)</span>
+
+<span class="n">supervisor</span> <span class="o">!</span> <span class="nc">Props</span><span class="o">[</span><span class="kt">Child</span><span class="o">]</span>
+<span class="k">val</span> <span class="n">child</span> <span class="k">=</span> <span class="n">expectMsgType</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span> <span class="c1">// 从TestKit的 testActor 中获取答案</span>
+</pre></div>
+</div>
+<p>第一个测试是为了演示 <tt class="docutils literal"><span class="pre">Resume</span></tt> 指令, 我们试着将actor设为非初始状态然后让它出错:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">child</span> <span class="o">!</span> <span class="mi">42</span> <span class="c1">// 将状态设为 42</span>
+<span class="n">child</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+
+<span class="n">child</span> <span class="o">!</span> <span class="k">new</span> <span class="nc">ArithmeticException</span> <span class="c1">// 让它崩溃</span>
+<span class="n">child</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>可以看到错误处理指令完后仍能得到42的值. 现在如果我们将错误换成更严重的 <tt class="docutils literal"><span class="pre">NullPointerException</span></tt>, 情况就不同了:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">child</span> <span class="o">!</span> <span class="k">new</span> <span class="nc">NullPointerException</span> <span class="c1">// 更严重的崩溃</span>
+<span class="n">child</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>而最后当致命的 <tt class="docutils literal"><span class="pre">IllegalArgumentException</span></tt> 发生时子actor将被其监管者终止:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">watch</span><span class="o">(</span><span class="n">child</span><span class="o">)</span> <span class="c1">// 让 testActor 监视 “child”</span>
+<span class="n">child</span> <span class="o">!</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span> <span class="c1">// 破坏它</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="nc">Terminated</span><span class="o">(</span><span class="n">child</span><span class="o">))</span>
+<span class="n">child</span><span class="o">.</span><span class="n">isTerminated</span> <span class="n">must</span> <span class="n">be</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>到目前为止监管者完全没有被子actor的错误所影响, 因为指令集确实处理了这些错误。而对于 <tt class="docutils literal"><span class="pre">Exception</span></tt>, 就不是这么回事了，
+    监管者会将失败上溯传递。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">supervisor</span> <span class="o">!</span> <span class="nc">Props</span><span class="o">[</span><span class="kt">Child</span><span class="o">]</span> <span class="c1">// 创建新的子actor</span>
+<span class="k">val</span> <span class="n">child2</span> <span class="k">=</span> <span class="n">expectMsgType</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span>
+
+<span class="n">watch</span><span class="o">(</span><span class="n">child2</span><span class="o">)</span>
+<span class="n">child2</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span> <span class="c1">// 确认它还活着</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+
+<span class="n">child2</span> <span class="o">!</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="s">&quot;CRASH&quot;</span><span class="o">)</span> <span class="c1">// 上溯失败</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="nc">Terminated</span><span class="o">(</span><span class="n">child2</span><span class="o">))</span>
+</pre></div>
+</div>
+<p>监管者自己是被
+<tt class="xref py py-class docutils literal"><span class="pre">ActorSystem</span></tt> 的顶级actor所监管的。顶级actor的缺省策略是对所有的
+<tt class="docutils literal"><span class="pre">Exception</span></tt> 情况 (注意
+<tt class="docutils literal"><span class="pre">ActorInitializationException</span></tt> 和 <tt class="docutils literal"><span class="pre">ActorKilledException</span></tt> 是例外)进行重启.
+    由于缺省的重启指令会杀死所有的子actor，我们知道我们可怜的子actor最终无法从这个失败中幸免。</p>
+<p>如果这不是我们希望的行为 (这取决于实际用例), 我们需要使用一个不同的监管者来覆盖这个行为。</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Supervisor2</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">import</span> <span class="nn">akka.actor.OneForOneStrategy</span>
+  <span class="k">import</span> <span class="nn">akka.actor.SupervisorStrategy._</span>
+  <span class="k">import</span> <span class="nn">akka.util.duration._</span>
+
+  <span class="k">override</span> <span class="k">val</span> <span class="n">supervisorStrategy</span> <span class="k">=</span> <span class="nc">OneForOneStrategy</span><span class="o">(</span><span class="n">maxNrOfRetries</span> <span class="k">=</span> <span class="mi">10</span><span class="o">,</span> <span class="n">withinTimeRange</span> <span class="k">=</span> <span class="mi">1</span> <span class="n">minute</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">ArithmeticException</span>      <span class="k">⇒</span> <span class="nc">Resume</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">NullPointerException</span>     <span class="k">⇒</span> <span class="nc">Restart</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">IllegalArgumentException</span> <span class="k">⇒</span> <span class="nc">Stop</span>
+    <span class="k">case</span> <span class="n">_:</span> <span class="nc">Exception</span>                <span class="k">⇒</span> <span class="nc">Escalate</span>
+  <span class="o">}</span>
+
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Props</span> <span class="k">⇒</span> <span class="kt">sender</span> <span class="kt">!</span> <span class="kt">context.actorOf</span><span class="o">(</span><span class="kt">p</span><span class="o">)</span>
+  <span class="o">}</span>
+  <span class="c1">// 覆盖在重启时杀死所有子actor的缺省行为</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">preRestart</span><span class="o">(</span><span class="n">cause</span><span class="k">:</span> <span class="kt">Throwable</span><span class="o">,</span> <span class="n">msg</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Any</span><span class="o">])</span> <span class="o">{}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>在这个父actor之下，子actor在上溯的重启中得以幸免，如以下最后的测试:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">supervisor2</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">[</span><span class="kt">Supervisor2</span><span class="o">],</span> <span class="s">&quot;supervisor2&quot;</span><span class="o">)</span>
+
+<span class="n">supervisor2</span> <span class="o">!</span> <span class="nc">Props</span><span class="o">[</span><span class="kt">Child</span><span class="o">]</span>
+<span class="k">val</span> <span class="n">child3</span> <span class="k">=</span> <span class="n">expectMsgType</span><span class="o">[</span><span class="kt">ActorRef</span><span class="o">]</span>
+
+<span class="n">child3</span> <span class="o">!</span> <span class="mi">23</span>
+<span class="n">child3</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">23</span><span class="o">)</span>
+
+<span class="n">child3</span> <span class="o">!</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="s">&quot;CRASH&quot;</span><span class="o">)</span>
+<span class="n">child3</span> <span class="o">!</span> <span class="s">&quot;get&quot;</span>
+<span class="n">expectMsg</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

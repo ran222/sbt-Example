@@ -1,0 +1,218 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>åºè¨€ &mdash; Akka æ–‡æ¡£</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="next" title="What is Akka?" href="what-is-akka.html" />
+    <link rel="prev" title="Contents" href="../index.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">åºè¨€</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="what-is-akka.html" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html">Akkaæ˜¯ä»€ä¹ˆ?</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="introduction">
+<h1>åºè¨€</h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what-is-akka.html" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html">Akkaæ˜¯ä»€ä¹ˆ?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#akka-implements-a-unique-hybrid" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#akka-implements-a-unique-hybrid">Akkaå®ç°äº†ç‹¬ç‰¹çš„æ··åˆæ¨¡å‹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#scala-and-java-apis" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#scala-and-java-apis">Scala å’Œ Java API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#akka-can-be-used-in-two-different-ways" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#akka-can-be-used-in-two-different-ways">Akkaå¯ä»¥ä»¥ä¸¤ç§ä¸åŒçš„æ–¹å¼æ¥ä½¿ç”¨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#what-happened-to-cloudy-akka" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#what-happened-to-cloudy-akka">Cloudy Akka å¦‚ä½•äº†?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#typesafe-stack" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#typesafe-stack">Typesafe Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-akka.html#typesafe-console" tppabs="http://www.gtan.com/akka_doc/intro/what-is-akka.html#typesafe-console">Typesafeæ§åˆ¶å°</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="why-akka.html" tppabs="http://www.gtan.com/akka_doc/intro/why-akka.html">ä¸ºä»€ä¹ˆä½¿ç”¨Akka?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="why-akka.html#what-features-can-the-akka-platform-offer-over-the-competition" tppabs="http://www.gtan.com/akka_doc/intro/why-akka.html#what-features-can-the-akka-platform-offer-over-the-competition">>Akkaå¹³å°æä¾›å“ªäº›æœ‰ç«äº‰åŠ›çš„åŠŸèƒ½?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why-akka.html#what-s-a-good-use-case-for-akka" tppabs="http://www.gtan.com/akka_doc/intro/why-akka.html#what-s-a-good-use-case-for-akka">ä»€ä¹ˆåœºæ™¯ä¸‹ç‰¹åˆ«é€‚åˆä½¿ç”¨Akka?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html">å…¥é—¨</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#prerequisites" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#prerequisites">å‡†å¤‡å·¥ä½œ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#download" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#download">ä¸‹è½½</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#modules" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#modules">æ¨¡å—</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-a-release-distribution" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-a-release-distribution">ä½¿ç”¨å‘å¸ƒç‰ˆ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-a-snapshot-version" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-a-snapshot-version">ä½¿ç”¨å¿«ç…§ç‰ˆ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#microkernel" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#microkernel">å¾®å†…æ ¸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-a-build-tool" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-a-build-tool">ä½¿ç”¨buildå·¥å…·</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-akka-with-maven" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-akka-with-maven">ä¸Mavenä¸€èµ·ä½¿ç”¨Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-akka-with-sbt" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-akka-with-sbt">ä¸SBTä¸€èµ·ä½¿ç”¨Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-akka-with-eclipse" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-akka-with-eclipse">ä¸Eclipseä¸€èµ·ä½¿ç”¨Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#using-akka-with-intellij-idea" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#using-akka-with-intellij-idea">ä¸IntelliJ IDEAä¸€èµ·ä½¿ç”¨Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#build-from-sources" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#build-from-sources">ä»æºç ç¼–è¯‘</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started.html#need-help" tppabs="http://www.gtan.com/akka_doc/intro/getting-started.html#need-help">éœ€è¦å¸®åŠ©?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started-first-scala.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html">å…¥é—¨æŒ‡å— (Scala): ç¬¬ä¸€ç« </a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#introduction" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#introduction">åºè¨€</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#prerequisites" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#prerequisites">å‡†å¤‡å·¥ä½œ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#downloading-and-installing-akka" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#downloading-and-installing-akka">ä¸‹è½½å®‰è£… Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#downloading-and-installing-scala" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#downloading-and-installing-scala">ä¸‹è½½å®‰è£… Scala</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#downloading-and-installing-sbt" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#downloading-and-installing-sbt">Downloading and installing SBT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#creating-an-akka-sbt-project" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#creating-an-akka-sbt-project">åˆ›å»ºAkka SBTé¡¹ç›®</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#start-writing-the-code" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#start-writing-the-code">å¼€å§‹ç¼–å†™ä»£ç </a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#creating-the-messages" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#creating-the-messages">åˆ›å»ºæ¶ˆæ¯</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#creating-the-worker" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#creating-the-worker">åˆ›å»ºå·¥ä½œ actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#creating-the-master" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#creating-the-master">åˆ›å»ºä¸»actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#creating-the-result-listener" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#creating-the-result-listener">åˆ›å»ºè®¡ç®—ç»“æœç›‘å¬è€…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#bootstrap-the-calculation" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#bootstrap-the-calculation">å¯åŠ¨è®¡ç®—</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#run-it-as-a-command-line-application" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#run-it-as-a-command-line-application">ä½œä¸ºå‘½ä»¤è¡Œç¨‹åºè¿è¡Œ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#run-it-inside-sbt" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#run-it-inside-sbt">åœ¨SBTä¸­è¿è¡Œ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#overriding-configuration-externally-optional" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#overriding-configuration-externally-optional">ä»å¤–éƒ¨ä¿®æ”¹é…ç½® (å¯é€‰)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-scala.html#conclusion" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-scala.html#conclusion">æ€»ç»“</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started-first-java.html" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html">å…¥é—¨æŒ‡å— (Java): ç¬¬ä¸€ç« </a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#introduction" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#tutorial-source-code" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#tutorial-source-code">Tutorial source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#prerequisites" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#downloading-and-installing-akka" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#downloading-and-installing-akka">Downloading and installing Akka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#downloading-and-installing-maven" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#downloading-and-installing-maven">Downloading and installing Maven</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#creating-an-akka-maven-project" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#creating-an-akka-maven-project">Creating an Akka Maven project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#start-writing-the-code" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#start-writing-the-code">Start writing the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#creating-the-messages" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#creating-the-messages">Creating the messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#creating-the-worker" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#creating-the-worker">Creating the worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#creating-the-master" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#creating-the-master">Creating the master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#creating-the-result-listener" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#creating-the-result-listener">Creating the result listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#bootstrap-the-calculation" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#bootstrap-the-calculation">Bootstrap the calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#run-it-as-a-command-line-application" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#run-it-as-a-command-line-application">Run it as a command line application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#run-it-inside-maven" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#run-it-inside-maven">Run it inside Maven</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#overriding-configuration-externally-optional" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#overriding-configuration-externally-optional">Overriding Configuration Externally (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started-first-java.html#conclusion" tppabs="http://www.gtan.com/akka_doc/intro/getting-started-first-java.html#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment-scenarios.html" tppabs="http://www.gtan.com/akka_doc/intro/deployment-scenarios.html">ç”¨ä¾‹ä¸éƒ¨ç½²åœºæ™¯</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment-scenarios.html#how-can-i-use-and-deploy-akka" tppabs="http://www.gtan.com/akka_doc/intro/deployment-scenarios.html#how-can-i-use-and-deploy-akka">æˆ‘è¯¥å¦‚ä½•ä½¿ç”¨å’Œéƒ¨ç½² Akka?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html" tppabs="http://www.gtan.com/akka_doc/intro/use-cases.html">Akkaä½¿ç”¨å®ä¾‹</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#here-are-some-of-the-areas-where-akka-is-being-deployed-into-production" tppabs="http://www.gtan.com/akka_doc/intro/use-cases.html#here-are-some-of-the-areas-where-akka-is-being-deployed-into-production">è¿™é‡Œæ˜¯ä¸€äº›å°†Akkaç”¨äºç”Ÿäº§ç¯å¢ƒçš„å®ä¾‹</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

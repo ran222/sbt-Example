@@ -1,0 +1,368 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dataflow Concurrency (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Fault Tolerance (Scala)" href="fault-tolerance.html" />
+    <link rel="prev" title="Futures (Scala)" href="futures.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›å¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">æ•°æ®æµå¹¶å‘ (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·şÎñÆ÷±¨¸æ¸ÃÎÄ¼şÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="fault-tolerance.html" tppabs="http://www.gtan.com/akka_doc/scala/fault-tolerance.html">å®¹é”™æ€§ (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="futures.html" tppabs="http://www.gtan.com/akka_doc/scala/futures.html">Futures (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="dataflow-concurrency-scala">
+<h1>æ•°æ®æµå¹¶å‘ (Scala)</h1>
+<div class="section" id="description">
+<h2>æè¿°</h2>
+<p>Akka å®ç°äº†ä¸€ç§ <a class="reference external" href="javascript:if(confirm('http://www.mozart-oz.org/documentation/tutorial/node8.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.mozart-oz.org/documentation/tutorial/node8.html#chapter.concurrency'" tppabs="http://www.mozart-oz.org/documentation/tutorial/node8.html#chapter.concurrency">Ozé£æ ¼çš„æ•°æ®æµå¹¶å‘</a> ï¼Œå®ƒä½¿ç”¨äº†é’ˆå¯¹ <a class="reference internal" href="futures.html#futures-scala" tppabs="http://www.gtan.com/akka_doc/scala/futures.html#futures-scala"><em>Futures (Scala)</em> çš„ç‰¹æ®ŠAPI</a>ï¼Œ
+    è¿™å¥—APIå…è®¸å•èµ‹å€¼çš„å˜é‡å’Œå¤šä¸ªè½»é‡çº§ï¼ˆåŸºäºäº‹ä»¶çš„ï¼‰è¿›ç¨‹/çº¿ç¨‹ã€‚</p>
+<p>æ•°æ®æµå¹¶å‘æ˜¯ç¡®å®šçš„ã€‚è¿™æ„å‘³ç€å®ƒçš„è¡Œä¸ºæ°¸è¿œæ˜¯ä¸€è‡´çš„ã€‚å¦‚æœä½ ä¸€æ¬¡è¿è¡Œå®ƒäº§ç”Ÿçš„è¾“å‡ºæ˜¯5ï¼Œé‚£ä¹ˆå³ä½¿è¿è¡Œä¸€åƒä¸‡æ¬¡ï¼Œ<strong>æ¯æ¬¡</strong>çš„è¾“å‡ºä»ç„¶æ˜¯5ã€‚ ç›¸åï¼Œå¦‚æœæ¯ä¸€æ¬¡è¿è¡Œäº§ç”Ÿäº†æ­»é”ï¼Œä»¥åçš„ <strong>æ¯æ¬¡è¿è¡Œ</strong> éƒ½ä¼šæ­»é”.
+    å¹¶ä¸”ï¼Œé¡ºåºä»£ç å’Œå¹¶å‘ä»£ç ä¹‹é—´ <strong>æ²¡æœ‰åŒºåˆ«</strong> ã€‚ è¿™äº›å±æ€§ä½¿æ•°æ®æµå¹¶å‘éå¸¸å®¹æ˜“å¯¹å¹¶å‘è¿›è¡Œç†è§£ã€‚å…¶ä¸­çš„é™åˆ¶æ˜¯ä»£ç å¿…é¡»æ˜¯æ²¡æœ‰å‰¯ä½œç”¨çš„, e.g. ç¡®å®šçš„. ä½ ä¸èƒ½ä½¿ç”¨å¼‚å¸¸ï¼Œæ—¶é—´, éšæœºæ•°ç­‰ç­‰, è€Œæ˜¯å°†ä½¿ç”¨æ•°æ®æµå¹¶å‘çš„è¿™ä¸€éƒ¨åˆ†ä»£ç è§†ä¸ºæ‹¥æœ‰è¾“å…¥å’Œè¾“å‡ºçš„çº¯å‡½æ•°.</p>
+<p>å­¦ä¹ å¦‚ä½•ä½¿ç”¨æ•°æ®æµå¹¶å‘ç¼–ç¨‹çš„æœ€ä½³é€”å¾„æ˜¯é˜…è¯»ç»å…¸ä¹¦ç± <a class="reference external" href="javascript:if(confirm('http://www.info.ucl.ac.be/~pvr/book.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.info.ucl.ac.be/~pvr/book.html'" tppabs="http://www.info.ucl.ac.be/~pvr/book.html">Concepts, Techniques, and Models of Computer Programming</a>. ä½œè€…æ˜¯Peter Van Roy å’Œ Seif Haridi.</p>
+<p>æœ¬æ–‡æ¡£åº”æ›´åŠ å®Œå–„ï¼Œæˆ‘ä»¬ä¼šå°½å¿«æ”¹è¿›ã€‚å½“å‰ï¼Œé™¤äº†ä»¥ä¸Šåˆ—å‡ºçš„å…³äºæ•°æ®æµå¹¶å‘çš„èµ„æºå¤–ï¼Œæˆ‘æ¨èé˜…è¯» GPars å®ç°çš„æ–‡æ¡£ï¼Œè¿™ä¸€éƒ¨åˆ†å—Akkaå®ç°çš„å½±å“éå¸¸å¤§:</p>
+<ul class="simple">
+<li><a class="reference external" href="javascript:if(confirm('http://gpars.codehaus.org/Dataflow  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://gpars.codehaus.org/Dataflow'" tppabs="http://gpars.codehaus.org/Dataflow">http://gpars.codehaus.org/Dataflow</a></li>
+<li><a class="reference external" href="javascript:if(confirm('http://www.gpars.org/guide/guide/7.%20Dataflow%20Concurrency.html  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gpars.org/guide/guide/7.%20Dataflow%20Concurrency.html'" tppabs="http://www.gpars.org/guide/guide/7.%20Dataflow%20Concurrency.html">http://www.gpars.org/guide/guide/7.%20Dataflow%20Concurrency.html</a></li>
+</ul>
+</div>
+<div class="section" id="getting-started">
+<h2>å…¥é—¨</h2>
+<p>ä½¿ç”¨æ•°æ®æµAPIçš„å‰ææ˜¯è£…è½½Scala Delimited Continuationsæ’ä»¶. è¦åœ¨sbté‡Œè£…è½½æ­¤æ’ä»¶, ä½ çš„é¡¹ç›®å¿…é¡»ç»§æ‰¿ <tt class="docutils literal"><span class="pre">AutoCompilerPlugins</span></tt> trait å¹¶åŒ…å«ä¸‹ä¾‹æ‰€ç¤ºçš„é…ç½®:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">autoCompilerPlugins</span> <span class="o">:=</span> <span class="kc">true</span><span class="o">,</span>
+<span class="n">libraryDependencies</span> <span class="o">&lt;+=</span> <span class="n">scalaVersion</span> <span class="o">{</span> <span class="n">v</span> <span class="k">=&gt;</span> <span class="n">compilerPlugin</span><span class="o">(</span><span class="s">&quot;org.scala-lang.plugins&quot;</span> <span class="o">%</span> <span class="s">&quot;continuations&quot;</span> <span class="o">%</span> <span class="o">&lt;</span><span class="n">scalaVersion</span><span class="o">&gt;)</span> <span class="o">},</span>
+<span class="n">scalacOptions</span> <span class="o">+=</span> <span class="s">&quot;-P:continuations:enable&quot;</span><span class="o">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dataflow-variables">
+<h2>æ•°æ®æµå˜é‡</h2>
+<p>æ•°æ®æµå˜é‡å®šä¹‰äº†4ç§ä¸åŒçš„æ“ä½œ:</p>
+<ol class="arabic simple">
+<li>å®šä¹‰æ•°æ®æµå˜é‡</li>
+</ol>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">val</span> <span class="n">x</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>ç­‰å¾…æ•°æ®æµå˜é‡è¢«ç»‘å®š (å¿…é¡»åŒ…å«åœ¨ä¸‹ä¸€éƒ¨åˆ†æ‰€æè¿°çš„ <tt class="docutils literal"><span class="pre">Future.flow</span></tt> å—ä¸­)</li>
+</ol>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">x</span><span class="o">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>ç»‘å®šæ•°æ®æµå˜é‡ (å¿…é¡»åŒ…å«åœ¨ä¸‹ä¸€éƒ¨åˆ†æ‰€æè¿°çš„ <tt class="docutils literal"><span class="pre">Future.flow</span></tt> å—ä¸­)</li>
+</ol>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>æ•°æ®æµå˜é‡ä¸ Future ç»‘å®š(å¿…é¡»åŒ…å«åœ¨ä¸‹ä¸€éƒ¨åˆ†æ‰€æè¿°çš„ <tt class="docutils literal"><span class="pre">Future.flow</span></tt> å—ä¸­)</li>
+</ol>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>ä¸€ä¸ªæ•°æ®æµå˜é‡åªèƒ½åšä¸€æ¬¡ç»‘å®š. åç»­çš„ç»‘å®šä¼å›¾å°†è¢«å¿½ç•¥ã€‚</p>
+</div>
+<div class="section" id="dataflow-delimiter">
+<h2>Dataflow Delimiter</h2>
+<p>Akkaä¸­çš„æ•°æ®æµå®ç°ä½¿ç”¨äº†Scalaçš„ Delimited Continuations. è¦ä½¿ç”¨æ•°æ®æµAPIï¼Œä»£ç å¿…é¡»åŒ…å«åœ¨ <tt class="docutils literal"><span class="pre">Future.flow</span></tt> å—ä¸­. ä¾‹å¦‚:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">Future.flow</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">dispatcher</span> <span class="k">=</span> <span class="o">...</span>
+
+<span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+<span class="k">val</span> <span class="n">b</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+<span class="k">val</span> <span class="n">c</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+
+<span class="n">flow</span> <span class="o">{</span>
+  <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="o">(</span><span class="n">a</span><span class="o">()</span> <span class="o">+</span> <span class="n">b</span><span class="o">())</span>
+<span class="o">}</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">timeout</span><span class="o">)</span>
+</pre></div>
+</div>
+<p> <tt class="docutils literal"><span class="pre">flow</span></tt> æ–¹æ³•è¿˜è¿”å›ä¸€ä¸ª <tt class="docutils literal"><span class="pre">Future</span></tt> æ¥è¡¨ç¤ºæ‰€åŒ…å«çš„è¡¨è¾¾å¼çš„ç»“æœ, æ‰€ä»¥å‰ä¾‹ä¹Ÿå¯ä»¥è¿™ä¹ˆå†™:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">Future.flow</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">dispatcher</span> <span class="k">=</span> <span class="o">...</span>
+
+<span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+<span class="k">val</span> <span class="n">b</span> <span class="k">=</span> <span class="nc">Future</span><span class="o">(</span> <span class="o">...</span> <span class="o">)</span>
+
+<span class="k">val</span> <span class="n">c</span> <span class="k">=</span> <span class="n">flow</span> <span class="o">{</span>
+  <span class="n">a</span><span class="o">()</span> <span class="o">+</span> <span class="n">b</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">Await</span><span class="o">.</span><span class="n">result</span><span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="n">timeout</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>ç¤ºä¾‹</h2>
+<p>å¤§éƒ¨åˆ†ç¤ºä¾‹æ˜¯æ‘˜è‡ª <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Oz_(programming_language)  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Oz_(programming_language)'" tppabs="http://en.wikipedia.org/wiki/Oz_(programming_language)">Oz wikipedia é¡µé¢</a></p>
+<p>è¦è¿è¡Œè¿™äº›ç¤ºä¾‹:</p>
+<ol class="arabic simple">
+<li>è¿è¡Œ REPL</li>
+</ol>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">$</span> <span class="n">sbt</span>
+<span class="o">&gt;</span> <span class="n">project</span> <span class="n">akka</span><span class="o">-</span><span class="n">actor</span>
+<span class="o">&gt;</span> <span class="n">console</span>
+</pre></div>
+</div>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">Welcome</span> <span class="n">to</span> <span class="nc">Scala</span> <span class="n">version</span> <span class="mf">2.9</span><span class="o">.</span><span class="mi">1</span> <span class="o">(</span><span class="nc">Java</span> <span class="nc">HotSpot</span><span class="o">(</span><span class="nc">TM</span><span class="o">)</span> <span class="mi">64</span><span class="o">-</span><span class="nc">Bit</span> <span class="nc">Server</span> <span class="nc">VM</span><span class="o">,</span> <span class="nc">Java</span> <span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="n">_25</span><span class="o">).</span>
+<span class="nc">Type</span> <span class="n">in</span> <span class="n">expressions</span> <span class="n">to</span> <span class="n">have</span> <span class="n">them</span> <span class="n">evaluated</span><span class="o">.</span>
+<span class="nc">Type</span> <span class="k">:</span><span class="kt">help</span> <span class="kt">for</span> <span class="kt">more</span> <span class="kt">information.</span>
+
+<span class="kt">scala&gt;</span>
+</pre></div>
+</div>
+<p>2. å°†ä¸‹åˆ—ç¤ºä¾‹ä»£ç ç²˜è´´è‡³ Scala REPL.
+æ³¨æ„ï¼šè¯·ä¸è¦è¯•å›¾è¿è¡ŒOzçš„ç‰ˆæœ¬ï¼ŒæŠŠå®ƒä»¬æ”¾åœ¨è¿™é‡Œåªæ˜¯ä½œä¸ºå‚è€ƒã€‚</p>
+<ol class="arabic simple" start="3">
+<li>åŠ æ²¹ã€‚</li>
+</ol>
+<div class="section" id="simple-dataflowvariable-example">
+<h3>ç®€å•çš„ DataFlowVariable ç¤ºä¾‹</h3>
+<p>è¿™ä¸ªä¾‹å­æ‘˜è‡ª Oz wikipedia é¡µé¢: <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Oz_(programming_language  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Oz_(programming_language'" tppabs="http://en.wikipedia.org/wiki/Oz_(programming_language">http://en.wikipedia.org/wiki/Oz_(programming_language</a>).
+å¯ä»¥çœ‹æˆæ•°æ®æµå¹¶å‘çš„ &#8220;Hello World&#8221; .</p>
+<p>Ozä¸­çš„ä¾‹å­:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">thread</span>
+  <span class="n">Z</span> <span class="o">=</span> <span class="n">X</span><span class="o">+</span><span class="n">Y</span>     <span class="o">%</span> <span class="n">will</span> <span class="n">wait</span> <span class="k">until</span> <span class="n">both</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">are</span> <span class="n">bound</span> <span class="n">to</span> <span class="n">a</span> <span class="n">value</span><span class="o">.</span>
+  <span class="p">{</span><span class="no">Browse</span> <span class="n">Z</span><span class="p">}</span>  <span class="o">%</span> <span class="n">shows</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">Z</span><span class="o">.</span>
+<span class="k">end</span>
+<span class="n">thread</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">40</span> <span class="k">end</span>
+<span class="n">thread</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">end</span>
+</pre></div>
+</div>
+<p>Akkaä¸­çš„ä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch._</span>
+<span class="k">import</span> <span class="nn">Future.flow</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">dispatcher</span> <span class="k">=</span> <span class="o">...</span>
+
+<span class="k">val</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+
+<span class="n">flow</span> <span class="o">{</span>
+  <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="o">()</span> <span class="o">+</span> <span class="n">y</span><span class="o">()</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;z = &quot;</span> <span class="o">+</span> <span class="n">z</span><span class="o">())</span>
+<span class="o">}</span>
+<span class="n">flow</span> <span class="o">{</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">40</span> <span class="o">}</span>
+<span class="n">flow</span> <span class="o">{</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-of-using-dataflowvariable-with-recursion">
+<h3>ä½¿ç”¨ DataFlowVariable å’Œé€’å½’å’Œä¾‹å­</h3>
+<p>ä½¿ç”¨ DataFlowVariable å’Œé€’å½’æ¥æ±‚å’Œ.</p>
+<p>Ozä¸­çš„ä¾‹å­:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">fun</span> <span class="p">{</span><span class="no">Ints</span> <span class="n">N</span> <span class="no">Max</span><span class="p">}</span>
+  <span class="k">if</span> <span class="n">N</span> <span class="o">==</span> <span class="no">Max</span> <span class="k">then</span> <span class="kp">nil</span>
+  <span class="k">else</span>
+    <span class="p">{</span><span class="no">Delay</span> <span class="mi">1000</span><span class="p">}</span>
+    <span class="n">N</span><span class="o">|</span><span class="p">{</span><span class="no">Ints</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span> <span class="no">Max</span><span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">fun</span> <span class="p">{</span><span class="no">Sum</span> <span class="n">S</span> <span class="no">Stream</span><span class="p">}</span>
+  <span class="k">case</span> <span class="no">Stream</span> <span class="n">of</span> <span class="kp">nil</span> <span class="k">then</span> <span class="n">S</span>
+  <span class="o">[]</span> <span class="n">H</span><span class="o">|</span><span class="n">T</span> <span class="k">then</span> <span class="n">S</span><span class="o">|</span><span class="p">{</span><span class="no">Sum</span> <span class="n">H</span><span class="o">+</span><span class="n">S</span> <span class="n">T</span><span class="p">}</span> <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">local</span> <span class="n">X</span> <span class="n">Y</span> <span class="k">in</span>
+  <span class="n">thread</span> <span class="n">X</span> <span class="o">=</span> <span class="p">{</span><span class="no">Ints</span> <span class="mi">0</span> <span class="mi">1000</span><span class="p">}</span> <span class="k">end</span>
+  <span class="n">thread</span> <span class="n">Y</span> <span class="o">=</span> <span class="p">{</span><span class="no">Sum</span> <span class="mi">0</span> <span class="n">X</span><span class="p">}</span> <span class="k">end</span>
+  <span class="p">{</span><span class="no">Browse</span> <span class="n">Y</span><span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Akkaä¸­çš„ä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch._</span>
+<span class="k">import</span> <span class="nn">Future.flow</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">dispatcher</span> <span class="k">=</span> <span class="o">...</span>
+
+<span class="k">def</span> <span class="n">ints</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">max</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">max</span><span class="o">)</span> <span class="nc">Nil</span>
+  <span class="k">else</span> <span class="n">n</span> <span class="o">::</span> <span class="n">ints</span><span class="o">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">max</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="k">def</span> <span class="n">sum</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">stream</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">stream</span> <span class="k">match</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="n">s</span> <span class="o">::</span> <span class="nc">Nil</span>
+  <span class="k">case</span> <span class="n">h</span> <span class="o">::</span> <span class="n">t</span> <span class="k">=&gt;</span> <span class="n">s</span> <span class="o">::</span> <span class="n">sum</span><span class="o">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">s</span><span class="o">,</span> <span class="n">t</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="k">val</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]()</span>
+
+<span class="n">flow</span> <span class="o">{</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">ints</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1000</span><span class="o">)</span> <span class="o">}</span>
+<span class="n">flow</span> <span class="o">{</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">sum</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="n">x</span><span class="o">())</span> <span class="o">}</span>
+<span class="n">flow</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;List of sums: &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">())</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-using-concurrent-futures">
+<h3>ä½¿ç”¨å¹¶å‘ Future çš„ä¾‹å­</h3>
+<p>æ¼”ç¤ºå¦‚ä½•è®©ä¸€ä¸ªè®¡ç®—åœ¨å¦ä¸€ä¸ªçº¿ç¨‹ä¸­è¿è¡Œ.</p>
+<p>Akkaä¸­çš„ä¾‹å­:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.dispatch._</span>
+<span class="k">import</span> <span class="nn">Future.flow</span>
+<span class="k">implicit</span> <span class="k">val</span> <span class="n">dispatcher</span> <span class="k">=</span> <span class="o">...</span>
+
+<span class="c1">// åˆ›å»º4ä¸ª &#39;Int&#39; æ•°æ®æµå˜é‡</span>
+<span class="k">val</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">z</span><span class="o">,</span> <span class="n">v</span> <span class="k">=</span> <span class="nc">Promise</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+
+<span class="n">flow</span> <span class="o">{</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Thread &#39;main&#39;&quot;</span><span class="o">)</span>
+
+  <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;&#39;x&#39; set to: &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">())</span>
+
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Waiting for &#39;y&#39; to be set...&quot;</span><span class="o">)</span>
+
+  <span class="k">if</span> <span class="o">(</span><span class="n">x</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">y</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">x</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;&#39;z&#39; set to &#39;x&#39;: &quot;</span> <span class="o">+</span> <span class="n">z</span><span class="o">())</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">y</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;&#39;z&#39; set to &#39;y&#39;: &quot;</span> <span class="o">+</span> <span class="n">z</span><span class="o">())</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">flow</span> <span class="o">{</span>
+  <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="nc">Future</span> <span class="o">{</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Thread &#39;setY&#39;, sleeping&quot;</span><span class="o">)</span>
+    <span class="nc">Thread</span><span class="o">.</span><span class="n">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">)</span>
+    <span class="mi">2</span>
+  <span class="o">}</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;&#39;y&#39; set to: &quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">())</span>
+<span class="o">}</span>
+
+<span class="n">flow</span> <span class="o">{</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;Thread &#39;setV&#39;&quot;</span><span class="o">)</span>
+  <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="n">y</span>
+  <span class="n">println</span><span class="o">(</span><span class="s">&quot;&#39;v&#39; set to &#39;y&#39;: &quot;</span> <span class="o">+</span> <span class="n">v</span><span class="o">())</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼şÎŞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·şÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

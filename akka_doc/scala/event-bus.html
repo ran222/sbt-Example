@@ -1,0 +1,267 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Event Bus (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Scheduler (Scala)" href="scheduler.html" />
+    <link rel="prev" title="Logging (Scala)" href="logging.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">返回广谈公益</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">事件总线 (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ������������ļ�δ�ҵ���  \n\n�����ڷ������ϴ���?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="scheduler.html" tppabs="http://www.gtan.com/akka_doc/scala/scheduler.html">任务调度器 (Scala)</a> <span class="divider">»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">目录</a>
+              </li>
+              <li>
+                <span class="divider">«</span> <a href="logging.html" tppabs="http://www.gtan.com/akka_doc/scala/logging.html">日志 (Scala)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                版本 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="event-bus-scala">
+<span id="id1"></span><h1>事件总线 (Scala)</h1>
+<p><tt class="xref py py-class docutils literal"><span class="pre">事件总线</span></tt>最初是为了提供一种向多个actor群发消息的方法，之后它被一般化成一组实现一个简单接口的可组合的trait
+ :</p>
+<ul class="simple">
+<li><tt class="xref py py-meth docutils literal"><span class="pre">subscribe(subscriber:</span> <span class="pre">Subscriber,</span> <span class="pre">classifier:</span> <span class="pre">Classifier):</span> <span class="pre">Boolean</span></tt>
+为subscriber订阅classifier类型的事件</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">unsubscribe(subscriber:</span> <span class="pre">Subscriber,</span> <span class="pre">classifier:</span> <span class="pre">Classifier):</span> <span class="pre">Boolean</span></tt>
+取消订阅</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">unsubscribe(subscriber:</span> <span class="pre">Subscriber)</span></tt>
+取消subscriber的所有订阅</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">publish(event:</span> <span class="pre">Event)</span></tt>
+    发布一个事件，首先根据指定的总线来划分类别(参阅 <a class="reference internal" href="#classifiers">Classifier</a>)，然后发送给所有订阅了该类别的对象</li>
+</ul>
+<p>这个机制在Akka的多个地方用到，例如
+<a class="reference internal" href="actors.html#deathwatch-scala" tppabs="http://www.gtan.com/akka_doc/scala/actors.html#deathwatch-scala"><em>DeathWatch</em></a> 和 <a class="reference internal" href="#event-stream">事件流</a>.
+    具体实现可以使用下面列出的特定的工具块。</p>
+<p>一个事件总线必须定义以下抽象类型：</p>
+<ul class="simple">
+<li><tt class="xref py py-class docutils literal"><span class="pre">Event</span></tt> 所有发布到该总线上的事件的类型</li>
+<li><tt class="xref py py-class docutils literal"><span class="pre">Subscriber</span></tt> 允许注册到该总线上的订阅者的类型</li>
+<li><tt class="xref py py-class docutils literal"><span class="pre">Classifier</span></tt> 定义用来派发消息时选择订阅者的分类器</li>
+</ul>
+<p>下面的 trait 在这些类型中仍然是一般化的，但在任何具体的实现中，它们必须被定义。</p>
+<div class="section" id="classifiers">
+<h2>类别（Classifiers）</h2>
+<p>这里提到的类别是Akka发布包的一部分，如果没找到合适的就实现一个自己的类别，并不困难，到 <a class="reference external" href="javascript:if(confirm('https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/event/EventBus.scala  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/event/EventBus.scala'" tppabs="https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/event/EventBus.scala">github</a>
+    了解已有类别的实现。</p>
+<div class="section" id="lookup-classification">
+<h3>查找分类法</h3>
+<p>最简单的分类法是给每个事件一个随机的类别，并为每一种类别维护一组订阅者。这可以用在收音机上选台来类比。
+<tt class="xref py py-class docutils literal"><span class="pre">LookupClassification</span></tt> trait 仍然是一般化的，抽象了如何比较订阅者，以及具体的分类方法。需要实现的方法如下:</p>
+<ul class="simple">
+<li><tt class="xref py py-meth docutils literal"><span class="pre">classify(event:</span> <span class="pre">Event):</span> <span class="pre">Classifier</span></tt>
+    用于从进入的事件中提取类别。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">compareSubscribers(a:</span> <span class="pre">Subscriber,</span> <span class="pre">b:</span> <span class="pre">Subscriber):</span> <span class="pre">Int</span></tt>
+    必须为订阅者定义一个偏序规则， 用 <tt class="xref py py-meth docutils literal"><span class="pre">java.lang.Comparable.compare</span></tt> 来表示.</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">publish(event:</span> <span class="pre">Event,</span> <span class="pre">subscriber:</span> <span class="pre">Subscriber)</span></tt>
+    会对每一个事件的所有订阅到该事件的类别的订阅者调用。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">mapSize:</span> <span class="pre">Int</span></tt>
+    决定内部使用的索引数据结构的初始大小 (i.e. 预计的不同类别的名字.</li>
+</ul>
+<p>这种分类法在某个事件没有任何订阅者时是高效的。</p>
+</div>
+<div class="section" id="subchannel-classification">
+<h3>子频道分类法</h3>
+<p>如果类别构成一个树形结构而且订阅可以不仅针对叶子结点，这种分类法可能是最合适的。 这可以类比成在分过类的多个收音机频道中进行调谐。
+开发这种分类法是为了用在类别正好是事件的JVM类并且订阅者可能对某个类的所有子类的订阅感兴趣的场合，但是它可以用在任何树形类别体系。这种类别的抽象成员包括：</p>
+<ul class="simple">
+<li><tt class="xref py py-obj docutils literal"><span class="pre">subclassification:</span> <span class="pre">Subclassification[Classifier]</span></tt> 是一个提供 <tt class="xref py py-meth docutils literal"><span class="pre">isEqual(a:</span> <span class="pre">Classifier,</span> <span class="pre">b:</span> <span class="pre">Classifier)</span></tt> 和
+<tt class="xref py py-meth docutils literal"><span class="pre">isSubclass(a:</span> <span class="pre">Classifier,</span> <span class="pre">b:</span> <span class="pre">Classifier)</span></tt> 的对象，这些方法可以被类别中的其它方法所使用。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">classify(event:</span> <span class="pre">Event):</span> <span class="pre">Classifier</span></tt>
+    用于从传入的事件中提取类别</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">publish(event:</span> <span class="pre">Event,</span> <span class="pre">subscriber:</span> <span class="pre">Subscriber)</span></tt>
+    会为每个事件的所有注册到其类别的订阅者调用。</li>
+</ul>
+<p>这种分类法在某事件没有任何订阅者时也很高效，但它使用一个保守锁来对共内部的类别缓存进行同步，所以不适合订阅关系以很高的频率变化的场合（记住发送一个消息来“打开”一个类别
+    需要重新检查所有之前的订阅）。</p>
+</div>
+<div class="section" id="scanning-classification">
+<h3>扫描分类法</h3>
+<p>上一种分类法是为严格的树形多类别订阅设计的，而这个分类法是用在覆盖事件空间的多个非树形结构的可能互相重叠的类别上。
+    这可以用有地理限制的（比如老旧的收音机信号传播方式）的（可能有多个）收音机频道之间进行调谐。这种类别中的抽象成员包括:</p>
+<ul class="simple">
+<li><tt class="xref py py-meth docutils literal"><span class="pre">compareClassifiers(a:</span> <span class="pre">Classifier,</span> <span class="pre">b:</span> <span class="pre">Classifier):</span> <span class="pre">Int</span></tt>
+    需要用它来确定匹配的类别并将它们保存在一个有序的集合中。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">compareSubscribers(a:</span> <span class="pre">Subscriber,</span> <span class="pre">b:</span> <span class="pre">Subscriber):</span> <span class="pre">Int</span></tt>
+    需要用它来将订阅者保存在一个有序的集合中。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">matches(classifier:</span> <span class="pre">Classifier,</span> <span class="pre">event:</span> <span class="pre">Event):</span> <span class="pre">Boolean</span></tt>
+    确定一个给定的类别是否与一个给定的事件匹配，它会对每个订阅所收到的所有事件调用</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">publish(event:</span> <span class="pre">Event,</span> <span class="pre">subscriber:</span> <span class="pre">Subscriber)</span></tt>
+    会对每一个事件的所有注册成为其类别的订阅者调用。</li>
+</ul>
+<p>这种分类法耗费的时间总是与订阅关系的数量成正比，而与实际匹配的数量无关。</p>
+</div>
+<div class="section" id="actor-classification">
+<h3>Actor 分类法</h3>
+<p>这种分类法是专门为实现
+<a class="reference internal" href="actors.html#deathwatch-scala" tppabs="http://www.gtan.com/akka_doc/scala/actors.html#deathwatch-scala"><em>DeathWatch</em></a>开发的: 订阅者和类别都是 <tt class="xref py py-class docutils literal"><span class="pre">ActorRef</span></tt> 类型.
+    其抽象成员包括：</p>
+<ul class="simple">
+<li><tt class="xref py py-meth docutils literal"><span class="pre">classify(event:</span> <span class="pre">Event):</span> <span class="pre">ActorRef</span></tt>
+    用来从传入的事件中提取类别。</li>
+<li><tt class="xref py py-meth docutils literal"><span class="pre">mapSize:</span> <span class="pre">Int</span></tt>
+    决定内部使用的索引数据结构的数量 (i.e. 预期的不同的类别的数目).</li>
+</ul>
+<p>这种类别仍然是对事件类型一般化的，在所有的场合下都是高效的。</p>
+</div>
+</div>
+<div class="section" id="event-stream">
+<span id="event-stream-scala"></span><h2>事件流</h2>
+<p>事件流是每个actor系统的主事件总线：它用来携带 <a class="reference internal" href="logging.html#logging-scala" tppabs="http://www.gtan.com/akka_doc/scala/logging.html#logging-scala"><em>日志消息</em></a> 和 <a class="reference internal" href="#dead-letters">死信</a>
+    也可以被用户代码使用来达到其它的目的。它使用 <a class="reference internal" href="#subchannel-classification">子频道分类法</a>
+    使得可以向一组相关的频道进行注册 (就象 <tt class="xref py py-class docutils literal"><span class="pre">RemoteLifeCycleMessage</span></tt> 所用的那样). 以下例子演示了一个简单的订阅是如何工作的：</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">akka.actor.</span><span class="o">{</span> <span class="nc">Actor</span><span class="o">,</span> <span class="nc">DeadLetter</span><span class="o">,</span> <span class="nc">Props</span> <span class="o">}</span>
+
+<span class="k">val</span> <span class="n">listener</span> <span class="k">=</span> <span class="n">system</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="n">d</span><span class="k">:</span> <span class="kt">DeadLetter</span> <span class="k">⇒</span> <span class="kt">println</span><span class="o">(</span><span class="kt">d</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}))</span>
+<span class="n">system</span><span class="o">.</span><span class="n">eventStream</span><span class="o">.</span><span class="n">subscribe</span><span class="o">(</span><span class="n">listener</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">DeadLetter</span><span class="o">])</span>
+</pre></div>
+</div>
+<div class="section" id="default-handlers">
+<h3>缺省的处理器</h3>
+<p>actor系统在启动时会创建一些actor并为其在事件流上订阅日志消息：这些是缺省的处理器，可以配置在例如：
+<tt class="docutils literal"><span class="pre">application.conf</span></tt>:</p>
+<div class="highlight-text"><div class="highlight"><pre>akka {
+  event-handlers = [&quot;akka.event.Logging$DefaultLogger&quot;]
+}
+</pre></div>
+</div>
+<p>这里以全路径类名列出的处理器将订阅所有配置的日志级别以上的日志事件类，当日志级别在运行时被修改时这些订阅关系也会同步修改:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">system</span><span class="o">.</span><span class="n">eventStream</span><span class="o">.</span><span class="n">setLogLevel</span><span class="o">(</span><span class="nc">Logging</span><span class="o">.</span><span class="nc">DebugLevel</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>这意味着一个低于日志级别的日志事件事实上根本不会被派发（除非专门为相应的事件类进行了手工订阅）</p>
+</div>
+<div class="section" id="dead-letters">
+<h3>死信</h3>
+<p>如 <a class="reference internal" href="actors.html#stopping-actors-scala" tppabs="http://www.gtan.com/akka_doc/scala/actors.html#stopping-actors-scala"><em>终止 actors</em></a>所述, 当actor终止后其邮箱队列中的剩余消息及后续发送的消息都将被发送到死信邮箱，
+它缺省情况下会发布打包在 <tt class="xref py py-class docutils literal"><span class="pre">DeadLetter</span></tt> 中的消息. 这种打包动作会保留原始的发送者、接收者以及消息内容。</p>
+</div>
+<div class="section" id="other-uses">
+<h3>其它用处</h3>
+<p>事件流一直存在并可用，你可以向它发布你自己的事件 (它接受 <tt class="docutils literal"><span class="pre">AnyRef</span></tt>) 然后对相应的JVM类
+    添加订阅监听器。</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      © 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->

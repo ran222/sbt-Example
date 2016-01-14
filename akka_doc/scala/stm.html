@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Software Transactional Memory (Scala) &mdash; Akka Documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" tppabs="http://www.gtan.com/akka_doc/_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" tppabs="http://www.gtan.com/akka_doc/_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/prettify.css" tppabs="http://www.gtan.com/akka_doc/_static/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/base.css" tppabs="http://www.gtan.com/akka_doc/_static/base.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/docs.css" tppabs="http://www.gtan.com/akka_doc/_static/docs.css" type="text/css" />
+    <link rel="stylesheet" href="../../../fonts.googleapis.com/css-family=Exo-300,400,600,700.css" tppabs="http://fonts.googleapis.com/css?family=Exo:300,400,600,700" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js" tppabs="http://www.gtan.com/akka_doc/_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js" tppabs="http://www.gtan.com/akka_doc/_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js" tppabs="http://www.gtan.com/akka_doc/_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/toc.js" tppabs="http://www.gtan.com/akka_doc/_static/toc.js"></script>
+    <script type="text/javascript" src="../_static/prettify.js" tppabs="http://www.gtan.com/akka_doc/_static/prettify.js"></script>
+    <script type="text/javascript" src="../_static/highlightCode.js" tppabs="http://www.gtan.com/akka_doc/_static/highlightCode.js"></script>
+    <script type="text/javascript" src="../_static/effects.core.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.core.js"></script>
+    <script type="text/javascript" src="../_static/effects.highlight.js" tppabs="http://www.gtan.com/akka_doc/_static/effects.highlight.js"></script>
+    <script type="text/javascript" src="../_static/scrollTo.js" tppabs="http://www.gtan.com/akka_doc/_static/scrollTo.js"></script>
+    <script type="text/javascript" src="../_static/contentsFix.js" tppabs="http://www.gtan.com/akka_doc/_static/contentsFix.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="Akka Documentation" href="../index.html" />
+    <link rel="up" title="Scala API" href="index.html" />
+    <link rel="next" title="Agents (Scala)" href="agents.html" />
+    <link rel="prev" title="FSM" href="fsm.html" /> 
+  </head>
+  <body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="navbar-logo">
+          <a href="javascript:if(confirm('http://akka.io/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/'" tppabs="http://akka.io/"><img src="../_static/logo-small.png" tppabs="http://www.gtan.com/akka_doc/_static/logo-small.png" /></a>
+        </div>    
+        <ul class="nav">
+          <li><a href="javascript:if(confirm('http://www.gtan.com/welfare04.html  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/welfare04.html'" tppabs="http://www.gtan.com/welfare04.html">è¿”å›žå¹¿è°ˆå…¬ç›Š</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="container">
+      <div class="page-title">è½¯ä»¶äº‹åŠ¡å†…å­˜STM (Scala)</div><div class="pdf-link"><a href="javascript:if(confirm('http://www.gtan.com/akka_doc/Akka.pdf  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ·þÎñÆ÷±¨¸æ¸ÃÎÄ¼þÎ´ÕÒµ½¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.gtan.com/akka_doc/Akka.pdf'" tppabs="http://www.gtan.com/akka_doc/Akka.pdf"><img src="../_static/pdf-icon.png" tppabs="http://www.gtan.com/akka_doc/_static/pdf-icon.png" style="height: 40px;" /></a></div></div>
+    <div class="main-container">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <ul class="breadcrumb">           
+              <li>
+                 <span class="divider">|</span> <a href="agents.html" tppabs="http://www.gtan.com/akka_doc/scala/agents.html">Agents (Scala)</a> <span class="divider">Â»</span>
+              </li>
+              <li>
+                <a href="../index.html" tppabs="http://www.gtan.com/akka_doc/index.html">ç›®å½•</a>
+              </li>
+              <li>
+                <span class="divider">Â«</span> <a href="fsm.html" tppabs="http://www.gtan.com/akka_doc/scala/fsm.html">FSM(æœ‰é™çŠ¶æ€æœº)</a> <span class="divider">|</span>
+              </li>
+              <li>
+                ç‰ˆæœ¬ 2.0
+              </li>
+            </ul>         
+          </div>
+        </div>
+        <div class="row">
+          <div class="span9">
+            
+  <div class="section" id="software-transactional-memory-scala">
+<span id="stm-scala"></span><h1>è½¯ä»¶äº‹åŠ¡å†…å­˜STM (Scala)</h1>
+<div class="section" id="overview-of-stm">
+<h2>STMæ¦‚è¿°</h2>
+<p><a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/Software_transactional_memory  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/Software_transactional_memory'" tppabs="http://en.wikipedia.org/wiki/Software_transactional_memory">STM</a> å°†Javaçš„å†…å­˜å †è§†ä¸ºä¸€ä¸ªæ‹¥æœ‰â€œå¼€å§‹/æäº¤/å›žæ»šâ€è¯­ä¹‰çš„äº‹åŠ¡æ€§æ•°æ®é›†ã€‚
+    å®ƒä¸Žä¸€èˆ¬çš„æ•°æ®åº“éžå¸¸ç›¸ä¼¼ã€‚STMå®žçŽ°äº† <a class="reference external" href="javascript:if(confirm('http://en.wikipedia.org/wiki/ACID  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://en.wikipedia.org/wiki/ACID'" tppabs="http://en.wikipedia.org/wiki/ACID">ACID</a>çš„å‰ä¸‰ä¸ªâ€”â€”ACI:</p>
+<ul class="simple">
+<li>Atomic åŽŸå­æ€§</li>
+<li>Consistent ä¸€è‡´æ€§</li>
+<li>Isolated éš”ç¦»æ€§</li>
+</ul>
+<p>ä¸€èˆ¬æ¥è¯´ï¼ŒSTMåœ¨Akkaä¸­ç”¨å¾—ä¸å¤šã€‚æˆ‘ä»¬å¯ä»¥æƒ³åˆ°çš„ä¸€äº›ä½¿ç”¨åœºæ™¯åŒ…æ‹¬ï¼š</p>
+<ul class="simple">
+<li>å½“ä½ ç¡®å®žéœ€è¦åœ¨å¤šä¸ªactorä¹‹é—´ç»„åˆæ¶ˆæ¯æµåˆå¸Œæœ›åœ¨ä¸€ä¸ªå¤§çš„äº‹åŠ¡ä¸­å¯¹å¤šä¸ªactorçš„<strong>å†…éƒ¨</strong>çŠ¶æ€è¿›è¡Œä¿®æ”¹æ—¶ã€‚è¿™ç§æƒ…å†µå¾ˆå°‘è§ï¼Œä½†è¿™æ—¶å¦‚æžœæ²¡æœ‰STMä½ å°±å®Œè›‹äº†ã€‚</li>
+<li>ä½ å¸Œæœ›åœ¨ä¸åŒçš„actoré—´å…±äº«ä¸€ä¸ªæ•°æ®ç»“æž„æ—¶ã€‚</li>
+</ul>
+<p>Akkaä¸­STMçš„ä½¿ç”¨æºäºŽ <a class="reference external" href="javascript:if(confirm('http://clojure.org/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://clojure.org/'" tppabs="http://clojure.org/">Clojure</a>
+STMä¸­çš„æ¦‚å¿µå’Œè§†è§’. è¯·èŠ±ä¸€ç‚¹æ—¶é—´é˜…è¯» <a class="reference external" href="javascript:if(confirm('http://clojure.org/state  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://clojure.org/state'" tppabs="http://clojure.org/state">è¿™ç¯‡ä¼˜ç§€æ–‡æ¡£</a> ä»¥äº†è§£clojureä¸­çš„çŠ¶æ€å¹¶
+    è§‚çœ‹Rich Hickey (Clojureçš„å¤©æ‰ä½œè€…)çš„<a class="reference external" href="javascript:if(confirm('http://www.infoq.com/presentations/Value-Identity-State-Rich-Hickey  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.infoq.com/presentations/Value-Identity-State-Rich-Hickey'" tppabs="http://www.infoq.com/presentations/Value-Identity-State-Rich-Hickey">è¿™ä¸ªè®²è§£</a> ã€‚</p>
+</div>
+<div class="section" id="scala-stm">
+<h2>Scala STM</h2>
+<p>Akkaä¸­çš„STMç§°ä¸º <a class="reference external" href="javascript:if(confirm('http://nbronson.github.com/scala-stm/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://nbronson.github.com/scala-stm/'" tppabs="http://nbronson.github.com/scala-stm/">ScalaSTM</a> ï¼Œå®ƒä¸ä¹…å°†è¢«åŒ…å«è¿›Scalaæ ‡å‡†åº“ã€‚</p>
+<p>STM çš„åŸºç¡€æ˜¯äº‹åŠ¡æ€§å¼•ç”¨ (Ref). Refæ˜¯æŒæœ‰ï¼ˆä»»æ„ï¼‰ä¸å¯å˜å€¼çš„å†…å­˜å•å…ƒï¼Œå®ƒå®žçŽ°äº† CAS
+(Compare-And-Swap æ¯”è¾ƒå¹¶äº¤æ¢) è¯­ä¹‰ï¼Œç”±STMç®¡ç†ï¼Œå¯ä»¥å¯¹å¤šä¸ªRefè¿›è¡Œç»Ÿä¸€çš„ä¿®æ”¹ã€‚</p>
+</div>
+<div class="section" id="persistent-datastructures">
+<h2>æŒä¹…æ•°æ®ç»“æž„</h2>
+<p>ä½¿ç”¨ä¸å¯å˜é›†åˆæ—¶ï¼Œç”±äºŽä¼šäº§ç”Ÿæ‹·è´ï¼Œæœ‰æ—¶æ€§èƒ½ä¼šå¾ˆå·®ã€‚Scalaæä¾›äº†è¢«ç§°ä¸ºæŒä¹…æ•°æ®ç»“æž„çš„å·¥å…·æ¥åŠ å¿«å¯¹ä¸å¯å˜é›†åˆçš„æ“ä½œã€‚å®ƒä»¬è™½ç„¶æ˜¯ä¸å¯å˜çš„ï¼Œä½†æ˜¯å…¶è®¿é—®å’Œä¿®æ”¹éƒ½å…·æœ‰å¸¸é‡
+    çº§åˆ«çš„å¤æ‚åº¦ã€‚å®ƒä»¬ä½¿ç”¨ç»“æž„å…±äº«ä½¿å¾—æ’å…¥å’Œä¿®æ”¹ä¸å½±å“æ—§çš„ç»“æž„ï¼ˆæ‰€è°“çš„æŒä¹…ï¼‰ã€‚ç›®å‰çš„æŒä¹…æ•°æ®ç»“æž„åŒ…æ‹¬ä¸€ä¸ª
+    <a class="reference external" href="javascript:if(confirm('http://www.scala-lang.org/api/current/index.html  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map'" tppabs="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Map">Map</a>
+    å’Œä¸€ä¸ª <a class="reference external" href="javascript:if(confirm('http://www.scala-lang.org/api/current/index.html  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Vector'" tppabs="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Vector">Vector</a>.</p>
+</div>
+<div class="section" id="integration-with-actors">
+<h2>ä¸Ž Actor çš„é›†æˆ</h2>
+<p>åœ¨Akkaä¸­æˆ‘ä»¬å¯¹Actorå’ŒSTMçš„é›†æˆè¿˜å‡ºçŽ°åœ¨ <a class="reference internal" href="agents.html#agents-scala" tppabs="http://www.gtan.com/akka_doc/scala/agents.html#agents-scala"><em>Agents (Scala)</em></a> and
+<a class="reference internal" href="transactors.html#transactors-scala" tppabs="http://www.gtan.com/akka_doc/scala/transactors.html#transactors-scala"><em>Transactors (Scala)</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+          <div class="span3"><p class="contents-title">Contents</p>
+              <div id="scroller-anchor">
+                <div id="scroller">
+                  <div id="toc"></div>
+                </div>
+              </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Akka</h5></li>
+      <li><a href="javascript:if(confirm('http://akka.io/docs  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/docs'" tppabs="http://akka.io/docs">Documentation</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/downloads  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/downloads'" tppabs="http://akka.io/downloads">Downloads</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/news  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/news'" tppabs="http://akka.io/news">News</a></li>
+      <li><a href="javascript:if(confirm('http://letitcrash.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://letitcrash.com/'" tppabs="http://letitcrash.com/">Blog</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="javascript:if(confirm('http://github.com/akka/akka  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://github.com/akka/akka'" tppabs="http://github.com/akka/akka">Source Code</a></li>
+      <li><a href="javascript:if(confirm('http://groups.google.com/group/akka-user  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://groups.google.com/group/akka-user'" tppabs="http://groups.google.com/group/akka-user">Mailing List</a></li>      
+      <li><a href="javascript:if(confirm('http://www.assembla.com/spaces/akka/tickets  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://www.assembla.com/spaces/akka/tickets'" tppabs="http://www.assembla.com/spaces/akka/tickets">Report a Bug</a></li>      
+    </ul>
+    <ul>
+      <li><h5>Company</h5></li>
+      <li><a href="javascript:if(confirm('http://typesafe.com/products/typesafe-subscription  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/products/typesafe-subscription'" tppabs="http://typesafe.com/products/typesafe-subscription">Commercial Support</a></li>
+      <li><a href="javascript:if(confirm('http://akka.io/team  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://akka.io/team'" tppabs="http://akka.io/team">Team</a></li>
+      <li><a href="mailto:info@typesafe.com">Contact</a></li>
+    </ul>
+    <ul>
+      <li><img src="../_static/watermark.png" tppabs="http://www.gtan.com/akka_doc/_static/watermark.png" align="center"/></li>
+    </ul>
+  </div>
+  <div class="container copyright">
+    <p style="float: left;">
+      Â© 2012 <a href="javascript:if(confirm('http://typesafe.com/  \n\n¸ÃÎÄ¼þÎÞ·¨ÓÃ Teleport Ultra ÏÂÔØ, ÒòÎª ËüÊÇÒ»¸öÓò»òÂ·¾¶Íâ²¿±»ÉèÖÃÎªËüµÄÆôÊ¼µØÖ·µÄµØÖ·¡£  \n\nÄãÏëÔÚ·þÎñÆ÷ÉÏ´ò¿ªËü?'))window.location='http://typesafe.com/'" tppabs="http://typesafe.com/">Typesafe Inc.</a> <span class="license">Akka is Open Source and available under the Apache 2 License.</span>
+    </p>
+    <p style="float: right; font-size: 12px;">
+      Last updated: Mar 08, 2012
+    </p>          
+  </div>
+</div>
+<script type="text/javascript">
+  $('#toc').toc();
+</script>
+  
+
+  </body>
+</html>
+<!-- Localized -->
